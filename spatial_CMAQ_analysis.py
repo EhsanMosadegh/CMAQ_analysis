@@ -11,25 +11,138 @@ import matplotlib.pyplot as plt
 from netCDF4 import Dataset
 import numpy as np
 from mpl_toolkits.basemap import Basemap , cm
+from osgeo import gdal, gdal_array, osr
+
+
+# define functions that calculate concentrations of pollutants
+def function_co ( domain_rows , domain_cols , cmaq_data , lay ):  # the order of argumenrs is important when input.
+	
+	data_mesh = np.empty( shape=( domain_rows , domain_cols ) )
+
+	# start CMAQ algorithm
+	for row in range(0,domain_rows,1):
+
+		print('--------------------------------------')
+		print('   new row starts   ')
+		print('--------------------------------------')
+
+		for col in range(0, domain_cols,1):
+
+			aconc_24hr_cell_list = []
+
+			for tstep in range(0,24,1):
+
+				print('--------------------------------------')
+
+				print('loop for row=%s col=%s time-step=%s' %(row,col,tstep))
+
+				hrly_aconc = cmaq_data[tstep][lay][row][col]
+
+				aconc_24hr_cell_list.append(hrly_aconc)
+
+
+			aconc_24hr_cell_array = np.array( aconc_24hr_cell_list)
+
+			cell_mean = aconc_24hr_cell_array.mean()
+
+			data_mesh[row][col] = cell_mean
+
+			del aconc_24hr_cell_list
+
+	return data_mesh
+
+
+# some settings
+cmaq_pol = 'CO'
+lay = 0
+domain_cols = 250
+domain_rows = 265
 
 # import input files
-#cmaq_file =
+cmaq_file = '/Users/ehsan/Documents/Python_projects/USFS_fire/inputs/cmaq_inputs/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161001.nc'
 mcip_file = '/Users/ehsan/Documents/Python_projects/USFS_fire/inputs/cmaq_inputs/GRIDDOT2D_161001'
 
 mcip_input = Dataset( mcip_file )
-#cmaq_input = data_meshset( cmaq_input )
+cmaq_input = Dataset( cmaq_file )
 
-# some info
-print('-> MCIP file dimensions: %s' %str( mcip_input['LATD'].dimensions ) )
-print('-> shape of each dimension: %s' %( str(mcip_input['LATD'].shape ) ))
-print('-> plotting the data...')
+# get some info
+print('-> MCIP file dimensions: %s' %str( mcip_input.variables['LATD'].dimensions ) )
+print('-> shape of each dimension: %s' %( str(mcip_input.variables['LATD'].shape ) ))
 
 # extract lat and lon parameteres
-lat_mesh = np.array( mcip_input['LATD'][0][0][:][:] ) # select only rosws and cols for the 1st timestep and layer
-lon_mesh = np.array( mcip_input['LOND'][0][0][:][:])
-data_mesh = np.random.rand(265,250)*10
+lat_mesh = np.array( mcip_input.variables['LATD'][0][0][:][:] ) # select only rosws and cols for the 1st timestep and layer
+lon_mesh = np.array( mcip_input.variables['LOND'][0][0][:][:])
+
+#data_mesh = np.random.rand(265,250)*10
+cmaq_data = cmaq_input.variables[cmaq_pol]
+
+data_mesh = function_co( domain_rows , domain_cols , cmaq_data , lay )
+
+# data_mesh = np.empty( shape=(domain_rows , domain_cols) )
+
+# # start CMAQ algorithm
+# for row in range(0,domain_rows,1):
+
+# 	print('--------------------------------------')
+# 	print('   new row starts   ')
+# 	print('--------------------------------------')
+
+# 	for col in range(0, domain_cols,1):
+
+# 		aconc_24hr_cell_list = []
+
+# 		for tstep in range(0,24,1):
+
+# 			print('--------------------------------------')
+
+# 			print('loop for row=%s col=%s time-step=%s' %(row,col,tstep))
+
+# 			hrly_aconc = cmaq_data[tstep][lay][row][col]
+
+# 			aconc_24hr_cell_list.append(hrly_aconc)
+
+
+# 		aconc_24hr_cell_array = np.array( aconc_24hr_cell_list)
+
+# 		cell_mean = aconc_24hr_cell_array.mean()
+
+# 		data_mesh[row][col] = cell_mean
+
+# 		del aconc_24hr_cell_list
+
+
+# create raster file
+xmin,ymin,xmax,ymax = [lon_mesh.min(),lat_mesh.min(),lon_mesh.max(),lat_mesh.max()]
+
+nrows,ncols = np.shape(data_mesh)
+
+xres = (xmax-xmin)/float(ncols)
+yres = (ymax-ymin)/float(nrows)
+geotransform=(xmin,xres,0,ymax,0, -yres)
+# That's (top left x, w-e pixel resolution, rotation (0 if North is up),
+#         top left y, rotation (0 if North is up), n-s pixel resolution)
+# I don't know why rotation is in twice???
+
+output_raster = gdal.GetDriverByName('GTiff').Create('myraster.tif' , ncols , nrows , 1 , gdal.GDT_Float32)  # Open the file
+
+output_raster.SetGeoTransform(geotransform)  # Specify its coordinates
+
+srs = osr.SpatialReference()                 # Establish its coordinate encoding
+
+srs.ImportFromEPSG(4326)                     # This one specifies WGS84 lat long.
+
+output_raster.SetProjection( srs.ExportToWkt() )   # Exports the coordinate system
+                                                   # to the file
+output_raster.GetRasterBand(1).WriteArray(data_mesh)   # Writes my array to the raster
+
+output_raster.FlushCache()
+
+
+
 
 # plot dots from grid coordinates of the dots
+print('-> plotting the data...')
+
 #plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
 
 # plot the domain/region borders
@@ -50,7 +163,7 @@ urcornery=-500 # meters
 basemap_instance = Basemap(projection='lcc' ,
                            llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
                            lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
-                           resolution='c')
+                           resolution='f')
 
 basemap_instance.bluemarble()
 
@@ -63,13 +176,16 @@ basemap_instance.drawstates()
 
 #basemap_instance.fillcontinents(lake_color='aqua')
 
-im1 = basemap_instance.pcolormesh(x_mesh , y_mesh , data_mesh , cmap=plt.cm.Reds_r , shading='flat')
+image1 = basemap_instance.pcolormesh(x_mesh , y_mesh , data_mesh , cmap=plt.cm.OrRd , shading='flat')
 #im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
-cb = basemap_instance.colorbar(im1 , 'bottom')
+cb = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV]')
 
 #cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 #cbar = basemap_instance.colorbar(cs, location='bottom')
 
 
 plt.show()
+
+mcip_input.close()
+cmaq_input.close()
