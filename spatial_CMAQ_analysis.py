@@ -76,7 +76,12 @@ lon_mesh = np.array( mcip_input.variables['LOND'][0][0][:][:])
 #data_mesh = np.random.rand(265,250)*10
 cmaq_data = cmaq_input.variables[cmaq_pol]
 
+# functions for each pollutant - the output will be data_mesh array
 data_mesh = function_co( domain_rows , domain_cols , cmaq_data , lay )
+
+
+
+
 
 # data_mesh = np.empty( shape=(domain_rows , domain_cols) )
 
@@ -109,6 +114,7 @@ data_mesh = function_co( domain_rows , domain_cols , cmaq_data , lay )
 # 		data_mesh[row][col] = cell_mean
 
 # 		del aconc_24hr_cell_list
+
 
 
 # create raster file
