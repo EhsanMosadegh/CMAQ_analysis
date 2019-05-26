@@ -59,8 +59,8 @@ domain_cols = 250
 domain_rows = 265
 
 # import input files
-cmaq_file = '/Users/ehsan/Documents/Python_projects/USFS_fire/inputs/cmaq_inputs/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161001.nc'
-mcip_file = '/Users/ehsan/Documents/Python_projects/USFS_fire/inputs/cmaq_inputs/GRIDDOT2D_161001'
+cmaq_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160901.nc'
+mcip_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/GRIDDOT2D_161001'
 
 mcip_input = Dataset( mcip_file )
 cmaq_input = Dataset( cmaq_file )
@@ -71,7 +71,7 @@ print('-> shape of each dimension: %s' %( str(mcip_input.variables['LATD'].shape
 
 # extract lat and lon parameteres
 lat_mesh = np.array( mcip_input.variables['LATD'][0][0][:][:] ) # select only rosws and cols for the 1st timestep and layer
-lon_mesh = np.array( mcip_input.variables['LOND'][0][0][:][:])
+lon_mesh = np.array( mcip_input.variables['LOND'][0][0][:][:] )
 
 #data_mesh = np.random.rand(265,250)*10
 cmaq_data = cmaq_input.variables[cmaq_pol]
@@ -190,8 +190,18 @@ cb = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV
 #cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 #cbar = basemap_instance.colorbar(cs, location='bottom')
 
+fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/'
+fig_name = 'co_spatial_1.png'
 
-#plt.show()
+out_fig = fig_dir+fig_name
+plt.savefig(out_fig)
+
+#plt.show() # opens a window to show the results - after saving
+
+print('-> output figure is stored at:')
+print(out_fig)
+
+plt.close()
 
 mcip_input.close()
 cmaq_input.close()
