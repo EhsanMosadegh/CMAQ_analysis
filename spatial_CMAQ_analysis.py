@@ -191,7 +191,7 @@ cb = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV
 #cbar = basemap_instance.colorbar(cs, location='bottom')
 
 
-plt.show()
+#plt.show()
 
 mcip_input.close()
 cmaq_input.close()
