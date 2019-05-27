@@ -5,36 +5,33 @@ Created on Mon May 20 16:51:30 2019
 @author: ehsan (ehsanm@dri.edu , ehsan.mosadegh@gmail.com)
 purpose: spatial plot for CMAQ
 """
-
+###################################################
 # import libraries
+
 import matplotlib.pyplot as plt
 from netCDF4 import Dataset
 import numpy as np
 from mpl_toolkits.basemap import Basemap , cm
-from osgeo import gdal, gdal_array, osr
+from osgeo import gdal, gdal_array, osr , ogr
 
-
+###################################################
 # define functions that calculate concentrations of pollutants
+
 def function_co ( domain_rows , domain_cols , cmaq_data , lay ):  # the order of argumenrs is important when input.
-	
+
 	data_mesh = np.empty( shape=( domain_rows , domain_cols ) )
 
 	# start CMAQ algorithm
 	for row in range(0,domain_rows,1):
 
-		print('--------------------------------------')
-		print('   new row starts   ')
-		print('--------------------------------------')
+		print('----------------------')
+		print('-> loop for row= %s' %row)
 
 		for col in range(0, domain_cols,1):
 
 			aconc_24hr_cell_list = []
 
 			for tstep in range(0,24,1):
-
-				print('--------------------------------------')
-
-				print('loop for row=%s col=%s time-step=%s' %(row,col,tstep))
 
 				hrly_aconc = cmaq_data[tstep][lay][row][col]
 
@@ -52,11 +49,58 @@ def function_co ( domain_rows , domain_cols , cmaq_data , lay ):  # the order of
 	return data_mesh
 
 
-# some settings
+###################################################
+# function for converting array to raster
+# source: https://pcjericks.github.io/py-gdalogr-cookbook/raster_layers.html#create-raster-from-array
+
+def array2raster(new_raster , raster_origin , pixelWidth , pixelHeight , array):
+
+		cols = array.shape[1]
+		rows = array.shape[0]
+		originX = raster_origin[0]
+		originY = raster_origin[1]
+
+		driver = gdal.GetDriverByName('GTiff')
+		outRaster = driver.Create(new_raster, cols, rows, 1, gdal.GDT_Byte)
+		outRaster.SetGeoTransform((originX, pixelWidth, 0, originY, 0, pixelHeight))
+		outband = outRaster.GetRasterBand(1)
+		outband.WriteArray(array)
+		outRasterSRS = osr.SpatialReference()
+		outRasterSRS.ImportFromEPSG(4326)
+		outRaster.SetProjection(outRasterSRS.ExportToWkt())
+		outband.FlushCache()
+
+###################################################
+# run-time settings
+
+### cmaq file setting
 cmaq_pol = 'CO'
 lay = 0
 domain_cols = 250
 domain_rows = 265
+days_in_month = 30
+
+### Basemap plot setting
+# center of domain
+xcent =-120.806 # degrees
+ycent =40.000 # degrees
+# domain size
+NROWS = 265*1000 # meters
+NCOLS = 250*1000 # meters
+# lower-left corner
+llcornerx=-117500 # meters
+llcornery=-265500 # meters
+# upper-right corner
+urcornerx=132500 # meters
+urcornery=-500 # meters
+
+### raster setting
+new_raster = 'usfs.tif'
+raster_origin = (-122.141 , 37.601) # tuple of (lon,lat); is it lower-left corner?
+pixelWidth = domain_cols
+pixelHeight = domain_rows
+
+###################################################
 
 # import input files
 cmaq_file = '/Users/ehsan/Documents/Python_projects/USFS_fire/inputs/cmaq_inputs/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161001.nc'
@@ -65,20 +109,23 @@ mcip_file = '/Users/ehsan/Documents/Python_projects/USFS_fire/inputs/cmaq_inputs
 mcip_input = Dataset( mcip_file )
 cmaq_input = Dataset( cmaq_file )
 
+###################################################
 # get some info
+
 print('-> MCIP file dimensions: %s' %str( mcip_input.variables['LATD'].dimensions ) )
 print('-> shape of each dimension: %s' %( str(mcip_input.variables['LATD'].shape ) ))
 
 # extract lat and lon parameteres
 lat_mesh = np.array( mcip_input.variables['LATD'][0][0][:][:] ) # select only rosws and cols for the 1st timestep and layer
+
 lon_mesh = np.array( mcip_input.variables['LOND'][0][0][:][:])
-
 #data_mesh = np.random.rand(265,250)*10
+# read the cmaq variable
 cmaq_data = cmaq_input.variables[cmaq_pol]
-
 # functions for each pollutant - the output will be data_mesh array
 data_mesh = function_co( domain_rows , domain_cols , cmaq_data , lay )
 
+###################################################
 
 
 
@@ -116,60 +163,59 @@ data_mesh = function_co( domain_rows , domain_cols , cmaq_data , lay )
 # 		del aconc_24hr_cell_list
 
 
+###################################################
+# create raster file - old
 
-# create raster file
-xmin,ymin,xmax,ymax = [lon_mesh.min(),lat_mesh.min(),lon_mesh.max(),lat_mesh.max()]
+#xmin,ymin,xmax,ymax = [lon_mesh.min(),lat_mesh.min(),lon_mesh.max(),lat_mesh.max()]
+#
+#nrows,ncols = np.shape(data_mesh)
+#
+#xres = (xmax-xmin)/float(ncols)
+#
+#yres = (ymax-ymin)/float(nrows)
+#
+#geotransform=(xmin,xres,0,ymax,0, -yres)
+## That's (top left x, w-e pixel resolution, rotation (0 if North is up),
+##         top left y, rotation (0 if North is up), n-s pixel resolution)
+## I don't know why rotation is in twice???
+#
+#output_raster = gdal.GetDriverByName('GTiff').Create('myraster.tif' , ncols , nrows , 1 , gdal.GDT_Float32)  # Open the file
+#
+#output_raster.SetGeoTransform(geotransform)  # Specify its coordinates
+#
+#srs = osr.SpatialReference()                 # Establish its coordinate encoding
+#
+#srs.ImportFromEPSG(4326)                     # This one specifies WGS84 lat long.
+#
+#output_raster.SetProjection( srs.ExportToWkt() )   # Exports the coordinate system
+#                                                   # to the file
+#output_raster.GetRasterBand(1).WriteArray(data_mesh)   # Writes my array to the raster
+#
+#output_raster.FlushCache()
 
-nrows,ncols = np.shape(data_mesh)
+###################################################
+# create raster file - new -
+# source: https://pcjericks.github.io/py-gdalogr-cookbook/raster_layers.html#create-raster-from-array
 
-xres = (xmax-xmin)/float(ncols)
-yres = (ymax-ymin)/float(nrows)
-geotransform=(xmin,xres,0,ymax,0, -yres)
-# That's (top left x, w-e pixel resolution, rotation (0 if North is up),
-#         top left y, rotation (0 if North is up), n-s pixel resolution)
-# I don't know why rotation is in twice???
+reversed_data_mesh = data_mesh[::-1] # reverse array so the tif looks like the array
+array2raster( new_raster , raster_origin , pixelWidth , pixelHeight , reversed_data_mesh ) # convert array to raster
 
-output_raster = gdal.GetDriverByName('GTiff').Create('myraster.tif' , ncols , nrows , 1 , gdal.GDT_Float32)  # Open the file
-
-output_raster.SetGeoTransform(geotransform)  # Specify its coordinates
-
-srs = osr.SpatialReference()                 # Establish its coordinate encoding
-
-srs.ImportFromEPSG(4326)                     # This one specifies WGS84 lat long.
-
-output_raster.SetProjection( srs.ExportToWkt() )   # Exports the coordinate system
-                                                   # to the file
-output_raster.GetRasterBand(1).WriteArray(data_mesh)   # Writes my array to the raster
-
-output_raster.FlushCache()
-
-
-
-
+###################################################
 # plot dots from grid coordinates of the dots
+
 print('-> plotting the data...')
 
 #plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
 
 # plot the domain/region borders
-xcent =-120.806 # degrees
-ycent =40.000 # degrees
 
-NROWS = 265*1000 # meters
-NCOLS = 250*1000 # meters
-
-llcornerx=-117500 # meters
-llcornery=-265500 # meters
-
-urcornerx=132500 # meters
-urcornery=-500 # meters
 
 # create a Basemap class/model instance for a specific projection
 #basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
 basemap_instance = Basemap(projection='lcc' ,
-                           llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
-                           lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
-                           resolution='f')
+													 llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
+													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
+													 resolution='f')
 
 basemap_instance.bluemarble()
 
@@ -181,7 +227,6 @@ basemap_instance.drawcounties()
 basemap_instance.drawstates()
 
 #basemap_instance.fillcontinents(lake_color='aqua')
-
 image1 = basemap_instance.pcolormesh(x_mesh , y_mesh , data_mesh , cmap=plt.cm.OrRd , shading='flat')
 #im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
