@@ -20,34 +20,23 @@ from osgeo import gdal, gdal_array, osr , ogr
 def function_co ( domain_rows , domain_cols , cmaq_data , lay ):  # the order of argumenrs is important when input.
 
 	data_mesh = np.empty( shape=( domain_rows , domain_cols ) )
-
 	# start CMAQ algorithm
 	for row in range(0,domain_rows,1):
-
 		print('----------------------')
 		print('-> loop for row= %s' %row)
 
 		for col in range(0, domain_cols,1):
-
 			aconc_24hr_cell_list = []
 
 			for tstep in range(0,24,1):
-
 				#print('--------------------------------------')
-
 				#print('loop for row=%s col=%s time-step=%s' %(row,col,tstep))
-
 				hrly_aconc = cmaq_data[tstep][lay][row][col]
-
 				aconc_24hr_cell_list.append(hrly_aconc)
 
-
 			aconc_24hr_cell_array = np.array( aconc_24hr_cell_list)
-
 			cell_mean = aconc_24hr_cell_array.mean()
-
 			data_mesh[row][col] = cell_mean
-
 			del aconc_24hr_cell_list
 
 	return data_mesh
@@ -111,7 +100,6 @@ domain_rows = 2 #265
 # import input files
 #cmaq_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160901.nc'
 cmaq_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161001.nc'
-
 mcip_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/GRIDDOT2D_161001'
 
 mcip_input = Dataset( mcip_file )
@@ -190,9 +178,7 @@ basemap_instance = Basemap(projection='lcc' ,
 													 resolution='f')
 
 basemap_instance.bluemarble()
-
 x_mesh, y_mesh = basemap_instance(lon_mesh , lat_mesh) # order: x , y, transforms from degree to meter for LCC
-
 basemap_instance.drawmapboundary(color='k' ) #, fill_color='aqua')
 basemap_instance.drawcoastlines(color = '0.15')
 #basemap_instance.drawcounties()
@@ -201,9 +187,7 @@ basemap_instance.drawstates()
 #basemap_instance.fillcontinents(lake_color='aqua')
 image1 = basemap_instance.pcolormesh(x_mesh , y_mesh , data_mesh , cmap=plt.cm.OrRd , shading='flat')
 #im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
-
 cb = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV]')
-
 #cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 #cbar = basemap_instance.colorbar(cs, location='bottom')
 
