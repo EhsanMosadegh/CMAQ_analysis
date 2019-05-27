@@ -24,14 +24,8 @@ def function_co ( domain_rows , domain_cols , cmaq_data , lay ):  # the order of
 	# start CMAQ algorithm
 	for row in range(0,domain_rows,1):
 
-<<<<<<< HEAD
 		print('----------------------')
 		print('-> loop for row= %s' %row)
-=======
-		print('--------------------------------------')
-		print('   new row starts= %s' %row )
-		print('--------------------------------------')
->>>>>>> 373f17cfed7182396a57f6aa1bd41aae39b0b5bc
 
 		for col in range(0, domain_cols,1):
 
@@ -39,13 +33,10 @@ def function_co ( domain_rows , domain_cols , cmaq_data , lay ):  # the order of
 
 			for tstep in range(0,24,1):
 
-<<<<<<< HEAD
-=======
 				#print('--------------------------------------')
 
 				#print('loop for row=%s col=%s time-step=%s' %(row,col,tstep))
 
->>>>>>> 373f17cfed7182396a57f6aa1bd41aae39b0b5bc
 				hrly_aconc = cmaq_data[tstep][lay][row][col]
 
 				aconc_24hr_cell_list.append(hrly_aconc)
@@ -89,7 +80,6 @@ def array2raster(new_raster , raster_origin , pixelWidth , pixelHeight , array):
 ### cmaq file setting
 cmaq_pol = 'CO'
 lay = 0
-<<<<<<< HEAD
 domain_cols = 250
 domain_rows = 265
 days_in_month = 30
@@ -115,10 +105,8 @@ pixelWidth = domain_cols
 pixelHeight = domain_rows
 
 ###################################################
-=======
 domain_cols = 2 #250
 domain_rows = 2 #265
->>>>>>> 373f17cfed7182396a57f6aa1bd41aae39b0b5bc
 
 # import input files
 #cmaq_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160901.nc'
@@ -137,12 +125,8 @@ print('-> shape of each dimension: %s' %( str(mcip_input.variables['LATD'].shape
 
 # extract lat and lon parameteres
 lat_mesh = np.array( mcip_input.variables['LATD'][0][0][:][:] ) # select only rosws and cols for the 1st timestep and layer
-<<<<<<< HEAD
-=======
 lon_mesh = np.array( mcip_input.variables['LOND'][0][0][:][:] )
->>>>>>> 373f17cfed7182396a57f6aa1bd41aae39b0b5bc
 
-lon_mesh = np.array( mcip_input.variables['LOND'][0][0][:][:])
 #data_mesh = np.random.rand(265,250)*10
 # read the cmaq variable
 cmaq_data = cmaq_input.variables[cmaq_pol]
@@ -150,43 +134,6 @@ cmaq_data = cmaq_input.variables[cmaq_pol]
 data_mesh = function_co( domain_rows , domain_cols , cmaq_data , lay )
 
 ###################################################
-
-<<<<<<< HEAD
-
-
-
-# data_mesh = np.empty( shape=(domain_rows , domain_cols) )
-
-# # start CMAQ algorithm
-# for row in range(0,domain_rows,1):
-
-# 	print('--------------------------------------')
-# 	print('   new row starts   ')
-# 	print('--------------------------------------')
-
-# 	for col in range(0, domain_cols,1):
-
-# 		aconc_24hr_cell_list = []
-
-# 		for tstep in range(0,24,1):
-
-# 			print('--------------------------------------')
-
-# 			print('loop for row=%s col=%s time-step=%s' %(row,col,tstep))
-
-# 			hrly_aconc = cmaq_data[tstep][lay][row][col]
-
-# 			aconc_24hr_cell_list.append(hrly_aconc)
-
-
-# 		aconc_24hr_cell_array = np.array( aconc_24hr_cell_list)
-
-# 		cell_mean = aconc_24hr_cell_array.mean()
-
-# 		data_mesh[row][col] = cell_mean
-
-# 		del aconc_24hr_cell_list
-
 
 ###################################################
 # create raster file - old
@@ -222,41 +169,10 @@ data_mesh = function_co( domain_rows , domain_cols , cmaq_data , lay )
 # create raster file - new -
 # source: https://pcjericks.github.io/py-gdalogr-cookbook/raster_layers.html#create-raster-from-array
 
-reversed_data_mesh = data_mesh[::-1] # reverse array so the tif looks like the array
-array2raster( new_raster , raster_origin , pixelWidth , pixelHeight , reversed_data_mesh ) # convert array to raster
+#reversed_data_mesh = data_mesh[::-1] # reverse array so the tif looks like the array
+#array2raster( new_raster , raster_origin , pixelWidth , pixelHeight , reversed_data_mesh ) # convert array to raster
 
 ###################################################
-=======
-# create raster file
-#xmin,ymin,xmax,ymax = [lon_mesh.min(),lat_mesh.min(),lon_mesh.max(),lat_mesh.max()]
-
-#nrows,ncols = np.shape(data_mesh)
-
-#xres = (xmax-xmin)/float(ncols)
-#yres = (ymax-ymin)/float(nrows)
-#geotransform=(xmin,xres,0,ymax,0, -yres)
-# That's (top left x, w-e pixel resolution, rotation (0 if North is up),
-#         top left y, rotation (0 if North is up), n-s pixel resolution)
-# I don't know why rotation is in twice???
-
-#output_raster = gdal.GetDriverByName('GTiff').Create('myraster.tif' , ncols , nrows , 1 , gdal.GDT_Float32)  # Open the file
-
-#output_raster.SetGeoTransform(geotransform)  # Specify its coordinates
-
-#srs = osr.SpatialReference()                 # Establish its coordinate encoding
-
-#srs.ImportFromEPSG(4326)                     # This one specifies WGS84 lat long.
-
-#output_raster.SetProjection( srs.ExportToWkt() )   # Exports the coordinate system
-                                                   # to the file
-#output_raster.GetRasterBand(1).WriteArray(data_mesh)   # Writes my array to the raster
-
-#output_raster.FlushCache()
-
-
-
-
->>>>>>> 373f17cfed7182396a57f6aa1bd41aae39b0b5bc
 # plot dots from grid coordinates of the dots
 
 print('-> plotting the data...')
