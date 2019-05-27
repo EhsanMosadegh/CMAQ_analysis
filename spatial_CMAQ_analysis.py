@@ -23,7 +23,7 @@ def function_co ( domain_rows , domain_cols , cmaq_data , lay ):  # the order of
 	for row in range(0,domain_rows,1):
 
 		print('--------------------------------------')
-		print('   new row starts   ')
+		print('   new row starts= %s' %row )
 		print('--------------------------------------')
 
 		for col in range(0, domain_cols,1):
@@ -32,9 +32,9 @@ def function_co ( domain_rows , domain_cols , cmaq_data , lay ):  # the order of
 
 			for tstep in range(0,24,1):
 
-				print('--------------------------------------')
+				#print('--------------------------------------')
 
-				print('loop for row=%s col=%s time-step=%s' %(row,col,tstep))
+				#print('loop for row=%s col=%s time-step=%s' %(row,col,tstep))
 
 				hrly_aconc = cmaq_data[tstep][lay][row][col]
 
@@ -55,11 +55,13 @@ def function_co ( domain_rows , domain_cols , cmaq_data , lay ):  # the order of
 # some settings
 cmaq_pol = 'CO'
 lay = 0
-domain_cols = 250
-domain_rows = 265
+domain_cols = 2 #250
+domain_rows = 2 #265
 
 # import input files
-cmaq_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160901.nc'
+#cmaq_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160901.nc'
+cmaq_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161001.nc'
+
 mcip_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/GRIDDOT2D_161001'
 
 mcip_input = Dataset( mcip_file )
@@ -80,68 +82,31 @@ cmaq_data = cmaq_input.variables[cmaq_pol]
 data_mesh = function_co( domain_rows , domain_cols , cmaq_data , lay )
 
 
-
-
-
-# data_mesh = np.empty( shape=(domain_rows , domain_cols) )
-
-# # start CMAQ algorithm
-# for row in range(0,domain_rows,1):
-
-# 	print('--------------------------------------')
-# 	print('   new row starts   ')
-# 	print('--------------------------------------')
-
-# 	for col in range(0, domain_cols,1):
-
-# 		aconc_24hr_cell_list = []
-
-# 		for tstep in range(0,24,1):
-
-# 			print('--------------------------------------')
-
-# 			print('loop for row=%s col=%s time-step=%s' %(row,col,tstep))
-
-# 			hrly_aconc = cmaq_data[tstep][lay][row][col]
-
-# 			aconc_24hr_cell_list.append(hrly_aconc)
-
-
-# 		aconc_24hr_cell_array = np.array( aconc_24hr_cell_list)
-
-# 		cell_mean = aconc_24hr_cell_array.mean()
-
-# 		data_mesh[row][col] = cell_mean
-
-# 		del aconc_24hr_cell_list
-
-
-
 # create raster file
-xmin,ymin,xmax,ymax = [lon_mesh.min(),lat_mesh.min(),lon_mesh.max(),lat_mesh.max()]
+#xmin,ymin,xmax,ymax = [lon_mesh.min(),lat_mesh.min(),lon_mesh.max(),lat_mesh.max()]
 
-nrows,ncols = np.shape(data_mesh)
+#nrows,ncols = np.shape(data_mesh)
 
-xres = (xmax-xmin)/float(ncols)
-yres = (ymax-ymin)/float(nrows)
-geotransform=(xmin,xres,0,ymax,0, -yres)
+#xres = (xmax-xmin)/float(ncols)
+#yres = (ymax-ymin)/float(nrows)
+#geotransform=(xmin,xres,0,ymax,0, -yres)
 # That's (top left x, w-e pixel resolution, rotation (0 if North is up),
 #         top left y, rotation (0 if North is up), n-s pixel resolution)
 # I don't know why rotation is in twice???
 
-output_raster = gdal.GetDriverByName('GTiff').Create('myraster.tif' , ncols , nrows , 1 , gdal.GDT_Float32)  # Open the file
+#output_raster = gdal.GetDriverByName('GTiff').Create('myraster.tif' , ncols , nrows , 1 , gdal.GDT_Float32)  # Open the file
 
-output_raster.SetGeoTransform(geotransform)  # Specify its coordinates
+#output_raster.SetGeoTransform(geotransform)  # Specify its coordinates
 
-srs = osr.SpatialReference()                 # Establish its coordinate encoding
+#srs = osr.SpatialReference()                 # Establish its coordinate encoding
 
-srs.ImportFromEPSG(4326)                     # This one specifies WGS84 lat long.
+#srs.ImportFromEPSG(4326)                     # This one specifies WGS84 lat long.
 
-output_raster.SetProjection( srs.ExportToWkt() )   # Exports the coordinate system
+#output_raster.SetProjection( srs.ExportToWkt() )   # Exports the coordinate system
                                                    # to the file
-output_raster.GetRasterBand(1).WriteArray(data_mesh)   # Writes my array to the raster
+#output_raster.GetRasterBand(1).WriteArray(data_mesh)   # Writes my array to the raster
 
-output_raster.FlushCache()
+#output_raster.FlushCache()
 
 
 
@@ -177,7 +142,7 @@ x_mesh, y_mesh = basemap_instance(lon_mesh , lat_mesh) # order: x , y, transform
 
 basemap_instance.drawmapboundary(color='k' ) #, fill_color='aqua')
 basemap_instance.drawcoastlines(color = '0.15')
-basemap_instance.drawcounties()
+#basemap_instance.drawcounties()
 basemap_instance.drawstates()
 
 #basemap_instance.fillcontinents(lake_color='aqua')
@@ -190,10 +155,13 @@ cb = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV
 #cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 #cbar = basemap_instance.colorbar(cs, location='bottom')
 
-fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/'
-fig_name = 'co_spatial_1.png'
+fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/figs/'
+fig_name = 'co_scen4_oct1_2.png'
 
 out_fig = fig_dir+fig_name
+print('-> figure directory is:')
+print(out_fig)
+
 plt.savefig(out_fig)
 
 #plt.show() # opens a window to show the results - after saving
