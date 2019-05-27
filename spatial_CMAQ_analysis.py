@@ -99,8 +99,10 @@ domain_rows = 2 #265
 
 # import input files
 #cmaq_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160901.nc'
-cmaq_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161001.nc'
-mcip_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/GRIDDOT2D_161001'
+#cmaq_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161001.nc'
+#mcip_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/GRIDDOT2D_161001'
+cmaq_file = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161001.nc'
+mcip_file = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/GRIDDOT2D_161001'
 
 mcip_input = Dataset( mcip_file )
 cmaq_input = Dataset( cmaq_file )
@@ -122,36 +124,6 @@ cmaq_data = cmaq_input.variables[cmaq_pol]
 data_mesh = function_co( domain_rows , domain_cols , cmaq_data , lay )
 
 ###################################################
-
-###################################################
-# create raster file - old
-
-#xmin,ymin,xmax,ymax = [lon_mesh.min(),lat_mesh.min(),lon_mesh.max(),lat_mesh.max()]
-#
-#nrows,ncols = np.shape(data_mesh)
-#
-#xres = (xmax-xmin)/float(ncols)
-#
-#yres = (ymax-ymin)/float(nrows)
-#
-#geotransform=(xmin,xres,0,ymax,0, -yres)
-## That's (top left x, w-e pixel resolution, rotation (0 if North is up),
-##         top left y, rotation (0 if North is up), n-s pixel resolution)
-## I don't know why rotation is in twice???
-#
-#output_raster = gdal.GetDriverByName('GTiff').Create('myraster.tif' , ncols , nrows , 1 , gdal.GDT_Float32)  # Open the file
-#
-#output_raster.SetGeoTransform(geotransform)  # Specify its coordinates
-#
-#srs = osr.SpatialReference()                 # Establish its coordinate encoding
-#
-#srs.ImportFromEPSG(4326)                     # This one specifies WGS84 lat long.
-#
-#output_raster.SetProjection( srs.ExportToWkt() )   # Exports the coordinate system
-#                                                   # to the file
-#output_raster.GetRasterBand(1).WriteArray(data_mesh)   # Writes my array to the raster
-#
-#output_raster.FlushCache()
 
 ###################################################
 # create raster file - new -
@@ -191,7 +163,7 @@ cb = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV
 #cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 #cbar = basemap_instance.colorbar(cs, location='bottom')
 
-fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/figs/'
+fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
 fig_name = 'co_scen4_oct1_2.png'
 
 out_fig = fig_dir+fig_name
