@@ -38,7 +38,7 @@ def function_pm25_monthly_mean ( days_in_month , domain_rows , domain_cols ) :
 		print( aconc_file_name )
 		print( pmdiag_file_name )
 		# set input directory
-		input_dir = '/Users/ehsan/Documents/Python_projects/USFS_fire/inputs/cmaq_inputs/'
+		input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/'
 		# define input files
 		aconc_input = input_dir + aconc_file_name
 
@@ -221,9 +221,9 @@ def function_pm25_monthly_mean ( days_in_month , domain_rows , domain_cols ) :
 	return pm25_mesh
 
 
-cmaq_file_month = '10'
+cmaq_file_month = '09'
 days_in_month = 2
-Landis_scenario = '4'
+Landis_scenario = '1'
 #cmaq_pol = 'CO'
 lay = 0
 domain_cols = 250
