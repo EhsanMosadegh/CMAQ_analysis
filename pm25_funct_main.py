@@ -46,34 +46,10 @@ def function_pm25_monthly_mean ( days_in_month , domain_rows , domain_cols , lay
 	print('-> month of analysis is=' , cmaq_file_month)
 
 	pm25_mesh = np.ndarray( shape=(days_in_month , domain_rows , domain_cols) )
-	# create a list in a range, use an argument-unpacking operator * to unpack the list
-	day_list = [*range( 1 , days_in_month+1 , 1)] # don't forget the [] around range function to create the list
 
-	for day_of_the_month in day_list :
+	
 
-		print('-> we are analyzing the follwoing days:')
-		print(day_list)
-		print( '-> calculating for day= %s' %day_of_the_month )
-		# prepare the count days
-		if day_of_the_month <= 9 :
-			# if jday is less than 10, add zero before it
-			day_count = '0'+str(day_of_the_month)
 
-		else:
-			# if jday is bigger than 9, use it.
-			day_count = str(day_of_the_month)
-
-		file_date_tag = '2016'+cmaq_file_month+day_count
-		# setting the input files
-		aconc_file_name = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
-		
-		pmdiag_file_name = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
-
-		print('-> reading CMAQ files:')
-		print( aconc_file_name )
-		print( pmdiag_file_name )
-		# set input directory
-		input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
 		# define input files
 		aconc_input = input_dir + aconc_file_name
 
@@ -411,6 +387,42 @@ domain_rows = 265
 ### get the starting time
 print('-> start processing pm2.5...')
 start = time.time()
+
+### create a list in a range to create file-date-tag, use an argument-unpacking operator * to unpack the list
+day_list = [*range( 1 , days_in_month+1 , 1)] # don't forget the [] around range function to create the list
+
+for day_of_the_month in day_list :
+
+	print('-> we are analyzing the follwoing days:')
+	print(day_list)
+	print( '-> calculating for day= %s' %day_of_the_month )
+	# prepare the count days
+	if day_of_the_month <= 9 :
+		# if jday is less than 10, add zero before it
+		day_count = '0'+str(day_of_the_month)
+
+	else:
+		# if jday is bigger than 9, use it.
+		day_count = str(day_of_the_month)
+
+	file_date_tag = '2016'+cmaq_file_month+day_count
+
+### set input directory
+input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
+
+### setting the input files
+aconc_file_name = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+pmdiag_file_name = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+
+print('-> reading CMAQ files:')
+print( aconc_file_name )
+print( pmdiag_file_name )
+
+
+
+
+
+
 
 
 
