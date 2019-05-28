@@ -14,7 +14,7 @@ import time
 ###################################################
 # define functions that calculate concentrations of pollutants
 
-def function_co ( domain_rows , domain_cols , lay , cmaq_data ):  # the order of argumenrs is important when input.
+def function_co_monthly_mean ( domain_rows , domain_cols , lay , cmaq_data ):  # the order of argumenrs is important when input.
 
 	data_mesh = np.empty( shape=( domain_rows , domain_cols ) )
 	# start CMAQ algorithm
@@ -52,16 +52,13 @@ def function_pm25_monthly_mean ( days_in_month , domain_rows , domain_cols , lay
 
 		# define input files
 		aconc_input = input_dir + aconc_file_name
-
 		pmdiag_input = input_dir + pmdiag_file_name
+
 		# read in cmaq and pmdiag input files
 		aconc_in = Dataset( aconc_input , 'r' )
 		pmdiag_in = Dataset( pmdiag_input , 'r')
 
-		# read each cell in the C-storing style: row and then col
-		for row in range( 0 , domain_rows , 1 ):
 
-			for col in range( 0 , domain_cols , 1 ):
 
 				print( f'-> processing row= {row} and col= {col}' )
 
@@ -419,6 +416,14 @@ print( aconc_file_name )
 print( pmdiag_file_name )
 
 
+### read each cell in the C-storing style: row and then col
+for row in range( 0 , domain_rows , 1 ):
+
+	for col in range( 0 , domain_cols , 1 ):
+
+		# use each function
+		data_mesh = function_co_monthly_mean = 
+		data_mesh = function_pm25_monthly_mean( days_in_month , domain_rows , domain_cols , lay )
 
 
 
@@ -431,9 +436,6 @@ print( pmdiag_file_name )
 
 
 
-
-# use the function
-data_mesh = function_pm25_monthly_mean( days_in_month , domain_rows , domain_cols , lay )
 
 print('-----------------------------')
 print( f'-> number of dimensions= {data_mesh.ndim}' )
