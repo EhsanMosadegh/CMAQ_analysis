@@ -13,11 +13,12 @@ from netCDF4 import Dataset
 import numpy as np
 from mpl_toolkits.basemap import Basemap , cm
 from osgeo import gdal, gdal_array, osr , ogr
+import time
 
 ###################################################
 # define functions that calculate concentrations of pollutants
 
-def function_co ( domain_rows , domain_cols , cmaq_data , lay ):  # the order of argumenrs is important when input.
+def function_co ( domain_rows , domain_cols , lay , cmaq_data ):  # the order of argumenrs is important when input.
 
 	data_mesh = np.empty( shape=( domain_rows , domain_cols ) )
 	# start CMAQ algorithm
@@ -26,17 +27,24 @@ def function_co ( domain_rows , domain_cols , cmaq_data , lay ):  # the order of
 		print('-> loop for row= %s' %row)
 
 		for col in range(0, domain_cols,1):
+			# define daily list
 			aconc_24hr_cell_list = []
 
 			for tstep in range(0,24,1):
 				#print('--------------------------------------')
 				#print('loop for row=%s col=%s time-step=%s' %(row,col,tstep))
+				# extract each t-step
 				hrly_aconc = cmaq_data[tstep][lay][row][col]
+				# append the VAR to a daily list
 				aconc_24hr_cell_list.append(hrly_aconc)
 
-			aconc_24hr_cell_array = np.array( aconc_24hr_cell_list)
+			# change daily list to daily npArray
+			aconc_24hr_cell_array = np.array( aconc_24hr_cell_list )
+			# get the mean for the cell
 			cell_mean = aconc_24hr_cell_array.mean()
+			# pin daily mean to data mesh
 			data_mesh[row][col] = cell_mean
+			# delete daily list
 			del aconc_24hr_cell_list
 
 	return data_mesh
@@ -65,6 +73,7 @@ def array2raster(new_raster , raster_origin , pixelWidth , pixelHeight , array):
 
 ###################################################
 # run-time settings
+start = time.time()
 
 ### cmaq file setting
 cmaq_pol = 'CO'
@@ -94,13 +103,14 @@ pixelWidth = domain_cols
 pixelHeight = domain_rows
 
 ###################################################
-domain_cols = 2 #250
-domain_rows = 2 #265
-
 # import input files
+
+### path on cluster
 #cmaq_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160901.nc'
 #cmaq_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161001.nc'
 #mcip_file = '/storage/ehsanm/USFS_CA_WRF_1km/plots/GRIDDOT2D_161001'
+
+### path on Mac
 cmaq_file = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161001.nc'
 mcip_file = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/GRIDDOT2D_161001'
 
@@ -121,8 +131,11 @@ lon_mesh = np.array( mcip_input.variables['LOND'][0][0][:][:] )
 # read the cmaq variable
 cmaq_data = cmaq_input.variables[cmaq_pol]
 # functions for each pollutant - the output will be data_mesh array
-data_mesh = function_co( domain_rows , domain_cols , cmaq_data , lay )
+data_mesh = function_co( domain_rows , domain_cols , lay , cmaq_data )
 
+end = time.time()
+
+print( f'-> time to complete the data_mesh: {end - start:.2f}s' )  # f-string 
 ###################################################
 
 ###################################################
@@ -163,10 +176,12 @@ cb = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV
 #cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 #cbar = basemap_instance.colorbar(cs, location='bottom')
 
-fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
+fig_dir_cluster = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
+fig_dir_Mac = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
+
 fig_name = 'co_scen4_oct1_2.png'
 
-out_fig = fig_dir+fig_name
+out_fig = fig_dir_Mac+fig_name
 print('-> figure directory is:')
 print(out_fig)
 
