@@ -41,11 +41,11 @@ def function_co_monthly_mean ( domain_rows , domain_cols , lay , cmaq_data ):  #
 	
 # each function reads its own files inside the function and writes out the data-mesh array
 
-def function_pm25_monthly_mean ( days_in_month , domain_rows , domain_cols , lay) :
+def function_pm25_monthly_mean ( days_to_run_in_month , domain_rows , domain_cols , lay) :
 
 	print('-> month of analysis is=' , cmaq_file_month)
 
-	pm25_mesh = np.ndarray( shape=(days_in_month , domain_rows , domain_cols) )
+	pm25_mesh = np.ndarray( shape=(days_to_run_in_month , domain_rows , domain_cols) )
 
 	
 
@@ -374,7 +374,7 @@ def function_pm25_monthly_mean ( days_in_month , domain_rows , domain_cols , lay
 
 ### file settings
 cmaq_file_month = '10'
-days_in_month = 1
+days_to_run_in_month = 1
 Landis_scenario = '4'
 #cmaq_pol = 'CO'
 lay = 0
@@ -423,7 +423,7 @@ for row in range( 0 , domain_rows , 1 ):
 
 		# use each function
 		data_mesh = function_co_monthly_mean = 
-		data_mesh = function_pm25_monthly_mean( days_in_month , domain_rows , domain_cols , lay )
+		data_mesh = function_pm25_monthly_mean( days_to_run_in_month , domain_rows , domain_cols , lay )
 
 
 
