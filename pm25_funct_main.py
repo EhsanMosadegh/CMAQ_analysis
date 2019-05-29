@@ -85,8 +85,8 @@ def function_day_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq
 		aconc_open.close()
 		pmdiag_open.close()
 
-# function returns the data-mesh: total_mesh to use in plotting
-return total_mesh
+	# function returns the data-mesh: total_mesh to use in plotting
+	return total_mesh
 
 
 def function_co_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
@@ -118,12 +118,12 @@ def function_co_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the order o
 	# change daily list to daily np.Array
 	cell_24hr_series_array = np.array( cell_24hr_series_list )
 	# get the mean of each cell
-	cell_mean = cell_24hr_series_array.mean()
+	cell_mean_for_cmaq_pol = cell_24hr_series_array.mean()
 	# delete daily list
 	del cell_24hr_series_list
 
-# function returns mean of the pollutant for each cell
-return cell_mean_for_cmaq_pol
+	# function returns mean of the pollutant for each cell
+	return cell_mean_for_cmaq_pol
 
 
 def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
@@ -423,12 +423,12 @@ def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg ar
 	PM25_UNSPEC1   =    PM25_TOT - (PM25_CL + PM25_EC + PM25_NA + PM25_NH4 + PM25_NO3 + PM25_OC + PM25_SOIL + PM25_SO4 )
 
 	# now sum all species to get hourly PM2.5 concentratiosn
-	mean_cell_pm25 = PM25_HP + PM25_CL + PM25_EC + PM25_NA + PM25_MG + PM25_K + PM25_CA + \
+	mean_cell_for_pm25 = PM25_HP + PM25_CL + PM25_EC + PM25_NA + PM25_MG + PM25_K + PM25_CA + \
 					PM25_NH4 + PM25_NO3 + PM25_OC + PM25_OM + PM25_SOIL + PM25_SO4 + PM25_TOT + PM25_UNSPEC1
 
-# function returns the mean of pm2.5 for each cell
-return mean_cell_for_pm25
-		
+	# function returns the mean of pm2.5 for each cell
+	return mean_cell_for_pm25
+
 
 ############### main ################
 
@@ -437,7 +437,7 @@ cmaq_file_month = '10'
 days_to_run_in_month = 1
 Landis_scenario = '4'
 cmaq_pol = 'CO'
-processing_method = 'co' # pm25
+processing_method = 'co' # 'co' or 'pm25'
 
 # fixed settings
 lay = 0
