@@ -39,10 +39,6 @@ def function_day_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq
 
 		file_date_tag = '2016'+cmaq_file_month+day_count
 
-		### setting the input files
-		aconc_file_name = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
-		pmdiag_file_name = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
-
 		# define input files
 		aconc_input = input_dir + aconc_file_name
 		pmdiag_input = input_dir + pmdiag_file_name
@@ -63,11 +59,11 @@ def function_day_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq
 
 				if ( processing_method == 'co' ) :
 
-					cell_mean_value = function_co_cell( aconc_open , cmaq_pol , lay , row , col )
+					cell_mean_value = function_co_cell( aconc_open , cmaq_pol , lay , row , col , Landis_scenario , file_date_tag )
 
 				elif ( processing_method == 'pm25') :
 				
-					cell_mean_value = function_pm25_cell( aconc_open , lay , row , col )
+					cell_mean_value = function_pm25_cell( aconc_open , lay , row , col , Landis_scenario , file_date_tag )
 
 				else:
 
@@ -89,7 +85,7 @@ def function_day_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq
 	return total_mesh
 
 
-def function_co_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
+def function_co_cell ( aconc_open , cmaq_pol , lay , row , col , Landis_scenario , file_date_tag ):  # the order of argumenrs is important when input.
 
 	# data_mesh = np.empty( shape=( domain_rows , domain_cols ) )
 	# # start CMAQ algorithm
@@ -109,8 +105,9 @@ def function_co_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the order o
 	# 		cell_mean = cell_24hr_array.mean()
 	# 		# pin daily mean to data mesh
 	# 		data_mesh[row][col] = cell_mean
-			
-	# 		del cell_24hr_aconc
+
+	### setting the input files
+	aconc_file_name = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 
 	cell_24hr_series_list = []
 	# extract all 24 t-step
@@ -126,7 +123,11 @@ def function_co_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the order o
 	return cell_mean_for_cmaq_pol
 
 
-def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
+def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col , Landis_scenario , file_date_tag ) : # arg are the variables that are defined insdie this function
+
+	### setting the input files
+	aconc_file_name = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+	pmdiag_file_name = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 
 	print( f'-> processing row= {row} and col= {col}' )
 
@@ -434,7 +435,7 @@ def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg ar
 
 ### file settings
 cmaq_file_month = '10'
-days_to_run_in_month = 1
+days_to_run_in_month = 2
 Landis_scenario = '4'
 cmaq_pol = 'CO'
 processing_method = 'co' # 'co' or 'pm25'
