@@ -486,7 +486,7 @@ def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg ar
 ### file settings
 cmaq_file_year = '2016'
 cmaq_file_month = '10'
-days_to_run_in_month = 2
+days_to_run_in_month = 1
 Landis_scenario = '4'
 cmaq_pol = 'CO'
 processing_method = 'co' # 'co' or 'pm2.5'
@@ -575,7 +575,7 @@ print('-> plotting the data...')
 basemap_instance = Basemap(projection='lcc' ,
 													 llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
 													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
-													 resolution='f')
+													 resolution='l')
 
 basemap_instance.bluemarble()
 x_mesh, y_mesh = basemap_instance(lon_mesh , lat_mesh) # order: x , y, transforms from degree to meter for LCC
@@ -584,16 +584,14 @@ basemap_instance.drawcoastlines(color = '0.15')
 #basemap_instance.drawcounties()
 basemap_instance.drawstates()
 #basemap_instance.fillcontinents(lake_color='aqua')
-
 ### create an image from basemap model instance
 image1 = basemap_instance.pcolormesh(x_mesh , y_mesh , data_mesh_2d , cmap=plt.cm.OrRd , shading='flat')
 #im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
-
 ### create colorbar
-cb = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV]')
+colorbar = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV]')
 #cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
-#cbar = basemap_instance.colorbar(cs, location='bottom')
-
+#colorbar = basemap_instance.colorbar(cs, location='bottom')
+plt.title(f'{cmaq_pol} monthly mean for October - LANDIS scenario {Landis_scenario}')
 ###################################################################################
 
 ###################################################################################
@@ -608,18 +606,14 @@ print(fig_dir_Mac)
 
 ### plot name
 fig_name = cmaq_pol + '_monthlyMean' + '_scen' + Landis_scenario + '_' + cmaq_file_year+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
-
 ### plot full path
 out_fig = fig_dir_Mac + fig_name
 print('-> output figure is stored at:')
 print(out_fig)
-
 ### save the figure
 plt.savefig(out_fig)
-
 ### opens a window to show the results - after savefig
 #plt.show()
-
 ### close the plot
 plt.close()
 
