@@ -14,7 +14,7 @@ import time
 ###################################################
 # define functions that calculate concentrations of pollutants
 
-def function_day_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir ) :
+def function_day_file_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir ) :
 
 	print('-> month of analysis is=' , cmaq_file_month)
 	# define the global array mesh
@@ -500,7 +500,74 @@ print(input_dir)
 
 ### extract necessary data from CMAQ for each mesh and calculate data_mesh 
 print('-> start processing CMAQ files to get data-mesh...')
-data_mesh = function_day_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir )
+data_mesh = function_day_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir )
+
+### open MCIP file to get lon-lat of domain
+mcip_input = Dataset( mcip_file )
+# get some info
+print('-> MCIP file dimensions: %s' %str( mcip_input.variables['LATD'].dimensions ) )
+print('-> shape of each dimension: %s' %( str(mcip_input.variables['LATD'].shape ) ))
+### extract lat and lon parameteres
+lat_mesh = np.array( mcip_input.variables['LATD'][ 0 , 0 , : , : ] ) # select only rosws and cols for the 1st timestep and layer = [ tstep=0 , lay=0]
+lon_mesh = np.array( mcip_input.variables['LOND'][ 0 , 0 , : , : ] )
+
+###################################################
+# plot dots from grid coordinates of the dots
+
+print('-> plotting the data...')
+
+### plot only lat/lon data
+#plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
+
+### create a Basemap class/model instance for a specific projection
+# basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
+basemap_instance = Basemap(projection='lcc' ,
+													 llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
+													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
+													 resolution='f')
+
+basemap_instance.bluemarble()
+x_mesh, y_mesh = basemap_instance(lon_mesh , lat_mesh) # order: x , y, transforms from degree to meter for LCC
+basemap_instance.drawmapboundary(color='k' ) #, fill_color='aqua')
+basemap_instance.drawcoastlines(color = '0.15')
+#basemap_instance.drawcounties()
+basemap_instance.drawstates()
+#basemap_instance.fillcontinents(lake_color='aqua')
+
+### create an image from basemap model instance
+image1 = basemap_instance.pcolormesh(x_mesh , y_mesh , data_mesh , cmap=plt.cm.OrRd , shading='flat')
+#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
+
+### create colorbar
+cb = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV]')
+#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
+#cbar = basemap_instance.colorbar(cs, location='bottom')
+
+###################################################
+# save the plots
+
+### path for saving plots
+fig_dir_cluster = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
+fig_dir_Mac = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
+
+### plot name
+fig_name = cmaq_pol + 'scenario_' + Landis_scenario + '.png'
+
+### plot full path
+out_fig = fig_dir_Mac + fig_name
+print('-> figure directory is:')
+print(out_fig)
+
+plt.savefig(out_fig)
+
+#plt.show() # opens a window to show the results - after saving
+
+print('-> output figure is stored at:')
+print(out_fig)
+
+plt.close()
+
+
 
 
 
