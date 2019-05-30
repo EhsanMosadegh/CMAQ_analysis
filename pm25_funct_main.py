@@ -464,9 +464,14 @@ cmaq_file_month = '10'
 days_to_run_in_month = 1
 Landis_scenario = '4'
 cmaq_pol = 'CO'
-processing_method = 'pm2.5' # 'co' or 'pm2.5'
+processing_method = 'co' # 'co' or 'pm2.5'
 mcip_date_tag = '161001'
 
+print(f'-> CMAQ year= {cmaq_file_year}')
+print(f'-> CMAQ month of analysis= {cmaq_file_month}')
+print(f'-> LANDIS scenarios= {Landis_scenario}')
+print(f'-> processing method= {processing_method}')
+print(f'-> number of days to run= {days_to_run_in_month}')
 ### fixed settings
 lay = 0
 domain_cols = 250
@@ -496,7 +501,7 @@ start = time.time()
 
 ### get MCIP file for lon/lat of domain
 mcip_file = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/GRIDDOT2D_'+mcip_date_tag
-print('-> MCIP file is:')
+print('-> MCIP input directory is:')
 print(mcip_file)
 
 ### set input directory
