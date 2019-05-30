@@ -607,7 +607,7 @@ print('-> fig directory is:')
 print(fig_dir_Mac)
 
 ### plot name
-fig_name = cmaq_pol + '_scenario_' + Landis_scenario + '_' + cmaq_file_year+cmaq_file_month + '_summedFor_' + str(days_to_run_in_month) + '_days' + '.png'
+fig_name = cmaq_pol + '_monthlyMean' + '_scen' + Landis_scenario + '_' + cmaq_file_year+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
 
 ### plot full path
 out_fig = fig_dir_Mac + fig_name
@@ -618,7 +618,7 @@ print(out_fig)
 plt.savefig(out_fig)
 
 ### opens a window to show the results - after savefig
-plt.show()
+#plt.show()
 
 ### close the plot
 plt.close()
