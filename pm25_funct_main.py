@@ -20,7 +20,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 	print('-> month of analysis is=' , cmaq_file_month)
 	# define the global array mesh
-	total_mesh_3d = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	mesh_3d_total = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 
 	### create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
 	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
@@ -95,9 +95,9 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 					print('-> exiting ...')
 					raise SystemExit()
 
-				#print( f'-> add/pin each cell mean value to total_mesh_3d at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-				### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in total_mesh_3d array
-				total_mesh_3d [ day_of_the_month-1 ][ row ][ col ] = cell_mean_value
+				#print( f'-> add/pin each cell mean value to mesh_3d_total at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+				### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in mesh_3d_total array
+				mesh_3d_total [ day_of_the_month-1 ][ row ][ col ] = cell_mean_value
 
 		# close nc file after each day is finished
 		if ( processing_method == 'co') :
@@ -111,33 +111,33 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			aconc_open.close()
 			pmdiag_open.close()
 
-	# function returns the data-mesh: total_mesh_3d to use in plotting
-	return total_mesh_3d
+	# function returns the data-mesh: mesh_3d_total to use in plotting
+	return mesh_3d_total
 
 
-def function_3Dto2D ( domain_rows , domain_cols , total_mesh_3d  ) :
+def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_total  ) :
 
 	### define a 2d array
-	2d_array = np.array( shape= ( domain_rows , domain_cols ) )
+	array_2d_total = np.array( shape= ( domain_rows , domain_cols ) )
 
-	for row in range( 0 , total_mesh_3d.shape[1] , 1 ) :
+	for row in range( 0 , mesh_3d_total.shape[1] , 1 ) :
 
-		for col in range( 0 , total_mesh_3d.shape[2] , 1 ) :
+		for col in range( 0 , mesh_3d_total.shape[2] , 1 ) :
 
-			print(f'-> processing row= {row} and col= {col} ')
+			print(f'-> processing mesh-3D-total @ row= {row} and col= {col} ')
 
-			cell_z_axis = data_mesh_3d [ : , row , col ]
+			cell_z_axis = mesh_3d_total [ : , row , col ]
 
-			print(f'-> size of z-axis is= { cell_z_axis.size() } ')
+			print(f'-> size of z-axis is= { cell_z_axis.shape() } ')
 
 			### take average of each z-axis
 			cell_z_axis_mean = cell_z_axis.mean()
 			### asign the cell mean to 2D array
-			2d_array [ row ][ col ] = cell_z_axis_mean
+			array_2d_total [ row ][ col ] = cell_z_axis_mean
 
-	print( f'-> shape of 2D array= { 2d_array.shape() }' )		
+	print( f'-> shape of 2D array= { array_2d_total.shape() }' )		
 	### function returns a 2D array to be used for plotting
-	return 2d_array
+	return array_2d_total
 
 
 def function_co_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
@@ -544,7 +544,7 @@ print( f'-> shape of data-mesh= {data_mesh_3d.shape}' )
 
 ### convert data-mesh 3D to 2D
 print(" ")
-data_mesh_2d = function_3Dto2D( data_mesh_3d )
+data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , mesh_3d_total )
 
 
 ### open MCIP file to get lon-lat of domain
