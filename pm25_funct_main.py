@@ -115,7 +115,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 	return total_mesh_3d
 
 
-def 3Dto2D ( )
+def function_3Dto2D ( domain_rows , domain_cols , total_mesh_3d  ) :
 
 	### define a 2d array
 	2d_array = np.array( shape= ( domain_rows , domain_cols ) )
@@ -544,7 +544,7 @@ print( f'-> shape of data-mesh= {data_mesh_3d.shape}' )
 
 ### convert data-mesh 3D to 2D
 print(" ")
-data_mesh_2d = 3Dto2D( data_mesh_3d )
+data_mesh_2d = function_3Dto2D( data_mesh_3d )
 
 
 ### open MCIP file to get lon-lat of domain
