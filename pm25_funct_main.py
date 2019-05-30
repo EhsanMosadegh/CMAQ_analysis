@@ -20,7 +20,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 	print('-> month of analysis is=' , cmaq_file_month)
 	# define the global array mesh
-	total_mesh = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	total_mesh_3d = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 
 	### create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
 	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
@@ -95,9 +95,9 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 					print('-> exiting ...')
 					raise SystemExit()
 
-				#print( f'-> add/pin each cell mean value to total_mesh at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-				### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in total_mesh array
-				total_mesh [ day_of_the_month-1 ][ row ][ col ] = cell_mean_value
+				#print( f'-> add/pin each cell mean value to total_mesh_3d at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+				### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in total_mesh_3d array
+				total_mesh_3d [ day_of_the_month-1 ][ row ][ col ] = cell_mean_value
 
 		# close nc file after each day is finished
 		if ( processing_method == 'co') :
@@ -111,8 +111,33 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			aconc_open.close()
 			pmdiag_open.close()
 
-	# function returns the data-mesh: total_mesh to use in plotting
-	return total_mesh
+	# function returns the data-mesh: total_mesh_3d to use in plotting
+	return total_mesh_3d
+
+
+def 3Dto2D ( )
+
+	### define a 2d array
+	2d_array = np.array( shape= ( domain_rows , domain_cols ) )
+
+	for row in range( 0 , total_mesh_3d.shape[1] , 1 ) :
+
+		for col in range( 0 , total_mesh_3d.shape[2] , 1 ) :
+
+			print(f'-> processing row= {row} and col= {col} ')
+
+			cell_z_axis = data_mesh_3d [ : , row , col ]
+
+			print(f'-> size of z-axis is= { cell_z_axis.size() } ')
+
+			### take average of each z-axis
+			cell_z_axis_mean = cell_z_axis.mean()
+			### asign the cell mean to 2D array
+			2d_array [ row ][ col ] = cell_z_axis_mean
+
+	print( f'-> shape of 2D array= { 2d_array.shape() }' )		
+	### function returns a 2D array to be used for plotting
+	return 2d_array
 
 
 def function_co_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
@@ -499,26 +524,28 @@ urcornery=-500 # meters
 
 ### get the starting time
 start = time.time()
-
 ### get MCIP file for lon/lat of domain
 mcip_file = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/GRIDDOT2D_'+mcip_date_tag
 print('-> MCIP input directory is:')
 print(mcip_file)
-
 ### set input directory
 input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
 print('-> CMAQ input directory is:')
 print(input_dir)
-
-### extract necessary data from CMAQ for each mesh and calculate data_mesh
+### extract necessary data from CMAQ for each mesh and calculate data_mesh_3d
 print(" ")
 print('-> start processing CMAQ files to get data-mesh...')
-data_mesh = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir )
-
+data_mesh_3d = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir )
 print('-----------------------------')
-print('-> data_mesh info:')
-print( f'-> number of dimensions= {data_mesh.ndim}' )
-print( f'-> shape of data-mesh= {data_mesh.shape}' )
+print('-> data_mesh_3d info:')
+print( f'-> number of dimensions= {data_mesh_3d.ndim}' )
+print( f'-> shape of data-mesh= {data_mesh_3d.shape}' )
+
+
+### convert data-mesh 3D to 2D
+print(" ")
+data_mesh_2d = 3Dto2D( data_mesh_3d )
+
 
 ### open MCIP file to get lon-lat of domain
 mcip_input = Dataset( mcip_file )
@@ -533,11 +560,11 @@ lon_mesh = np.array( mcip_input.variables['LOND'][ 0 , 0 , : , : ] )
 ###################################################################################
 
 ###################################################################################
-# plot dots from grid coordinates of the dots
+# use Basemap library and make spatial plots
 print(" ")
 print('-> plotting the data...')
 
-### plot only lat/lon data
+### plot dots from grid coordinates of the dots
 #plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
 
 ### create a Basemap class/model instance for a specific projection
@@ -556,7 +583,7 @@ basemap_instance.drawstates()
 #basemap_instance.fillcontinents(lake_color='aqua')
 
 ### create an image from basemap model instance
-image1 = basemap_instance.pcolormesh(x_mesh , y_mesh , data_mesh , cmap=plt.cm.OrRd , shading='flat')
+image1 = basemap_instance.pcolormesh(x_mesh , y_mesh , data_mesh_2d , cmap=plt.cm.OrRd , shading='flat')
 #im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
 ### create colorbar
