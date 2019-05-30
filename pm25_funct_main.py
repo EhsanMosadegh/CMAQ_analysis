@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-###################################################
+###################################################################################
 # import libraries
 
 import matplotlib.pyplot as plt
@@ -11,7 +11,9 @@ from mpl_toolkits.basemap import Basemap , cm
 from osgeo import gdal, gdal_array, osr , ogr
 import time
 
-###################################################
+###################################################################################
+
+###################################################################################
 # define functions that calculate concentrations of pollutants
 
 def function_day_file_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir ) :
@@ -38,7 +40,7 @@ def function_day_file_count ( days_to_run_in_month , domain_rows , domain_cols ,
 			day_count = str(day_of_the_month)
 
 		### opening process
-		file_date_tag = '2016'+cmaq_file_month+day_count
+		file_date_tag = cmaq_file_year+cmaq_file_month+day_count
 
 		if ( processing_method == 'co') :
 			# setting the input files
@@ -428,21 +430,21 @@ def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg ar
 
 # !! PM2.5 species computed using modeled size distribution,
 # reference: https://github.com/USEPA/CMAQ/blob/5.2/CCTM/src/MECHS/cb6r3_ae6_aq/SpecDef_cb6r3_ae6_aq.txt
-	PM25_HP     = (AH3OPI * PM25AT + AH3OPJ * PM25AC + AH3OPK * PM25CO) * 1.0/19.0
-	PM25_CL     = ACLI * PM25AT + ACLJ * PM25AC + ACLK * PM25CO
-	PM25_EC     =    AECI * PM25AT + AECJ * PM25AC
-	PM25_NA       =    ANAI * PM25AT + ANAJ * PM25AC + ANAK * PM25CO
+	PM25_HP      = (AH3OPI * PM25AT + AH3OPJ * PM25AC + AH3OPK * PM25CO) * 1.0/19.0
+	PM25_CL      = ACLI * PM25AT + ACLJ * PM25AC + ACLK * PM25CO
+	PM25_EC      = AECI * PM25AT + AECJ * PM25AC
+	PM25_NA      = ANAI * PM25AT + ANAJ * PM25AC + ANAK * PM25CO
 	PM25_MG      = AMGJ * PM25AC + AMGK * PM25CO
-	PM25_K       =     AKJ * PM25AC + AKK * PM25CO
-	PM25_CA       =         ACAJ * PM25AC + ACAK * PM25CO
-	PM25_NH4      =    ANH4I * PM25AT + ANH4J * PM25AC + ANH4K * PM25CO
-	PM25_NO3    =    ANO3I * PM25AT + ANO3J * PM25AC + ANO3K * PM25CO
-	PM25_OC      =   AOCI * PM25AT + AOCJ * PM25AC
-	PM25_OM       =    AOMI * PM25AT + AOMJ * PM25AC
-	PM25_SOIL       =    ASOILJ * PM25AC + ASOIL * PM25CO
-	PM25_SO4       =    ASO4I * PM25AT + ASO4J * PM25AC + ASO4K * PM25CO
-	PM25_TOT       =     ATOTI * PM25AT + ATOTJ * PM25AC + ATOTK * PM25CO
-	PM25_UNSPEC1   =    PM25_TOT - (PM25_CL + PM25_EC + PM25_NA + PM25_NH4 + PM25_NO3 + PM25_OC + PM25_SOIL + PM25_SO4 )
+	PM25_K       = AKJ * PM25AC + AKK * PM25CO
+	PM25_CA      = ACAJ * PM25AC + ACAK * PM25CO
+	PM25_NH4     = ANH4I * PM25AT + ANH4J * PM25AC + ANH4K * PM25CO
+	PM25_NO3     = ANO3I * PM25AT + ANO3J * PM25AC + ANO3K * PM25CO
+	PM25_OC      = AOCI * PM25AT + AOCJ * PM25AC
+	PM25_OM      = AOMI * PM25AT + AOMJ * PM25AC
+	PM25_SOIL    = ASOILJ * PM25AC + ASOIL * PM25CO
+	PM25_SO4     = ASO4I * PM25AT + ASO4J * PM25AC + ASO4K * PM25CO
+	PM25_TOT     = ATOTI * PM25AT + ATOTJ * PM25AC + ATOTK * PM25CO
+	PM25_UNSPEC1 = PM25_TOT - (PM25_CL + PM25_EC + PM25_NA + PM25_NH4 + PM25_NO3 + PM25_OC + PM25_SOIL + PM25_SO4 )
 
 	# now sum all species to get hourly PM2.5 concentratiosn
 	mean_cell_for_pm25 = PM25_HP + PM25_CL + PM25_EC + PM25_NA + PM25_MG + PM25_K + PM25_CA + \
@@ -451,11 +453,13 @@ def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg ar
 	# function returns the mean of pm2.5 for each cell
 	return mean_cell_for_pm25
 
+###################################################################################
 
-###################################################
+###################################################################################
 # run time setting
 
 ### file settings
+cmaq_file_year = '2016'
 cmaq_file_month = '10'
 days_to_run_in_month = 1
 Landis_scenario = '4'
@@ -482,7 +486,9 @@ llcornery=-265500 # meters
 urcornerx=132500 # meters
 urcornery=-500 # meters
 
-###################################################
+###################################################################################
+
+###################################################################################
 # start of the processing steps
 
 ### get the starting time
@@ -502,6 +508,10 @@ print(input_dir)
 print('-> start processing CMAQ files to get data-mesh...')
 data_mesh = function_day_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir )
 
+print('-----------------------------')
+print( f'-> number of dimensions= {data_mesh.ndim}' )
+print( f'-> shape of data-mesh= {data_mesh.shape}' )
+
 ### open MCIP file to get lon-lat of domain
 mcip_input = Dataset( mcip_file )
 # get some info
@@ -511,7 +521,9 @@ print('-> shape of each dimension: %s' %( str(mcip_input.variables['LATD'].shape
 lat_mesh = np.array( mcip_input.variables['LATD'][ 0 , 0 , : , : ] ) # select only rosws and cols for the 1st timestep and layer = [ tstep=0 , lay=0]
 lon_mesh = np.array( mcip_input.variables['LOND'][ 0 , 0 , : , : ] )
 
-###################################################
+###################################################################################
+
+###################################################################################
 # plot dots from grid coordinates of the dots
 
 print('-> plotting the data...')
@@ -543,67 +555,35 @@ cb = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV
 #cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 #cbar = basemap_instance.colorbar(cs, location='bottom')
 
-###################################################
+###################################################################################
+
+###################################################################################
 # save the plots
 
 ### path for saving plots
 fig_dir_cluster = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
 fig_dir_Mac = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
+print('-> fig directory is:')
+print(fig_dir_Mac)
 
 ### plot name
-fig_name = cmaq_pol + 'scenario_' + Landis_scenario + '.png'
+fig_name = cmaq_pol + '_scenario_' + Landis_scenario + '_' + cmaq_file_year+cmaq_file_month + '_summedDays_' + days_to_run_in_month + '.png'
 
 ### plot full path
 out_fig = fig_dir_Mac + fig_name
-print('-> figure directory is:')
-print(out_fig)
-
-plt.savefig(out_fig)
-
-#plt.show() # opens a window to show the results - after saving
-
 print('-> output figure is stored at:')
 print(out_fig)
 
+### save the figure
+plt.savefig(out_fig)
+
+### opens a window to show the results - after savefig
+plt.show() 
+
+### close the plot
 plt.close()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-print('-----------------------------')
-print( f'-> number of dimensions= {data_mesh.ndim}' )
-print( f'-> shape of data-mesh= {data_mesh.shape}' )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 end = time.time()
 print( f'-> time to complete the data_mesh: {end - start:.2f} sec' )  # f-string
+
+###################################################################################
