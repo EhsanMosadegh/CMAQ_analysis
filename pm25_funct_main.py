@@ -128,14 +128,14 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_total  ) :
 
 			cell_z_axis = mesh_3d_total [ : , row , col ]
 
-			print(f'-> size of z-axis is= { cell_z_axis.shape() } ')
+			print(f'-> size of z-axis is= { cell_z_axis.shape } ')
 
 			### take average of each z-axis
 			cell_z_axis_mean = cell_z_axis.mean()
 			### asign the cell mean to 2D array
 			array_2d_total [ row ][ col ] = cell_z_axis_mean
-
-	print( f'-> shape of 2D array= { array_2d_total.shape() }' )		
+	print(" ")
+	print( f'-> shape of 2D array= { array_2d_total.shape }' )		
 	### function returns a 2D array to be used for plotting
 	return array_2d_total
 
@@ -548,14 +548,17 @@ data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , data_mesh_3d )
 
 
 ### open MCIP file to get lon-lat of domain
-mcip_input = Dataset( mcip_file )
+print('-> opening MCIP file...')
+mcip_open = Dataset( mcip_file )
 # get some info
 print('-> MCIP file info:')
-print('-> MCIP file dimensions: %s' %str( mcip_input.variables['LATD'].dimensions ) )
-print('-> shape of each dimension: %s' %( str(mcip_input.variables['LATD'].shape ) ))
+print('-> MCIP file dimensions: %s' %str( mcip_open.variables['LATD'].dimensions ) )
+print('-> shape of each dimension: %s' %( str(mcip_open.variables['LATD'].shape ) ))
 ### extract lat and lon parameteres
-lat_mesh = np.array( mcip_input.variables['LATD'][ 0 , 0 , : , : ] ) # select only rosws and cols for the 1st timestep and layer = [ tstep=0 , lay=0]
-lon_mesh = np.array( mcip_input.variables['LOND'][ 0 , 0 , : , : ] )
+lat_mesh = np.array( mcip_open.variables['LATD'][ 0 , 0 , : , : ] ) # select only rosws and cols for the 1st timestep and layer = [ tstep=0 , lay=0]
+lon_mesh = np.array( mcip_open.variables['LOND'][ 0 , 0 , : , : ] )
+print('-> closing MCIP file...')
+mcip_open.close()
 
 ###################################################################################
 
@@ -599,11 +602,12 @@ cb = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV
 ### path for saving plots
 fig_dir_cluster = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
 fig_dir_Mac = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
+print(" ")
 print('-> fig directory is:')
 print(fig_dir_Mac)
 
 ### plot name
-fig_name = cmaq_pol + '_scenario_' + Landis_scenario + '_' + cmaq_file_year+cmaq_file_month + '_summedDays_' + days_to_run_in_month + '.png'
+fig_name = cmaq_pol + '_scenario_' + Landis_scenario + '_' + cmaq_file_year+cmaq_file_month + '_summedFor_' + str(days_to_run_in_month) + '_days' + '.png'
 
 ### plot full path
 out_fig = fig_dir_Mac + fig_name
@@ -620,6 +624,6 @@ plt.show()
 plt.close()
 
 end = time.time()
-print( f'-> time to complete the data_mesh: {end - start:.2f} sec' )  # f-string
+print( f'-> run time= { (( end - start ) / 60 ) :.2f} min' )  # f-string
 
 ###################################################################################
