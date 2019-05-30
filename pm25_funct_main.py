@@ -27,9 +27,9 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 	# traverse the list for each day
 	for day_of_the_month in day_list :
 
-		print('-> we are analyzing the follwoing days:')
+		print('-> we are processing the follwoing days:')
 		print(day_list)
-		print( f'-> calculating for day= {day_of_the_month}' )
+		print( f'-> processing for day= {day_of_the_month}' )
 		# prepare the day flags
 		if day_of_the_month <= 9 :
 			# if jday is less than 10, add zero before it
@@ -86,7 +86,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 					cell_mean_value = function_co_cell( aconc_open , cmaq_pol , lay , row , col )
 
 				elif ( processing_method == 'pm2.5') :
-				
+
 					cell_mean_value = function_pm25_cell( aconc_open , pmdiag_open , lay , row , col )
 
 				else:
@@ -106,7 +106,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			aconc_open.close()
 
 		if ( processing_method == 'pm2.5') :
-		
+
 			print('-> closing the CMAQ file ...')
 			aconc_open.close()
 			pmdiag_open.close()
@@ -129,9 +129,9 @@ def function_co_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the order o
 	# 		cell_24hr_aconc = []
 	# 		# extract all 24 t-step
 	# 		cell_24hr_aconc = cmaq_data[ : , lay , row , col ]
-			
+
 	# 		cell_24hr_array = np.array( cell_24hr_aconc )
-			
+
 	# 		cell_mean = cell_24hr_array.mean()
 	# 		# pin daily mean to data mesh
 	# 		data_mesh[row][col] = cell_mean
@@ -461,7 +461,7 @@ def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg ar
 ### file settings
 cmaq_file_year = '2016'
 cmaq_file_month = '10'
-days_to_run_in_month = 1
+days_to_run_in_month = 2
 Landis_scenario = '4'
 cmaq_pol = 'CO'
 processing_method = 'co' # 'co' or 'pm2.5'
@@ -510,18 +510,20 @@ input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' 
 print('-> CMAQ input directory is:')
 print(input_dir)
 
-### extract necessary data from CMAQ for each mesh and calculate data_mesh 
+### extract necessary data from CMAQ for each mesh and calculate data_mesh
 print(" ")
 print('-> start processing CMAQ files to get data-mesh...')
 data_mesh = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir )
 
 print('-----------------------------')
+print('-> data_mesh info:')
 print( f'-> number of dimensions= {data_mesh.ndim}' )
 print( f'-> shape of data-mesh= {data_mesh.shape}' )
 
 ### open MCIP file to get lon-lat of domain
 mcip_input = Dataset( mcip_file )
 # get some info
+print('-> MCIP file info:')
 print('-> MCIP file dimensions: %s' %str( mcip_input.variables['LATD'].dimensions ) )
 print('-> shape of each dimension: %s' %( str(mcip_input.variables['LATD'].shape ) ))
 ### extract lat and lon parameteres
@@ -585,7 +587,7 @@ print(out_fig)
 plt.savefig(out_fig)
 
 ### opens a window to show the results - after savefig
-plt.show() 
+plt.show()
 
 ### close the plot
 plt.close()
