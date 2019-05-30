@@ -26,7 +26,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
 	# traverse the list for each day
 	for day_of_the_month in day_list :
-
+		print( " ")
 		print('-> we are processing the follwoing days:')
 		print(day_list)
 		print( f'-> processing for day= {day_of_the_month}' )
@@ -118,7 +118,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_total  ) :
 
 	### define a 2d array
-	array_2d_total = np.array( shape= ( domain_rows , domain_cols ) )
+	array_2d_total = np.ndarray( shape= ( domain_rows , domain_cols ) )
 
 	for row in range( 0 , mesh_3d_total.shape[1] , 1 ) :
 
@@ -542,9 +542,9 @@ print( f'-> number of dimensions= {data_mesh_3d.ndim}' )
 print( f'-> shape of data-mesh= {data_mesh_3d.shape}' )
 
 
-### convert data-mesh 3D to 2D
+### convert data-mesh-3D, output of function_day_and_file_count; to 2D
 print(" ")
-data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , mesh_3d_total )
+data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , data_mesh_3d )
 
 
 ### open MCIP file to get lon-lat of domain
