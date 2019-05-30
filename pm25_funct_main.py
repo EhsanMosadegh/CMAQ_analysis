@@ -16,7 +16,7 @@ import time
 ###################################################################################
 # define functions that calculate concentrations of pollutants
 
-def function_day_file_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir ) :
+def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir ) :
 
 	print('-> month of analysis is=' , cmaq_file_month)
 	# define the global array mesh
@@ -95,19 +95,19 @@ def function_day_file_count ( days_to_run_in_month , domain_rows , domain_cols ,
 					print('-> exiting ...')
 					raise SystemExit()
 
-				# add/pin each cell value to total_mesh
-				print( f'-> pin the data at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-				# add daily mean of VAR to each layer, row, col in total_mesh array
-				# fill the data-mesh with data, based on the order: z, x, y
+				#print( f'-> add/pin each cell mean value to total_mesh at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+				### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in total_mesh array
 				total_mesh [ day_of_the_month-1 ][ row ][ col ] = cell_mean_value
 
 		# close nc file after each day is finished
 		if ( processing_method == 'co') :
 
+			print('-> closing the CMAQ file ...')
 			aconc_open.close()
 
 		if ( processing_method == 'pm2.5') :
 		
+			print('-> closing the CMAQ file ...')
 			aconc_open.close()
 			pmdiag_open.close()
 
@@ -472,6 +472,7 @@ print(f'-> CMAQ month of analysis= {cmaq_file_month}')
 print(f'-> LANDIS scenarios= {Landis_scenario}')
 print(f'-> processing method= {processing_method}')
 print(f'-> number of days to run= {days_to_run_in_month}')
+print(" ")
 ### fixed settings
 lay = 0
 domain_cols = 250
@@ -510,8 +511,9 @@ print('-> CMAQ input directory is:')
 print(input_dir)
 
 ### extract necessary data from CMAQ for each mesh and calculate data_mesh 
+print(" ")
 print('-> start processing CMAQ files to get data-mesh...')
-data_mesh = function_day_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir )
+data_mesh = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir )
 
 print('-----------------------------')
 print( f'-> number of dimensions= {data_mesh.ndim}' )
@@ -530,7 +532,7 @@ lon_mesh = np.array( mcip_input.variables['LOND'][ 0 , 0 , : , : ] )
 
 ###################################################################################
 # plot dots from grid coordinates of the dots
-
+print(" ")
 print('-> plotting the data...')
 
 ### plot only lat/lon data
