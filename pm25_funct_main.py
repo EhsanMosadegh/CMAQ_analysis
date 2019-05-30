@@ -452,7 +452,8 @@ def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg ar
 	return mean_cell_for_pm25
 
 
-############### main ################
+###################################################
+# run time setting
 
 ### file settings
 cmaq_file_month = '10'
@@ -460,25 +461,82 @@ days_to_run_in_month = 1
 Landis_scenario = '4'
 cmaq_pol = 'CO'
 processing_method = 'pm2.5' # 'co' or 'pm2.5'
+mcip_date_tag = '161001'
 
-# fixed settings
+### fixed settings
 lay = 0
 domain_cols = 250
 domain_rows = 265
 
+### Basemap plot setting
+# center of domain
+xcent =-120.806 # degrees
+ycent =40.000 # degrees
+# domain size
+NROWS = 265*1000 # meters
+NCOLS = 250*1000 # meters
+# lower-left corner
+llcornerx=-117500 # meters
+llcornery=-265500 # meters
+# upper-right corner
+urcornerx=132500 # meters
+urcornery=-500 # meters
+
+###################################################
+# start of the processing steps
+
 ### get the starting time
-print('-> start processing pm2.5...')
 start = time.time()
+
+### get MCIP file for lon/lat of domain
+mcip_file = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/GRIDDOT2D_'+mcip_date_tag
+print('-> MCIP file is:')
+print(mcip_file)
 
 ### set input directory
 input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
+print('-> CMAQ input directory is:')
+print(input_dir)
 
-### extract necessary data for each mesh and calculate data_mesh
+### extract necessary data from CMAQ for each mesh and calculate data_mesh 
+print('-> start processing CMAQ files to get data-mesh...')
 data_mesh = function_day_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 print('-----------------------------')
 print( f'-> number of dimensions= {data_mesh.ndim}' )
 print( f'-> shape of data-mesh= {data_mesh.shape}' )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 end = time.time()
 print( f'-> time to complete the data_mesh: {end - start:.2f} sec' )  # f-string
