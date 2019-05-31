@@ -16,7 +16,7 @@ import time
 ###################################################################################
 # define functions that calculate concentrations of pollutants
 
-def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir ) :
+def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_path ) :
 
 	print('-> month of analysis is=' , cmaq_file_month)
 	# define the global array mesh
@@ -46,7 +46,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			# setting the input files
 			aconc_file_name = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 			# define input files
-			aconc_input = input_dir + aconc_file_name
+			aconc_input = input_path + aconc_file_name
 			# read in cmaq and pmdiag input files
 			print('-> opening/reading CMAQ files:')
 			print( aconc_input )
@@ -59,8 +59,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			pmdiag_file_name = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 
 			# define input files
-			aconc_input = input_dir + aconc_file_name
-			pmdiag_input = input_dir + pmdiag_file_name
+			aconc_input = input_path + aconc_file_name
+			pmdiag_input = input_path + pmdiag_file_name
 
 			# read in cmaq and pmdiag input files
 			print('-> opening/reading CMAQ files:')
@@ -483,11 +483,15 @@ def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg ar
 ###################################################################################
 # run time setting
 
+### get the starting time
+start = time.time()
+
 ### file settings
 cmaq_file_year = '2016'
 cmaq_file_month = '10'
+sim_month = 'oct'
 days_to_run_in_month = 1
-Landis_scenario = '4'
+Landis_scenario = '1'
 cmaq_pol = 'CO'
 processing_method = 'co' # 'co' or 'pm2.5'
 mcip_date_tag = '161001'
@@ -498,6 +502,7 @@ print(f'-> LANDIS scenarios= {Landis_scenario}')
 print(f'-> processing method= {processing_method}')
 print(f'-> number of days to run= {days_to_run_in_month}')
 print(" ")
+
 ### fixed settings
 lay = 0
 domain_cols = 250
@@ -517,54 +522,62 @@ llcornery=-265500 # meters
 urcornerx=132500 # meters
 urcornery=-500 # meters
 
+
+### set input directory
+#input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
+input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/' 
+input_path = input_dir + 'scen' + Landis_scenario + '/' + sim_month + '/'  
+
+### get MCIP file for lon/lat of domain
+#mcip_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
+mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/' 
+
+print('-> CMAQ input directory is:')
+print(input_path)
+print('-> MCIP input directory is:')
+print(mcip_dir)
+print(" ")
+
 ###################################################################################
 
 ###################################################################################
 # start of the processing steps
 
-### get the starting time
-start = time.time()
-### get MCIP file for lon/lat of domain
-mcip_file = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/GRIDDOT2D_'+mcip_date_tag
-print('-> MCIP input directory is:')
-print(mcip_file)
-### set input directory
-input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
-print('-> CMAQ input directory is:')
-print(input_dir)
 ### extract necessary data from CMAQ for each mesh and calculate data_mesh_3d
-print(" ")
 print('-> start processing CMAQ files to get data-mesh...')
-data_mesh_3d = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_dir )
+data_mesh_3d = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_path )
+
 print('-----------------------------')
 print('-> data_mesh_3d info:')
 print( f'-> number of dimensions= {data_mesh_3d.ndim}' )
 print( f'-> shape of data-mesh= {data_mesh_3d.shape}' )
 
-
 ### convert data-mesh-3D, output of function_day_and_file_count; to 2D
-print(" ")
 data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , data_mesh_3d )
 
 
 ### open MCIP file to get lon-lat of domain
 print('-> opening MCIP file...')
-mcip_open = Dataset( mcip_file )
-# get some info
+mcip_file = 'GRIDDOT2D_'+mcip_date_tag
+mcip_in = mcip_dir + mcip_file 
+mcip_open = Dataset( mcip_in )
+
+### get some info
 print('-> MCIP file info:')
 print('-> MCIP file dimensions: %s' %str( mcip_open.variables['LATD'].dimensions ) )
 print('-> shape of each dimension: %s' %( str(mcip_open.variables['LATD'].shape ) ))
+
 ### extract lat and lon parameteres
 lat_mesh = np.array( mcip_open.variables['LATD'][ 0 , 0 , : , : ] ) # select only rosws and cols for the 1st timestep and layer = [ tstep=0 , lay=0]
 lon_mesh = np.array( mcip_open.variables['LOND'][ 0 , 0 , : , : ] )
 print('-> closing MCIP file...')
 mcip_open.close()
+print(" ")
 
 ###################################################################################
 
 ###################################################################################
 # use Basemap library and make spatial plots
-print(" ")
 print('-> plotting the data...')
 
 ### plot dots from grid coordinates of the dots
@@ -592,6 +605,8 @@ colorbar = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration
 #cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 #colorbar = basemap_instance.colorbar(cs, location='bottom')
 plt.title(f'{cmaq_pol} monthly mean for October - LANDIS scenario {Landis_scenario}')
+print(" ")
+
 ###################################################################################
 
 ###################################################################################
@@ -600,7 +615,6 @@ plt.title(f'{cmaq_pol} monthly mean for October - LANDIS scenario {Landis_scenar
 ### path for saving plots
 fig_dir_cluster = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
 fig_dir_Mac = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
-print(" ")
 print('-> fig directory is:')
 print(fig_dir_Mac)
 
