@@ -20,16 +20,22 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 	print('-> month of analysis is=' , cmaq_file_month)
 	# define the global array mesh
-	mesh_3d_total = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	mesh_3d_monthly = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+
+
+
+
 
 	### create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
 	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
 	# traverse the list for each day
 	for day_of_the_month in day_list :
+
 		print( " ")
-		print('-> we are processing the follwoing days:')
+		print('-> we are processing the following days:')
 		print(day_list)
 		print( f'-> processing for day= {day_of_the_month}' )
+
 		# prepare the day flags
 		if day_of_the_month <= 9 :
 			# if jday is less than 10, add zero before it
@@ -40,9 +46,9 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			day_count = str(day_of_the_month)
 
 		### opening process
-		file_date_tag = cmaq_file_year+cmaq_file_month+day_count
+		file_date_tag = cmaq_file_year + cmaq_file_month + day_count
 
-		if ( processing_method == 'co') :
+		if ( processing_pol == 'co') :
 			# setting the input files
 			aconc_file_name = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 			# define input files
@@ -53,7 +59,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			# open netcdf file
 			aconc_open = Dataset( aconc_input , 'r' )
 
-		elif ( processing_method == 'pm2.5') :
+		elif ( processing_pol == 'pm2.5') :
 			# setting the input files
 			aconc_file_name = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 			pmdiag_file_name = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
@@ -72,7 +78,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 		else:
 
-			print( '-> WARNING: define processing_method variable first! ')
+			print( '-> WARNING: define processing_pol variable first! ')
 			print('-> exiting ...')
 			raise SystemExit()
 
@@ -81,52 +87,63 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 			for col in range( 0 , domain_cols , 1 ):
 
-				if ( processing_method == 'co' ) :
+				if ( processing_pol == 'co' ) :
 
 					cell_mean_value = function_co_cell( aconc_open , cmaq_pol , lay , row , col )
 
-				elif ( processing_method == 'pm2.5') :
+				elif ( processing_pol == 'pm2.5') :
 
 					cell_mean_value = function_pm25_cell( aconc_open , pmdiag_open , lay , row , col )
 
 				else:
 
-					print( '-> WARNING: define processing_method variable first! ')
+					print( '-> WARNING: define processing_pol variable first! ')
 					print('-> exiting ...')
 					raise SystemExit()
 
-				#print( f'-> add/pin each cell mean value to mesh_3d_total at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-				### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in mesh_3d_total array
-				mesh_3d_total [ day_of_the_month-1 ][ row ][ col ] = cell_mean_value
+				#print( f'-> add/pin each cell mean value to mesh_3d_monthly at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+				### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
+				mesh_3d_monthly [ day_of_the_month-1 ][ row ][ col ] = cell_mean_value
 
-		# close nc file after each day is finished
-		if ( processing_method == 'co') :
+		# close nc files after each day is finished
+		if ( processing_pol == 'co') :
 
-			print('-> closing the CMAQ file ...')
+			print('-> closing ACONC file ...')
 			aconc_open.close()
 
-		if ( processing_method == 'pm2.5') :
+		if ( processing_pol == 'pm2.5') :
 
-			print('-> closing the CMAQ file ...')
+			print('-> closing ACONC and PMDIAG files ...')
 			aconc_open.close()
 			pmdiag_open.close()
 
-	# function returns the data-mesh: mesh_3d_total to use in plotting
-	return mesh_3d_total
 
 
-def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_total  ) :
+
+
+
+
+
+
+
+
+
+	# function returns the data-mesh: mesh_3d_monthly to use in plotting
+	return mesh_3d_monthly
+
+
+def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
 
 	### define a 2d array
 	array_2d_total = np.ndarray( shape= ( domain_rows , domain_cols ) )
 
-	for row in range( 0 , mesh_3d_total.shape[1] , 1 ) :
+	for row in range( 0 , mesh_3d_monthly.shape[1] , 1 ) :
 
-		for col in range( 0 , mesh_3d_total.shape[2] , 1 ) :
+		for col in range( 0 , mesh_3d_monthly.shape[2] , 1 ) :
 
 			print(f'-> processing mesh-3D-total @ row= {row} and col= {col} ')
 
-			cell_z_axis = mesh_3d_total [ : , row , col ]
+			cell_z_axis = mesh_3d_monthly [ : , row , col ]
 
 			print(f'-> size of z-axis is= { cell_z_axis.shape } ')
 
@@ -422,27 +439,27 @@ def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg ar
 	ASOCI = ALVOO1I /2.27 + ALVOO2I /2.06 + ASVOO1I /1.88 + ASVOO2I /1.73
 	APOCJ = ALVPO1J /1.39 + ASVPO1J /1.32 + ASVPO2J /1.26 +ASVPO3J /1.21 + AIVPO1J /1.17
 	ASOCJ = AXYL1J /2.42  + AXYL2J /1.93  + AXYL3J /2.30 \
-												 +ATOL1J /2.26  + ATOL2J /1.82  + ATOL3J /2.70 \
-												 +ABNZ1J /2.68  + ABNZ2J /2.23  + ABNZ3J /3.00 \
-												 +AISO1J /2.20  + AISO2J /2.23  + AISO3J /2.80 \
-												 +ATRP1J /1.84  + ATRP2J /1.83  + ASQTJ /1.52  \
-												 +AALK1J /1.56  + AALK2J /1.42                   \
-												 +AORGCJ /2.00  + AOLGBJ /2.10  + AOLGAJ /2.50 \
-												 +APAH1J /1.63  + APAH2J /1.49  + APAH3J /1.77 \
-												 +ALVOO1J /2.27 + ALVOO2J /2.06 + ASVOO1J /1.88\
-												 +ASVOO2J /1.73 + ASVOO3J /1.60 + APCSOJ  /2.00
+	+ATOL1J /2.26  + ATOL2J /1.82  + ATOL3J /2.70 \
+	+ABNZ1J /2.68  + ABNZ2J /2.23  + ABNZ3J /3.00 \
+	+AISO1J /2.20  + AISO2J /2.23  + AISO3J /2.80 \
+	+ATRP1J /1.84  + ATRP2J /1.83  + ASQTJ /1.52  \
+	+AALK1J /1.56  + AALK2J /1.42                   \
+	+AORGCJ /2.00  + AOLGBJ /2.10  + AOLGAJ /2.50 \
+	+APAH1J /1.63  + APAH2J /1.49  + APAH3J /1.77 \
+	+ALVOO1J /2.27 + ALVOO2J /2.06 + ASVOO1J /1.88\
+	+ASVOO2J /1.73 + ASVOO3J /1.60 + APCSOJ  /2.00
 
 	APOMI = ALVPO1I  + ASVPO1I  + ASVPO2I
 	ASOMI = ALVOO1I  + ALVOO2I  + ASVOO1I  + ASVOO2I
 	APOMJ = ALVPO1J  + ASVPO1J  + ASVPO2J  +ASVPO3J  + AIVPO1J
 	ASOMJ = AXYL1J   + AXYL2J   + AXYL3J   + ATOL1J  \
-												 +ATOL2J   + ATOL3J   + ABNZ1J   + ABNZ2J  \
-											 +ABNZ3J   + AISO1J   + AISO2J   + AISO3J  \
-											 +ATRP1J   + ATRP2J   + ASQTJ    + AALK1J  \
-											 +AALK2J   + APAH1J   + APAH2J   + APAH3J  \
-											 +AORGCJ   + AOLGBJ   + AOLGAJ               \
-											 +ALVOO1J  + ALVOO2J  + ASVOO1J  + ASVOO2J \
-											 +ASVOO3J  + APCSOJ
+	+ATOL2J   + ATOL3J   + ABNZ1J   + ABNZ2J  \
+	+ABNZ3J   + AISO1J   + AISO2J   + AISO3J  \
+	+ATRP1J   + ATRP2J   + ASQTJ    + AALK1J  \
+	+AALK2J   + APAH1J   + APAH2J   + APAH3J  \
+	+AORGCJ   + AOLGBJ   + AOLGAJ               \
+	+ALVOO1J  + ALVOO2J  + ASVOO1J  + ASVOO2J \
+	+ASVOO3J  + APCSOJ
 
 	AOCI = APOCI + ASOCI
 	AOCJ = APOCJ + ASOCJ
@@ -452,7 +469,6 @@ def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg ar
 	ATOTI = ASO4I + ANO3I + ANH4I + ANAI + ACLI + AECI + AOMI + AOTHRI
 	ATOTJ = ASO4J + ANO3J + ANH4J + ANAJ + ACLJ + AECJ + AOMJ + AOTHRJ + AFEJ + ASIJ + ATIJ + ACAJ + AMGJ + AMNJ + AALJ + AKJ
 	ATOTK = ASOIL + ACORS + ASEACAT + ACLK + ASO4K + ANO3K + ANH4K
-
 # !! PM2.5 species computed using modeled size distribution,
 # reference: https://github.com/USEPA/CMAQ/blob/5.2/CCTM/src/MECHS/cb6r3_ae6_aq/SpecDef_cb6r3_ae6_aq.txt
 	PM25_HP      = (AH3OPI * PM25AT + AH3OPJ * PM25AC + AH3OPK * PM25CO) * 1.0/19.0
@@ -493,13 +509,13 @@ sim_month = 'oct'
 days_to_run_in_month = 1
 Landis_scenario = '1'
 cmaq_pol = 'CO'
-processing_method = 'co' # 'co' or 'pm2.5'
+processing_pol = 'co' # 'co' or 'pm2.5'
 mcip_date_tag = '161001'
 
 print(f'-> CMAQ year= {cmaq_file_year}')
 print(f'-> CMAQ month of analysis= {cmaq_file_month}')
 print(f'-> LANDIS scenarios= {Landis_scenario}')
-print(f'-> processing method= {processing_method}')
+print(f'-> processing method= {processing_pol}')
 print(f'-> number of days to run= {days_to_run_in_month}')
 print(" ")
 
@@ -539,12 +555,13 @@ print(mcip_dir)
 print(" ")
 
 ###################################################################################
-
+### main
 ###################################################################################
-# start of the processing steps
+# processing steps
 
 ### extract necessary data from CMAQ for each mesh and calculate data_mesh_3d
 print('-> start processing CMAQ files to get data-mesh...')
+
 data_mesh_3d = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_path )
 
 print('-----------------------------')
@@ -575,7 +592,7 @@ mcip_open.close()
 print(" ")
 
 ###################################################################################
-
+### plotting
 ###################################################################################
 # use Basemap library and make spatial plots
 print('-> plotting the data...')
