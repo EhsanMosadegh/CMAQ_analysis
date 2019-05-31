@@ -46,15 +46,17 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		file_date_tag = cmaq_file_year + cmaq_file_month + day_count
 
 		### define input files
-		aconc = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
-		pmdiag = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+		aconc_scen = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+		pmdiag_scen = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+		
+		aconc_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+		pmdiag_base = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 
-
+		### opening files
 		if ( processing_pol == 'co') :
-			# setting the input files
-			aconc_file_name = 
+	
 			# define input files
-			aconc_input = input_path + aconc_file_name
+			aconc_input = input_path + aconc
 			# read in cmaq and pmdiag input files
 			print('-> opening/reading CMAQ files:')
 			print( aconc_input )
@@ -62,13 +64,10 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			aconc_open = Dataset( aconc_input , 'r' )
 
 		elif ( processing_pol == 'pm2.5') :
-			# setting the input files
-			aconc_file_name = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
-			pmdiag_file_name = 
 
 			# define input files
-			aconc_input = input_path + aconc_file_name
-			pmdiag_input = input_path + pmdiag_file_name
+			aconc_input = input_path + aconc
+			pmdiag_input = input_path + pmdiag
 
 			# read in cmaq and pmdiag input files
 			print('-> opening/reading CMAQ files:')
@@ -83,6 +82,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			print( '-> WARNING: define processing_pol variable first! ')
 			print('-> exiting ...')
 			raise SystemExit()
+
 
 		### traverse each cell in the C-storing style: row and then col
 		for row in range( 0 , domain_rows , 1 ):
