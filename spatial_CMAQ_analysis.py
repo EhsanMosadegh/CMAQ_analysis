@@ -48,13 +48,65 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		### define input files
 		aconc_scen = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 		pmdiag_scen = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
-		
+
 		aconc_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 		pmdiag_base = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 
 		### opening files
 		if ( processing_pol == 'co') :
 	
+			if ( processing_method == 'single' ) :
+
+				# define input files
+				aconc_input_scen = input_path + aconc_scen
+				print('-> opening/reading CMAQ files:')
+				print( aconc_input )
+				# open netcdf file
+				aconc_open_scen = Dataset( aconc_input , 'r' )
+
+			elif ( processing_method == 'diff' ) :
+				# define input files
+				aconc_input_scen = input_path + aconc_scen				
+				aconc_input_base = input_path + aconc_base
+				
+				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
+				aconc_open_base = Dataset( aconc_input_base , 'r' )
+
+			else:
+
+				error
+		
+		elif ( processing_pol == 'pm2.5' ) :
+
+			if ( processing_method == 'single' ) :
+
+				# define input files
+				aconc_input_scen = input_path + aconc_scen
+				pmdiag_input_scen = input_path + pmdiag_scen
+
+				print('-> opening/reading CMAQ files:')
+				print( aconc_input )
+				# open netcdf file
+				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
+				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
+
+			elif ( processing_method == 'diff' ) :
+				# define input files
+				aconc_input_scen = input_path + aconc_scen
+				pmdiag_input_scen = input_path + pmdiag_scen
+				aconc_input_base = input_path + aconc_base
+				pmdiag_input_base = input_path + pmdiag_base
+
+				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
+				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
+				aconc_open_base = Dataset( aconc_input_base , 'r' )
+				pmdiag_open_base = Dataset( pmdiag_input_base , 'r' )
+
+			else:
+
+				error
+
+
 			# define input files
 			aconc_input = input_path + aconc
 			# read in cmaq and pmdiag input files
