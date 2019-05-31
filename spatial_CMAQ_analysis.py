@@ -19,12 +19,9 @@ import time
 def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_path ) :
 
 	print('-> month of analysis is=' , cmaq_file_month)
-	# define the global array mesh
-	mesh_3d_monthly = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
-
-
-
-
+	# define the monthly array mesh
+	mesh_3d_monthly_scen = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	mesh_3d_monthly_base = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 
 	### create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
 	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
@@ -45,12 +42,17 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			# if jday is bigger than 9, use it.
 			day_count = str(day_of_the_month)
 
-		### opening process
+		### define file tags
 		file_date_tag = cmaq_file_year + cmaq_file_month + day_count
+
+		### define input files
+		aconc = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+		pmdiag = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+
 
 		if ( processing_pol == 'co') :
 			# setting the input files
-			aconc_file_name = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+			aconc_file_name = 
 			# define input files
 			aconc_input = input_path + aconc_file_name
 			# read in cmaq and pmdiag input files
@@ -62,7 +64,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		elif ( processing_pol == 'pm2.5') :
 			# setting the input files
 			aconc_file_name = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
-			pmdiag_file_name = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+			pmdiag_file_name = 
 
 			# define input files
 			aconc_input = input_path + aconc_file_name
