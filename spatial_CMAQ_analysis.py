@@ -137,44 +137,70 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		# 	raise SystemExit()
 
 		### we process opened-files here
-		### traverse each cell in the C-storing style for each day: row and then col
-		for row in range( 0 , domain_rows , 1 ):
+		if ( processing_method == 'single_plot' ) :
+			### traverse each cell in the C-storing style for each day: row and then col
+			for row in range( 0 , domain_rows , 1 ):
 
-			for col in range( 0 , domain_cols , 1 ):
+				for col in range( 0 , domain_cols , 1 ):
+
+					if ( processing_pol == 'co' ) :
+
+						cell_mean = function_singlePOL_forEachCell( aconc_open_scen , cmaq_pol , lay , row , col )
+
+					elif ( processing_pol == 'pm2.5') :
+
+						cell_mean = function_pm25_forEachCell( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+
+					else:
+
+						print( '-> WARNING: define processing_pol variable first! ')
+						print('-> exiting ...')
+						raise SystemExit()
+
+					#print( f'-> add/pin each cell mean value to mesh_3d_monthly at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+					### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
+					mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean
+
+					#mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = cell_mean
+
+		elif ( processing_method == 'diff_plot' ) :
+			### traverse each cell in the C-storing style for each day: row and then col
+			for row in range( 0 , domain_rows , 1 ):
+
+				for col in range( 0 , domain_cols , 1 ):
+
+					if ( processing_pol == 'co' ) :
+						# we calculate cell means for each scenario
+						cell_mean_scen = function_singlePOL_forEachCell( aconc_input_scen , other args based on the order of the function )
+						cell_mean_base = function_singlePOL_forEachCell( aconc_input_base , other args based on the order of the function )
+
+						# now we fill 2 meshes 
+						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean_scen
+						mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = cell_mean_base
+
+
+					elif ( processing_pol == 'pm25' ) :
+
+
+						pass
+
+
+					else:
+
+						pass
 
 
 
 
-				if ( processing_pol == 'co' ) :
-
-					cell_mean = function_singlePOL_cell( aconc_open_scen , cmaq_pol , lay , row , col )
-
-
-
-
-				elif ( processing_pol == 'pm2.5') :
-
-					cell_mean = function_pm25_cell( aconc_open_scen , pmdiag_open_scen , lay , row , col )
-
-				else:
-
-					print( '-> WARNING: define processing_pol variable first! ')
-					print('-> exiting ...')
-					raise SystemExit()
-
-				#print( f'-> add/pin each cell mean value to mesh_3d_monthly at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-				### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
-				mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean
-
-				#mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = cell_mean
 
 
 
 
 
 
+	# 3Dto2D 
 
-
+	# return mesh_2d_...
 
 
 
@@ -240,7 +266,7 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
 	return array_2d_total
 
 
-def function_singlePOL_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
+def function_singlePOL_forEachCell ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
 
 	# data_mesh = np.empty( shape=( domain_rows , domain_cols ) )
 	# # start CMAQ algorithm
@@ -275,7 +301,7 @@ def function_singlePOL_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the 
 	return cell_mean_for_singlePOL
 
 
-def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
+def function_pm25_forEachCell ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
 
 	print( f'-> processing row= {row} and col= {col}' )
 
@@ -592,6 +618,7 @@ sim_month = 'oct'
 days_to_run_in_month = 1
 Landis_scenario = '1'
 cmaq_pol = 'CO'
+processing_method = 'single_plot' # 'single_plot' or 'diff_plot'
 processing_pol = 'co' # 'co' or 'pm2.5'
 mcip_date_tag = '161001'
 
