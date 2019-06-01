@@ -181,64 +181,81 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 					elif ( processing_pol == 'pm25' ) :
 
+						# we calculate cell means 
+						cell_mean_scen = function_pm25_forEachCell( aconc_input_scen , pmdiag_input_scen , other_args )
+						cell_mean_base = function_pm25_forEachCell( aconc_input_base , pmdiag_input_base , other_args )
 
-						pass
-
+						# now we fill the 3D mesh with cell means
+						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean_scen
+						mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = cell_mean_base
 
 					else:
 
 						pass
 
+		# closing nc files ... for each day
+		if ( processing_pol == 'co' ) :
+
+			if ( processing_method == 'single_plot' ) :
+
+				aconc_open_scen.close()
+
+			elif ( processing_method == 'diff_plot' ) :
+
+				aconc_open_scen.close()
+				aconc_open_base.close()
+
+			else:
+				pass
+
+		elif ( processing_pol == 'pm25' ) :
+
+			if ( processing_method == 'single_plot' ) :
+
+				aconc_open_scen.close()
+				pmdiag_open_scen.close()
+
+			elif ( processing_method == 'diff_plot' ) :
+
+				aconc_open_scen.close()
+				pmdiag_open_scen.close()
+				aconc_open_base.close()
+				pmdiag_open_base.close()
 
 
+	if ( processing_method == 'single_plot' ) :
+
+		# we pnly have 1 3D mesh
+		data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , mesh_3d_monthly_scen )
+
+	elif ( processing_method == 'diff_plot' ) :
+
+		# we have 2 3D meshes
+		mesh_2d_scen = function_3Dto2D( mesh_3d_monthly_scen )
+		mesh_2d_base = function_3Dto2D( mesh_3d_monthly_base )
+
+		# now subtract 2 meshes to get the diff mesh
+		data_mesh_2d = mesh_2d_scen - mesh_2d_base
+
+	# this function retuns data-mesh-2D for plotting
+	return data_mesh_2d
 
 
+	# 	# close nc files after each day is finished
+	# 	if ( processing_pol == 'co') :
+
+	# 		print('-> closing ACONC file ...')
+	# 		aconc_open.close()
+
+	# 	if ( processing_pol == 'pm2.5') :
+
+	# 		print('-> closing ACONC and PMDIAG files ...')
+	# 		aconc_open.close()
+	# 		pmdiag_open.close()
 
 
-
-
-
-	# 3Dto2D 
-
-	# return mesh_2d_...
-
-
-
-
-
-
-
-
-
-
-
-
-
-		# close nc files after each day is finished
-		if ( processing_pol == 'co') :
-
-			print('-> closing ACONC file ...')
-			aconc_open.close()
-
-		if ( processing_pol == 'pm2.5') :
-
-			print('-> closing ACONC and PMDIAG files ...')
-			aconc_open.close()
-			pmdiag_open.close()
-
-
-
-
-
-
-
-
-
-
-
-
-	# function returns the data-mesh: mesh_3d_monthly to use in plotting
-	return mesh_3d_monthly
+	# # function returns the data-mesh: mesh_3d_monthly to use in plotting
+	# return mesh_3d_monthly
 
 
 def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
