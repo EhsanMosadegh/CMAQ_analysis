@@ -142,13 +142,19 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 			for col in range( 0 , domain_cols , 1 ):
 
+
+
+
 				if ( processing_pol == 'co' ) :
 
-					cell_mean_value = function_singlePOL_cell( aconc_open , cmaq_pol , lay , row , col )
+					cell_mean = function_singlePOL_cell( aconc_open_scen , cmaq_pol , lay , row , col )
+
+
+
 
 				elif ( processing_pol == 'pm2.5') :
 
-					cell_mean_value = function_pm25_cell( aconc_open , pmdiag_open , lay , row , col )
+					cell_mean = function_pm25_cell( aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
 				else:
 
@@ -158,7 +164,10 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 				#print( f'-> add/pin each cell mean value to mesh_3d_monthly at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 				### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
-				mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean_value
+				mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean
+
+				#mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = cell_mean
+
 
 
 
