@@ -49,8 +49,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		aconc_scen = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 		pmdiag_scen = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 
-		aconc_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
-		pmdiag_base = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+		aconc_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
+		pmdiag_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
 
 		### we open netcdf files based on each processing method and pollutant
 		if ( processing_pol == 'co') :  # we need only 1 file: "aconc"
@@ -59,9 +59,9 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 				# define input files
 				aconc_input_scen = input_path + aconc_scen
-				aconc_open_scen = Dataset( aconc_input , 'r' )
-				#print('-> opening/reading CMAQ files:')
-				#print( aconc_input )
+				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
+				print('-> opening/reading CMAQ files:')
+				print( aconc_input_scen )
 				# open netcdf file
 
 			# for difference between 2 scenarios
@@ -635,8 +635,10 @@ sim_month = 'oct'
 days_to_run_in_month = 1
 Landis_scenario = '1'
 cmaq_pol = 'CO'
-processing_method = 'single_plot' # 'single_plot' or 'diff_plot'
-processing_pol = 'co' # 'co' or 'pm2.5'
+
+processing_pol = 'co' 							# 'co' or 'pm2.5'
+processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
+
 mcip_date_tag = '161001'
 
 print(f'-> CMAQ year= {cmaq_file_year}')
