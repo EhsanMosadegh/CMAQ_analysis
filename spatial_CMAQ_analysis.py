@@ -171,8 +171,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 					if ( processing_pol == 'co' ) :
 						# we calculate cell means for each scenario
-						cell_mean_scen = function_singlePOL_forEachCell( aconc_input_scen , other args based on the order of the function )
-						cell_mean_base = function_singlePOL_forEachCell( aconc_input_base , other args based on the order of the function )
+						cell_mean_scen = function_singlePOL_forEachCell( aconc_open_scen , cmaq_pol , lay , row , col )
+						cell_mean_base = function_singlePOL_forEachCell( aconc_open_base , cmaq_pol , lay , row , col )
 
 						# now we fill 2 meshes 
 						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean_scen
@@ -182,8 +182,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 					elif ( processing_pol == 'pm25' ) :
 
 						# we calculate cell means 
-						cell_mean_scen = function_pm25_forEachCell( aconc_input_scen , pmdiag_input_scen , other_args )
-						cell_mean_base = function_pm25_forEachCell( aconc_input_base , pmdiag_input_base , other_args )
+						cell_mean_scen = function_pm25_forEachCell( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						cell_mean_base = function_pm25_forEachCell( aconc_open_base , pmdiag_open_base , lay , row , col )
 
 						# now we fill the 3D mesh with cell means
 						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean_scen
