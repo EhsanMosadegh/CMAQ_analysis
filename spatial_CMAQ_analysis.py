@@ -143,7 +143,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 		# 	
 
-		### we process opened files here
+		### we process the nc opened files for each cell with a specific function
 		if ( processing_method == 'single_plot' ) :
 			### traverse each cell in the C-storing style for each day: row and then col
 			for row in range( 0 , domain_rows , 1 ):
@@ -152,23 +152,25 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 					if ( processing_pol == 'co' ) :
 
+						print( '-> processing single POL and single plot... ' )
+
 						cell_mean = function_singlePOL_forEachCell( aconc_open_scen , cmaq_pol , lay , row , col )
 
 					elif ( processing_pol == 'pm2.5') :
+
+						print( '-> processing pm2.5 and single plot... ' )
 
 						cell_mean = function_pm25_forEachCell( aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
 					else:
 
-						print( '-> WARNING: define processing_pol variable first! ')
+						print( '-> WARNING: define/check single POL or pm2.5 settings and processing method first! ')
 						print('-> exiting ...')
 						raise SystemExit()
 
-					#print( f'-> add/pin each cell mean value to mesh_3d_monthly at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 					### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
+					print( f'-> add/pin each cell mean value to mesh_3d_monthly_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 					mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean
-
-					#mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = cell_mean
 
 		elif ( processing_method == 'diff_plot' ) :
 			### traverse each cell in the C-storing style for each day: row and then col
@@ -200,15 +202,17 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 						pass
 
-		# closing nc files ... for each day
+		# closing nc files for each day
 		if ( processing_pol == 'co' ) :
 
 			if ( processing_method == 'single_plot' ) :
 
+				print('-> closing ACONC file ...')
 				aconc_open_scen.close()
 
 			elif ( processing_method == 'diff_plot' ) :
 
+				print('-> closing ACONC scen and baseline files ...')
 				aconc_open_scen.close()
 				aconc_open_base.close()
 
@@ -219,11 +223,13 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 			if ( processing_method == 'single_plot' ) :
 
+				print('-> closing ACONC and PMDIAG files ...')
 				aconc_open_scen.close()
 				pmdiag_open_scen.close()
 
 			elif ( processing_method == 'diff_plot' ) :
 
+				print('-> closing ACONC and PMDIAG files for both scen and baseline ...')
 				aconc_open_scen.close()
 				pmdiag_open_scen.close()
 				aconc_open_base.close()
@@ -251,8 +257,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 	# 	# close nc files after each day is finished
 	# 	if ( processing_pol == 'co') :
 
-	# 		print('-> closing ACONC file ...')
-	# 		aconc_open.close()
+
 
 	# 	if ( processing_pol == 'pm2.5') :
 
