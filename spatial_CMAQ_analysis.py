@@ -52,10 +52,10 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		aconc_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 		pmdiag_base = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 
-		### opening files
-		if ( processing_pol == 'co') :
-	
-			if ( processing_method == 'single' ) :
+		### open netcdf files based on each processing method
+		if ( processing_pol == 'co') :  # we need only "aconc" file
+			# for single scenario plot
+			if ( processing_method == 'single_plot' ) :  
 
 				# define input files
 				aconc_input_scen = input_path + aconc_scen
@@ -63,8 +63,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 				print( aconc_input )
 				# open netcdf file
 				aconc_open_scen = Dataset( aconc_input , 'r' )
-
-			elif ( processing_method == 'diff' ) :
+			# for difference between 2 scenarios
+			elif ( processing_method == 'diff_plot' ) :  # open 2 netcdf files: "aconc_scen" and "aconc_baseline"
 				# define input files
 				aconc_input_scen = input_path + aconc_scen				
 				aconc_input_base = input_path + aconc_base
@@ -74,11 +74,11 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 			else:
 
-				error
+				pass
 		
-		elif ( processing_pol == 'pm2.5' ) :
+		elif ( processing_pol == 'pm2.5' ) :   # we need "aconc" and "pmdiag" files
 
-			if ( processing_method == 'single' ) :
+			if ( processing_method == 'single_plot' ) :  # 
 
 				# define input files
 				aconc_input_scen = input_path + aconc_scen
@@ -90,7 +90,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
 
-			elif ( processing_method == 'diff' ) :
+			elif ( processing_method == 'diff_plot' ) :
 				# define input files
 				aconc_input_scen = input_path + aconc_scen
 				pmdiag_input_scen = input_path + pmdiag_scen
@@ -104,7 +104,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 			else:
 
-				error
+				pass
 
 
 			# define input files
