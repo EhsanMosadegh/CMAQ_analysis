@@ -52,17 +52,18 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		aconc_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 		pmdiag_base = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
 
-		### open netcdf files based on each processing method
-		if ( processing_pol == 'co') :  # we need only "aconc" file
+		### we open netcdf files based on each processing method and pollutant
+		if ( processing_pol == 'co') :  # we need only 1 file: "aconc"
 			# for single scenario plot
 			if ( processing_method == 'single_plot' ) :  
 
 				# define input files
 				aconc_input_scen = input_path + aconc_scen
-				print('-> opening/reading CMAQ files:')
-				print( aconc_input )
-				# open netcdf file
 				aconc_open_scen = Dataset( aconc_input , 'r' )
+				#print('-> opening/reading CMAQ files:')
+				#print( aconc_input )
+				# open netcdf file
+
 			# for difference between 2 scenarios
 			elif ( processing_method == 'diff_plot' ) :  # open 2 netcdf files: "aconc_scen" and "aconc_baseline"
 				# define input files
@@ -76,9 +77,9 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 				pass
 		
-		elif ( processing_pol == 'pm2.5' ) :   # we need "aconc" and "pmdiag" files
+		elif ( processing_pol == 'pm2.5' ) :   # we need 2 files: "aconc" and "pmdiag" files
 
-			if ( processing_method == 'single_plot' ) :  # 
+			if ( processing_method == 'single_plot' ) :  
 
 				# define input files
 				aconc_input_scen = input_path + aconc_scen
@@ -107,43 +108,43 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 				pass
 
 
-			# define input files
-			aconc_input = input_path + aconc
-			# read in cmaq and pmdiag input files
-			print('-> opening/reading CMAQ files:')
-			print( aconc_input )
-			# open netcdf file
-			aconc_open = Dataset( aconc_input , 'r' )
+		# 	# define input files
+		# 	aconc_input = input_path + aconc
+		# 	# read in cmaq and pmdiag input files
+		# 	print('-> opening/reading CMAQ files:')
+		# 	print( aconc_input )
+		# 	# open netcdf file
+		# 	aconc_open = Dataset( aconc_input , 'r' )
 
-		elif ( processing_pol == 'pm2.5') :
+		# elif ( processing_pol == 'pm2.5') :
 
-			# define input files
-			aconc_input = input_path + aconc
-			pmdiag_input = input_path + pmdiag
+		# 	# define input files
+		# 	aconc_input = input_path + aconc
+		# 	pmdiag_input = input_path + pmdiag
 
-			# read in cmaq and pmdiag input files
-			print('-> opening/reading CMAQ files:')
-			print( aconc_input )
-			print( pmdiag_input )
-			# open netcdf file
-			aconc_open = Dataset( aconc_input , 'r' )
-			pmdiag_open = Dataset( pmdiag_input , 'r')
+		# 	# read in cmaq and pmdiag input files
+		# 	print('-> opening/reading CMAQ files:')
+		# 	print( aconc_input )
+		# 	print( pmdiag_input )
+		# 	# open netcdf file
+		# 	aconc_open = Dataset( aconc_input , 'r' )
+		# 	pmdiag_open = Dataset( pmdiag_input , 'r')
 
-		else:
+		# else:
 
-			print( '-> WARNING: define processing_pol variable first! ')
-			print('-> exiting ...')
-			raise SystemExit()
+		# 	print( '-> WARNING: define processing_pol variable first! ')
+		# 	print('-> exiting ...')
+		# 	raise SystemExit()
 
-
-		### traverse each cell in the C-storing style: row and then col
+		### we process opened-files here
+		### traverse each cell in the C-storing style for each day: row and then col
 		for row in range( 0 , domain_rows , 1 ):
 
 			for col in range( 0 , domain_cols , 1 ):
 
 				if ( processing_pol == 'co' ) :
 
-					cell_mean_value = function_co_cell( aconc_open , cmaq_pol , lay , row , col )
+					cell_mean_value = function_singlePOL_cell( aconc_open , cmaq_pol , lay , row , col )
 
 				elif ( processing_pol == 'pm2.5') :
 
@@ -157,7 +158,26 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 				#print( f'-> add/pin each cell mean value to mesh_3d_monthly at frame(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 				### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
-				mesh_3d_monthly [ day_of_the_month-1 ][ row ][ col ] = cell_mean_value
+				mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean_value
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		# close nc files after each day is finished
 		if ( processing_pol == 'co') :
@@ -211,7 +231,7 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
 	return array_2d_total
 
 
-def function_co_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
+def function_singlePOL_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
 
 	# data_mesh = np.empty( shape=( domain_rows , domain_cols ) )
 	# # start CMAQ algorithm
@@ -238,12 +258,12 @@ def function_co_cell ( aconc_open , cmaq_pol , lay , row , col ):  # the order o
 	# change daily list to daily np.Array
 	cell_24hr_series_array = np.array( cell_24hr_series_list )
 	# get the mean of each cell
-	cell_mean_for_cmaq_pol = cell_24hr_series_array.mean()
+	cell_mean_for_singlePOL = cell_24hr_series_array.mean()
 	# delete daily list
 	del cell_24hr_series_list
 
 	# function returns mean of the pollutant for each cell
-	return cell_mean_for_cmaq_pol
+	return cell_mean_for_singlePOL
 
 
 def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
@@ -542,11 +562,11 @@ def function_pm25_cell ( aconc_open , pmdiag_open , lay , row , col ) : # arg ar
 	PM25_UNSPEC1 = PM25_TOT - (PM25_CL + PM25_EC + PM25_NA + PM25_NH4 + PM25_NO3 + PM25_OC + PM25_SOIL + PM25_SO4 )
 
 	# now sum all species to get hourly PM2.5 concentratiosn
-	mean_cell_for_pm25 = PM25_HP + PM25_CL + PM25_EC + PM25_NA + PM25_MG + PM25_K + PM25_CA + \
+	cell_mean_for_pm25 = PM25_HP + PM25_CL + PM25_EC + PM25_NA + PM25_MG + PM25_K + PM25_CA + \
 					PM25_NH4 + PM25_NO3 + PM25_OC + PM25_OM + PM25_SOIL + PM25_SO4 + PM25_TOT + PM25_UNSPEC1
 
 	# function returns the mean of pm2.5 for each cell
-	return mean_cell_for_pm25
+	return cell_mean_for_pm25
 
 ###################################################################################
 
