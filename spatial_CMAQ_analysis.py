@@ -58,24 +58,31 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			if ( processing_method == 'single_plot' ) :  
 
 				# define input files
+				print('-> processing for single POL and single_plot...')
 				aconc_input_scen = input_path + aconc_scen
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				print('-> opening/reading CMAQ files:')
 				print( aconc_input_scen )
-				# open netcdf file
+				print( " ")
 
 			# for difference between 2 scenarios
 			elif ( processing_method == 'diff_plot' ) :  # open 2 netcdf files: "aconc_scen" and "aconc_baseline"
 				# define input files
+				print('-> processing for single POL and diff_plot...')
 				aconc_input_scen = input_path + aconc_scen				
 				aconc_input_base = input_path + aconc_base
-				
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				aconc_open_base = Dataset( aconc_input_base , 'r' )
+				print('-> opening/reading CMAQ files:')
+				print( aconc_input_scen )
+				print( aconc_input_base )
+				print( " ")
 
 			else:
 
-				pass
+				print( '-> WARNING: define/check single processing POL and method first! ')
+				print('-> exiting ...')
+				raise SystemExit()
 		
 		elif ( processing_pol == 'pm2.5' ) :   # we need 2 files: "aconc" and "pmdiag" files
 
@@ -105,7 +112,9 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 			else:
 
-				pass
+				print( '-> WARNING: define/check pm2.5 processing POL and method first! ')
+				print('-> exiting ...')
+				raise SystemExit()
 
 
 		# 	# define input files
@@ -132,11 +141,9 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 		# else:
 
-		# 	print( '-> WARNING: define processing_pol variable first! ')
-		# 	print('-> exiting ...')
-		# 	raise SystemExit()
+		# 	
 
-		### we process opened-files here
+		### we process opened files here
 		if ( processing_method == 'single_plot' ) :
 			### traverse each cell in the C-storing style for each day: row and then col
 			for row in range( 0 , domain_rows , 1 ):
