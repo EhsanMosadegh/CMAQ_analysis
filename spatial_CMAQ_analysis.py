@@ -614,12 +614,12 @@ start = time.time()
 cmaq_file_year = '2016'
 cmaq_file_month = '10'
 sim_month = 'oct'
-days_to_run_in_month = 5 
+days_to_run_in_month = 1 
 scenario = '4' # 1-5, baseline
 cmaq_pol = 'CO'
 
-processing_pol = 'co' 							# 'co' or 'pm2.5'
-processing_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
+processing_pol = 'pm2.5' 		# 'co' or 'pm2.5'
+processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
 
 mcip_date_tag = '161001'
 
