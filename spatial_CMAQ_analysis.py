@@ -99,9 +99,9 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
 				
 				print('-> opening/reading CMAQ files:')
-                                print( aconc_open_scen )
-                                print( pmdiag_open_scen )
-                                print( " ")
+				print( aconc_open_scen )
+				print( pmdiag_open_scen )
+				print( " ")
 				
 			elif ( processing_method == 'diff_plot' ) :
 				# define input files
