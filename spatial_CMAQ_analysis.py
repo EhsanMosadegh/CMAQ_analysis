@@ -148,7 +148,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 					elif ( processing_pol == 'pm2.5') :
 
-						print( '-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
+						print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
 						cell_mean = function_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
@@ -317,7 +317,7 @@ def function_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col ) : # a
 
 	# loop inside 24 time-steps and extract pm cons
 	# extract PM2.5 species from input files
-	print('-> extracting species from CMAQ files...')
+	print('-> extracting several species from CMAQ files for pm2.5 ...')
 	# species from aconc [1]
 	AH3OPI = aconc_open.variables['AH3OPI'][:,lay,row,col]
 	AH3OPI = np.array(AH3OPI).mean()
