@@ -20,19 +20,19 @@ import time
 def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base ) :
 
 	print('-> month of analysis is=' , cmaq_file_month)
-	# define the monthly array mesh
-	# mesh_3d_monthly_scen = np.nparray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
-	# mesh_3d_monthly_base = np.nparray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	### define the monthly array mesh
+	mesh_3d_monthly_scen = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	mesh_3d_monthly_base = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 
-	mesh_3d_monthly_scen = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
-	mesh_3d_monthly_base = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
-	print(f'-> shape of zero array= {mesh_3d_monthly_scen.shape}')
+	# mesh_3d_monthly_scen = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
+	# mesh_3d_monthly_base = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
+	# print(f'-> shape of zero array= {mesh_3d_monthly_scen.shape}')
 
-	### create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
-	#day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
+	## create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
+	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
 	
-	# to run for specific day
-	day_list = [21]  # use the favorite day
+	# # to run for specific day
+	# day_list = [21]  # use the favorite day
 	
 	# traverse the list for each day
 	for day_of_the_month in day_list :
@@ -631,9 +631,9 @@ cmaq_file_month = '10'
 sim_month = 'oct'
 days_to_run_in_month = 1 
 scenario = '4' # 1-5, baseline
-cmaq_pol = 'CO'
+cmaq_pol = 'CO'  # for plot title
 
-processing_pol = 'pm2.5' 		# 'co' or 'pm2.5'
+processing_pol = 'co' 		# 'co' or 'pm2.5'
 processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
 
 mcip_date_tag = '161001'
@@ -667,8 +667,8 @@ urcornery=-500 # meters
 
 
 ### set input directory
-#input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
-input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/' 
+input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
+#input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/' 
 input_path_scen = input_dir + 'scen_' + scenario + '/' + sim_month + '/'  
 input_path_base = input_dir + 'scen_baseline' + '/' + sim_month + '/'
 
@@ -729,7 +729,7 @@ print('-> plotting the data...')
 basemap_instance = Basemap(projection='lcc' ,
 													 llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
 													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
-													 resolution='f')
+													 resolution='f' , area_thresh=0.5)
 
 basemap_instance.bluemarble()
 x_mesh, y_mesh = basemap_instance(lon_mesh , lat_mesh) # order: x , y, transforms from degree to meter for LCC
