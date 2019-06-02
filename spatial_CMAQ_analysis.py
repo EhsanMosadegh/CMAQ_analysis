@@ -58,7 +58,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			if ( processing_method == 'single_plot' ) :  
 
 				# define input files
-				print('-> processing for single POL and single_plot...')
+				print('-> setting path for single POL and single_plot...')
 				aconc_input_scen = input_path + aconc_scen
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				print('-> opening/reading CMAQ files:')
@@ -68,7 +68,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			# for difference between 2 scenarios
 			elif ( processing_method == 'diff_plot' ) :  # open 2 netcdf files: "aconc_scen" and "aconc_baseline"
 				# define input files
-				print('-> processing for single POL and diff_plot...')
+				print('-> setting path for single POL and diff_plot...')
 				aconc_input_scen = input_path + aconc_scen				
 				aconc_input_base = input_path + aconc_base
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
@@ -116,35 +116,9 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 				print('-> exiting ...')
 				raise SystemExit()
 
-
-		# 	# define input files
-		# 	aconc_input = input_path + aconc
-		# 	# read in cmaq and pmdiag input files
-		# 	print('-> opening/reading CMAQ files:')
-		# 	print( aconc_input )
-		# 	# open netcdf file
-		# 	aconc_open = Dataset( aconc_input , 'r' )
-
-		# elif ( processing_pol == 'pm2.5') :
-
-		# 	# define input files
-		# 	aconc_input = input_path + aconc
-		# 	pmdiag_input = input_path + pmdiag
-
-		# 	# read in cmaq and pmdiag input files
-		# 	print('-> opening/reading CMAQ files:')
-		# 	print( aconc_input )
-		# 	print( pmdiag_input )
-		# 	# open netcdf file
-		# 	aconc_open = Dataset( aconc_input , 'r' )
-		# 	pmdiag_open = Dataset( pmdiag_input , 'r')
-
-		# else:
-
-		# 	
-
 		### we process the nc opened files for each cell with a specific function
 		if ( processing_method == 'single_plot' ) :
+			print('-> traversing each cell and extract pollutants ...')
 			### traverse each cell in the C-storing style for each day: row and then col
 			for row in range( 0 , domain_rows , 1 ):
 
@@ -152,15 +126,15 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 					if ( processing_pol == 'co' ) :
 
-						print( '-> processing single POL and single plot... ' )
+						print( '-> extracting cell for single POL - single - at row= {row} and col={col} ... ' )
 
-						cell_mean = function_singlePOL_forEachCell( aconc_open_scen , cmaq_pol , lay , row , col )
+						cell_mean = function_cell_mean_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 
 					elif ( processing_pol == 'pm2.5') :
 
-						print( '-> processing pm2.5 and single plot... ' )
+						print( '-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
-						cell_mean = function_pm25_forEachCell( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						cell_mean = function_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
 					else:
 
@@ -173,26 +147,31 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 					mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean
 
 		elif ( processing_method == 'diff_plot' ) :
+			print('-> traversing each cell and extract pollutants ...')
 			### traverse each cell in the C-storing style for each day: row and then col
 			for row in range( 0 , domain_rows , 1 ):
 
 				for col in range( 0 , domain_cols , 1 ):
 
 					if ( processing_pol == 'co' ) :
+
+						#print( f'-> extracting cell for single POL - diff - at row= {row} and col={col} ... ' )
 						# we calculate cell means for each scenario
-						cell_mean_scen = function_singlePOL_forEachCell( aconc_open_scen , cmaq_pol , lay , row , col )
-						cell_mean_base = function_singlePOL_forEachCell( aconc_open_base , cmaq_pol , lay , row , col )
+						cell_mean_scen = function_cell_mean_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
+						cell_mean_base = function_cell_mean_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
 
 						# now we fill 2 meshes 
+						#print( f'-> add/pin each cell mean value to mesh_3d_monthly_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean_scen
+						
+						#print( f'-> add/pin each cell mean value to mesh_3d_monthly_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 						mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = cell_mean_base
-
 
 					elif ( processing_pol == 'pm25' ) :
 
 						# we calculate cell means 
-						cell_mean_scen = function_pm25_forEachCell( aconc_open_scen , pmdiag_open_scen , lay , row , col )
-						cell_mean_base = function_pm25_forEachCell( aconc_open_base , pmdiag_open_base , lay , row , col )
+						cell_mean_scen = function_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						cell_mean_base = function_cell_mean_pm25( aconc_open_base , pmdiag_open_base , lay , row , col )
 
 						# now we fill the 3D mesh with cell means
 						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean_scen
@@ -238,14 +217,34 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 	if ( processing_method == 'single_plot' ) :
 
+		# look at the 3D meshes
+		print('-----------------------------')
+		print('-> 3D data mesh info:')
+		print( f'-> LANDIS scenario 3D monthly mesh: number of dimensions= {mesh_3d_monthly_scen.ndim}' )
+		print( f'-> LANDIS scenario 3D monthly mesh: shape of data-mesh= {mesh_3d_monthly_scen.shape}' )
+		print('-----------------------------')
+
 		# we pnly have 1 3D mesh
+		print('-> change mesh 3D to 2D for single plot ...')
 		data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , mesh_3d_monthly_scen )
 
 	elif ( processing_method == 'diff_plot' ) :
 
+		# look at the 3D meshes
+		print('-----------------------------')
+		print('-> check 3D data mesh info:')
+		print( f'-> LANDIS scenario 3D monthly mesh: number of dimensions= {mesh_3d_monthly_scen.ndim}' )
+		print( f'-> LANDIS scenario 3D monthly mesh: shape of data-mesh= {mesh_3d_monthly_scen.shape}' )
+		print( f'-> baseline 3D monthly mesh: number of dimensions= {mesh_3d_monthly_base.ndim}' )
+		print( f'-> baseline 3D monthly mesh: shape of data-mesh= {mesh_3d_monthly_base.shape}' )
+		print('-----------------------------')
+
 		# we have 2 3D meshes
-		mesh_2d_scen = function_3Dto2D( mesh_3d_monthly_scen )
-		mesh_2d_base = function_3Dto2D( mesh_3d_monthly_base )
+		print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-LANDIS ...')
+		mesh_2d_scen = function_3Dto2D( domain_rows , domain_cols , mesh_3d_monthly_scen )
+
+		print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-baseline ...')
+		mesh_2d_base = function_3Dto2D( domain_rows , domain_cols , mesh_3d_monthly_base )
 
 		# now subtract 2 meshes to get the diff mesh
 		data_mesh_2d = mesh_2d_scen - mesh_2d_base
@@ -254,67 +253,33 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 	return data_mesh_2d
 
 
-	# 	# close nc files after each day is finished
-	# 	if ( processing_pol == 'co') :
-
-
-
-	# 	if ( processing_pol == 'pm2.5') :
-
-	# 		print('-> closing ACONC and PMDIAG files ...')
-	# 		aconc_open.close()
-	# 		pmdiag_open.close()
-
-
-	# # function returns the data-mesh: mesh_3d_monthly to use in plotting
-	# return mesh_3d_monthly
-
-
 def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
 
 	### define a 2d array
-	array_2d_total = np.ndarray( shape= ( domain_rows , domain_cols ) )
+	mesh_2d_total = np.ndarray( shape= ( domain_rows , domain_cols ) )
 
 	for row in range( 0 , mesh_3d_monthly.shape[1] , 1 ) :
 
 		for col in range( 0 , mesh_3d_monthly.shape[2] , 1 ) :
 
-			print(f'-> processing mesh-3D-total @ row= {row} and col= {col} ')
+			#print(f'-> processing mesh-3D-monthly mean @ row= {row} and col= {col} ')
 
 			cell_z_axis = mesh_3d_monthly [ : , row , col ]
 
-			print(f'-> size of z-axis is= { cell_z_axis.shape } ')
+			#print(f'-> size of z-axis is= { cell_z_axis.shape } ')
 
 			### take average of each z-axis
 			cell_z_axis_mean = cell_z_axis.mean()
 			### asign the cell mean to 2D array
-			array_2d_total [ row ][ col ] = cell_z_axis_mean
+			mesh_2d_total [ row ][ col ] = cell_z_axis_mean
 	print(" ")
-	print( f'-> shape of 2D array= { array_2d_total.shape }' )		
+	print( f'-> shape of 2D array output of function:3Dto2D= { mesh_2d_total.shape }' )	
+	print(" ")	
 	### function returns a 2D array to be used for plotting
-	return array_2d_total
+	return mesh_2d_total
 
 
-def function_singlePOL_forEachCell ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
-
-	# data_mesh = np.empty( shape=( domain_rows , domain_cols ) )
-	# # start CMAQ algorithm
-	# for row in range(0,domain_rows,1):
-	# 	print('----------------------')
-	# 	print('-> loop for row= %s' %row)
-
-	# 	for col in range(0, domain_cols,1):
-	# 		#print('--------------------------------------')
-	# 		#print('loop for row=%s col=%s time-step=%s' %(row,col,tstep))
-	# 		cell_24hr_aconc = []
-	# 		# extract all 24 t-step
-	# 		cell_24hr_aconc = cmaq_data[ : , lay , row , col ]
-
-	# 		cell_24hr_array = np.array( cell_24hr_aconc )
-
-	# 		cell_mean = cell_24hr_array.mean()
-	# 		# pin daily mean to data mesh
-	# 		data_mesh[row][col] = cell_mean
+def function_cell_mean_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
 
 	cell_24hr_series_list = []
 	# extract all 24 t-step
@@ -330,7 +295,7 @@ def function_singlePOL_forEachCell ( aconc_open , cmaq_pol , lay , row , col ): 
 	return cell_mean_for_singlePOL
 
 
-def function_pm25_forEachCell ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
+def function_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
 
 	print( f'-> processing row= {row} and col= {col}' )
 
@@ -645,18 +610,19 @@ cmaq_file_year = '2016'
 cmaq_file_month = '10'
 sim_month = 'oct'
 days_to_run_in_month = 1
-Landis_scenario = '1'
+Landis_scenario = '4'
 cmaq_pol = 'CO'
 
 processing_pol = 'co' 							# 'co' or 'pm2.5'
-processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
+processing_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
 
 mcip_date_tag = '161001'
 
 print(f'-> CMAQ year= {cmaq_file_year}')
 print(f'-> CMAQ month of analysis= {cmaq_file_month}')
 print(f'-> LANDIS scenarios= {Landis_scenario}')
-print(f'-> processing method= {processing_pol}')
+print(f'-> processing pollutant= {processing_pol}')
+print(f'-> processing method= {processing_method}')
 print(f'-> number of days to run= {days_to_run_in_month}')
 print(" ")
 
@@ -681,13 +647,13 @@ urcornery=-500 # meters
 
 
 ### set input directory
-#input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
-input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/' 
+input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
+#input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/' 
 input_path = input_dir + 'scen' + Landis_scenario + '/' + sim_month + '/'  
 
 ### get MCIP file for lon/lat of domain
-#mcip_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
-mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/' 
+mcip_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
+#mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/' 
 
 print('-> CMAQ input directory is:')
 print(input_path)
@@ -703,16 +669,10 @@ print(" ")
 ### extract necessary data from CMAQ for each mesh and calculate data_mesh_3d
 print('-> start processing CMAQ files to get data-mesh...')
 
-data_mesh_3d = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_path )
+data_mesh_2d = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_path )
 
-print('-----------------------------')
-print('-> data_mesh_3d info:')
-print( f'-> number of dimensions= {data_mesh_3d.ndim}' )
-print( f'-> shape of data-mesh= {data_mesh_3d.shape}' )
-
-### convert data-mesh-3D, output of function_day_and_file_count; to 2D
-data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , data_mesh_3d )
-
+# ### convert data-mesh-3D, output of function_day_and_file_count; to 2D
+# data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , data_mesh_3d )
 
 ### open MCIP file to get lon-lat of domain
 print('-> opening MCIP file...')
@@ -777,7 +737,12 @@ print('-> fig directory is:')
 print(fig_dir_Mac)
 
 ### plot name
-fig_name = cmaq_pol + '_monthlyMean' + '_scen' + Landis_scenario + '_' + cmaq_file_year+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+if ( processing_method == 'single_plot' ) :
+	fig_name = cmaq_pol + '_monthlyMean' + '_scen' + Landis_scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+elif ( processing_method == 'diff_plot' ) :
+	fig_name = cmaq_pol + '_monthlyMean' + '_difference_from_baseline' + '_scen' + Landis_scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+else:
+	pass
 ### plot full path
 out_fig = fig_dir_Mac + fig_name
 print('-> output figure is stored at:')
