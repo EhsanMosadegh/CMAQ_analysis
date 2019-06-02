@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 from netCDF4 import Dataset
 import numpy as np
 from mpl_toolkits.basemap import Basemap , cm
-from osgeo import gdal, gdal_array, osr , ogr
+#from osgeo import gdal, gdal_array, osr , ogr
+from osgeo import gdal
 import time
 
 ###################################################################################
@@ -16,7 +17,7 @@ import time
 ###################################################################################
 # define functions that calculate concentrations of pollutants
 
-def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_path ) :
+def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base ) :
 
 	print('-> month of analysis is=' , cmaq_file_month)
 	# define the monthly array mesh
@@ -46,8 +47,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		file_date_tag = cmaq_file_year + cmaq_file_month + day_count
 
 		### define input files
-		aconc_scen = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
-		pmdiag_scen = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+Landis_scenario+'_mpi_standard_'+file_date_tag+'.nc'
+		aconc_scen = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+scenario+'_mpi_standard_'+file_date_tag+'.nc'
+		pmdiag_scen = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+scenario+'_mpi_standard_'+file_date_tag+'.nc'
 
 		aconc_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
 		pmdiag_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
@@ -59,7 +60,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 				# define input files
 				print('-> setting path for single POL and single_plot...')
-				aconc_input_scen = input_path + aconc_scen
+				aconc_input_scen = input_path_scen + aconc_scen
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				print('-> opening/reading CMAQ files:')
 				print( aconc_input_scen )
@@ -69,8 +70,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			elif ( processing_method == 'diff_plot' ) :  # open 2 netcdf files: "aconc_scen" and "aconc_baseline"
 				# define input files
 				print('-> setting path for single POL and diff_plot...')
-				aconc_input_scen = input_path + aconc_scen				
-				aconc_input_base = input_path + aconc_base
+				aconc_input_scen = input_path_scen + aconc_scen				
+				aconc_input_base = input_path_base + aconc_base
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				aconc_open_base = Dataset( aconc_input_base , 'r' )
 				print('-> opening/reading CMAQ files:')
@@ -89,21 +90,25 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			if ( processing_method == 'single_plot' ) :  
 
 				# define input files
-				aconc_input_scen = input_path + aconc_scen
-				pmdiag_input_scen = input_path + pmdiag_scen
+				aconc_input_scen = input_path_scen + aconc_scen
+				pmdiag_input_scen = input_path_scen + pmdiag_scen
 
 				print('-> opening/reading CMAQ files:')
-				print( aconc_input )
 				# open netcdf file
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
-
+				
+				print('-> opening/reading CMAQ files:')
+                                print( aconc_open_scen )
+                                print( pmdiag_open_scen )
+                                print( " ")
+				
 			elif ( processing_method == 'diff_plot' ) :
 				# define input files
-				aconc_input_scen = input_path + aconc_scen
-				pmdiag_input_scen = input_path + pmdiag_scen
-				aconc_input_base = input_path + aconc_base
-				pmdiag_input_base = input_path + pmdiag_base
+				aconc_input_scen = input_path_scen + aconc_scen
+				pmdiag_input_scen = input_path_scen + pmdiag_scen
+				aconc_input_base = input_path_base + aconc_base
+				pmdiag_input_base = input_path_base + pmdiag_base
 
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
@@ -126,7 +131,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 					if ( processing_pol == 'co' ) :
 
-						print( '-> extracting cell for single POL - single - at row= {row} and col={col} ... ' )
+						#print( '-> extracting cell for single POL - single - at row= {row} and col={col} ... ' )
 
 						cell_mean = function_cell_mean_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 
@@ -609,8 +614,8 @@ start = time.time()
 cmaq_file_year = '2016'
 cmaq_file_month = '10'
 sim_month = 'oct'
-days_to_run_in_month = 1
-Landis_scenario = '4'
+days_to_run_in_month = 5 
+scenario = '4' # 1-5, baseline
 cmaq_pol = 'CO'
 
 processing_pol = 'co' 							# 'co' or 'pm2.5'
@@ -620,7 +625,7 @@ mcip_date_tag = '161001'
 
 print(f'-> CMAQ year= {cmaq_file_year}')
 print(f'-> CMAQ month of analysis= {cmaq_file_month}')
-print(f'-> LANDIS scenarios= {Landis_scenario}')
+print(f'-> LANDIS scenarios= {scenario}')
 print(f'-> processing pollutant= {processing_pol}')
 print(f'-> processing method= {processing_method}')
 print(f'-> number of days to run= {days_to_run_in_month}')
@@ -647,16 +652,19 @@ urcornery=-500 # meters
 
 
 ### set input directory
-input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
-#input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/' 
-input_path = input_dir + 'scen' + Landis_scenario + '/' + sim_month + '/'  
+#input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
+input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/' 
+input_path_scen = input_dir + 'scen_' + scenario + '/' + sim_month + '/'  
+input_path_base = input_dir + 'scen_baseline' + '/' + sim_month + '/'
 
 ### get MCIP file for lon/lat of domain
-mcip_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
-#mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/' 
+#mcip_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
+mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/' 
 
 print('-> CMAQ input directory is:')
-print(input_path)
+print(input_path_scen)
+print(input_path_base)
+
 print('-> MCIP input directory is:')
 print(mcip_dir)
 print(" ")
@@ -669,7 +677,7 @@ print(" ")
 ### extract necessary data from CMAQ for each mesh and calculate data_mesh_3d
 print('-> start processing CMAQ files to get data-mesh...')
 
-data_mesh_2d = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , Landis_scenario , input_path )
+data_mesh_2d = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
 
 # ### convert data-mesh-3D, output of function_day_and_file_count; to 2D
 # data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , data_mesh_3d )
@@ -706,7 +714,7 @@ print('-> plotting the data...')
 basemap_instance = Basemap(projection='lcc' ,
 													 llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
 													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
-													 resolution='l')
+													 resolution='f')
 
 basemap_instance.bluemarble()
 x_mesh, y_mesh = basemap_instance(lon_mesh , lat_mesh) # order: x , y, transforms from degree to meter for LCC
@@ -722,7 +730,7 @@ image1 = basemap_instance.pcolormesh(x_mesh , y_mesh , data_mesh_2d , cmap=plt.c
 colorbar = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV]')
 #cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 #colorbar = basemap_instance.colorbar(cs, location='bottom')
-plt.title(f'{cmaq_pol} monthly mean for October - LANDIS scenario {Landis_scenario}')
+plt.title(f'{cmaq_pol} monthly mean for October - LANDIS scenario {scenario}')
 print(" ")
 
 ###################################################################################
@@ -731,20 +739,21 @@ print(" ")
 # save the plots
 
 ### path for saving plots
-fig_dir_cluster = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
-fig_dir_Mac = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
+fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
+#fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
+
 print('-> fig directory is:')
-print(fig_dir_Mac)
+print(fig_dir)
 
 ### plot name
 if ( processing_method == 'single_plot' ) :
-	fig_name = cmaq_pol + '_monthlyMean' + '_scen' + Landis_scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+	fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
 elif ( processing_method == 'diff_plot' ) :
-	fig_name = cmaq_pol + '_monthlyMean' + '_difference_from_baseline' + '_scen' + Landis_scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+	fig_name = cmaq_pol + '_monthlyMean' + '_difference_from_baseline' + '_scen_' + scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
 else:
 	pass
 ### plot full path
-out_fig = fig_dir_Mac + fig_name
+out_fig = fig_dir + fig_name
 print('-> output figure is stored at:')
 print(out_fig)
 ### save the figure
