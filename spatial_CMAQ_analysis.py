@@ -78,7 +78,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 				aconc_input_base = input_path_base + aconc_base
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				aconc_open_base = Dataset( aconc_input_base , 'r' )
-				print('-> opening/reading CMAQ files:')
+				print('-> opening/reading CMAQ files for single POL:')
 				print( aconc_input_scen )
 				print( aconc_input_base )
 				print( " ")
@@ -97,23 +97,30 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 				aconc_input_scen = input_path_scen + aconc_scen
 				pmdiag_input_scen = input_path_scen + pmdiag_scen
 
-				print('-> opening/reading CMAQ files:')
+				print('-> opening/reading CMAQ files for pm2.5:')
+				print( aconc_input_scen )
+				print( pmdiag_input_scen )
+				print( " ")
+
 				# open netcdf file
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
 				
-				print('-> opening/reading CMAQ files:')
-				print( aconc_open_scen )
-				print( pmdiag_open_scen )
-				print( " ")
-				
 			elif ( processing_method == 'diff_plot' ) :
+
 				# define input files
 				aconc_input_scen = input_path_scen + aconc_scen
 				pmdiag_input_scen = input_path_scen + pmdiag_scen
 				aconc_input_base = input_path_base + aconc_base
 				pmdiag_input_base = input_path_base + pmdiag_base
 
+				print('-> opening/reading CMAQ files for pm2.5:')
+				print(aconc_input_scen)
+				print(pmdiag_input_scen)
+				print(aconc_input_base)
+				print(pmdiag_input_base)
+
+				# open netcdf files
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
 				aconc_open_base = Dataset( aconc_input_base , 'r' )
@@ -129,9 +136,9 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		if ( processing_method == 'single_plot' ) :
 			print('-> traversing each cell and extract pollutants ...')
 			### traverse each cell in the C-storing style for each day: row and then col
-			for row in range( 0 , domain_rows , 1 ):
+			for row in range( 0 , domain_rows , 1 ) :
 
-				for col in range( 0 , domain_cols , 1 ):
+				for col in range( 0 , domain_cols , 1 ) :
 
 					if ( processing_pol == 'co' ) :
 
