@@ -21,8 +21,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 	print('-> month of analysis is=' , cmaq_file_month)
 	# define the monthly array mesh
-	mesh_3d_monthly_scen = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
-	mesh_3d_monthly_base = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	mesh_3d_monthly_scen = np.zeros( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	mesh_3d_monthly_base = np.zeros( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 
 	### create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
 	#day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
