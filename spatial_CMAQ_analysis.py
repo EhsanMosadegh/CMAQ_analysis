@@ -25,12 +25,16 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 	mesh_3d_monthly_base = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 
 	### create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
-	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
+	#day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
+	
+	# to run for specific day
+	day_list = [21]  # use the favorite day
+	
 	# traverse the list for each day
 	for day_of_the_month in day_list :
 
 		print( " ")
-		print('-> we are processing the following days:')
+		print('-> we are processing for following days:')
 		print(day_list)
 		print( f'-> processing for day= {day_of_the_month}' )
 
