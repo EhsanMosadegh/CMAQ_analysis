@@ -624,12 +624,12 @@ def function_daily_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col )
 ### get the starting time
 start = time.time()
 
-### file settings
+### run time settings
 cmaq_file_year = '2016'
 cmaq_file_month = '10'
 sim_month = 'oct'
 days_to_run_in_month = 31 
-scenario = '1' # 1-5, baseline
+scenario = '4' # 1-5, baseline
 mcip_date_tag = '161001'
 
 cmaq_pol = 'CO'  # for plot title
@@ -646,10 +646,12 @@ print(f'-> processing method= {processing_method}')
 print(f'-> number of days to run= {days_to_run_in_month}')
 print(" ")
 
-### fixed settings
+
+### domain settings
 lay = 0
 domain_cols = 250
 domain_rows = 265
+
 
 # ### Basemap plot setting
 # # center of domain
@@ -665,7 +667,6 @@ domain_rows = 265
 # urcornerx=132500 # meters
 # urcornery=-500 # meters
 
-
 ### Basemap plot setting to zoom
 ### center of domain
 xcent_zoom =-120.0324 # degrees
@@ -674,15 +675,26 @@ ycent_zoom =39.09 # degrees
 NROWS_zoom = 100000#265*1000 # meters
 NCOLS_zoom = 100000#250*1000 # meters
 
-### set input directory
-#input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
-input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/'
+
+### input directory setting
+if ( platform == 'Mac' ) :
+
+	input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
+	mcip_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
+	fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
+
+elif ( platform == 'cluster' ) :
+
+	input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/'
+	mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/'
+	fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
+
+else:
+	print( '-> ERROR: specify running platform ' )
+
+
 input_path_scen = input_dir + 'scen_' + scenario + '/' + sim_month + '/'
 input_path_base = input_dir + 'scen_baseline' + '/' + sim_month + '/'
-
-### get MCIP file for lon/lat of domain
-#mcip_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
-mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/'
 
 print('-> CMAQ input directory is:')
 print(input_path_scen)
@@ -773,9 +785,6 @@ print(" ")
 # save the plots
 
 ### path for saving plots
-fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
-#fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
-
 print('-> fig directory is:')
 print(fig_dir)
 
