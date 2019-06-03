@@ -618,9 +618,8 @@ def function_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col ) : # a
 	return cell_mean_for_pm25
 
 ###################################################################################
-
+### run time setting
 ###################################################################################
-# run time setting
 
 ### get the starting time
 start = time.time()
