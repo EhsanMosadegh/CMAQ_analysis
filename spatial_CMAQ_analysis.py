@@ -148,7 +148,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 						#print( '-> extracting cell for single POL - single - at row= {row} and col={col} ... ' )
 
-						daily_cell_mean = function_cell_mean_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
+						daily_cell_mean = function_daily_cell_mean_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 
 					elif ( processing_pol == 'pm2.5') :
 
@@ -177,25 +177,25 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 						#print( f'-> extracting cell for single POL - diff - at row= {row} and col={col} ... ' )
 						# we calculate cell means for each scenario
-						cell_mean_scen = function_cell_mean_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
-						cell_mean_base = function_cell_mean_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
+						daily_cell_mean_scen = function_daily_cell_mean_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
+						daily_cell_mean_base = function_daily_cell_mean_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
 
 						# now we fill 2 meshes
 						#print( f'-> add/pin each cell mean value to mesh_3d_monthly_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean_scen
+						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
 
 						#print( f'-> add/pin each cell mean value to mesh_3d_monthly_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-						mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = cell_mean_base
+						mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
 
 					elif ( processing_pol == 'pm25' ) :
 
 						# we calculate cell means
-						cell_mean_scen = function_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
-						cell_mean_base = function_cell_mean_pm25( aconc_open_base , pmdiag_open_base , lay , row , col )
+						daily_cell_mean_scen = function_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						daily_cell_mean_base = function_cell_mean_pm25( aconc_open_base , pmdiag_open_base , lay , row , col )
 
 						# now we fill the 3D mesh with cell means
-						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean_scen
-						mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = cell_mean_base
+						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
+						mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
 
 					else:
 
@@ -299,7 +299,7 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
 	return mesh_2d_total
 
 
-def function_cell_mean_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
+def function_daily_cell_mean_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
 
 	cell_24hr_series_list = []
 	# extract all 24 t-step
@@ -307,12 +307,12 @@ def function_cell_mean_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  #
 	# change daily list to daily np.Array
 	cell_24hr_series_array = np.array( cell_24hr_series_list )
 	# get the mean of each cell
-	cell_mean_for_singlePOL = cell_24hr_series_array.mean()
+	daily_cell_mean_for_singlePOL = cell_24hr_series_array.mean()
 	# delete daily list
 	del cell_24hr_series_list
 
 	# function returns mean of the pollutant for each cell
-	return cell_mean_for_singlePOL
+	return daily_cell_mean_for_singlePOL
 
 
 def function_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
