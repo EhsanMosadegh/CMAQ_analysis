@@ -676,14 +676,14 @@ NROWS_zoom = 100000#265*1000 # meters
 NCOLS_zoom = 100000#250*1000 # meters
 
 ### set input directory
-input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
-#input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/'
+#input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
+input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/'
 input_path_scen = input_dir + 'scen_' + scenario + '/' + sim_month + '/'
 input_path_base = input_dir + 'scen_baseline' + '/' + sim_month + '/'
 
 ### get MCIP file for lon/lat of domain
-mcip_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
-#mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/'
+#mcip_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
+mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/'
 
 print('-> CMAQ input directory is:')
 print(input_path_scen)
@@ -702,9 +702,6 @@ print(" ")
 print('-> start processing CMAQ files to get data-mesh...')
 
 data_mesh_2d = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
-
-# ### convert data-mesh-3D, output of function_day_and_file_count; to 2D
-# data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , data_mesh_3d )
 
 ### open MCIP file to get lon-lat of domain
 print('-> opening MCIP file...')
@@ -748,7 +745,7 @@ theMap_zoomed.bluemarble()
 x_mesh, y_mesh = theMap_zoomed(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
 theMap_zoomed.drawmapboundary(color='k' ) #, fill_color='aqua')
 theMap_zoomed.drawcoastlines(color = '0.15')
-theMap_zoomed.drawcounties()
+#theMap_zoomed.drawcounties()
 theMap_zoomed.drawstates()
 #basemap_instance.fillcontinents(lake_color='aqua')
 
@@ -777,8 +774,8 @@ print(" ")
 # save the plots
 
 ### path for saving plots
-#fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
-fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
+fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
+#fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
 
 print('-> fig directory is:')
 print(fig_dir)
