@@ -21,12 +21,12 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 	print('-> month of analysis is=' , cmaq_file_month)
 	### define the monthly array mesh
-	mesh_3d_monthly_scen = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
-	mesh_3d_monthly_base = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	daily_mean_3d_mesh_scen = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	daily_mean_3d_mesh_base = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 
-	# mesh_3d_monthly_scen = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
-	# mesh_3d_monthly_base = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
-	# print(f'-> shape of zero array= {mesh_3d_monthly_scen.shape}')
+	# daily_mean_3d_mesh_scen = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
+	# daily_mean_3d_mesh_base = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
+	# print(f'-> shape of zero array= {daily_mean_3d_mesh_scen.shape}')
 
 	## create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
 	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
@@ -163,8 +163,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 						raise SystemExit()
 
 					### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
-					#print( f'-> add/pin each cell mean value to mesh_3d_monthly_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-					mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean
+					#print( f'-> add/pin each cell mean value to daily_mean_3d_mesh_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+					daily_mean_3d_mesh_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean
 
 		elif ( processing_method == 'diff_plot' ) :
 			print('-> traversing each cell and extract pollutants ...')
@@ -181,11 +181,11 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 						daily_cell_mean_base = function_daily_cell_mean_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
 
 						# now we fill 2 meshes
-						#print( f'-> add/pin each cell mean value to mesh_3d_monthly_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
+						#print( f'-> add/pin each cell mean value to daily_mean_3d_mesh_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+						daily_mean_3d_mesh_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
 
-						#print( f'-> add/pin each cell mean value to mesh_3d_monthly_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-						mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
+						#print( f'-> add/pin each cell mean value to daily_mean_3d_mesh_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+						daily_mean_3d_mesh_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
 
 					elif ( processing_pol == 'pm25' ) :
 
@@ -194,8 +194,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 						daily_cell_mean_base = function_daily_cell_mean_pm25( aconc_open_base , pmdiag_open_base , lay , row , col )
 
 						# now we fill the 3D mesh with cell means
-						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
-						mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
+						daily_mean_3d_mesh_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
+						daily_mean_3d_mesh_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
 
 					else:
 
@@ -240,31 +240,31 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		# look at the 3D meshes
 		print('-----------------------------')
 		print('-> 3D data mesh info:')
-		print( f'-> LANDIS scenario 3D monthly mesh: number of dimensions= {mesh_3d_monthly_scen.ndim}' )
-		print( f'-> LANDIS scenario 3D monthly mesh: shape of data-mesh= {mesh_3d_monthly_scen.shape}' )
+		print( f'-> LANDIS scenario 3D monthly mean mesh: number of dimensions= {daily_mean_3d_mesh_scen.ndim}' )
+		print( f'-> LANDIS scenario 3D monthly mean mesh: shape of data-mesh= {daily_mean_3d_mesh_scen.shape}' )
 		print('-----------------------------')
 
 		# we pnly have 1 3D mesh
 		print('-> change mesh 3D to 2D for single plot ...')
-		data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , mesh_3d_monthly_scen )
+		data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_scen )
 
 	elif ( processing_method == 'diff_plot' ) :
 
 		# look at the 3D meshes
 		print('-----------------------------')
 		print('-> check 3D data mesh info:')
-		print( f'-> LANDIS scenario 3D monthly mesh: number of dimensions= {mesh_3d_monthly_scen.ndim}' )
-		print( f'-> LANDIS scenario 3D monthly mesh: shape of data-mesh= {mesh_3d_monthly_scen.shape}' )
-		print( f'-> baseline 3D monthly mesh: number of dimensions= {mesh_3d_monthly_base.ndim}' )
-		print( f'-> baseline 3D monthly mesh: shape of data-mesh= {mesh_3d_monthly_base.shape}' )
+		print( f'-> LANDIS scenario 3D monthly mean mesh: number of dimensions= {daily_mean_3d_mesh_scen.ndim}' )
+		print( f'-> LANDIS scenario 3D monthly mean mesh: shape of data-mesh= {daily_mean_3d_mesh_scen.shape}' )
+		print( f'-> baseline 3D monthly mesh: number of dimensions= {daily_mean_3d_mesh_base.ndim}' )
+		print( f'-> baseline 3D monthly mesh: shape of data-mesh= {daily_mean_3d_mesh_base.shape}' )
 		print('-----------------------------')
 
 		# we have 2 3D meshes
 		print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-LANDIS ...')
-		mesh_2d_scen = function_3Dto2D( domain_rows , domain_cols , mesh_3d_monthly_scen )
+		mesh_2d_scen = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_scen )
 
 		print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-baseline ...')
-		mesh_2d_base = function_3Dto2D( domain_rows , domain_cols , mesh_3d_monthly_base )
+		mesh_2d_base = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_base )
 
 		# now subtract 2 meshes to get the diff mesh
 		data_mesh_2d = mesh_2d_scen - mesh_2d_base
