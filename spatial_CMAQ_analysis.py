@@ -618,9 +618,8 @@ def function_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col ) : # a
 	return cell_mean_for_pm25
 
 ###################################################################################
-
+### run time setting
 ###################################################################################
-# run time setting
 
 ### get the starting time
 start = time.time()
@@ -629,8 +628,8 @@ start = time.time()
 cmaq_file_year = '2016'
 cmaq_file_month = '10'
 sim_month = 'oct'
-days_to_run_in_month = 1
-scenario = '4' # 1-5, baseline
+days_to_run_in_month = 31 
+scenario = '1' # 1-5, baseline
 mcip_date_tag = '161001'
 
 cmaq_pol = 'CO'  # for plot title
