@@ -261,20 +261,20 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 		# we have 2 3D meshes
 		print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-LANDIS ...')
-		mesh_2d_scen = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_scen )
+		monthly_mean_2d_mesh_scen = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_scen )
 
 		print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-baseline ...')
-		mesh_2d_base = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_base )
+		monthly_mean_2d_mesh_base = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_base )
 
 		# now subtract 2 meshes to get the diff mesh
-		data_mesh_2d = mesh_2d_scen - mesh_2d_base
+		data_mesh_2d = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
 
 	# this function retuns data-mesh-2D for plotting
 	return data_mesh_2d
 
 
 def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
-
+	" returns monthly mean of each cell, changes 3D mesh of daily mean conc to a 2D mesh of monthly mean conc"
 	### define a 2d array
 	cell_monthly_mean_2d_mesh = np.ndarray( shape= ( domain_rows , domain_cols ) )
 
