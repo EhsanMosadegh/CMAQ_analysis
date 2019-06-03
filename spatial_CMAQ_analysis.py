@@ -246,7 +246,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 		# we pnly have 1 3D mesh
 		print('-> change mesh 3D to 2D for single plot ...')
-		data_mesh_2d = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_scen )
+		monthly_mean_mesh_2d = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_scen )
 
 	elif ( processing_method == 'diff_plot' ) :
 
@@ -267,10 +267,10 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		monthly_mean_2d_mesh_base = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_base )
 
 		# now subtract 2 meshes to get the diff mesh
-		data_mesh_2d = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
+		monthly_mean_mesh_2d = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
 
 	# this function retuns data-mesh-2D for plotting
-	return data_mesh_2d
+	return monthly_mean_mesh_2d
 
 
 def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
@@ -700,7 +700,7 @@ print(" ")
 ### extract necessary data from CMAQ for each mesh and calculate data_mesh_3d
 print('-> start processing CMAQ files to get data-mesh...')
 
-data_mesh_2d = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
+monthly_mean_mesh_2d = function_day_and_file_count( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
 
 ### open MCIP file to get lon-lat of domain
 print('-> opening MCIP file...')
@@ -749,21 +749,21 @@ theMap_zoomed.drawstates()
 #basemap_instance.fillcontinents(lake_color='aqua')
 
 ### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
-colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , data_mesh_2d , cmap=plt.cm.OrRd , shading='flat' )
+colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=200 )
 #im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
 ### create colorbar
-colorbar = theMap_zoomed.colorbar( colorMesh , 'bottom' , label= f'{cmaq_pol} concentration {pol_unit}' )
+colorbar = theMap_zoomed.colorbar( colorMesh , 'bottom' , label= f'{cmaq_pol} mean concentration {pol_unit}' )
 #cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 #colorbar = basemap_instance.colorbar(cs, location='bottom')
 #plt.subplot( figsize=(10,10) )
 if ( processing_method == 'single_plot' ) :
 
-	plt.title(f' {cmaq_pol} monthly mean for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=7 )
+	plt.title(f' {cmaq_pol} monthly mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=7 )
 
 elif ( processing_method == 'diff_plot' ) :
 
-	plt.title(f' {cmaq_pol} monthly mean difference between LANDIS scenario-{scenario} and baseline for {sim_month}, {cmaq_file_year} ' , fontsize=7 )
+	plt.title(f' {cmaq_pol} monthly mean concentration difference between LANDIS scenario-{scenario} and baseline for {sim_month}, {cmaq_file_year} ' , fontsize=7 )
 
 print(" ")
 
