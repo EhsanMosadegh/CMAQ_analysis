@@ -276,7 +276,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
 
 	### define a 2d array
-	mesh_2d_total = np.ndarray( shape= ( domain_rows , domain_cols ) )
+	cell_monthly_mean_2d_mesh = np.ndarray( shape= ( domain_rows , domain_cols ) )
 
 	for row in range( 0 , mesh_3d_monthly.shape[1] , 1 ) :
 
@@ -291,12 +291,12 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
 			### take average of each z-axis
 			cell_z_axis_mean = cell_z_axis.mean()
 			### asign the cell mean to 2D array
-			mesh_2d_total [ row ][ col ] = cell_z_axis_mean
+			cell_monthly_mean_2d_mesh [ row ][ col ] = cell_z_axis_mean
 	print(" ")
-	print( f'-> shape of 2D array output of function:3Dto2D= { mesh_2d_total.shape }' )
+	print( f'-> shape of 2D array output of function:3Dto2D= { cell_monthly_mean_2d_mesh.shape }' )
 	print(" ")
 	### function returns a 2D array to be used for plotting
-	return mesh_2d_total
+	return cell_monthly_mean_2d_mesh
 
 
 def function_daily_cell_mean_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
