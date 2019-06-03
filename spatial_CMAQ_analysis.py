@@ -30,10 +30,10 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 	## create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
 	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
-	
+
 	# # to run for specific day
 	# day_list = [21]  # use the favorite day
-	
+
 	# traverse the list for each day
 	for day_of_the_month in day_list :
 
@@ -64,7 +64,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		### we open netcdf files based on each processing method and pollutant
 		if ( processing_pol == 'co') :  # we need only 1 file: "aconc"
 			# for single scenario plot
-			if ( processing_method == 'single_plot' ) :  
+			if ( processing_method == 'single_plot' ) :
 
 				# define input files
 				print('-> setting path for single POL and single_plot...')
@@ -78,7 +78,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 			elif ( processing_method == 'diff_plot' ) :  # open 2 netcdf files: "aconc_scen" and "aconc_baseline"
 				# define input files
 				print('-> setting path for single POL and diff_plot...')
-				aconc_input_scen = input_path_scen + aconc_scen				
+				aconc_input_scen = input_path_scen + aconc_scen
 				aconc_input_base = input_path_base + aconc_base
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				aconc_open_base = Dataset( aconc_input_base , 'r' )
@@ -92,10 +92,10 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 				print( '-> WARNING: define/check single processing POL and method first! ')
 				print('-> exiting ...')
 				raise SystemExit()
-		
+
 		elif ( processing_pol == 'pm2.5' ) :   # we need 2 files: "aconc" and "pmdiag" files
 
-			if ( processing_method == 'single_plot' ) :  
+			if ( processing_method == 'single_plot' ) :
 
 				# define input files
 				aconc_input_scen = input_path_scen + aconc_scen
@@ -109,7 +109,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 				# open netcdf file
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
-				
+
 			elif ( processing_method == 'diff_plot' ) :
 
 				# define input files
@@ -163,7 +163,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 						raise SystemExit()
 
 					### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
-					print( f'-> add/pin each cell mean value to mesh_3d_monthly_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+					#print( f'-> add/pin each cell mean value to mesh_3d_monthly_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 					mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean
 
 		elif ( processing_method == 'diff_plot' ) :
@@ -180,16 +180,16 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 						cell_mean_scen = function_cell_mean_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 						cell_mean_base = function_cell_mean_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
 
-						# now we fill 2 meshes 
+						# now we fill 2 meshes
 						#print( f'-> add/pin each cell mean value to mesh_3d_monthly_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean_scen
-						
+
 						#print( f'-> add/pin each cell mean value to mesh_3d_monthly_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 						mesh_3d_monthly_base [ day_of_the_month-1 ][ row ][ col ] = cell_mean_base
 
 					elif ( processing_pol == 'pm25' ) :
 
-						# we calculate cell means 
+						# we calculate cell means
 						cell_mean_scen = function_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
 						cell_mean_base = function_cell_mean_pm25( aconc_open_base , pmdiag_open_base , lay , row , col )
 
@@ -293,8 +293,8 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
 			### asign the cell mean to 2D array
 			mesh_2d_total [ row ][ col ] = cell_z_axis_mean
 	print(" ")
-	print( f'-> shape of 2D array output of function:3Dto2D= { mesh_2d_total.shape }' )	
-	print(" ")	
+	print( f'-> shape of 2D array output of function:3Dto2D= { mesh_2d_total.shape }' )
+	print(" ")
 	### function returns a 2D array to be used for plotting
 	return mesh_2d_total
 
@@ -629,14 +629,15 @@ start = time.time()
 cmaq_file_year = '2016'
 cmaq_file_month = '10'
 sim_month = 'oct'
-days_to_run_in_month = 1 
+days_to_run_in_month = 1
 scenario = '4' # 1-5, baseline
+mcip_date_tag = '161001'
+
 cmaq_pol = 'CO'  # for plot title
+pol_unit = '[ppmV]'
 
 processing_pol = 'co' 		# 'co' or 'pm2.5'
 processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
-
-mcip_date_tag = '161001'
 
 print(f'-> CMAQ year= {cmaq_file_year}')
 print(f'-> CMAQ month of analysis= {cmaq_file_month}')
@@ -651,30 +652,38 @@ lay = 0
 domain_cols = 250
 domain_rows = 265
 
-### Basemap plot setting
-# center of domain
-xcent =-120.806 # degrees
-ycent =40.000 # degrees
-# domain size
-NROWS = 265*1000 # meters
-NCOLS = 250*1000 # meters
-# lower-left corner
-llcornerx=-117500 # meters
-llcornery=-265500 # meters
-# upper-right corner
-urcornerx=132500 # meters
-urcornery=-500 # meters
+# ### Basemap plot setting
+# # center of domain
+# xcent =-120.806 # degrees
+# ycent =40.000 # degrees
+# # domain size
+# NROWS = 265*1000 # meters
+# NCOLS = 250*1000 # meters
+# # lower-left corner
+# llcornerx=-117500 # meters
+# llcornery=-265500 # meters
+# # upper-right corner
+# urcornerx=132500 # meters
+# urcornery=-500 # meters
 
+
+### Basemap plot setting to zoom
+### center of domain
+xcent_zoom =-120.0324 # degrees
+ycent_zoom =39.09 # degrees
+### domain size
+NROWS_zoom = 100000#265*1000 # meters
+NCOLS_zoom = 100000#250*1000 # meters
 
 ### set input directory
-input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/' #'/storage/ehsanm/USFS_CA_WRF_1km/plots/'
-#input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/' 
-input_path_scen = input_dir + 'scen_' + scenario + '/' + sim_month + '/'  
+input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
+#input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/'
+input_path_scen = input_dir + 'scen_' + scenario + '/' + sim_month + '/'
 input_path_base = input_dir + 'scen_baseline' + '/' + sim_month + '/'
 
 ### get MCIP file for lon/lat of domain
-#mcip_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
-mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/' 
+mcip_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
+#mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/'
 
 print('-> CMAQ input directory is:')
 print(input_path_scen)
@@ -700,7 +709,7 @@ data_mesh_2d = function_day_and_file_count( days_to_run_in_month , domain_rows ,
 ### open MCIP file to get lon-lat of domain
 print('-> opening MCIP file...')
 mcip_file = 'GRIDDOT2D_'+mcip_date_tag
-mcip_in = mcip_dir + mcip_file 
+mcip_in = mcip_dir + mcip_file
 mcip_open = Dataset( mcip_in )
 
 ### get some info
@@ -724,28 +733,42 @@ print('-> plotting the data...')
 ### plot dots from grid coordinates of the dots
 #plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
 
-### create a Basemap class/model instance for a specific projection
-# basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
-basemap_instance = Basemap(projection='lcc' ,
-													 llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
-													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
-													 resolution='f' , area_thresh=0.5)
+# ### create a Basemap class/model instance for a specific projection
+# # basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
+# theMap = Basemap(projection='lcc' ,
+# 													 llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
+# 													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
+# 													 resolution='f' , area_thresh=0.5)
 
-basemap_instance.bluemarble()
-x_mesh, y_mesh = basemap_instance(lon_mesh , lat_mesh) # order: x , y, transforms from degree to meter for LCC
-basemap_instance.drawmapboundary(color='k' ) #, fill_color='aqua')
-basemap_instance.drawcoastlines(color = '0.15')
-#basemap_instance.drawcounties()
-basemap_instance.drawstates()
+
+### create Basemap model instance from its class, it is a map that color mesh sits on it.
+theMap_zoomed = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+
+theMap_zoomed.bluemarble()
+x_mesh, y_mesh = theMap_zoomed(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
+theMap_zoomed.drawmapboundary(color='k' ) #, fill_color='aqua')
+theMap_zoomed.drawcoastlines(color = '0.15')
+theMap_zoomed.drawcounties()
+theMap_zoomed.drawstates()
 #basemap_instance.fillcontinents(lake_color='aqua')
-### create an image from basemap model instance
-image1 = basemap_instance.pcolormesh(x_mesh , y_mesh , data_mesh_2d , cmap=plt.cm.OrRd , shading='flat')
+
+### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
+colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , data_mesh_2d , cmap=plt.cm.OrRd , shading='flat' )
 #im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
+
 ### create colorbar
-colorbar = basemap_instance.colorbar(image1 , 'bottom' , label='CO concentration [ppmV]')
+colorbar = theMap_zoomed.colorbar( colorMesh , 'bottom' , label= f'{cmaq_pol} concentration {pol_unit}' )
 #cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 #colorbar = basemap_instance.colorbar(cs, location='bottom')
-plt.title(f'{cmaq_pol} monthly mean for October - LANDIS scenario {scenario}')
+#plt.subplot( figsize=(10,10) )
+if ( processing_method == 'single_plot' ) :
+
+	plt.title(f' {cmaq_pol} monthly mean for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=7 )
+
+elif ( processing_method == 'diff_plot' ) :
+
+	plt.title(f' {cmaq_pol} monthly mean difference between LANDIS scenario-{scenario} and baseline for {sim_month}, {cmaq_file_year} ' , fontsize=7 )
+
 print(" ")
 
 ###################################################################################
@@ -754,25 +777,30 @@ print(" ")
 # save the plots
 
 ### path for saving plots
-fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
-#fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
+#fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
+fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
 
 print('-> fig directory is:')
 print(fig_dir)
 
 ### plot name
 if ( processing_method == 'single_plot' ) :
+
 	fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+
 elif ( processing_method == 'diff_plot' ) :
-	fig_name = cmaq_pol + '_monthlyMean' + '_difference_from_baseline' + '_scen_' + scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+
+	fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_difference_from_baseline_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+
 else:
 	pass
+
 ### plot full path
 out_fig = fig_dir + fig_name
 print('-> output figure is stored at:')
 print(out_fig)
-### save the figure
-plt.savefig(out_fig)
+### export the figure
+plt.savefig( out_fig , dpi=1200 , format='png')
 ### opens a window to show the results - after savefig
 #plt.show()
 ### close the plot
