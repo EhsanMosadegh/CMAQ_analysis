@@ -148,13 +148,13 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 						#print( '-> extracting cell for single POL - single - at row= {row} and col={col} ... ' )
 
-						cell_mean = function_cell_mean_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
+						daily_cell_mean = function_cell_mean_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 
 					elif ( processing_pol == 'pm2.5') :
 
 						print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
-						cell_mean = function_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						daily_cell_mean = function_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
 					else:
 
@@ -164,7 +164,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 					### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
 					#print( f'-> add/pin each cell mean value to mesh_3d_monthly_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-					mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = cell_mean
+					mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean
 
 		elif ( processing_method == 'diff_plot' ) :
 			print('-> traversing each cell and extract pollutants ...')
