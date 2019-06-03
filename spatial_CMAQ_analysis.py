@@ -154,7 +154,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 						print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
-						daily_cell_mean = function_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						daily_cell_mean = function_daily_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
 					else:
 
@@ -190,8 +190,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 					elif ( processing_pol == 'pm25' ) :
 
 						# we calculate cell means
-						daily_cell_mean_scen = function_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
-						daily_cell_mean_base = function_cell_mean_pm25( aconc_open_base , pmdiag_open_base , lay , row , col )
+						daily_cell_mean_scen = function_daily_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						daily_cell_mean_base = function_daily_cell_mean_pm25( aconc_open_base , pmdiag_open_base , lay , row , col )
 
 						# now we fill the 3D mesh with cell means
 						mesh_3d_monthly_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
@@ -315,7 +315,7 @@ def function_daily_cell_mean_singlePOL ( aconc_open , cmaq_pol , lay , row , col
 	return daily_cell_mean_for_singlePOL
 
 
-def function_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
+def function_daily_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
 
 	print( f'-> processing row= {row} and col= {col}' )
 
