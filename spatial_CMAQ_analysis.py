@@ -21,8 +21,18 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 	print('-> month of analysis is=' , cmaq_file_month)
 	### define the monthly array mesh
-	daily_mean_3d_mesh_scen = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
-	daily_mean_3d_mesh_base = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	if ( processing_method == 'co' ) :
+
+		daily_mean_3d_mesh_scen = np.ndarray( shape=( days_to_run_in_month*24 , domain_rows , domain_cols ) )
+		daily_mean_3d_mesh_base = np.ndarray( shape=( days_to_run_in_month*24 , domain_rows , domain_cols ) )
+
+	elif ( processing_method == 'pm2.5' ) :
+
+		daily_mean_3d_mesh_scen = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+		daily_mean_3d_mesh_base = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+
+	else:
+		pass
 
 	# daily_mean_3d_mesh_scen = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
 	# daily_mean_3d_mesh_base = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
@@ -310,8 +320,9 @@ def function_daily_cell_mean_singlePOL ( aconc_open , cmaq_pol , lay , row , col
 	cell_24hr_series_list = aconc_open.variables[ cmaq_pol ][ : , lay , row , col ]
 	# change daily list to daily np.Array
 	cell_24hr_series_array = np.array( cell_24hr_series_list )
-	# get the mean of each cell
-	daily_cell_mean_for_singlePOL = cell_24hr_series_array.mean()
+	# # get the mean of each cell
+	# daily_cell_mean_for_singlePOL = cell_24hr_series_array.mean()
+
 	# delete daily list
 	del cell_24hr_series_list
 
