@@ -62,7 +62,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		pmdiag_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
 
 		### we open netcdf files based on each processing method and pollutant
-		if ( processing_pol == 'co') :  # we need only 1 file: "aconc"
+		if ( processing_pol == 'co') : # (processing_pol == 'no2')  # we need only 1 file: "aconc"
 			# for single scenario plot
 			if ( processing_method == 'single_plot' ) :
 
@@ -136,7 +136,9 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 				print('-> exiting ...')
 				raise SystemExit()
 
+		############################################################################################
 		### we process the nc opened files for each cell with a specific function
+
 		if ( processing_method == 'single_plot' ) :
 			print('-> traversing each cell and extract pollutants ...')
 			### traverse each cell in the C-storing style for each day: row and then col
@@ -200,6 +202,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 					else:
 
 						pass
+		### we process the nc opened files for each cell with a specific function
+		############################################################################################
 
 		# closing nc files for each day
 		if ( processing_pol == 'co' ) :
@@ -628,7 +632,7 @@ start = time.time()
 cmaq_file_year = '2016'
 cmaq_file_month = '10'
 sim_month = 'oct'
-days_to_run_in_month = 31 
+days_to_run_in_month = 1
 scenario = '4' # 1-5, baseline
 mcip_date_tag = '161001'
 
@@ -637,6 +641,7 @@ pol_unit = '[ppmV]'
 
 processing_pol = 'co' 		# 'co' or 'pm2.5'
 processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
+platform = 'Mac'  # 'Mac' or 'cluster'
 
 print(f'-> CMAQ year= {cmaq_file_year}')
 print(f'-> CMAQ month of analysis= {cmaq_file_month}')
@@ -644,6 +649,7 @@ print(f'-> LANDIS scenarios= {scenario}')
 print(f'-> processing pollutant= {processing_pol}')
 print(f'-> processing method= {processing_method}')
 print(f'-> number of days to run= {days_to_run_in_month}')
+print(f'-> platform is= {platform}')
 print(" ")
 
 
@@ -756,12 +762,14 @@ theMap_zoomed.bluemarble()
 x_mesh, y_mesh = theMap_zoomed(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
 theMap_zoomed.drawmapboundary(color='k' ) #, fill_color='aqua')
 theMap_zoomed.drawcoastlines(color = '0.15')
-#theMap_zoomed.drawcounties()
+theMap_zoomed.drawcounties(linewidth=10 , color='k')
 theMap_zoomed.drawstates()
 #basemap_instance.fillcontinents(lake_color='aqua')
 
+#my_levels = [ 0.02 , 0.05 ]
+#my_colors = ( 'g' , 'b' , 'r' )
 ### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
-colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=200 )
+colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=0.1 ) #levels=my_levels , colors=my_colors 
 #im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
 ### create colorbar
