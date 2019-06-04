@@ -160,7 +160,7 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 						#print( '-> extracting cell for single POL - single - at row= {row} and col={col} ... ' )
 
-						daily_cell_mean = function_daily_cell_mean_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
+						daily_cell_mean = function_daily_cell_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 
 					elif ( processing_pol == 'pm2.5') :
 
@@ -189,8 +189,8 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 						#print( f'-> extracting cell for single POL - diff - at row= {row} and col={col} ... ' )
 						# we calculate cell means for each scenario
-						daily_cell_mean_scen = function_daily_cell_mean_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
-						daily_cell_mean_base = function_daily_cell_mean_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
+						daily_cell_mean_scen = function_daily_cell_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
+						daily_cell_mean_base = function_daily_cell_timeSeries_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
 
 						# now we fill 2 meshes
 						#print( f'-> add/pin each cell mean value to daily_mean_3d_mesh_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
@@ -313,7 +313,7 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
 	return cell_monthly_mean_2d_mesh
 
 
-def function_daily_cell_mean_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
+def function_daily_cell_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
 	" returns 24-hr time series of singlePOL"
 	cell_24hr_series_list = []
 	# extract all 24 t-step
