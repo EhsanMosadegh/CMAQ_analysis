@@ -314,7 +314,7 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
 
 
 def function_daily_cell_mean_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
-
+	" returns 24-hr time series of singlePOL"
 	cell_24hr_series_list = []
 	# extract all 24 t-step
 	cell_24hr_series_list = aconc_open.variables[ cmaq_pol ][ : , lay , row , col ]
@@ -327,7 +327,7 @@ def function_daily_cell_mean_singlePOL ( aconc_open , cmaq_pol , lay , row , col
 	del cell_24hr_series_list
 
 	# function returns mean of the pollutant for each cell
-	return daily_cell_mean_for_singlePOL
+	return cell_24hr_series_array
 
 
 def function_daily_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
