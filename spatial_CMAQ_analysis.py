@@ -21,30 +21,32 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 	print('-> month of analysis is=' , cmaq_file_month)
 	### define the monthly array mesh
-	if ( processing_method == 'co' ) :
+	if ( processing_pol == 'co' ) :
 
-		daily_mean_3d_mesh_scen = np.ndarray( shape=( days_to_run_in_month*24 , domain_rows , domain_cols ) )
-		daily_mean_3d_mesh_base = np.ndarray( shape=( days_to_run_in_month*24 , domain_rows , domain_cols ) )
+		#monthly_3d_mesh_scen = np.ndarray( shape=( 24 , domain_rows , domain_cols ) )
+		monthly_3d_mesh_scen = np.empty( shape=( 0 , domain_rows , domain_cols ) )
+		monthly_3d_mesh_base = np.empty( shape=( 0 , domain_rows , domain_cols ) )
 
-	elif ( processing_method == 'pm2.5' ) :
+	elif ( processing_pol == 'pm2.5' ) :
 
-		daily_mean_3d_mesh_scen = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
-		daily_mean_3d_mesh_base = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+		monthly_3d_mesh_scen = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+		monthly_3d_mesh_base = np.ndarray( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 
 	else:
 		pass
 
-	# daily_mean_3d_mesh_scen = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
-	# daily_mean_3d_mesh_base = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
-	# print(f'-> shape of zero array= {daily_mean_3d_mesh_scen.shape}')
+	# monthly_3d_mesh_scen = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
+	# monthly_3d_mesh_base = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
+	# print(f'-> shape of zero array= {monthly_3d_mesh_scen.shape}')
 
 	## create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
 	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
 
 	# # to run for specific day
 	# day_list = [21]  # use the favorite day
+	############################################################################################
+	### traverse the list for each day
 
-	# traverse the list for each day
 	for day_of_the_month in day_list :
 
 		print( " ")
@@ -64,14 +66,18 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 		### define file tags
 		file_date_tag = cmaq_file_year + cmaq_file_month + day_count
 
+		############################################################################################
 		### define input files
+
 		aconc_scen = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+scenario+'_mpi_standard_'+file_date_tag+'.nc'
 		pmdiag_scen = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+scenario+'_mpi_standard_'+file_date_tag+'.nc'
 
 		aconc_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
 		pmdiag_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
 
-		### we open netcdf files based on each processing method and pollutant
+		############################################################################################
+		### open netcdf files based on each processing method and pollutant
+
 		if ( processing_pol == 'co') : # (processing_pol == 'no2')  # we need only 1 file: "aconc"
 			# for single scenario plot
 			if ( processing_method == 'single_plot' ) :
@@ -141,16 +147,26 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 				pmdiag_open_base = Dataset( pmdiag_input_base , 'r' )
 
 			else:
-
-				print( '-> WARNING: define/check pm2.5 processing POL and method first! ')
+				print('-> ERROR: select single or diff methid! ')
 				print('-> exiting ...')
 				raise SystemExit()
 
+		else:
+
+			print( '-> ERROR: define/check POL first! ')
+			print('-> exiting ...')
+			raise SystemExit()
+
 		############################################################################################
-		### we process the nc opened files for each cell with a specific function
+		### process the nc opened files for each cell with a specific function
 
 		if ( processing_method == 'single_plot' ) :
-			print('-> traversing each cell and extract pollutants ...')
+
+			daily_3d_mesh_scen = np.ndarray ( shape=( 24 , domain_rows , domain_cols ) )
+
+			#print(f'-> shape of daily tseries array={daily_3d_mesh_scen.shape }')
+			#print('-> traversing each cell and extract pollutants ...')
+			
 			### traverse each cell in the C-storing style for each day: row and then col
 			for row in range( 0 , domain_rows , 1 ) :
 
@@ -158,9 +174,10 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 
 					if ( processing_pol == 'co' ) :
 
-						#print( '-> extracting cell for single POL - single - at row= {row} and col={col} ... ' )
+						#print( f'-> extracting cell for single POL - single - at row= {row} and col={col} ... ' )
 
-						daily_cell_mean = function_daily_cell_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
+						cell_24hr_timeSeries_array = function_daily_cell_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
+						#print(f'--> cell tseries is= {cell_24hr_timeSeries_array}')
 
 					elif ( processing_pol == 'pm2.5') :
 
@@ -174,11 +191,26 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 						print('-> exiting ...')
 						raise SystemExit()
 
-					### fill the data-mesh with data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
-					#print( f'-> add/pin each cell mean value to daily_mean_3d_mesh_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-					daily_mean_3d_mesh_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean
+					### fill daily data-mesh with each cell data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
+
+					#print( f'-> add/pin each cell mean value to monthly_3d_mesh_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+					
+					daily_3d_mesh_scen [:,row,col]  = cell_24hr_timeSeries_array
+
+					#print(f'--> shape of daily 24hr tseries is= {daily_3d_mesh_scen.shape}')
+
+			### after each day is done, add the daily frame to monthly frame
+			if ( day_of_the_month == '01' ) :
+				### replace the array for 1st day
+				monthly_3d_mesh_scen = daily_3d_mesh_scen # because the montly mesh is not empy!
+
+			else:
+				# daily mesh is filled with 1st time step and now we concatenate the new mesh to previous one
+				monthly_3d_mesh_scen = np.concatenate( ( monthly_3d_mesh_scen , daily_3d_mesh_scen ) , axis=0 )
+
 
 		elif ( processing_method == 'diff_plot' ) :
+			
 			print('-> traversing each cell and extract pollutants ...')
 			### traverse each cell in the C-storing style for each day: row and then col
 			for row in range( 0 , domain_rows , 1 ):
@@ -193,11 +225,11 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 						daily_cell_mean_base = function_daily_cell_timeSeries_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
 
 						# now we fill 2 meshes
-						#print( f'-> add/pin each cell mean value to daily_mean_3d_mesh_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-						daily_mean_3d_mesh_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
+						#print( f'-> add/pin each cell mean value to monthly_3d_mesh_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+						monthly_3d_mesh_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
 
-						#print( f'-> add/pin each cell mean value to daily_mean_3d_mesh_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-						daily_mean_3d_mesh_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
+						#print( f'-> add/pin each cell mean value to monthly_3d_mesh_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+						monthly_3d_mesh_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
 
 					elif ( processing_pol == 'pm25' ) :
 
@@ -206,16 +238,17 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 						daily_cell_mean_base = function_daily_cell_mean_pm25( aconc_open_base , pmdiag_open_base , lay , row , col )
 
 						# now we fill the 3D mesh with cell means
-						daily_mean_3d_mesh_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
-						daily_mean_3d_mesh_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
+						monthly_3d_mesh_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
+						monthly_3d_mesh_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
 
 					else:
-
 						pass
-		### we process the nc opened files for each cell with a specific function
+		else:
+			print('-> ERROR: processing method NOT defined!')
+		
 		############################################################################################
+		### closing nc files for each day
 
-		# closing nc files for each day
 		if ( processing_pol == 'co' ) :
 
 			if ( processing_method == 'single_plot' ) :
@@ -248,43 +281,51 @@ def function_day_and_file_count ( days_to_run_in_month , domain_rows , domain_co
 				aconc_open_base.close()
 				pmdiag_open_base.close()
 
+		else:
+			pass
+
+############################################################################################
+### change 3D to 2D array
 
 	if ( processing_method == 'single_plot' ) :
 
 		# look at the 3D meshes
 		print('-----------------------------')
 		print('-> 3D data mesh info:')
-		print( f'-> LANDIS scenario 3D monthly mean mesh: number of dimensions= {daily_mean_3d_mesh_scen.ndim}' )
-		print( f'-> LANDIS scenario 3D monthly mean mesh: shape of data-mesh= {daily_mean_3d_mesh_scen.shape}' )
+		print( f'-> LANDIS scenario 3D monthly mean mesh: number of dimensions= {monthly_3d_mesh_scen.ndim}' )
+		print( f'-> LANDIS scenario 3D monthly mean mesh: shape of data-mesh= {monthly_3d_mesh_scen.shape}' )
 		print('-----------------------------')
 
 		# we pnly have 1 3D mesh
 		print('-> change mesh 3D to 2D for single plot ...')
-		monthly_mean_mesh_2d = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_scen )
+		monthly_mean_mesh_2d = function_3Dto2D( domain_rows , domain_cols , monthly_3d_mesh_scen )
 
 	elif ( processing_method == 'diff_plot' ) :
 
 		# look at the 3D meshes
 		print('-----------------------------')
 		print('-> check 3D data mesh info:')
-		print( f'-> LANDIS scenario 3D monthly mean mesh: number of dimensions= {daily_mean_3d_mesh_scen.ndim}' )
-		print( f'-> LANDIS scenario 3D monthly mean mesh: shape of data-mesh= {daily_mean_3d_mesh_scen.shape}' )
-		print( f'-> baseline 3D monthly mesh: number of dimensions= {daily_mean_3d_mesh_base.ndim}' )
-		print( f'-> baseline 3D monthly mesh: shape of data-mesh= {daily_mean_3d_mesh_base.shape}' )
+		print( f'-> LANDIS scenario 3D monthly mean mesh: number of dimensions= {monthly_3d_mesh_scen.ndim}' )
+		print( f'-> LANDIS scenario 3D monthly mean mesh: shape of data-mesh= {monthly_3d_mesh_scen.shape}' )
+		print( f'-> baseline 3D monthly mesh: number of dimensions= {monthly_3d_mesh_base.ndim}' )
+		print( f'-> baseline 3D monthly mesh: shape of data-mesh= {monthly_3d_mesh_base.shape}' )
 		print('-----------------------------')
 
 		# we have 2 3D meshes
 		print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-LANDIS ...')
-		monthly_mean_2d_mesh_scen = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_scen )
+		monthly_mean_2d_mesh_scen = function_3Dto2D( domain_rows , domain_cols , monthly_3d_mesh_scen )
 
 		print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-baseline ...')
-		monthly_mean_2d_mesh_base = function_3Dto2D( domain_rows , domain_cols , daily_mean_3d_mesh_base )
+		monthly_mean_2d_mesh_base = function_3Dto2D( domain_rows , domain_cols , monthly_3d_mesh_base )
 
 		# now subtract 2 meshes to get the diff mesh
 		monthly_mean_mesh_2d = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
 
 	# this function retuns data-mesh-2D for plotting
 	return monthly_mean_mesh_2d
+
+### change 3D to 2D array
+############################################################################################
 
 
 def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
@@ -643,7 +684,7 @@ start = time.time()
 cmaq_file_year = '2016'
 cmaq_file_month = '10'
 sim_month = 'oct'
-days_to_run_in_month = 1
+days_to_run_in_month = 2
 scenario = '4' # 1-5, baseline
 mcip_date_tag = '161001'
 
@@ -780,7 +821,7 @@ theMap_zoomed.drawstates()
 #my_levels = [ 0.02 , 0.05 ]
 #my_colors = ( 'g' , 'b' , 'r' )
 ### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
-colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=0.1 ) #levels=my_levels , colors=my_colors 
+colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=0.5 ) #levels=my_levels , colors=my_colors
 #im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
 ### create colorbar
