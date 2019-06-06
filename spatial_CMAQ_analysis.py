@@ -25,21 +25,17 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 	### define the monthly array mesh
 	if ( processing_pol == 'co' ) :
 
-		#monthly_3D_tensor_scen = np.ndarray( shape=( 24 , domain_rows , domain_cols ) )
-		monthly_3D_tensor_scen = np.empty( shape=( 0 , domain_rows , domain_cols ) )
-		monthly_3D_tensor_base = np.empty( shape=( 0 , domain_rows , domain_cols ) )
+		#monthly_tensor_from_scen = np.ndarray( shape=( 24 , domain_rows , domain_cols ) )
+		monthly_tensor_from_scen = np.empty( shape=( 0 , domain_rows , domain_cols ) )
+		monthly_tensor_from_base = np.empty( shape=( 0 , domain_rows , domain_cols ) )
 
 	elif ( processing_pol == 'pm2.5' ) :
 
-		monthly_3D_tensor_scen = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
-		monthly_3D_tensor_base = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+		monthly_tensor_from_scen = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+		monthly_tensor_from_base = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 
 	else:
 		pass
-
-	# monthly_3D_tensor_scen = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
-	# monthly_3D_tensor_base = np.zeros( shape=( 31 , domain_rows , domain_cols ) )
-	# print(f'-> shape of zero array= {monthly_3D_tensor_scen.shape}')
 
 	## create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
 	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
@@ -165,8 +161,6 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 		if ( processing_method == 'single_plot' ) :
 
 			### create an empty tensor for each cell and day as container of daily 24-hr t-step concentrations 
-
-			#daily_3d_mesh_scen = np.ndarray ( shape=( 24 , domain_rows , domain_cols ) )
 			daily_3d_mesh_scen = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
 
 			#print(f'-> shape of daily tseries array={daily_3d_mesh_scen.shape }')
@@ -197,21 +191,14 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 						raise SystemExit()
 
 					### fill daily data-mesh with each cell data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
-
-					#print( f'-> add/pin each cell mean value to monthly_3D_tensor_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-					
+					#print( f'-> add/pin each cell mean value to monthly_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 					daily_3d_mesh_scen [:,row,col]  = cell_24hr_timeSeries_array
 
 					#print(f'--> shape of daily 24hr tseries is= {daily_3d_mesh_scen.shape}')
 
-			# ### after each day is extracted, add the daily frame to monthly frame
-			# if ( day_of_the_month == '01' ) :
-			# 	### replace the array for 1st day
-			# 	monthly_3D_tensor_scen = daily_3d_mesh_scen # because the montly mesh is not empy!
-
-			# else:
-			# 	# daily mesh is filled with 1st time step and now we concatenate the new mesh to previous one
-			monthly_3D_tensor_scen = np.concatenate( ( monthly_3D_tensor_scen , daily_3d_mesh_scen ) , axis=0 )
+			### after each day is extracted, add the daily frame to monthly frame
+			### now we concatenate the new mesh to previous one
+			monthly_tensor_from_scen = np.concatenate( ( monthly_tensor_from_scen , daily_3d_mesh_scen ) , axis=0 )
 
 
 		elif ( processing_method == 'diff_plot' ) :
@@ -240,16 +227,13 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 						daily_3d_mesh_base [:,row,col] = cell_24hr_timeSeries_array_base
 
 			### now we fill 2 meshes
-			print( f'-> add/pin each cell 24-hr t-series to monthly_3D_tensor_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+			print( f'-> add/pin each cell 24-hr t-series to monthly_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 
-			monthly_3D_tensor_scen = np.concatenate( ( monthly_3D_tensor_scen ,  daily_3d_mesh_scen ) , axis=0 )
-			#monthly_3D_tensor_scen [ day_of_the_month-1 ][ row ][ col ] = cell_24hr_timeSeries_array_scen
+			monthly_tensor_from_scen = np.concatenate( ( monthly_tensor_from_scen ,  daily_3d_mesh_scen ) , axis=0 )
 
-			print( f'-> add/pin each cell 24hr t-series to monthly_3D_tensor_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+			print( f'-> add/pin each cell 24hr t-series to monthly_tensor_from_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 			
-			monthly_3D_tensor_base = np.concatenate( ( monthly_3D_tensor_base ,  daily_3d_mesh_base ) , axis=0 )
-
-						#monthly_3D_tensor_base [ day_of_the_month-1 ][ row ][ col ] = cell_24hr_timeSeries_array_base
+			monthly_tensor_from_base = np.concatenate( ( monthly_tensor_from_base ,  daily_3d_mesh_base ) , axis=0 )
 
 					# elif ( processing_pol == 'pm25' ) :
 
@@ -258,8 +242,8 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 					# 	daily_cell_mean_base = function_daily_cell_mean_pm25( aconc_open_base , pmdiag_open_base , lay , row , col )
 
 					# 	# now we fill the 3D mesh with cell means
-					# 	monthly_3D_tensor_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
-					# 	monthly_3D_tensor_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
+					# 	monthly_tensor_from_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
+					# 	monthly_tensor_from_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
 
 
 
@@ -311,10 +295,10 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 	### return two 3D meshs
 	if ( processing_method == 'single_plot' ) :
 
-		return monthly_3D_tensor_scen
+		return monthly_tensor_from_scen
 
 	else:
-	 	return monthly_3D_tensor_scen , monthly_3D_tensor_base
+	 	return monthly_tensor_from_scen , monthly_tensor_from_base
 
 	# # this function retuns data-mesh-2D for plotting
 	# return monthly_mean_mesh_2d
@@ -691,10 +675,13 @@ mcip_date_tag = '161001'
 
 cmaq_pol = 'CO'  # for plot title
 pol_unit = '[ppmV]'
-max_conc_threshold = 0.3  # for Basemap plot
+max_conc_threshold = 0.2  # for Basemap plot
 
 processing_pol = 'co' 		# 'co' or 'pm2.5'
 processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
+timeseries_plotting = 'yes' # yes or not
+spatial_plotting = 'yes' # yes or no
+
 platform = 'Mac'  # 'Mac' or 'cluster'
 
 print(f'-> CMAQ year= {cmaq_file_year}')
@@ -739,9 +726,9 @@ NCOLS_zoom = 100000#250*1000 # meters
 ### input directory setting
 if ( platform == 'Mac' ) :
 
-	input_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
-	mcip_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_inputs/'
-	fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'
+	input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'
+	mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'
+	fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'
 
 elif ( platform == 'cluster' ) :
 
@@ -777,10 +764,10 @@ print('-> calculating monthly tensor ...')
 
 if ( processing_method == 'single_plot' ) :
 #monthly_mean_mesh_2d = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
-	monthly_3D_tensor_scen = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
+	monthly_tensor_from_scen = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
 
 else:
-	monthly_3D_tensor_scen , monthly_3D_tensor_base = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
+	monthly_tensor_from_scen , monthly_tensor_from_base = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
 
 ############################################################################################
 ### change 3D to 2D array
@@ -790,33 +777,33 @@ if ( processing_method == 'single_plot' ) :
 	### look at the 3D tensors for scenario
 	print('-----------------------------')
 	print('-> 3D data mesh info:')
-	print( f'-> LANDIS scenario 3D monthly tensor: number of dimensions= { monthly_3D_tensor_scen.ndim}' )
-	print( f'-> LANDIS scenario 3D monthly tensor: shape of data-mesh= { monthly_3D_tensor_scen.shape}' )
+	print( f'-> LANDIS scenario 3D monthly tensor: number of dimensions= { monthly_tensor_from_scen.ndim}' )
+	print( f'-> LANDIS scenario 3D monthly tensor: shape of data-mesh= { monthly_tensor_from_scen.shape}' )
 	print('-----------------------------')
 
 	### we pnly have one 3D tensor
 
 	print('-> change mesh 3D to 2D for single plot ...')
 
-	monthly_mean_mesh_2d = function_3Dto2D( domain_rows , domain_cols , monthly_3D_tensor_scen )
+	monthly_mean_mesh_2d = function_3Dto2D( domain_rows , domain_cols , monthly_tensor_from_scen )
 
 elif ( processing_method == 'diff_plot' ) :
 
 	### look at the 3D meshes
 	print('-----------------------------')
 	print('-> check 3D data mesh info:')
-	print( f'-> LANDIS scenario 3D monthly mean mesh: number of dimensions= {monthly_3D_tensor_scen.ndim}' )
-	print( f'-> LANDIS scenario 3D monthly mean mesh: shape of data-mesh= {monthly_3D_tensor_scen.shape}' )
-	print( f'-> baseline 3D monthly mesh: number of dimensions= {monthly_3D_tensor_base.ndim}' )
-	print( f'-> baseline 3D monthly mesh: shape of data-mesh= {monthly_3D_tensor_base.shape}' )
+	print( f'-> LANDIS scenario 3D monthly mean mesh: number of dimensions= {monthly_tensor_from_scen.ndim}' )
+	print( f'-> LANDIS scenario 3D monthly mean mesh: shape of data-mesh= {monthly_tensor_from_scen.shape}' )
+	print( f'-> baseline 3D monthly mesh: number of dimensions= {monthly_tensor_from_base.ndim}' )
+	print( f'-> baseline 3D monthly mesh: shape of data-mesh= {monthly_tensor_from_base.shape}' )
 	print('-----------------------------')
 
-	### we have 2 3D meshes
+	### we have 2 tensors
 	print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-LANDIS ...')
-	monthly_mean_2d_mesh_scen = function_3Dto2D( domain_rows , domain_cols , monthly_3D_tensor_scen )
+	monthly_mean_2d_mesh_scen = function_3Dto2D( domain_rows , domain_cols , monthly_tensor_from_scen )
 
 	print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-baseline ...')
-	monthly_mean_2d_mesh_base = function_3Dto2D( domain_rows , domain_cols , monthly_3D_tensor_base )
+	monthly_mean_2d_mesh_base = function_3Dto2D( domain_rows , domain_cols , monthly_tensor_from_base )
 
 	# now subtract 2 meshes to get the diff mesh
 	monthly_mean_mesh_2d = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
@@ -847,53 +834,67 @@ mcip_open.close()
 print(" ")
 
 ###################################################################################
-### plotting
+### time-series plotting
+###################################################################################
+if ( timeseries_plotting == 'yes') :
+
+	put_the time series plotting 
+	here
+
+
+
+
+###################################################################################
+### Spatial plotting
 ###################################################################################
 # use Basemap library and make spatial plots
-print('-> plotting the data...')
 
-### plot dots from grid coordinates of the dots
-#plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
+if ( spatial_plotting == 'yes'):
 
-# ### create a Basemap class/model instance for a specific projection
-# # basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
-# theMap = Basemap(projection='lcc' ,
-# 													 llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
-# 													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
-# 													 resolution='f' , area_thresh=0.5)
+	print('-> plotting the data...')
+
+	### plot dots from grid coordinates of the dots
+	#plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
+
+	# ### create a Basemap class/model instance for a specific projection
+	# # basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
+	# theMap = Basemap(projection='lcc' ,
+	# 													 llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
+	# 													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
+	# 													 resolution='f' , area_thresh=0.5)
 
 
-### create Basemap model instance from its class, it is a map that color mesh sits on it.
-theMap_zoomed = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+	### create Basemap model instance from its class, it is a map that color mesh sits on it.
+	theMap_zoomed = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
 
-theMap_zoomed.bluemarble()
-x_mesh, y_mesh = theMap_zoomed(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
-theMap_zoomed.drawmapboundary(color='k' ) #, fill_color='aqua')
-theMap_zoomed.drawcoastlines(color = '0.15')
-theMap_zoomed.drawcounties(linewidth=0.5 , color='k')
-theMap_zoomed.drawstates()
-#basemap_instance.fillcontinents(lake_color='aqua')
+	theMap_zoomed.bluemarble()
+	x_mesh, y_mesh = theMap_zoomed(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
+	theMap_zoomed.drawmapboundary(color='k' ) #, fill_color='aqua')
+	theMap_zoomed.drawcoastlines(color = '0.15')
+	theMap_zoomed.drawcounties(linewidth=0.5 , color='k')
+	theMap_zoomed.drawstates()
+	#basemap_instance.fillcontinents(lake_color='aqua')
 
-#my_levels = [ 0.02 , 0.05 ]
-#my_colors = ( 'g' , 'b' , 'r' )
-### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
-colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=max_conc_threshold ) #levels=my_levels , colors=my_colors
-#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
+	#my_levels = [ 0.02 , 0.05 ]
+	#my_colors = ( 'g' , 'b' , 'r' )
+	### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
+	colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=max_conc_threshold ) #levels=my_levels , colors=my_colors
+	#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
-### create colorbar
-colorbar = theMap_zoomed.colorbar( colorMesh , 'bottom' , label= f'{cmaq_pol} mean concentration {pol_unit}' )
-#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
-#colorbar = basemap_instance.colorbar(cs, location='bottom')
-#plt.subplot( figsize=(10,10) )
-if ( processing_method == 'single_plot' ) :
+	### create colorbar
+	colorbar = theMap_zoomed.colorbar( colorMesh , 'bottom' , label= f'{cmaq_pol} mean concentration {pol_unit}' )
+	#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
+	#colorbar = basemap_instance.colorbar(cs, location='bottom')
+	#plt.subplot( figsize=(10,10) )
+	if ( processing_method == 'single_plot' ) :
 
-	plt.title(f' {cmaq_pol} monthly mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=7 )
+		plt.title(f' {cmaq_pol} monthly mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=7 )
 
-elif ( processing_method == 'diff_plot' ) :
+	elif ( processing_method == 'diff_plot' ) :
 
-	plt.title(f' {cmaq_pol} monthly mean concentration difference between LANDIS scenario-{scenario} and baseline for {sim_month}, {cmaq_file_year} ' , fontsize=7 )
+		plt.title(f' {cmaq_pol} monthly mean concentration difference between LANDIS scenario-{scenario} and baseline for {sim_month}, {cmaq_file_year} ' , fontsize=7 )
 
-print(" ")
+	print(" ")
 
 ###################################################################################
 
