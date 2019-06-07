@@ -25,14 +25,14 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 	### define the monthly array mesh
 	if ( processing_pol == 'co' ) :
 
-		#monthly_tensor_from_scen = np.ndarray( shape=( 24 , domain_rows , domain_cols ) )
-		monthly_tensor_from_scen = np.empty( shape=( 0 , domain_rows , domain_cols ) )
-		monthly_tensor_from_base = np.empty( shape=( 0 , domain_rows , domain_cols ) )
+		#monthly_tseries_tensor_from_scen = np.ndarray( shape=( 24 , domain_rows , domain_cols ) )
+		monthly_tseries_tensor_from_scen = np.empty( shape=( 0 , domain_rows , domain_cols ) )
+		monthly_tseries_tensor_from_base = np.empty( shape=( 0 , domain_rows , domain_cols ) )
 
 	elif ( processing_pol == 'pm2.5' ) :
 
-		monthly_tensor_from_scen = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
-		monthly_tensor_from_base = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+		monthly_tseries_tensor_from_scen = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+		monthly_tseries_tensor_from_base = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 
 	else:
 		pass
@@ -191,14 +191,14 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 						raise SystemExit()
 
 					### fill daily data-mesh with each cell data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
-					#print( f'-> add/pin each cell mean value to monthly_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+					#print( f'-> add/pin each cell mean value to monthly_tseries_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 					daily_3d_mesh_scen [:,row,col]  = cell_24hr_timeSeries_array
 
 					#print(f'--> shape of daily 24hr tseries is= {daily_3d_mesh_scen.shape}')
 
 			### after each day is extracted, add the daily frame to monthly frame
 			### now we concatenate the new mesh to previous one
-			monthly_tensor_from_scen = np.concatenate( ( monthly_tensor_from_scen , daily_3d_mesh_scen ) , axis=0 )
+			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen , daily_3d_mesh_scen ) , axis=0 )
 
 
 		elif ( processing_method == 'diff_plot' ) :
@@ -227,13 +227,13 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 						daily_3d_mesh_base [:,row,col] = cell_24hr_timeSeries_array_base
 
 			### now we fill 2 meshes
-			print( f'-> add/pin each cell 24-hr t-series to monthly_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+			print( f'-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 
-			monthly_tensor_from_scen = np.concatenate( ( monthly_tensor_from_scen ,  daily_3d_mesh_scen ) , axis=0 )
+			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen ,  daily_3d_mesh_scen ) , axis=0 )
 
-			print( f'-> add/pin each cell 24hr t-series to monthly_tensor_from_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+			print( f'-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 			
-			monthly_tensor_from_base = np.concatenate( ( monthly_tensor_from_base ,  daily_3d_mesh_base ) , axis=0 )
+			monthly_tseries_tensor_from_base = np.concatenate( ( monthly_tseries_tensor_from_base ,  daily_3d_mesh_base ) , axis=0 )
 
 					# elif ( processing_pol == 'pm25' ) :
 
@@ -242,8 +242,8 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 					# 	daily_cell_mean_base = function_daily_cell_mean_pm25( aconc_open_base , pmdiag_open_base , lay , row , col )
 
 					# 	# now we fill the 3D mesh with cell means
-					# 	monthly_tensor_from_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
-					# 	monthly_tensor_from_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
+					# 	monthly_tseries_tensor_from_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
+					# 	monthly_tseries_tensor_from_base [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_base
 
 
 
@@ -295,10 +295,10 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 	### return two 3D meshs
 	if ( processing_method == 'single_plot' ) :
 
-		return monthly_tensor_from_scen
+		return monthly_tseries_tensor_from_scen
 
 	else:
-	 	return monthly_tensor_from_scen , monthly_tensor_from_base
+	 	return monthly_tseries_tensor_from_scen , monthly_tseries_tensor_from_base
 
 	# # this function retuns data-mesh-2D for plotting
 	# return monthly_mean_mesh_2d
@@ -677,10 +677,15 @@ cmaq_pol = 'CO'  # for plot title
 pol_unit = '[ppmV]'
 max_conc_threshold = 0.2  # for Basemap plot
 
+### spatial plot
 processing_pol = 'co' 		# 'co' or 'pm2.5'
 processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
+spatial_plotting = 'no' # yes or no
+
+### time-series plot
 timeseries_plotting = 'yes' # yes or not
-spatial_plotting = 'yes' # yes or no
+favorite_row = 150
+favorite_col = 200
 
 platform = 'Mac'  # 'Mac' or 'cluster'
 
@@ -728,13 +733,13 @@ if ( platform == 'Mac' ) :
 
 	input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'
 	mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'
-	fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'
+	fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'  # '/' at the end
 
 elif ( platform == 'cluster' ) :
 
 	input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/'
 	mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/'
-	fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'
+	fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'  # '/' at the end
 
 else:
 
@@ -764,10 +769,10 @@ print('-> calculating monthly tensor ...')
 
 if ( processing_method == 'single_plot' ) :
 #monthly_mean_mesh_2d = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
-	monthly_tensor_from_scen = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
+	monthly_tseries_tensor_from_scen = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
 
 else:
-	monthly_tensor_from_scen , monthly_tensor_from_base = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
+	monthly_tseries_tensor_from_scen , monthly_tseries_tensor_from_base = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
 
 ############################################################################################
 ### change 3D to 2D array
@@ -777,33 +782,33 @@ if ( processing_method == 'single_plot' ) :
 	### look at the 3D tensors for scenario
 	print('-----------------------------')
 	print('-> 3D data mesh info:')
-	print( f'-> LANDIS scenario 3D monthly tensor: number of dimensions= { monthly_tensor_from_scen.ndim}' )
-	print( f'-> LANDIS scenario 3D monthly tensor: shape of data-mesh= { monthly_tensor_from_scen.shape}' )
+	print( f'-> LANDIS scenario 3D monthly tensor: number of dimensions= { monthly_tseries_tensor_from_scen.ndim}' )
+	print( f'-> LANDIS scenario 3D monthly tensor: shape of data-mesh= { monthly_tseries_tensor_from_scen.shape}' )
 	print('-----------------------------')
 
 	### we pnly have one 3D tensor
 
 	print('-> change mesh 3D to 2D for single plot ...')
 
-	monthly_mean_mesh_2d = function_3Dto2D( domain_rows , domain_cols , monthly_tensor_from_scen )
+	monthly_mean_mesh_2d = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen )
 
 elif ( processing_method == 'diff_plot' ) :
 
 	### look at the 3D meshes
 	print('-----------------------------')
 	print('-> check 3D data mesh info:')
-	print( f'-> LANDIS scenario 3D monthly mean mesh: number of dimensions= {monthly_tensor_from_scen.ndim}' )
-	print( f'-> LANDIS scenario 3D monthly mean mesh: shape of data-mesh= {monthly_tensor_from_scen.shape}' )
-	print( f'-> baseline 3D monthly mesh: number of dimensions= {monthly_tensor_from_base.ndim}' )
-	print( f'-> baseline 3D monthly mesh: shape of data-mesh= {monthly_tensor_from_base.shape}' )
+	print( f'-> LANDIS scenario 3D monthly mean mesh: number of dimensions= {monthly_tseries_tensor_from_scen.ndim}' )
+	print( f'-> LANDIS scenario 3D monthly mean mesh: shape of data-mesh= {monthly_tseries_tensor_from_scen.shape}' )
+	print( f'-> baseline 3D monthly mesh: number of dimensions= {monthly_tseries_tensor_from_base.ndim}' )
+	print( f'-> baseline 3D monthly mesh: shape of data-mesh= {monthly_tseries_tensor_from_base.shape}' )
 	print('-----------------------------')
 
 	### we have 2 tensors
 	print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-LANDIS ...')
-	monthly_mean_2d_mesh_scen = function_3Dto2D( domain_rows , domain_cols , monthly_tensor_from_scen )
+	monthly_mean_2d_mesh_scen = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen )
 
 	print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-baseline ...')
-	monthly_mean_2d_mesh_base = function_3Dto2D( domain_rows , domain_cols , monthly_tensor_from_base )
+	monthly_mean_2d_mesh_base = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_base )
 
 	# now subtract 2 meshes to get the diff mesh
 	monthly_mean_mesh_2d = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
@@ -836,10 +841,37 @@ print(" ")
 ###################################################################################
 ### time-series plotting
 ###################################################################################
-if ( timeseries_plotting == 'yes') :
 
-	put_the time series plotting 
-	here
+print('-> time-series plotting ...')
+
+if ( timeseries_plotting == 'yes') :
+	if( processing_method == 'single_plot') :
+
+		row_ = favorite_row
+		col_ = favorite_col
+		conc_timeseries_list = monthly_tseries_tensor_from_scen [ : , row_ , col_ ]
+
+		x_ = [ *range(1, ((days_to_run_in_month*24)+1) , 1) ]  # x bar is no. of hours in aconc files
+		y_ = conc_timeseries_list#.tolist  # y-bar is hourly concentrations/timeseries
+
+		print(f'-> size of x_ = {len(x_)}')
+		print(f'-> x_ = {x_}' )
+		print(f'-> size of y_ = {len(y_)}')
+		print(f'-> y_ = {y_}' )
+
+		plt.plot( x_ , y_ )
+		#plt.show()
+
+
+		plot_name = cmaq_pol+'_timeseries'+'_scen_'+scenario+'_'+cmaq_file_year+'-'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'.png'
+		plot_dir = fig_dir
+		saved_plot = fig_dir+plot_name
+
+		plt.savefig( saved_plot )
+		plt.close()
+
+
+
 
 
 
@@ -851,7 +883,7 @@ if ( timeseries_plotting == 'yes') :
 
 if ( spatial_plotting == 'yes'):
 
-	print('-> plotting the data...')
+	print('-> spatial plotting ...')
 
 	### plot dots from grid coordinates of the dots
 	#plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
@@ -901,32 +933,32 @@ if ( spatial_plotting == 'yes'):
 ###################################################################################
 # save the plots
 
-### path for saving plots
-print('-> fig directory is:')
-print(fig_dir)
+	### path for saving plots
+	print('-> fig directory is:')
+	print(fig_dir)
 
-### plot name
-if ( processing_method == 'single_plot' ) :
+	### plot name
+	if ( processing_method == 'single_plot' ) :
 
-	fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+		fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
 
-elif ( processing_method == 'diff_plot' ) :
+	elif ( processing_method == 'diff_plot' ) :
 
-	fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_difference_from_baseline_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+		fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_difference_from_baseline_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
 
-else:
-	pass
+	else:
+		pass
 
-### plot full path
-out_fig = fig_dir + fig_name
-print('-> output figure is stored at:')
-print(out_fig)
-### export the figure
-plt.savefig( out_fig , dpi=1200 , format='png')
-### opens a window to show the results - after savefig
-#plt.show()
-### close the plot
-plt.close()
+	### plot full path
+	out_fig = fig_dir + fig_name
+	print('-> output figure is stored at:')
+	print(out_fig)
+	### export the figure
+	plt.savefig( out_fig , dpi=1200 , format='png')
+	### opens a window to show the results - after savefig
+	#plt.show()
+	### close the plot
+	plt.close()
 
 end = time.time()
 print( f'-> run time= { (( end - start ) / 60 ) :.2f} min' )  # f-string
