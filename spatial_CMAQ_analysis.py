@@ -26,8 +26,8 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 	if ( processing_pol == 'co' ) :
 
 		#monthly_tseries_tensor_from_scen = np.ndarray( shape=( 24 , domain_rows , domain_cols ) )
-		monthly_tseries_tensor_from_scen = np.empty( shape=( 0 , domain_rows , domain_cols ) )
-		monthly_tseries_tensor_from_base = np.empty( shape=( 0 , domain_rows , domain_cols ) )
+		monthly_tseries_tensor_from_scen = np.empty( shape=( 0 , domain_rows , domain_cols ) ) # use zero for concatenate method
+		monthly_tseries_tensor_from_base = np.empty( shape=( 0 , domain_rows , domain_cols ) ) # zero means there is no cell in z-dir
 
 	elif ( processing_pol == 'pm2.5' ) :
 
@@ -160,12 +160,13 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 
 		if ( processing_method == 'single_plot' ) :
 
-			### create an empty tensor for each cell and day as container of daily 24-hr t-step concentrations 
+			### create an empty tensor for each cell and day as container of daily 24-hr t-step concentrations
 			daily_3d_mesh_scen = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
+			daily_tensor_scen = np.empty ( shape= ( 1 , domain_rows , domain_cols ))  # when assignin gby index, z-dim should be 1.
 
 			#print(f'-> shape of daily tseries array={daily_3d_mesh_scen.shape }')
 			#print('-> traversing each cell and extract pollutants ...')
-			
+
 			### traverse each cell in the C-storing style for each day: row and then col
 			for row in range( 0 , domain_rows , 1 ) :
 
@@ -173,16 +174,19 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 
 					if ( processing_pol == 'co' ) :
 
-						print( f'-> extracting cell for single POL - single - at row= {row} and col={col} ... ' )
+						#print( f'-> extracting cell for single POL - singlePlot - at row= {row} and col={col} ... ' )
 
 						cell_24hr_timeSeries_array = function_cell_24hr_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 						#print(f'--> cell tseries is= {cell_24hr_timeSeries_array}')
+						daily_3d_mesh_scen [:,row,col]  = cell_24hr_timeSeries_array
 
 					elif ( processing_pol == 'pm2.5') :
 
 						print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
-						daily_cell_mean = function_daily_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						daily_cell_mean_for_pm25 = function_daily_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+
+						daily_tensor_scen [:,row,col] = daily_cell_mean_for_pm25 # fill tensor for all cells in domain
 
 					else:
 
@@ -192,18 +196,17 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 
 					### fill daily data-mesh with each cell data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
 					#print( f'-> add/pin each cell mean value to monthly_tseries_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-					daily_3d_mesh_scen [:,row,col]  = cell_24hr_timeSeries_array
 
 					#print(f'--> shape of daily 24hr tseries is= {daily_3d_mesh_scen.shape}')
 
 			### after each day is extracted, add the daily frame to monthly frame
-			### now we concatenate the new mesh to previous one
+			### now we concatenate the new mesh to monthly tensor
 			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen , daily_3d_mesh_scen ) , axis=0 )
-
+			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen , daily_tensor_scen) , axis=0 )
 
 		elif ( processing_method == 'diff_plot' ) :
 
-			### create an empty tensor for each cell and day as container of daily 24-hr t-step concentrations 
+			### create an empty tensor for each cell and day as container of daily 24-hr t-step concentrations
 			daily_3d_mesh_scen = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
 			daily_3d_mesh_base = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
 
@@ -217,7 +220,7 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 					if ( processing_pol == 'co' ) :
 
 						print( f'-> extracting cell for single POL - diff - at row= {row} and col={col} ... ' )
-						
+
 						# we calculate cell means for each scenario
 						cell_24hr_timeSeries_array_scen = function_cell_24hr_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 						cell_24hr_timeSeries_array_base = function_cell_24hr_timeSeries_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
@@ -232,7 +235,7 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen ,  daily_3d_mesh_scen ) , axis=0 )
 
 			print( f'-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
-			
+
 			monthly_tseries_tensor_from_base = np.concatenate( ( monthly_tseries_tensor_from_base ,  daily_3d_mesh_base ) , axis=0 )
 
 					# elif ( processing_pol == 'pm25' ) :
@@ -252,7 +255,7 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 					# 	pass
 		else:
 			print('-> ERROR: processing method NOT defined!')
-		
+
 		############################################################################################
 		### closing nc files for each day
 
@@ -290,7 +293,7 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 
 		else:
 			pass
-	
+
 	############################################################################################
 	### return two 3D meshs
 	if ( processing_method == 'single_plot' ) :
@@ -326,6 +329,7 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
 			cell_z_axis_mean = cell_z_axis.mean()
 			### asign the cell mean to 2D array
 			cell_monthly_mean_2d_mesh [ row ][ col ] = cell_z_axis_mean
+
 	print(" ")
 	print( f'-> shape of 2D array output of function: 3Dto2D= { cell_monthly_mean_2d_mesh.shape }' )
 	print(" ")
@@ -666,26 +670,27 @@ def function_daily_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col )
 start = time.time()
 
 ### run time settings
-cmaq_file_year = '2016'
 cmaq_file_month = '10'
 sim_month = 'oct'
-days_to_run_in_month = 2
-scenario = '4' # 1-5, baseline
+
+cmaq_file_year = '2016'
+days_to_run_in_month = 1
+scenario = '1' # 1-5, baseline
 mcip_date_tag = '161001'
 
-cmaq_pol = 'CO'  # for plot title
-pol_unit = '[ppmV]'
+cmaq_pol = 'PM2.5'  # for plot title 'CO' ro 'PM2.5'
+pol_unit = '[ug/m3]'	#'[ppmV]'
 max_conc_threshold = 0.2  # for Basemap plot
 
 ### spatial plot
-processing_pol = 'co' 		# 'co' or 'pm2.5'
+processing_pol = 'pm2.5' 		# 'co' or 'pm2.5'
 processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
 spatial_plotting = 'no' # yes or no
 
 ### time-series plot
 timeseries_plotting = 'yes' # yes or not
-favorite_row = 150
-favorite_col = 200
+favorite_row = 5
+favorite_col = 5
 
 platform = 'Mac'  # 'Mac' or 'cluster'
 
@@ -701,8 +706,8 @@ print(" ")
 
 ### domain settings
 lay = 0
-domain_cols = 250
-domain_rows = 265
+domain_cols = 10 #250
+domain_rows = 10 #265
 
 
 # ### Basemap plot setting
@@ -775,7 +780,7 @@ else:
 	monthly_tseries_tensor_from_scen , monthly_tseries_tensor_from_base = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
 
 ############################################################################################
-### change 3D to 2D array
+### change 3D to 2D array to make spatial plots
 
 if ( processing_method == 'single_plot' ) :
 
@@ -786,7 +791,7 @@ if ( processing_method == 'single_plot' ) :
 	print( f'-> LANDIS scenario 3D monthly tensor: shape of data-mesh= { monthly_tseries_tensor_from_scen.shape}' )
 	print('-----------------------------')
 
-	### we pnly have one 3D tensor
+	### we only have one 3D tensor
 
 	print('-> change mesh 3D to 2D for single plot ...')
 
@@ -852,7 +857,7 @@ if ( timeseries_plotting == 'yes') :
 		conc_timeseries_list = monthly_tseries_tensor_from_scen [ : , row_ , col_ ]
 
 		x_ = [ *range(1, ((days_to_run_in_month*24)+1) , 1) ]  # x bar is no. of hours in aconc files
-		y_ = conc_timeseries_list#.tolist  # y-bar is hourly concentrations/timeseries
+		y_ = conc_timeseries_list		#.tolist  # y-bar is hourly concentrations/timeseries
 
 		print(f'-> size of x_ = {len(x_)}')
 		print(f'-> x_ = {x_}' )
@@ -867,7 +872,7 @@ if ( timeseries_plotting == 'yes') :
 		plot_dir = fig_dir
 		saved_plot = fig_dir+plot_name
 
-		plt.savefig( saved_plot )
+		plt.savefig( saved_plot , dpi=1200 , format='png' )
 		plt.close()
 
 
