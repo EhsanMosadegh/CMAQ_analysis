@@ -495,7 +495,7 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 						print('-> exiting ...')
 						raise SystemExit()
 
-					### fill daily data-mesh with each cell data, based on the order: z, x, y == layer, row, col in mesh_3d_monthly array
+					### fill daily data-mesh with each cell data, based on the order: z, x, y == layer, row, col in mesh_3d array
 					#print( f'-> add/pin each cell mean value to monthly_tseries_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 
 					#print(f'--> shape of daily 24hr tseries is= {daily_3d_mesh_scen.shape}')
@@ -610,32 +610,32 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 ############################################################################################
 ### function to change 3D to 2D array
 
-def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
+def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
 	" returns monthly mean of each cell, changes 3D mesh of daily mean conc to a 2D mesh of monthly mean conc"
 
 	### define a 2d array
-	cell_monthly_mean_2d_mesh = np.ndarray( shape= ( domain_rows , domain_cols ) )
+	mesh_2d = np.ndarray( shape= ( domain_rows , domain_cols ) )
 
-	for row in range( 0 , mesh_3d_monthly.shape[1] , 1 ) :
+	for row in range( 0 , mesh_3d.shape[1] , 1 ) :
 
-		for col in range( 0 , mesh_3d_monthly.shape[2] , 1 ) :
+		for col in range( 0 , mesh_3d.shape[2] , 1 ) :
 
 			#print(f'-> processing mesh-3D-monthly mean @ row= {row} and col= {col} ')
 
-			cell_z_axis = mesh_3d_monthly [ : , row , col ]
+			cell_z_axis = mesh_3d [ : , row , col ]
 
 			#print(f'-> size of z-axis is= { cell_z_axis.shape } ')
 
 			### take average of each z-axis
 			cell_z_axis_mean = cell_z_axis.mean()
 			### asign the cell mean to 2D array
-			cell_monthly_mean_2d_mesh [ row ][ col ] = cell_z_axis_mean
+			mesh_2d [ row ][ col ] = cell_z_axis_mean
 
 	print(" ")
-	print( f'-> shape of 2D array output of function: 3Dto2D= { cell_monthly_mean_2d_mesh.shape }' )
+	print( f'-> shape of 2D array output of function: 3Dto2D= { mesh_2d.shape }' )
 	print(" ")
 	### function returns a 2D array to be used for plotting
-	return cell_monthly_mean_2d_mesh
+	return mesh_2d
 
 ############################################################################################
 ### function to
@@ -669,12 +669,14 @@ def function_daily_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col )
 	# extract PM2.5 species from input files
 	print('-> extracting several species from CMAQ files for pm2.5 ...')
 	# species from aconc [1]
-	AH3OPI = aconc_open.variables['AH3OPI'][:,lay,row,col]
-	print(f'type of AH3= { type(AH3OPI) }')
-	AH3OPI = np.array(AH3OPI).mean()
+	AH3OPI = np.array( aconc_open.variables['AH3OPI'][:,lay,row,col] )
+	print( f'-> shape of AORGCJ= {AH3OPI.shape()}')
 
-	# print(f'-> AH3OPI: {AH3OPI}')
-	# print(f'-> AH3OPI mean= {AH3OPI_mean}')
+	print(f'type of AH3= { type(AH3OPI) }')
+	AH3OPI_mean = np.array(AH3OPI).mean()
+
+	print(f'-> AH3OPI: {AH3OPI}')
+	print(f'-> AH3OPI mean= {AH3OPI_mean}')
 
 	AH3OPJ = aconc_open.variables['AH3OPJ'][:,lay,row,col]
 	AH3OPJ = np.array(AH3OPJ).mean()
@@ -970,6 +972,6 @@ def function_daily_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col )
 ##############################################################################################
 # start running main()
 
-if __name__ == '__main__' :  # __name__ is special variable by python interpreter
+if __name__ == '__main__' :  # __name__ is special variable by python interpreter; order of func is not importent anymore
 
 	main()
