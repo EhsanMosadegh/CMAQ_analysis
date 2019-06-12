@@ -485,7 +485,7 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 
 						print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
-						daily_cell_mean_for_pm25 = function_daily_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						daily_cell_mean_for_pm25 = function_daily_cell_pm25_tseries( aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
 						daily_tensor_scen [:,row,col] = daily_cell_mean_for_pm25 # fill tensor for all cells in domain
 
@@ -542,8 +542,8 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 					# elif ( processing_pol == 'pm25' ) :
 
 					# 	# we calculate cell means
-					# 	daily_cell_mean_scen = function_daily_cell_mean_pm25( aconc_open_scen , pmdiag_open_scen , lay , row , col )
-					# 	daily_cell_mean_base = function_daily_cell_mean_pm25( aconc_open_base , pmdiag_open_base , lay , row , col )
+					# 	daily_cell_mean_scen = function_daily_cell_pm25_tseries( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+					# 	daily_cell_mean_base = function_daily_cell_pm25_tseries( aconc_open_base , pmdiag_open_base , lay , row , col )
 
 					# 	# now we fill the 3D mesh with cell means
 					# 	monthly_tseries_tensor_from_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
@@ -660,7 +660,7 @@ def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row 
 ############################################################################################
 ### function to
 
-def function_daily_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
+def function_daily_cell_pm25_tseries ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
 	" returns daily mean of pm2.5 for each cell"
 
 	print( f'-> processing row= {row} and col= {col}' )
