@@ -13,9 +13,310 @@ from osgeo import gdal
 import time
 
 ###################################################################################
+# run time setting
+
+### get the starting time
+start = time.time()
+
+### run time settings
+cmaq_file_month = '10'
+sim_month = 'oct'
+
+cmaq_file_year = '2016'
+days_to_run_in_month = 1
+scenario = '1' # 1-5, baseline
+mcip_date_tag = '161001'
+
+cmaq_pol = 'PM2.5'  # for plot title 'CO' ro 'PM2.5'
+pol_unit = '[ug/m3]'	#'[ppmV]'
+max_conc_threshold = 0.2  # for Basemap plot
+
+### spatial plot
+processing_pol = 'pm2.5' 		# 'co' or 'pm2.5'
+processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
+spatial_plotting = 'no' # yes or no
+
+### time-series plot
+timeseries_plotting = 'yes' # yes or not
+favorite_row = 5
+favorite_col = 5
+
+platform = 'Mac'  # 'Mac' or 'cluster'
+
+print(f'-> CMAQ year= {cmaq_file_year}')
+print(f'-> CMAQ month of analysis= {cmaq_file_month}')
+print(f'-> LANDIS scenarios= {scenario}')
+print(f'-> processing pollutant= {processing_pol}')
+print(f'-> processing method= {processing_method}')
+print(f'-> number of days to run= {days_to_run_in_month}')
+print(f'-> platform is= {platform}')
+print(" ")
+
+
+### domain settings
+lay = 0
+domain_cols = 250
+domain_rows = 265
+
+
+# ### Basemap plot setting
+# # center of domain
+# xcent =-120.806 # degrees
+# ycent =40.000 # degrees
+# # domain size
+# NROWS = 265*1000 # meters
+# NCOLS = 250*1000 # meters
+# # lower-left corner
+# llcornerx=-117500 # meters
+# llcornery=-265500 # meters
+# # upper-right corner
+# urcornerx=132500 # meters
+# urcornery=-500 # meters
+
+### Basemap plot setting to zoom
+### center of domain
+xcent_zoom =-120.0324 # degrees
+ycent_zoom =39.09 # degrees
+### domain size
+NROWS_zoom = 100000#265*1000 # meters
+NCOLS_zoom = 100000#250*1000 # meters
 
 ###################################################################################
-# define functions that calculate concentrations of pollutants
+# main
+###################################################################################
+
+def main() :
+
+	### input directory setting
+	if ( platform == 'Mac' ) :
+
+		input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'
+		mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'
+		fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'  # '/' at the end
+
+	elif ( platform == 'cluster' ) :
+
+		input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/'
+		mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/'
+		fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'  # '/' at the end
+
+	else:
+
+		print( '-> ERROR: specify running platform ' )
+		print('-> exiting ...')
+		raise SystemExit()
+
+	### set input pathes
+	input_path_scen = input_dir + 'scen_' + scenario + '/' + sim_month + '/'
+	input_path_base = input_dir + 'scen_baseline' + '/' + sim_month + '/'
+
+	print('-> CMAQ input directory is:')
+	print(input_path_scen)
+	print(input_path_base)
+
+	print('-> MCIP input directory is:')
+	print(mcip_dir)
+	print(" ")
+
+	###################################################################################
+	# processing CMAQ files
+	###################################################################################
+
+	### extract necessary data from CMAQ for each mesh and calculate data_mesh_3d
+	print('-> calculating monthly tensor ...')
+
+	if ( processing_method == 'single_plot' ) :
+	#monthly_mean_mesh_2d = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
+		monthly_tseries_tensor_from_scen = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
+
+	else:
+		monthly_tseries_tensor_from_scen , monthly_tseries_tensor_from_base = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
+
+	############################################################################################
+	### change 3D to 2D array to make spatial plots
+
+	if ( processing_method == 'single_plot' ) :
+
+		### look at the 3D tensors for scenario
+		print('-----------------------------')
+		print('-> 3D data mesh info:')
+		print( f'-> LANDIS scenario 3D monthly tensor: number of dimensions= { monthly_tseries_tensor_from_scen.ndim}' )
+		print( f'-> LANDIS scenario 3D monthly tensor: shape of data-mesh= { monthly_tseries_tensor_from_scen.shape}' )
+		print('-----------------------------')
+
+		### we only have one 3D tensor
+
+		print('-> change mesh 3D to 2D for single plot ...')
+
+		monthly_mean_mesh_2d = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen )
+
+	elif ( processing_method == 'diff_plot' ) :
+
+		### look at the 3D meshes
+		print('-----------------------------')
+		print('-> check 3D data mesh info:')
+		print( f'-> LANDIS scenario 3D monthly mean mesh: number of dimensions= {monthly_tseries_tensor_from_scen.ndim}' )
+		print( f'-> LANDIS scenario 3D monthly mean mesh: shape of data-mesh= {monthly_tseries_tensor_from_scen.shape}' )
+		print( f'-> baseline 3D monthly mesh: number of dimensions= {monthly_tseries_tensor_from_base.ndim}' )
+		print( f'-> baseline 3D monthly mesh: shape of data-mesh= {monthly_tseries_tensor_from_base.shape}' )
+		print('-----------------------------')
+
+		### we have 2 tensors
+		print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-LANDIS ...')
+		monthly_mean_2d_mesh_scen = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen )
+
+		print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-baseline ...')
+		monthly_mean_2d_mesh_base = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_base )
+
+		# now subtract 2 meshes to get the diff mesh
+		monthly_mean_mesh_2d = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
+
+	else:
+		print('-> ERROR: ')
+		print('-> exiting ...')
+		raise SystemExit()
+
+	###################################################################################
+	### open MCIP file to get lon-lat of domain
+
+	print('-> opening MCIP file...')
+	mcip_file = 'GRIDDOT2D_'+mcip_date_tag
+	mcip_in = mcip_dir + mcip_file
+	mcip_open = Dataset( mcip_in )
+
+	### get some info
+	print('-> MCIP file info:')
+	print('-> MCIP file dimensions: %s' %str( mcip_open.variables['LATD'].dimensions ) )
+	print('-> shape of each dimension: %s' %( str(mcip_open.variables['LATD'].shape ) ))
+
+	### extract lat and lon parameteres
+	lat_mesh = np.array( mcip_open.variables['LATD'][ 0 , 0 , : , : ] ) # select only rosws and cols for the 1st timestep and layer = [ tstep=0 , lay=0]
+	lon_mesh = np.array( mcip_open.variables['LOND'][ 0 , 0 , : , : ] )
+	print('-> closing MCIP file...')
+	mcip_open.close()
+	print(" ")
+
+	###################################################################################
+	### time-series plotting
+	###################################################################################
+
+	print('-> time-series plotting ...')
+
+	if ( timeseries_plotting == 'yes') :
+		if( processing_method == 'single_plot') :
+
+			row_ = favorite_row
+			col_ = favorite_col
+			conc_timeseries_list = monthly_tseries_tensor_from_scen [ : , row_ , col_ ]
+
+			x_ = [ *range(1, ((days_to_run_in_month*24)+1) , 1) ]  # x bar is no. of hours in aconc files
+			y_ = conc_timeseries_list		#.tolist  # y-bar is hourly concentrations/timeseries
+
+			print(f'-> size of x_ = {len(x_)}')
+			print(f'-> x_ = {x_}' )
+			print(f'-> size of y_ = {len(y_)}')
+			print(f'-> y_ = {y_}' )
+
+			plt.plot( x_ , y_ )
+			#plt.show()
+
+
+			plot_name = cmaq_pol+'_timeseries'+'_scen_'+scenario+'_'+cmaq_file_year+'-'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'.png'
+			plot_dir = fig_dir
+			saved_plot = fig_dir+plot_name
+
+			plt.savefig( saved_plot , dpi=1200 , format='png' )
+			plt.close()
+
+
+	###################################################################################
+	### Spatial plotting
+	###################################################################################
+	# use Basemap library and make spatial plots
+
+	if ( spatial_plotting == 'yes'):
+
+		print('-> spatial plotting ...')
+
+		### plot dots from grid coordinates of the dots
+		#plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
+
+		# ### create a Basemap class/model instance for a specific projection
+		# # basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
+		# theMap = Basemap(projection='lcc' ,
+		# 													 llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
+		# 													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
+		# 													 resolution='f' , area_thresh=0.5)
+
+
+		### create Basemap model instance from its class, it is a map that color mesh sits on it.
+		theMap_zoomed = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+
+		theMap_zoomed.bluemarble()
+		x_mesh, y_mesh = theMap_zoomed(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
+		theMap_zoomed.drawmapboundary(color='k' ) #, fill_color='aqua')
+		theMap_zoomed.drawcoastlines(color = '0.15')
+		theMap_zoomed.drawcounties(linewidth=0.5 , color='k')
+		theMap_zoomed.drawstates()
+		#basemap_instance.fillcontinents(lake_color='aqua')
+
+		#my_levels = [ 0.02 , 0.05 ]
+		#my_colors = ( 'g' , 'b' , 'r' )
+		### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
+		colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=max_conc_threshold ) #levels=my_levels , colors=my_colors
+		#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
+
+		### create colorbar
+		colorbar = theMap_zoomed.colorbar( colorMesh , 'bottom' , label= f'{cmaq_pol} mean concentration {pol_unit}' )
+		#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
+		#colorbar = basemap_instance.colorbar(cs, location='bottom')
+		#plt.subplot( figsize=(10,10) )
+		if ( processing_method == 'single_plot' ) :
+
+			plt.title(f' {cmaq_pol} monthly mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=7 )
+
+		elif ( processing_method == 'diff_plot' ) :
+
+			plt.title(f' {cmaq_pol} monthly mean concentration difference between LANDIS scenario-{scenario} and baseline for {sim_month}, {cmaq_file_year} ' , fontsize=7 )
+
+		print(" ")
+
+	###################################################################################
+	# save the plots
+	###################################################################################
+
+		### path for saving plots
+		print('-> fig directory is:')
+		print(fig_dir)
+
+		### plot name
+		if ( processing_method == 'single_plot' ) :
+
+			fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+
+		elif ( processing_method == 'diff_plot' ) :
+
+			fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_difference_from_baseline_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+
+		else:
+			pass
+
+		### plot full path
+		out_fig = fig_dir + fig_name
+		print('-> output figure is stored at:')
+		print(out_fig)
+		### export the figure
+		plt.savefig( out_fig , dpi=1200 , format='png')
+		### opens a window to show the results - after savefig
+		#plt.show()
+		### close the plot
+		plt.close()
+
+	end = time.time()
+	print( f'-> run time= { (( end - start ) / 60 ) :.2f} min' )  # f-string
+
+###################################################################################
+# function to make tensor
 
 def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base ) :
 	" processes the files and days and returns two 3D meshes"
@@ -337,7 +638,7 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d_monthly  ) :
 	return cell_monthly_mean_2d_mesh
 
 ############################################################################################
-### function
+### function to
 
 def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
 	" returns 24-hr time series of singlePOL"
@@ -357,7 +658,7 @@ def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row 
 	return cell_24hr_series_array
 
 ############################################################################################
-### function
+### function to
 
 def function_daily_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
 	" returns daily mean of pm2.5 for each cell"
@@ -369,7 +670,11 @@ def function_daily_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col )
 	print('-> extracting several species from CMAQ files for pm2.5 ...')
 	# species from aconc [1]
 	AH3OPI = aconc_open.variables['AH3OPI'][:,lay,row,col]
+	print(f'type of AH3= { type(AH3OPI) }')
 	AH3OPI = np.array(AH3OPI).mean()
+
+	# print(f'-> AH3OPI: {AH3OPI}')
+	# print(f'-> AH3OPI mean= {AH3OPI_mean}')
 
 	AH3OPJ = aconc_open.variables['AH3OPJ'][:,lay,row,col]
 	AH3OPJ = np.array(AH3OPJ).mean()
@@ -662,310 +967,9 @@ def function_daily_cell_mean_pm25 ( aconc_open , pmdiag_open , lay , row , col )
 	# function returns the mean of pm2.5 for each cell
 	return cell_pm25_daily_mean
 
-###################################################################################
-### run time setting
-###################################################################################
+##############################################################################################
+# start running main()
 
-### get the starting time
-start = time.time()
+if __name__ == '__main__' :  # __name__ is special variable by python interpreter
 
-### run time settings
-cmaq_file_month = '10'
-sim_month = 'oct'
-
-cmaq_file_year = '2016'
-days_to_run_in_month = 1
-scenario = '1' # 1-5, baseline
-mcip_date_tag = '161001'
-
-cmaq_pol = 'PM2.5'  # for plot title 'CO' ro 'PM2.5'
-pol_unit = '[ug/m3]'	#'[ppmV]'
-max_conc_threshold = 0.2  # for Basemap plot
-
-### spatial plot
-processing_pol = 'pm2.5' 		# 'co' or 'pm2.5'
-processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
-spatial_plotting = 'no' # yes or no
-
-### time-series plot
-timeseries_plotting = 'yes' # yes or not
-favorite_row = 5
-favorite_col = 5
-
-platform = 'Mac'  # 'Mac' or 'cluster'
-
-print(f'-> CMAQ year= {cmaq_file_year}')
-print(f'-> CMAQ month of analysis= {cmaq_file_month}')
-print(f'-> LANDIS scenarios= {scenario}')
-print(f'-> processing pollutant= {processing_pol}')
-print(f'-> processing method= {processing_method}')
-print(f'-> number of days to run= {days_to_run_in_month}')
-print(f'-> platform is= {platform}')
-print(" ")
-
-
-### domain settings
-lay = 0
-domain_cols = 10 #250
-domain_rows = 10 #265
-
-
-# ### Basemap plot setting
-# # center of domain
-# xcent =-120.806 # degrees
-# ycent =40.000 # degrees
-# # domain size
-# NROWS = 265*1000 # meters
-# NCOLS = 250*1000 # meters
-# # lower-left corner
-# llcornerx=-117500 # meters
-# llcornery=-265500 # meters
-# # upper-right corner
-# urcornerx=132500 # meters
-# urcornery=-500 # meters
-
-### Basemap plot setting to zoom
-### center of domain
-xcent_zoom =-120.0324 # degrees
-ycent_zoom =39.09 # degrees
-### domain size
-NROWS_zoom = 100000#265*1000 # meters
-NCOLS_zoom = 100000#250*1000 # meters
-
-
-### input directory setting
-if ( platform == 'Mac' ) :
-
-	input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'
-	mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'
-	fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'  # '/' at the end
-
-elif ( platform == 'cluster' ) :
-
-	input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/'
-	mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/'
-	fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'  # '/' at the end
-
-else:
-
-	print( '-> ERROR: specify running platform ' )
-	print('-> exiting ...')
-	raise SystemExit()
-
-### set input pathes
-input_path_scen = input_dir + 'scen_' + scenario + '/' + sim_month + '/'
-input_path_base = input_dir + 'scen_baseline' + '/' + sim_month + '/'
-
-print('-> CMAQ input directory is:')
-print(input_path_scen)
-print(input_path_base)
-
-print('-> MCIP input directory is:')
-print(mcip_dir)
-print(" ")
-
-###################################################################################
-### main
-###################################################################################
-# processing CMAQ files
-
-### extract necessary data from CMAQ for each mesh and calculate data_mesh_3d
-print('-> calculating monthly tensor ...')
-
-if ( processing_method == 'single_plot' ) :
-#monthly_mean_mesh_2d = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
-	monthly_tseries_tensor_from_scen = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
-
-else:
-	monthly_tseries_tensor_from_scen , monthly_tseries_tensor_from_base = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
-
-############################################################################################
-### change 3D to 2D array to make spatial plots
-
-if ( processing_method == 'single_plot' ) :
-
-	### look at the 3D tensors for scenario
-	print('-----------------------------')
-	print('-> 3D data mesh info:')
-	print( f'-> LANDIS scenario 3D monthly tensor: number of dimensions= { monthly_tseries_tensor_from_scen.ndim}' )
-	print( f'-> LANDIS scenario 3D monthly tensor: shape of data-mesh= { monthly_tseries_tensor_from_scen.shape}' )
-	print('-----------------------------')
-
-	### we only have one 3D tensor
-
-	print('-> change mesh 3D to 2D for single plot ...')
-
-	monthly_mean_mesh_2d = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen )
-
-elif ( processing_method == 'diff_plot' ) :
-
-	### look at the 3D meshes
-	print('-----------------------------')
-	print('-> check 3D data mesh info:')
-	print( f'-> LANDIS scenario 3D monthly mean mesh: number of dimensions= {monthly_tseries_tensor_from_scen.ndim}' )
-	print( f'-> LANDIS scenario 3D monthly mean mesh: shape of data-mesh= {monthly_tseries_tensor_from_scen.shape}' )
-	print( f'-> baseline 3D monthly mesh: number of dimensions= {monthly_tseries_tensor_from_base.ndim}' )
-	print( f'-> baseline 3D monthly mesh: shape of data-mesh= {monthly_tseries_tensor_from_base.shape}' )
-	print('-----------------------------')
-
-	### we have 2 tensors
-	print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-LANDIS ...')
-	monthly_mean_2d_mesh_scen = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen )
-
-	print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-baseline ...')
-	monthly_mean_2d_mesh_base = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_base )
-
-	# now subtract 2 meshes to get the diff mesh
-	monthly_mean_mesh_2d = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
-
-else:
-	print('-> ERROR: ')
-	print('-> exiting ...')
-	raise SystemExit()
-
-###################################################################################
-### open MCIP file to get lon-lat of domain
-
-print('-> opening MCIP file...')
-mcip_file = 'GRIDDOT2D_'+mcip_date_tag
-mcip_in = mcip_dir + mcip_file
-mcip_open = Dataset( mcip_in )
-
-### get some info
-print('-> MCIP file info:')
-print('-> MCIP file dimensions: %s' %str( mcip_open.variables['LATD'].dimensions ) )
-print('-> shape of each dimension: %s' %( str(mcip_open.variables['LATD'].shape ) ))
-
-### extract lat and lon parameteres
-lat_mesh = np.array( mcip_open.variables['LATD'][ 0 , 0 , : , : ] ) # select only rosws and cols for the 1st timestep and layer = [ tstep=0 , lay=0]
-lon_mesh = np.array( mcip_open.variables['LOND'][ 0 , 0 , : , : ] )
-print('-> closing MCIP file...')
-mcip_open.close()
-print(" ")
-
-###################################################################################
-### time-series plotting
-###################################################################################
-
-print('-> time-series plotting ...')
-
-if ( timeseries_plotting == 'yes') :
-	if( processing_method == 'single_plot') :
-
-		row_ = favorite_row
-		col_ = favorite_col
-		conc_timeseries_list = monthly_tseries_tensor_from_scen [ : , row_ , col_ ]
-
-		x_ = [ *range(1, ((days_to_run_in_month*24)+1) , 1) ]  # x bar is no. of hours in aconc files
-		y_ = conc_timeseries_list		#.tolist  # y-bar is hourly concentrations/timeseries
-
-		print(f'-> size of x_ = {len(x_)}')
-		print(f'-> x_ = {x_}' )
-		print(f'-> size of y_ = {len(y_)}')
-		print(f'-> y_ = {y_}' )
-
-		plt.plot( x_ , y_ )
-		#plt.show()
-
-
-		plot_name = cmaq_pol+'_timeseries'+'_scen_'+scenario+'_'+cmaq_file_year+'-'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'.png'
-		plot_dir = fig_dir
-		saved_plot = fig_dir+plot_name
-
-		plt.savefig( saved_plot , dpi=1200 , format='png' )
-		plt.close()
-
-
-
-
-
-
-
-###################################################################################
-### Spatial plotting
-###################################################################################
-# use Basemap library and make spatial plots
-
-if ( spatial_plotting == 'yes'):
-
-	print('-> spatial plotting ...')
-
-	### plot dots from grid coordinates of the dots
-	#plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
-
-	# ### create a Basemap class/model instance for a specific projection
-	# # basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
-	# theMap = Basemap(projection='lcc' ,
-	# 													 llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
-	# 													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
-	# 													 resolution='f' , area_thresh=0.5)
-
-
-	### create Basemap model instance from its class, it is a map that color mesh sits on it.
-	theMap_zoomed = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
-
-	theMap_zoomed.bluemarble()
-	x_mesh, y_mesh = theMap_zoomed(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
-	theMap_zoomed.drawmapboundary(color='k' ) #, fill_color='aqua')
-	theMap_zoomed.drawcoastlines(color = '0.15')
-	theMap_zoomed.drawcounties(linewidth=0.5 , color='k')
-	theMap_zoomed.drawstates()
-	#basemap_instance.fillcontinents(lake_color='aqua')
-
-	#my_levels = [ 0.02 , 0.05 ]
-	#my_colors = ( 'g' , 'b' , 'r' )
-	### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
-	colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=max_conc_threshold ) #levels=my_levels , colors=my_colors
-	#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
-
-	### create colorbar
-	colorbar = theMap_zoomed.colorbar( colorMesh , 'bottom' , label= f'{cmaq_pol} mean concentration {pol_unit}' )
-	#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
-	#colorbar = basemap_instance.colorbar(cs, location='bottom')
-	#plt.subplot( figsize=(10,10) )
-	if ( processing_method == 'single_plot' ) :
-
-		plt.title(f' {cmaq_pol} monthly mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=7 )
-
-	elif ( processing_method == 'diff_plot' ) :
-
-		plt.title(f' {cmaq_pol} monthly mean concentration difference between LANDIS scenario-{scenario} and baseline for {sim_month}, {cmaq_file_year} ' , fontsize=7 )
-
-	print(" ")
-
-###################################################################################
-
-###################################################################################
-# save the plots
-
-	### path for saving plots
-	print('-> fig directory is:')
-	print(fig_dir)
-
-	### plot name
-	if ( processing_method == 'single_plot' ) :
-
-		fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
-
-	elif ( processing_method == 'diff_plot' ) :
-
-		fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_difference_from_baseline_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
-
-	else:
-		pass
-
-	### plot full path
-	out_fig = fig_dir + fig_name
-	print('-> output figure is stored at:')
-	print(out_fig)
-	### export the figure
-	plt.savefig( out_fig , dpi=1200 , format='png')
-	### opens a window to show the results - after savefig
-	#plt.show()
-	### close the plot
-	plt.close()
-
-end = time.time()
-print( f'-> run time= { (( end - start ) / 60 ) :.2f} min' )  # f-string
-
-###################################################################################
+	main()
