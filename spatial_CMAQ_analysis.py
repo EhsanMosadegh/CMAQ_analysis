@@ -90,9 +90,13 @@ def main() :
 	### input directory setting
 	if ( platform == 'Mac' ) :
 
-		input_dir = '/Volumes/USFSdata/no_Oct/'   # '/' at the end
-		mcip_dir = '/Volumes/USFSdata/no_Oct/'   # '/' at the end
-		fig_dir = '/Volumes/USFSdata/no_Oct/cmaq_figs/'  # '/' at the end
+		# input_dir = '/Volumes/USFSdata/no_Oct/'   # '/' at the end
+		# mcip_dir = '/Volumes/USFSdata/no_Oct/'   # '/' at the end
+		# fig_dir = '/Volumes/USFSdata/no_Oct/cmaq_figs/'  # '/' at the end
+
+		input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
+		mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
+		fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'  # '/' at the end
 
 	elif ( platform == 'cluster' ) :
 
@@ -332,9 +336,18 @@ def main() :
 						cell_24hr_timeSeries_array_scen = function_cell_24hr_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 						cell_24hr_timeSeries_array_base = function_cell_24hr_timeSeries_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
 
-						### fill daily tensors cells with 24-hr time-series
-						daily_tensor_scen [: , row , col] = cell_24hr_timeSeries_array_scen
-						daily_tensor_base [: , row , col] = cell_24hr_timeSeries_array_base
+					elif ( processing_pol == 'pm2.5' ) :
+
+						# we calculate cell means
+						cell_24hr_timeSeries_array_scen = function_pm25_daily_cell_tseries( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						cell_24hr_timeSeries_array_base = function_pm25_daily_cell_tseries( aconc_open_base , pmdiag_open_base , lay , row , col )
+
+					### fill daily tensors cells with 24-hr time-series
+					daily_tensor_scen [: , row , col] = cell_24hr_timeSeries_array_scen
+					daily_tensor_base [: , row , col] = cell_24hr_timeSeries_array_base
+
+					else:
+						pass
 
 			### now we add/concatenate each daily tensor to monthly tensor
 			#print( f'-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
@@ -345,21 +358,6 @@ def main() :
 
 			monthly_tseries_tensor_from_base = np.concatenate( ( monthly_tseries_tensor_from_base ,  daily_tensor_base ) , axis=0 )
 
-					elif ( processing_pol == 'pm25' ) :
-
-						# we calculate cell means
-						cell_24hr_timeSeries_array_scen = function_pm25_daily_cell_tseries( aconc_open_scen , pmdiag_open_scen , lay , row , col )
-						cell_24hr_timeSeries_array_base = function_pm25_daily_cell_tseries( aconc_open_base , pmdiag_open_base , lay , row , col )
-
-						# now we fill the 3D mesh with each cell time-series
-						monthly_tseries_tensor_from_scen [ : , row , col ] = cell_24hr_timeSeries_array_scen
-						monthly_tseries_tensor_from_base [ : , row , col ] = cell_24hr_timeSeries_array_base
-
-
-
-
-					# else:
-					# 	pass
 		else:
 			print('-> ERROR: processing method NOT defined!')
 
@@ -400,38 +398,6 @@ def main() :
 
 		else:
 			pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	# ###################################################################################
-	# # processing CMAQ files
-	# ###################################################################################
-
-	# ### extract necessary data from CMAQ for each mesh and calculate data_mesh_3d
-	# print('-> calculating monthly tensor ...')
-
-	# if ( processing_method == 'single_plot' ) :
-	# #monthly_mean_mesh_2d = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
-	# 	monthly_tseries_tensor_from_scen = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
-
-	# else:
-	# 	monthly_tseries_tensor_from_scen , monthly_tseries_tensor_from_base = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
 
 	############################################################################################
 	### change 3D to 2D array to make spatial plots
