@@ -14,7 +14,7 @@ import time
 
 ###################################################################################
 # run time setting
-
+###################################################################################
 ### get the starting time
 start = time.time()
 
@@ -120,7 +120,6 @@ def main() :
 
 	###################################################################################
 	# processing CMAQ files
-	###################################################################################
 
 	### extract necessary data from CMAQ for each mesh and calculate data_mesh_3d
 	print('-> calculating monthly tensor ...')
@@ -133,7 +132,7 @@ def main() :
 		monthly_tseries_tensor_from_scen , monthly_tseries_tensor_from_base = function_3D_mesh_maker( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base )
 
 	############################################################################################
-	### change 3D to 2D array to make spatial plots
+	# change 3D to 2D array to make spatial plots
 
 	if ( processing_method == 'single_plot' ) :
 
@@ -198,7 +197,6 @@ def main() :
 
 	###################################################################################
 	### time-series plotting
-	###################################################################################
 
 	print('-> time-series plotting ...')
 
@@ -231,7 +229,7 @@ def main() :
 
 	###################################################################################
 	### Spatial plotting
-	###################################################################################
+
 	# use Basemap library and make spatial plots
 
 	if ( spatial_plotting == 'yes'):
@@ -323,20 +321,20 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 
 	print('-> month of analysis is=' , cmaq_file_month)
 
-	### define the monthly array mesh
-	if ( processing_pol == 'co' ) :
+	# ### define the monthly array mesh
+	# if ( processing_pol == 'co' ) :
 
-		#monthly_tseries_tensor_from_scen = np.ndarray( shape=( 24 , domain_rows , domain_cols ) )
-		monthly_tseries_tensor_from_scen = np.empty( shape=( 0 , domain_rows , domain_cols ) ) # use zero for concatenate method
-		monthly_tseries_tensor_from_base = np.empty( shape=( 0 , domain_rows , domain_cols ) ) # zero means there is no cell in z-dir
+	#monthly_tseries_tensor_from_scen = np.ndarray( shape=( 24 , domain_rows , domain_cols ) )
+	monthly_tseries_tensor_from_scen = np.empty( shape=( 0 , domain_rows , domain_cols ) ) # use zero for concatenate method
+	monthly_tseries_tensor_from_base = np.empty( shape=( 0 , domain_rows , domain_cols ) ) # zero means there is no cell in z-dir
 
-	elif ( processing_pol == 'pm2.5' ) :
+	# elif ( processing_pol == 'pm2.5' ) :
 
-		monthly_tseries_tensor_from_scen = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
-		monthly_tseries_tensor_from_base = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	# 	monthly_tseries_tensor_from_scen = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
+	# 	monthly_tseries_tensor_from_base = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 
-	else:
-		pass
+	# else:
+	# 	pass
 
 	## create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
 	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
@@ -375,7 +373,7 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 		pmdiag_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
 
 		############################################################################################
-		### open netcdf files based on each processing method and pollutant
+		### define netcdf files based on each processing method and pollutant
 
 		if ( processing_pol == 'co') : # (processing_pol == 'no2')  # we need only 1 file: "aconc"
 			# for single scenario plot
@@ -421,7 +419,7 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 				print( pmdiag_input_scen )
 				print( " ")
 
-				# open netcdf file
+				# define netcdf file
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
 
@@ -439,7 +437,7 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 				print(aconc_input_base)
 				print(pmdiag_input_base)
 
-				# open netcdf files
+				# define netcdf files
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
 				aconc_open_base = Dataset( aconc_input_base , 'r' )
@@ -457,15 +455,15 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 			raise SystemExit()
 
 		############################################################################################
-		### process the nc opened files for each cell with a specific function
+		### process the netcdf files for each cell with a specific function
 
 		if ( processing_method == 'single_plot' ) :
 
 			### create an empty tensor for each cell and day as container of daily 24-hr t-step concentrations
-			daily_3d_mesh_scen = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
-			daily_tensor_scen = np.empty ( shape= ( 1 , domain_rows , domain_cols ))  # when assignin gby index, z-dim should be 1.
+			#daily_tensor_scen = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
+			daily_tensor_scen = np.empty ( shape= ( 24 , domain_rows , domain_cols ))  # when assignin gby index, z-dim should be 1.
 
-			#print(f'-> shape of daily tseries array={daily_3d_mesh_scen.shape }')
+			#print(f'-> shape of daily tseries array={daily_tensor_scen.shape }')
 			#print('-> traversing each cell and extract pollutants ...')
 
 			### traverse each cell in the C-storing style for each day: row and then col
@@ -479,15 +477,15 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 
 						cell_24hr_timeSeries_array = function_cell_24hr_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 						#print(f'--> cell tseries is= {cell_24hr_timeSeries_array}')
-						daily_3d_mesh_scen [:,row,col]  = cell_24hr_timeSeries_array
+						daily_tensor_scen [:,row,col]  = cell_24hr_timeSeries_array
 
 					elif ( processing_pol == 'pm2.5') :
 
 						print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
-						daily_cell_mean_for_pm25 = function_daily_cell_pm25_tseries( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						daily_cell_tseries_for_pm25 = function_pm25_daily_cell_tseries( aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
-						daily_tensor_scen [:,row,col] = daily_cell_mean_for_pm25 # fill tensor for all cells in domain
+						daily_tensor_scen [:,row,col] = daily_cell_tseries_for_pm25 # fill tensor for all cells in domain
 
 					else:
 
@@ -498,17 +496,17 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 					### fill daily data-mesh with each cell data, based on the order: z, x, y == layer, row, col in mesh_3d array
 					#print( f'-> add/pin each cell mean value to monthly_tseries_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 
-					#print(f'--> shape of daily 24hr tseries is= {daily_3d_mesh_scen.shape}')
+					#print(f'--> shape of daily 24hr tseries is= {daily_tensor_scen.shape}')
 
+			
 			### after each day is extracted, add the daily frame to monthly frame
 			### now we concatenate the new mesh to monthly tensor
-			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen , daily_3d_mesh_scen ) , axis=0 )
-			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen , daily_tensor_scen) , axis=0 )
+			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen , daily_tensor_scen ) , axis=0 )
 
 		elif ( processing_method == 'diff_plot' ) :
 
 			### create an empty tensor for each cell and day as container of daily 24-hr t-step concentrations
-			daily_3d_mesh_scen = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
+			daily_tensor_scen = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
 			daily_3d_mesh_base = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
 
 
@@ -527,13 +525,13 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 						cell_24hr_timeSeries_array_base = function_cell_24hr_timeSeries_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
 
 						### fill daily tensors cells with 24-hr time-series
-						daily_3d_mesh_scen [:,row,col] = cell_24hr_timeSeries_array_scen
+						daily_tensor_scen [:,row,col] = cell_24hr_timeSeries_array_scen
 						daily_3d_mesh_base [:,row,col] = cell_24hr_timeSeries_array_base
 
 			### now we fill 2 meshes
 			print( f'-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 
-			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen ,  daily_3d_mesh_scen ) , axis=0 )
+			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen ,  daily_tensor_scen ) , axis=0 )
 
 			print( f'-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 
@@ -542,8 +540,8 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 					# elif ( processing_pol == 'pm25' ) :
 
 					# 	# we calculate cell means
-					# 	daily_cell_mean_scen = function_daily_cell_pm25_tseries( aconc_open_scen , pmdiag_open_scen , lay , row , col )
-					# 	daily_cell_mean_base = function_daily_cell_pm25_tseries( aconc_open_base , pmdiag_open_base , lay , row , col )
+					# 	daily_cell_mean_scen = function_pm25_daily_cell_tseries( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+					# 	daily_cell_mean_base = function_pm25_daily_cell_tseries( aconc_open_base , pmdiag_open_base , lay , row , col )
 
 					# 	# now we fill the 3D mesh with cell means
 					# 	monthly_tseries_tensor_from_scen [ day_of_the_month-1 ][ row ][ col ] = daily_cell_mean_scen
@@ -558,7 +556,7 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 			print('-> ERROR: processing method NOT defined!')
 
 		############################################################################################
-		### closing nc files for each day
+		# closing nc files for each day
 
 		if ( processing_pol == 'co' ) :
 
@@ -596,7 +594,7 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 			pass
 
 	############################################################################################
-	### return two 3D meshs
+	# return two 3D meshs
 	if ( processing_method == 'single_plot' ) :
 
 		return monthly_tseries_tensor_from_scen
@@ -608,7 +606,7 @@ def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , 
 	# return monthly_mean_mesh_2d
 
 ############################################################################################
-### function to change 3D to 2D array
+# function to change 3D to 2D array
 
 def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
 	" returns monthly mean of each cell, changes 3D mesh of daily mean conc to a 2D mesh of monthly mean conc"
@@ -638,7 +636,7 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
 	return mesh_2d
 
 ############################################################################################
-### function to
+# function to
 
 def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
 	" returns 24-hr time series of singlePOL"
@@ -658,253 +656,252 @@ def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row 
 	return cell_24hr_series_array
 
 ############################################################################################
-### function to
+# function to
 
-def function_daily_cell_pm25_tseries ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
+def function_pm25_daily_cell_tseries ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
 	" returns daily mean of pm2.5 for each cell"
 
 	print( f'-> processing row= {row} and col= {col}' )
 
-	# loop inside 24 time-steps and extract pm cons
+	# loop inside 24 time-steps and extract pm concentrations
 	# extract PM2.5 species from input files
 	print('-> extracting several species from CMAQ files for pm2.5 ...')
 	# species from aconc [1]
-	AH3OPI = np.array( aconc_open.variables['AH3OPI'][:,lay,row,col] )
-	print( f'-> shape of AORGCJ= {AH3OPI.shape()}')
-
-	print(f'type of AH3= { type(AH3OPI) }')
-	AH3OPI_mean = np.array(AH3OPI).mean()
-
-	print(f'-> AH3OPI: {AH3OPI}')
-	print(f'-> AH3OPI mean= {AH3OPI_mean}')
+	AH3OPI = aconc_open.variables['AH3OPI'][:,lay,row,col]
+	#print( f'-> shape of AORGCJ= {AH3OPI.shape }')
+	#print(f'-> type of AH3= { type(AH3OPI) }')
+	AH3OPI = np.array(AH3OPI)
+	# print(f'-> AH3OPI: {AH3OPI}')
+	# print(f'-> AH3OPI mean= {AH3OPI_mean}')
 
 	AH3OPJ = aconc_open.variables['AH3OPJ'][:,lay,row,col]
-	AH3OPJ = np.array(AH3OPJ).mean()
+	AH3OPJ = np.array(AH3OPJ)
 
 	AH3OPK = aconc_open.variables['AH3OPK'][:,lay,row,col]
-	AH3OPK = np.array(AH3OPK).mean()
+	AH3OPK = np.array(AH3OPK)
 
 	ACLI = aconc_open.variables['ACLI'][:,lay,row,col]
-	ACLI = np.array(ACLI).mean()
+	ACLI = np.array(ACLI)
 
 	ACLJ = aconc_open.variables['ACLJ'][:,lay,row,col]
-	ACLJ = np.array(ACLJ).mean()
+	ACLJ = np.array(ACLJ)
 
 	ACLK = aconc_open.variables['ACLK'][:,lay,row,col]
-	ACLK = np.array(ACLK).mean()
+	ACLK = np.array(ACLK)
 
 	AECI = aconc_open.variables['AECI'][:,lay,row,col]
-	AECI = np.array(AECI).mean()
+	AECI = np.array(AECI)
 
 	AECJ = aconc_open.variables['AECJ'][:,lay,row,col]
-	AECJ = np.array(AECJ).mean()
+	AECJ = np.array(AECJ)
 
 	ANAI = aconc_open.variables['ANAI'][:,lay,row,col]
-	ANAI = np.array(ANAI).mean()
+	ANAI = np.array(ANAI)
 
 	ANAJ = aconc_open.variables['ANAJ'][:,lay,row,col]
-	ANAJ = np.array(ANAJ).mean()
+	ANAJ = np.array(ANAJ)
 
 	AMGJ = aconc_open.variables['AMGJ'][:,lay,row,col]
-	AMGJ = np.array(AMGJ).mean()
+	AMGJ = np.array(AMGJ)
 
 	AKJ = aconc_open.variables['AKJ'][:,lay,row,col]
-	AKJ = np.array(AKJ).mean()
+	AKJ = np.array(AKJ)
 
 	ACAJ = aconc_open.variables['ACAJ'][:,lay,row,col]
-	ACAJ = np.array(ACAJ).mean()
+	ACAJ = np.array(ACAJ)
 
 	ANH4I = aconc_open.variables['ANH4I'][:,lay,row,col]
-	ANH4I = np.array(ANH4I).mean()
+	ANH4I = np.array(ANH4I)
 
 	ANH4J = aconc_open.variables['ANH4J'][:,lay,row,col]
-	ANH4J = np.array(ANH4J).mean()
+	ANH4J = np.array(ANH4J)
 
 	ANO3I = aconc_open.variables['ANO3I'][:,lay,row,col]
-	ANO3I = np.array(ANO3I).mean()
+	ANO3I = np.array(ANO3I)
 
 	ANO3J = aconc_open.variables['ANO3J'][:,lay,row,col]
-	ANO3J = np.array(ANO3J).mean()
+	ANO3J = np.array(ANO3J)
 
 	ASOIL = aconc_open.variables['ASOIL'][:,lay,row,col]
-	ASOIL = np.array(ASOIL).mean()
+	ASOIL = np.array(ASOIL)
 
 	ASO4I = aconc_open.variables['ASO4I'][:,lay,row,col]
-	ASO4I = np.array(ASO4I).mean()
+	ASO4I = np.array(ASO4I)
 
 	ASO4J = aconc_open.variables['ASO4J'][:,lay,row,col]
-	ASO4J = np.array(ASO4J).mean()
+	ASO4J = np.array(ASO4J)
 
 	ALVPO1I = aconc_open.variables['ALVPO1I'][:,lay,row,col]
-	ALVPO1I = np.array(ALVPO1I).mean()
+	ALVPO1I = np.array(ALVPO1I)
 
 	ASVPO1I = aconc_open.variables['ASVPO1I'][:,lay,row,col]
-	ASVPO1I = np.array(ASVPO1I).mean()
+	ASVPO1I = np.array(ASVPO1I)
 
 	ASVPO2I = aconc_open.variables['ASVPO2I'][:,lay,row,col]
-	ASVPO2I = np.array(ASVPO2I).mean()
+	ASVPO2I = np.array(ASVPO2I)
 
 	ALVOO1I = aconc_open.variables['ALVOO1I'][:,lay,row,col]
-	ALVOO1I = np.array(ALVOO1I).mean()
+	ALVOO1I = np.array(ALVOO1I)
 
 	ALVOO2I = aconc_open.variables['ALVOO2I'][:,lay,row,col]
-	ALVOO2I = np.array(ALVOO2I).mean()
+	ALVOO2I = np.array(ALVOO2I)
 
 	ASVOO1I = aconc_open.variables['ASVOO1I'][:,lay,row,col]
-	ASVOO1I = np.array(ASVOO1I).mean()
+	ASVOO1I = np.array(ASVOO1I)
 
 	ASVOO2I = aconc_open.variables['ASVOO2I'][:,lay,row,col]
-	ASVOO2I = np.array(ASVOO2I).mean()
+	ASVOO2I = np.array(ASVOO2I)
 
 	ALVPO1J = aconc_open.variables['ALVPO1J'][:,lay,row,col]
-	ALVPO1J = np.array(ALVPO1J).mean()
+	ALVPO1J = np.array(ALVPO1J)
 
 	ASVPO1J = aconc_open.variables['ASVPO1J'][:,lay,row,col]
-	ASVPO1J = np.array(ASVPO1J).mean()
+	ASVPO1J = np.array(ASVPO1J)
 
 	ASVPO2J = aconc_open.variables['ASVPO2J'][:,lay,row,col]
-	ASVPO2J = np.array(ASVPO2J).mean()
+	ASVPO2J = np.array(ASVPO2J)
 
 	ASVPO3J = aconc_open.variables['ASVPO3J'][:,lay,row,col]
-	ASVPO3J = np.array(ASVPO3J).mean()
+	ASVPO3J = np.array(ASVPO3J)
 
 	AIVPO1J = aconc_open.variables['AIVPO1J'][:,lay,row,col]
-	AIVPO1J = np.array(AIVPO1J).mean()
+	AIVPO1J = np.array(AIVPO1J)
 
 	AXYL1J = aconc_open.variables['AXYL1J'][:,lay,row,col]
-	AXYL1J = np.array(AXYL1J).mean()
+	AXYL1J = np.array(AXYL1J)
 
 	AXYL2J = aconc_open.variables['AXYL2J'][:,lay,row,col]
-	AXYL2J = np.array(AXYL2J).mean()
+	AXYL2J = np.array(AXYL2J)
 
 	AXYL3J = aconc_open.variables['AXYL3J'][:,lay,row,col]
-	AXYL3J = np.array(AXYL3J).mean()
+	AXYL3J = np.array(AXYL3J)
 
 	ATOL1J = aconc_open.variables['ATOL1J'][:,lay,row,col]
-	ATOL1J = np.array(ATOL1J).mean()
+	ATOL1J = np.array(ATOL1J)
 
 	ATOL2J = aconc_open.variables['ATOL2J'][:,lay,row,col]
-	ATOL2J = np.array(ATOL2J).mean()
+	ATOL2J = np.array(ATOL2J)
 
 	ATOL3J = aconc_open.variables['ATOL3J'][:,lay,row,col]
-	ATOL3J = np.array(ATOL3J).mean()
+	ATOL3J = np.array(ATOL3J)
 
 	ABNZ1J = aconc_open.variables['ABNZ1J'][:,lay,row,col]
-	ABNZ1J = np.array(ABNZ1J).mean()
+	ABNZ1J = np.array(ABNZ1J)
 
 	ABNZ2J = aconc_open.variables['ABNZ2J'][:,lay,row,col]
-	ABNZ2J = np.array(ABNZ2J).mean()
+	ABNZ2J = np.array(ABNZ2J)
 
 	ABNZ3J = aconc_open.variables['ABNZ3J'][:,lay,row,col]
-	ABNZ3J = np.array(ABNZ3J).mean()
+	ABNZ3J = np.array(ABNZ3J)
 
 	AISO1J = aconc_open.variables['AISO1J'][:,lay,row,col]
-	AISO1J = np.array(AISO1J).mean()
+	AISO1J = np.array(AISO1J)
 
 	AISO2J = aconc_open.variables['AISO2J'][:,lay,row,col]
-	AISO2J = np.array(AISO2J).mean()
+	AISO2J = np.array(AISO2J)
 
 	AISO3J = aconc_open.variables['AISO3J'][:,lay,row,col]
-	AISO3J = np.array(AISO3J).mean()
+	AISO3J = np.array(AISO3J)
 
 	ATRP1J = aconc_open.variables['ATRP1J'][:,lay,row,col]
-	ATRP1J = np.array(ATRP1J).mean()
+	ATRP1J = np.array(ATRP1J)
 
 	ATRP2J = aconc_open.variables['ATRP2J'][:,lay,row,col]
-	ATRP2J = np.array(ATRP2J).mean()
+	ATRP2J = np.array(ATRP2J)
 
 	ASQTJ = aconc_open.variables['ASQTJ'][:,lay,row,col]
-	ASQTJ = np.array(ASQTJ).mean()
+	ASQTJ = np.array(ASQTJ)
 
 	AALK1J = aconc_open.variables['AALK1J'][:,lay,row,col]
-	AALK1J = np.array(AALK1J).mean()
+	AALK1J = np.array(AALK1J)
 
 	AALK2J = aconc_open.variables['AALK2J'][:,lay,row,col]
-	AALK2J = np.array(AALK2J).mean()
+	AALK2J = np.array(AALK2J)
 
 	AORGCJ = aconc_open.variables['AORGCJ'][:,lay,row,col]
-	AORGCJ = np.array(AORGCJ).mean()
+	AORGCJ = np.array(AORGCJ)
 
 	AOLGBJ = aconc_open.variables['AOLGBJ'][:,lay,row,col]
-	AOLGBJ = np.array(AOLGBJ).mean()
+	AOLGBJ = np.array(AOLGBJ)
 
 	AOLGAJ = aconc_open.variables['AOLGAJ'][:,lay,row,col]
-	AOLGAJ = np.array(AOLGAJ).mean()
+	AOLGAJ = np.array(AOLGAJ)
 
 	APAH1J = aconc_open.variables['APAH1J'][:,lay,row,col]
-	APAH1J = np.array(APAH1J).mean()
+	APAH1J = np.array(APAH1J)
 
 	APAH2J = aconc_open.variables['APAH2J'][:,lay,row,col]
-	APAH2J = np.array(APAH2J).mean()
+	APAH2J = np.array(APAH2J)
 
 	APAH3J = aconc_open.variables['APAH3J'][:,lay,row,col]
-	APAH3J = np.array(APAH3J).mean()
+	APAH3J = np.array(APAH3J)
 
 	ALVOO1J = aconc_open.variables['ALVOO1J'][:,lay,row,col]
-	ALVOO1J = np.array(ALVOO1J).mean()
+	ALVOO1J = np.array(ALVOO1J)
 
 	ALVOO2J = aconc_open.variables['ALVOO2J'][:,lay,row,col]
-	ALVOO2J = np.array(ALVOO2J).mean()
+	ALVOO2J = np.array(ALVOO2J)
 
 	ASVOO1J = aconc_open.variables['ASVOO1J'][:,lay,row,col]
-	ASVOO1J = np.array(ASVOO1J).mean()
+	ASVOO1J = np.array(ASVOO1J)
 
 	ASVOO2J = aconc_open.variables['ASVOO2J'][:,lay,row,col]
-	ASVOO2J = np.array(ASVOO2J).mean()
+	ASVOO2J = np.array(ASVOO2J)
 
 	ASVOO3J = aconc_open.variables['ASVOO3J'][:,lay,row,col]
-	ASVOO3J = np.array(ASVOO3J).mean()
+	ASVOO3J = np.array(ASVOO3J)
 
 	APCSOJ = aconc_open.variables['APCSOJ'][:,lay,row,col]
-	APCSOJ = np.array(APCSOJ).mean()
+	APCSOJ = np.array(APCSOJ)
 
 	AALJ = aconc_open.variables['AALJ'][:,lay,row,col]
-	AALJ = np.array(AALJ).mean()
+	AALJ = np.array(AALJ)
 
 	ASIJ = aconc_open.variables['ASIJ'][:,lay,row,col]
-	ASIJ = np.array(ASIJ).mean()
+	ASIJ = np.array(ASIJ)
 
 	AFEJ = aconc_open.variables['AFEJ'][:,lay,row,col]
-	AFEJ = np.array(AFEJ).mean()
+	AFEJ = np.array(AFEJ)
 
 	ATIJ = aconc_open.variables['ATIJ'][:,lay,row,col]
-	ATIJ = np.array(ATIJ).mean()
+	ATIJ = np.array(ATIJ)
 
 	AOTHRI = aconc_open.variables['AOTHRI'][:,lay,row,col]
-	AOTHRI = np.array(AOTHRI).mean()
+	AOTHRI = np.array(AOTHRI)
 
 	AOTHRJ = aconc_open.variables['AOTHRJ'][:,lay,row,col]
-	AOTHRJ = np.array(AOTHRJ).mean()
+	AOTHRJ = np.array(AOTHRJ)
 
 	ACORS = aconc_open.variables['ACORS'][:,lay,row,col]
-	ACORS = np.array(ACORS).mean()
+	ACORS = np.array(ACORS)
 
 	ASEACAT = aconc_open.variables['ASEACAT'][:,lay,row,col]
-	ASEACAT = np.array(ASEACAT).mean()
+	ASEACAT = np.array(ASEACAT)
 
 	ASO4K = aconc_open.variables['ASO4K'][:,lay,row,col]
-	ASO4K = np.array(ASO4K).mean()
+	ASO4K = np.array(ASO4K)
 
 	ANO3K = aconc_open.variables['ANO3K'][:,lay,row,col]
-	ANO3K = np.array(ANO3K).mean()
+	ANO3K = np.array(ANO3K)
 
 	ANH4K = aconc_open.variables['ANH4K'][:,lay,row,col]
-	ANH4K = np.array(ANH4K).mean()
+	ANH4K = np.array(ANH4K)
 
 	AMNJ = aconc_open.variables['AMNJ'][:,lay,row,col]
-	AMNJ = np.array(AMNJ).mean()
+	AMNJ = np.array(AMNJ)
 
 	# species from pmdiag [3]
 	PM25AT = pmdiag_open.variables['PM25AT'][:,lay,row,col]
-	PM25AT = np.array(PM25AT).mean()
+	PM25AT = np.array(PM25AT)
 
 	PM25AC = pmdiag_open.variables['PM25AC'][:,lay,row,col]
-	PM25AC = np.array(PM25AC).mean()
+	PM25AC = np.array(PM25AC)
 
 	PM25CO = pmdiag_open.variables['PM25CO'][:,lay,row,col]
-	PM25CO = np.array(PM25CO).mean()
+	PM25CO = np.array(PM25CO)
 
 	 # species calculated inside SpecDef file [0]
+	 # perform arithmetic operations on arrays
 	ANAK = 0.8373*ASEACAT + 0.0626*ASOIL + 0.0023*ACORS
 	AMGK = 0.0997*ASEACAT + 0.0170*ASOIL + 0.0032*ACORS
 	AKK = 0.0310*ASEACAT + 0.0242*ASOIL + 0.0176*ACORS
@@ -946,7 +943,7 @@ def function_daily_cell_pm25_tseries ( aconc_open , pmdiag_open , lay , row , co
 	ATOTK = ASOIL + ACORS + ASEACAT + ACLK + ASO4K + ANO3K + ANH4K
 # !! PM2.5 species computed using modeled size distribution,
 # reference: https://github.com/USEPA/CMAQ/blob/5.2/CCTM/src/MECHS/cb6r3_ae6_aq/SpecDef_cb6r3_ae6_aq.txt
-	PM25_HP      = (AH3OPI * PM25AT + AH3OPJ * PM25AC + AH3OPK * PM25CO) * 1.0/19.0
+	PM25_HP      = (AH3OPI * PM25AT + AH3OPJ * PM25AC + AH3OPK * PM25CO) * (1.0/19.0)
 	PM25_CL      = ACLI * PM25AT + ACLJ * PM25AC + ACLK * PM25CO
 	PM25_EC      = AECI * PM25AT + AECJ * PM25AC
 	PM25_NA      = ANAI * PM25AT + ANAJ * PM25AC + ANAK * PM25CO
@@ -960,14 +957,14 @@ def function_daily_cell_pm25_tseries ( aconc_open , pmdiag_open , lay , row , co
 	PM25_SOIL    = ASOILJ * PM25AC + ASOIL * PM25CO
 	PM25_SO4     = ASO4I * PM25AT + ASO4J * PM25AC + ASO4K * PM25CO
 	PM25_TOT     = ATOTI * PM25AT + ATOTJ * PM25AC + ATOTK * PM25CO
-	PM25_UNSPEC1 = PM25_TOT - (PM25_CL + PM25_EC + PM25_NA + PM25_NH4 + PM25_NO3 + PM25_OC + PM25_SOIL + PM25_SO4 )
+	PM25_UNSPEC1 = PM25_TOT - ( PM25_CL + PM25_EC + PM25_NA + PM25_NH4 + PM25_NO3 + PM25_OC + PM25_SOIL + PM25_SO4 )
 
 	# now sum all species to get hourly PM2.5 concentratiosn
-	cell_pm25_daily_mean = PM25_HP + PM25_CL + PM25_EC + PM25_NA + PM25_MG + PM25_K + PM25_CA + \
+	pm25_cell_daily_tseries = PM25_HP + PM25_CL + PM25_EC + PM25_NA + PM25_MG + PM25_K + PM25_CA + \
 					PM25_NH4 + PM25_NO3 + PM25_OC + PM25_OM + PM25_SOIL + PM25_SO4 + PM25_TOT + PM25_UNSPEC1
 
 	# function returns the mean of pm2.5 for each cell
-	return cell_pm25_daily_mean
+	return pm25_cell_daily_tseries
 
 ##############################################################################################
 # start running main()
