@@ -24,7 +24,7 @@ sim_month = 'oct'  			# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
 days_to_run_in_month = 1
-scenario = '4' 			# 1-5, baseline
+scenario = '3' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
 cmaq_pol = 'PM2.5'  # for plot title 'CO' ro 'PM2.5'
@@ -34,7 +34,7 @@ max_conc_threshold = 0.2  # for Basemap plot
 ### spatial plot
 spatial_plotting = 'yes' # yes or no
 processing_pol = 'pm2.5' 		# 'co' or 'pm2.5'
-processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
+processing_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
 produce_raster = 'no' 	# 'yes' OR 'no'
 
 ### time-series plot
@@ -42,7 +42,7 @@ timeseries_plotting = 'no' # yes or not
 favorite_row = 5
 favorite_col = 5
 
-platform = 'Mac'  # 'Mac' or 'cluster'
+platform = 'cluster'  # 'Mac' or 'cluster'
 
 print(f'-> CMAQ year= {cmaq_file_year}')
 print(f'-> CMAQ month of analysis= {cmaq_file_month}')
@@ -101,9 +101,9 @@ def main() :
 
 	elif ( platform == 'cluster' ) :
 
-		input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/'
-		mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/'
-		fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'  # '/' at the end
+		input_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/'
+		mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/'
+		fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/cmaq_figs/'  # '/' at the end
 
 	else:
 

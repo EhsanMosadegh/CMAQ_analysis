@@ -1,0 +1,56 @@
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+CO job =====> submitted
+python: can't open file 'spatial_CMAQ_analysis_co_oct_scen1.py': [Errno 2] No such file or directory
+CO job =====> ended
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+CO job =====> submitted
