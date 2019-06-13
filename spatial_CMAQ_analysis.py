@@ -29,7 +29,7 @@ mcip_date_tag = '161001'
 
 cmaq_pol = 'PM2.5'  # for plot title 'CO' ro 'PM2.5'
 pol_unit = 'ug/m^3'		#'[ppmV]' or [ug/m^3]
-max_conc_threshold = 0.1  # for Basemap plot
+max_conc_threshold = 0.2  # for Basemap plot
 
 ### spatial plot
 spatial_plotting = 'yes' # yes or no
@@ -56,8 +56,8 @@ print(" ")
 
 ### domain settings
 lay = 0
-domain_cols = 5 #250
-domain_rows = 5 #265
+domain_cols = 250
+domain_rows = 265
 
 
 # ### Basemap plot setting
@@ -306,14 +306,11 @@ def main() :
 						print('-> exiting ...')
 						raise SystemExit()
 
-					### fill daily data-mesh with each cell data, based on the order: z, x, y == layer, row, col in mesh_3d array
-					#print( f'-> add/pin each cell mean value to monthly_tseries_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+			### now we concatenate daily timeseries mesh to monthly tensor
+			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen ,  daily_tensor_scen ) , axis=0 )
 
-					#print(f'--> shape of daily 24hr tseries is= {daily_tensor_scen.shape}')
-
-			
-			### after each day is extracted, add the daily frame to monthly frame
-			### now we concatenate the new mesh to monthly tensor
+			### after all days are extracted, add the daily frame to monthly frame
+			### now we concatenate daily timeseries mesh to monthly tensor
 			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen , daily_tensor_scen ) , axis=0 )
 
 		elif ( processing_method == 'diff_plot' ) :
@@ -651,13 +648,13 @@ def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row 
 ### function to
 
 def function_pm25_daily_cell_tseries ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
-	" returns daily mean of pm2.5 for each cell"
+	" returns daily timeseries for pm2.5 for each cell"
 
 	print( f'-> processing row= {row} and col= {col}' )
 
 	# loop inside 24 time-steps and extract pm concentrations
 	# extract PM2.5 species from input files
-	print('-> extracting several species from CMAQ files for pm2.5 ...')
+	#print('-> extracting several species from CMAQ files for pm2.5 ...')
 	# species from aconc [1]
 	AH3OPI = aconc_open.variables['AH3OPI'][:,lay,row,col]
 	#print( f'-> shape of AORGCJ= {AH3OPI.shape }')
