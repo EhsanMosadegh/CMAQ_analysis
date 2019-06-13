@@ -19,12 +19,12 @@ import time
 start = time.time()
 
 ### run time settings
-cmaq_file_month = '08'		 # 07, 08, 09, 10, 11
-sim_month = 'aug'  			# jul, aug, sep, oct, nov
+cmaq_file_month = '10'		 # 07, 08, 09, 10, 11
+sim_month = 'oct'  			# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
-days_to_run_in_month = 30
-scenario = '2' 			# 1-5, baseline
+days_to_run_in_month = 1
+scenario = '4' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
 cmaq_pol = 'PM2.5'  # for plot title 'CO' ro 'PM2.5'
@@ -34,7 +34,8 @@ max_conc_threshold = 0.1  # for Basemap plot
 ### spatial plot
 spatial_plotting = 'yes' # yes or no
 processing_pol = 'pm2.5' 		# 'co' or 'pm2.5'
-processing_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
+processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
+produce_raster = 'no' 	# 'yes' OR 'no'
 
 ### time-series plot
 timeseries_plotting = 'no' # yes or not
@@ -178,7 +179,7 @@ def main() :
 		pmdiag_scen = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+scenario+'_mpi_standard_'+file_date_tag+'.nc'
 
 		aconc_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
-		pmdiag_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
+		pmdiag_base = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
 
 		############################################################################################
 		### define netcdf files based on each processing method and pollutant
@@ -294,7 +295,7 @@ def main() :
 
 						daily_tensor_scen [:,row,col] = cell_24hr_tseries_for_pm25 # fill tensor for all cells in domain
 
-						if ( raster == 'yes' ) :
+						if ( produce_raster == 'yes' ) :
 							pass
 							# function: mean of tensor
 							# function: write out the raster for each day
@@ -342,12 +343,12 @@ def main() :
 						cell_24hr_timeSeries_array_scen = function_pm25_daily_cell_tseries( aconc_open_scen , pmdiag_open_scen , lay , row , col )
 						cell_24hr_timeSeries_array_base = function_pm25_daily_cell_tseries( aconc_open_base , pmdiag_open_base , lay , row , col )
 
+					else:
+						pass
+
 					### fill daily tensors cells with 24-hr time-series
 					daily_tensor_scen [: , row , col] = cell_24hr_timeSeries_array_scen
 					daily_tensor_base [: , row , col] = cell_24hr_timeSeries_array_base
-
-					else:
-						pass
 
 			### now we add/concatenate each daily tensor to monthly tensor
 			#print( f'-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
