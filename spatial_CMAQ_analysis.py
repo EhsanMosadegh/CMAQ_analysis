@@ -29,15 +29,15 @@ mcip_date_tag = '161001'
 
 cmaq_pol = 'PM2.5'  # for plot title 'CO' ro 'PM2.5'
 pol_unit = '[ug/m3]'	#'[ppmV]'
-max_conc_threshold = 0.2  # for Basemap plot
+max_conc_threshold = 0.1  # for Basemap plot
 
 ### spatial plot
 processing_pol = 'pm2.5' 		# 'co' or 'pm2.5'
-processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
-spatial_plotting = 'no' # yes or no
+processing_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
+spatial_plotting = 'yes' # yes or no
 
 ### time-series plot
-timeseries_plotting = 'yes' # yes or not
+timeseries_plotting = 'no' # yes or not
 favorite_row = 5
 favorite_col = 5
 
@@ -90,6 +90,10 @@ def main() :
 	### input directory setting
 	if ( platform == 'Mac' ) :
 
+		# input_dir = '/Volumes/USFSdata/no_Oct/'
+		# mcip_dir = '/Volumes/USFSdata/no_Oct/'
+		# fig_dir = '/Volumes/USFSdata/no_Oct/cmaq_figs/'  # '/' at the end
+
 		input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'
 		mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'
 		fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'  # '/' at the end
@@ -107,8 +111,8 @@ def main() :
 		raise SystemExit()
 
 	### set input pathes
-	input_path_scen = input_dir + 'scen_' + scenario + '/' + sim_month + '/'
-	input_path_base = input_dir + 'scen_baseline' + '/' + sim_month + '/'
+	input_path_scen = input_dir + 'scen_' + scenario + '/' #+ sim_month + '/'
+	input_path_base = input_dir + 'scen_baseline' + '/' #+ sim_month + '/'
 
 	print('-> CMAQ input directory is:')
 	print(input_path_scen)
@@ -659,7 +663,7 @@ def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row 
 # function to
 
 def function_pm25_daily_cell_tseries ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
-	" returns daily mean of pm2.5 for each cell"
+	" returns daily timneseries of pm2.5 for each cell"
 
 	print( f'-> processing row= {row} and col= {col}' )
 
