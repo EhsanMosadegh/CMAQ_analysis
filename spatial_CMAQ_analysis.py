@@ -19,7 +19,7 @@ import time
 start = time.time()
 
 ### run time settings
-cmaq_file_month = '10'		 # 07, 08, 09, 10, 11
+cmaq_file_month = '11'		 # 07, 08, 09, 10, 11
 sim_month = 'oct'  			# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
@@ -27,15 +27,15 @@ days_to_run_in_month = 1
 scenario = '4' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
-cmaq_pol = 'PM2.5'  # for plot title 'CO' ro 'PM2.5'
-pol_unit = 'ug/m^3'		#'[ppmV]' or [ug/m^3]
+cmaq_pol = 'CO'  # for plot title 'CO' ro 'PM2.5'
+pol_unit = 'ppmV'		#'[ppmV]' or [ug/m^3]
 max_conc_threshold = 0.2  # for Basemap plot
 
 ### spatial plot
 spatial_plotting = 'yes' # yes or no
-processing_pol = 'pm2.5' 		# 'co' or 'pm2.5'
+processing_pol = 'co' 		# 'co' or 'pm2.5'
 processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
-produce_raster = 'no' 	# 'yes' OR 'no'
+produce_raster = 'yes' 	# 'yes' OR 'no'
 
 ### time-series plot
 timeseries_plotting = 'no' # yes or not
@@ -44,29 +44,14 @@ favorite_col = 5
 
 platform = 'Mac'  # 'Mac' or 'cluster'
 
-print(f'-> CMAQ year= {cmaq_file_year}')
-print(f'-> CMAQ month of analysis= {cmaq_file_month}')
-print(f'-> LANDIS scenarios= {scenario}')
-print(f'-> processing pollutant= {processing_pol}')
-print(f'-> processing method= {processing_method}')
-print(f'-> number of days to run= {days_to_run_in_month}')
-print(f'-> platform is= {platform}')
-print(" ")
-
-
-### domain settings
-lay = 0
-domain_cols = 250
-domain_rows = 265
-
 
 # ### Basemap plot setting
 # # center of domain
 # xcent =-120.806 # degrees
 # ycent =40.000 # degrees
 # # domain size
-# NROWS = 265*1000 # meters
-# NCOLS = 250*1000 # meters
+NROWS = 265*1000 # meters
+NCOLS = 250*1000 # meters
 # # lower-left corner
 # llcornerx=-117500 # meters
 # llcornery=-265500 # meters
@@ -82,6 +67,31 @@ ycent_zoom =39.09 # degrees
 NROWS_zoom = 100000#265*1000 # meters
 NCOLS_zoom = 100000#250*1000 # meters
 
+### domain settings
+lay = 0
+domain_cols = 250
+domain_rows = 265
+
+xorig = degree?
+yorig = degree?
+
+raster_origin = ( xorig , yorig )
+pixelWidth = NROWS
+pixelHeight = NCOLS
+newRasterfn = 'co_test_raster.tif'
+
+print( f'-> CMAQ year= {cmaq_file_year}')
+print( f'-> CMAQ month of analysis= {cmaq_file_month}')
+print( f'-> LANDIS scenarios= {scenario}')
+print( f'-> processing pollutant= {processing_pol}')
+print( f'-> processing method= {processing_method}')
+print( f'-> number of days to run= {days_to_run_in_month}')
+print( f'-> platform is= {platform}')
+print( f'-> spatial plotting= {spatial_plotting}')
+print( f'-> produce raster= {produce_raster}')
+print( f'-> time-series plotting= {timeseries_plotting}')
+print(" ")
+
 ###################################################################################
 # main
 ###################################################################################
@@ -91,13 +101,13 @@ def main() :
 	### input directory setting
 	if ( platform == 'Mac' ) :
 
-		# input_dir = '/Volumes/USFSdata/no_Oct/'   # '/' at the end
-		# mcip_dir = '/Volumes/USFSdata/no_Oct/'   # '/' at the end
-		# fig_dir = '/Volumes/USFSdata/no_Oct/cmaq_figs/'  # '/' at the end
+		input_dir = '/Volumes/USFSdata/no_oct/'   # '/' at the end
+		mcip_dir = '/Volumes/USFSdata/'   # '/' at the end
+		fig_dir = '/Volumes/USFSdata/no_oct/cmaq_figs/'  # '/' at the end
 
-		input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
-		mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
-		fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'  # '/' at the end
+		# input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
+		# mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
+		# fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'  # '/' at the end
 
 	elif ( platform == 'cluster' ) :
 
@@ -281,7 +291,7 @@ def main() :
 
 					if ( processing_pol == 'co' ) :
 
-						#print( f'-> extracting cell for single POL - singlePlot - at row= {row} and col={col} ... ' )
+						print( f'-> extracting cell for single POL - singlePlot - at row= {row} and col={col} ... ' )
 
 						cell_24hr_tseries_for_singlePol = function_cell_24hr_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 						#print(f'--> cell tseries is= {cell_24hr_tseries_for_singlePol}')
@@ -296,9 +306,15 @@ def main() :
 						daily_tensor_scen [:,row,col] = cell_24hr_tseries_for_pm25 # fill tensor for all cells in domain
 
 						if ( produce_raster == 'yes' ) :
-							pass
+							#pass
 							# function: mean of tensor
 							# function: write out the raster for each day
+
+
+							daily_2d_array_scen = function_3Dto2D( domain_rows , domain_cols , daily_tensor_scen )
+
+							reversed_arr = daily_2d_array_scen [::-1] # reverse array so the tif looks like the array
+							output_raster = array2raster( newRasterfn , raster_origin , pixelWidth , pixelHeight , reversed_arr )
 
 					else:
 
@@ -398,7 +414,7 @@ def main() :
 			pass
 
 	############################################################################################
-	### change 3D to 2D array to make spatial plots
+	### change 3D to 2D array to make monthly_mean_mesh_2d: used for spatial plots
 
 	if ( spatial_plotting == 'yes' ) :
 
@@ -623,6 +639,29 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
 	print(" ")
 	### function returns a 2D array to be used for plotting
 	return mesh_2d
+
+############################################################################################
+# function to produce raster image
+def array2raster( newRasterfn , raster_origin , pixelWidth , pixelHeight , array ) :
+
+	cols = array.shape[1]
+	rows = array.shape[0]
+
+	originX = raster_origin[0]
+	originY = raster_origin[1]
+
+	driver = gdal.GetDriverByName('GTiff')
+	outRaster = driver.Create(newRasterfn, cols, rows, 1, gdal.GDT_Byte)
+	outRaster.SetGeoTransform((originX, pixelWidth, 0, originY, 0, pixelHeight))
+	outband = outRaster.GetRasterBand(1)
+	outband.WriteArray(array)
+	outRasterSRS = osr.SpatialReference()
+	outRasterSRS.ImportFromEPSG(4326)
+	outRaster.SetProjection(outRasterSRS.ExportToWkt())
+	outband.FlushCache()
+
+
+
 
 ############################################################################################
 ### function to
