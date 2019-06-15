@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-###################################################################################
+#====================================================================================================
 # import libraries
 
 import matplotlib.pyplot as plt
 from netCDF4 import Dataset
 import numpy as np
-from mpl_toolkits.basemap import Basemap , cm
+from mpl_toolkits.basemap import Basemap
 #from osgeo import gdal, gdal_array, osr , ogr
-from osgeo import gdal
+from osgeo import gdal 
+import ogr, os, osr
+import rasterio
+from rasterio.transform import from_origin
 import time
 
-###################################################################################
+#====================================================================================================
 # run time setting
 
 ### get the starting time
@@ -50,11 +53,14 @@ platform = 'Mac'  # 'Mac' or 'cluster'
 # xcent =-120.806 # degrees
 # ycent =40.000 # degrees
 # # domain size
-NROWS = 265*1000 # meters
-NCOLS = 250*1000 # meters
+pixel_size = 1000 # meters
+NROWS = 265*pixel_size # meters
+NCOLS = 250*pixel_size # meters
 # # lower-left corner
-# llcornerx=-117500 # meters
-# llcornery=-265500 # meters
+llx = -117500 # meters
+lly = -265500 # meters
+ulx = llx
+uly = lly + NROWS
 # # upper-right corner
 # urcornerx=132500 # meters
 # urcornery=-500 # meters
@@ -72,10 +78,10 @@ lay = 0
 domain_cols = 250
 domain_rows = 265
 
-xorig = degree?
-yorig = degree?
+# xorig = -117500.000 # degree?
+# yorig = -265500.000 # degree?
 
-raster_origin = ( xorig , yorig )
+#raster_origin = ( xorig , yorig )
 pixelWidth = NROWS
 pixelHeight = NCOLS
 newRasterfn = 'co_test_raster.tif'
@@ -92,9 +98,9 @@ print( f'-> produce raster= {produce_raster}')
 print( f'-> time-series plotting= {timeseries_plotting}')
 print(" ")
 
-###################################################################################
+#====================================================================================================
 # main
-###################################################################################
+#====================================================================================================
 
 def main() :
 
@@ -158,7 +164,7 @@ def main() :
 
 	# # to run for specific day
 	# day_list = [21]  # use the favorite day
-	############################################################################################
+	#====================================================================================================
 	### traverse the list for each day
 
 	for day_of_the_month in day_list :
@@ -182,7 +188,7 @@ def main() :
 		### define file tags
 		file_date_tag = cmaq_file_year + cmaq_file_month + day_count
 
-		############################################################################################
+		#====================================================================================================
 		### define input files
 
 		aconc_scen = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen'+scenario+'_mpi_standard_'+file_date_tag+'.nc'
@@ -191,7 +197,7 @@ def main() :
 		aconc_base = 'CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
 		pmdiag_base = 'CCTM_PMDIAG_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_'+file_date_tag+'.nc'
 
-		############################################################################################
+		#====================================================================================================
 		### define netcdf files based on each processing method and pollutant
 
 		if ( processing_pol == 'co') : # (processing_pol == 'no2')  # we need only 1 file: "aconc"
@@ -273,8 +279,9 @@ def main() :
 			print('-> exiting ...')
 			raise SystemExit()
 
-		############################################################################################
-		### process netcdf files for each cell with a specific function
+		#====================================================================================================
+		# process netcdf files for each cell with a specific function
+		# single plot:  
 
 		if ( processing_method == 'single_plot' ) :
 
@@ -305,22 +312,22 @@ def main() :
 
 						daily_tensor_scen [:,row,col] = cell_24hr_tseries_for_pm25 # fill tensor for all cells in domain
 
-						if ( produce_raster == 'yes' ) :
-							#pass
-							# function: mean of tensor
-							# function: write out the raster for each day
-
-
-							daily_2d_array_scen = function_3Dto2D( domain_rows , domain_cols , daily_tensor_scen )
-
-							reversed_arr = daily_2d_array_scen [::-1] # reverse array so the tif looks like the array
-							output_raster = array2raster( newRasterfn , raster_origin , pixelWidth , pixelHeight , reversed_arr )
-
 					else:
 
 						print( '-> WARNING: define/check single POL or pm2.5 settings and processing method first! ')
 						print('-> exiting ...')
 						raise SystemExit()
+
+			if ( produce_raster == 'yes' ) :
+				print( " " )
+				print( f'-> producing raster file ...')
+
+				daily_2d_array_scen = function_3Dto2D( domain_rows , domain_cols , daily_tensor_scen )
+
+				array2raster( daily_2d_array_scen , NCOLS , NROWS , fig_dir )
+
+				# print( f'-> raster file = { output_raster }')
+				# print( " " )
 
 			### now we concatenate daily timeseries mesh to monthly tensor
 			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen ,  daily_tensor_scen ) , axis=0 )
@@ -328,6 +335,9 @@ def main() :
 			### after all days are extracted, add the daily frame to monthly frame
 			### now we concatenate daily timeseries mesh to monthly tensor
 			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen , daily_tensor_scen ) , axis=0 )
+
+		#====================================================================================================
+		# diff plot
 
 		elif ( processing_method == 'diff_plot' ) :
 
@@ -375,7 +385,7 @@ def main() :
 		else:
 			print('-> ERROR: processing method NOT defined!')
 
-		############################################################################################
+		#====================================================================================================
 		### closing nc files for each day
 
 		if ( processing_pol == 'co' ) :
@@ -413,7 +423,7 @@ def main() :
 		else:
 			pass
 
-	############################################################################################
+	#====================================================================================================
 	### change 3D to 2D array to make monthly_mean_mesh_2d: used for spatial plots
 
 	if ( spatial_plotting == 'yes' ) :
@@ -461,7 +471,7 @@ def main() :
 			print('-> exiting ...')
 			raise SystemExit()
 
-	###################################################################################
+	#====================================================================================================
 	### open MCIP file to get lon-lat of domain
 
 	print('-> opening MCIP file...')
@@ -481,9 +491,9 @@ def main() :
 	mcip_open.close()
 	print(" ")
 
-	###################################################################################
+	#====================================================================================================
 	### time-series plotting
-	###################################################################################
+	#====================================================================================================
 
 	if ( timeseries_plotting == 'yes') :
 
@@ -519,9 +529,9 @@ def main() :
 			plt.close()
 
 
-	###################################################################################
+	#====================================================================================================
 	### Spatial plotting
-	###################################################################################
+	#====================================================================================================
 	# use Basemap library and make spatial plots
 
 	if ( spatial_plotting == 'yes') :
@@ -534,7 +544,7 @@ def main() :
 		# ### create a Basemap class/model instance for a specific projection
 		# # basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
 		# theMap = Basemap(projection='lcc' ,
-		# 													 llcrnrx=llcornerx , llcrnry=llcornery , urcrnrx=urcornerx , urcrnry=urcornery ,
+		# 													 llcrnrx=llx , llcrnry=lly , urcrnrx=urcornerx , urcrnry=urcornery ,
 		# 													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
 		# 													 resolution='f' , area_thresh=0.5)
 
@@ -576,9 +586,9 @@ def main() :
 
 		print(" ")
 
-		###################################################################################
+		#====================================================================================================
 		# save the plots
-		###################################################################################
+		#====================================================================================================
 
 		### path for saving plots
 		print('-> fig directory is:')
@@ -610,7 +620,7 @@ def main() :
 	end = time.time()
 	print( f'-> run time of main function= { (( end - start ) / 60 ) :.2f} min' )  # f-string
 
-############################################################################################
+#====================================================================================================
 ### function to change 3D to 2D array
 
 def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
@@ -640,9 +650,9 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
 	### function returns a 2D array to be used for plotting
 	return mesh_2d
 
-############################################################################################
+#====================================================================================================
 # function to produce raster image
-def array2raster( newRasterfn , raster_origin , pixelWidth , pixelHeight , array ) :
+def array2raster1( newRasterfn , raster_origin , pixelWidth , pixelHeight , array ) :
 
 	cols = array.shape[1]
 	rows = array.shape[0]
@@ -660,10 +670,24 @@ def array2raster( newRasterfn , raster_origin , pixelWidth , pixelHeight , array
 	outRaster.SetProjection(outRasterSRS.ExportToWkt())
 	outband.FlushCache()
 
+# def array2raster( input_array , NCOLS , NROWS , fig_dir ) :
+# 	" array > raster"
 
+# 	raster_file_name = 'co_raster_test.tif'
+# 	path_to_raster_file = fig_dir
+# 	raster_full_path = path_to_raster_file+raster_file_name
 
+# 	print( f'-> creating raster file= {raster_full_path}')
 
-############################################################################################
+# 	transformation_matrix = from_origin( ulx , uly , pixel_size , pixel_size )  # coordinates of uppper-left corner
+
+# 	new_dataset = rasterio.open ( raster_full_path , 'w' , driver='GTiff' , height=NROWS , width=NCOLS , count=1 , dtype=str(input_array.dtype) , crs= '+proj=lcc' , transform=transformation_matrix )  # a dataset to store our grid
+	
+# 	print( f'-> writing raster file ...')
+# 	new_dataset.write( input_array , 1 )
+# 	new_dataset.close()
+
+#====================================================================================================
 ### function to
 
 def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
@@ -683,7 +707,7 @@ def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row 
 	# function returns mean of the pollutant for each cell
 	return cell_24hr_series_array
 
-############################################################################################
+#====================================================================================================
 ### function to
 
 def function_pm25_daily_cell_tseries ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
@@ -994,7 +1018,7 @@ def function_pm25_daily_cell_tseries ( aconc_open , pmdiag_open , lay , row , co
 	# function returns the mean of pm2.5 for each cell
 	return pm25_cell_daily_tseries
 
-##############################################################################################
+#====================================================================================================
 # start running main()
 
 if __name__ == '__main__' :  # __name__ is special variable by python interpreter; order of func is not importent anymore
