@@ -11,8 +11,8 @@ from mpl_toolkits.basemap import Basemap
 #from osgeo import gdal, gdal_array, osr , ogr
 from osgeo import gdal 
 import ogr, os, osr
-import rasterio
-from rasterio.transform import from_origin
+#import rasterio
+#from rasterio.transform import from_origin
 import time
 
 #====================================================================================================
