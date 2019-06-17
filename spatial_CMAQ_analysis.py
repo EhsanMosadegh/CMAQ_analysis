@@ -22,7 +22,7 @@ import time
 start = time.time()
 
 ### run time settings
-cmaq_file_month = '11'		 # 07, 08, 09, 10, 11
+cmaq_file_month = '10'		 # 07, 08, 09, 10, 11
 sim_month = 'oct'  			# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
@@ -49,9 +49,9 @@ platform = 'Mac'  # 'Mac' or 'cluster'
 
 
 # ### Basemap plot setting
-# # center of domain
-# xcent =-120.806 # degrees
-# ycent =40.000 # degrees
+# center of domain
+xcent =-120.806 # degrees
+ycent =40.000 # degrees
 # # domain size
 pixel_size = 1000 # meters
 NROWS = 265*pixel_size # meters
@@ -107,20 +107,22 @@ def main() :
 	### input directory setting
 	if ( platform == 'Mac' ) :
 
-		input_dir = '/Volumes/USFSdata/no_oct/'   # '/' at the end
-		mcip_dir = '/Volumes/USFSdata/'   # '/' at the end
-		fig_dir = '/Volumes/USFSdata/no_oct/cmaq_figs/'  # '/' at the end
+		# input_dir = '/Volumes/USFSdata/no_oct/'   # '/' at the end
+		# mcip_dir = '/Volumes/USFSdata/'   # '/' at the end
+		# fig_dir = '/Volumes/USFSdata/no_oct/cmaq_figs/'  # '/' at the end
+		# raster_dir = 
 
-		# input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
-		# mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
-		# fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'  # '/' at the end
+		input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
+		mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
+		fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'  # '/' at the end
+		raster_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/raster_dir/'
 
 	elif ( platform == 'cluster' ) :
 
 		input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/'
 		mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/'
 		fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'  # '/' at the end
-
+		raster_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/raster_dir/'
 	else:
 
 		print( '-> ERROR: specify running platform ' )
@@ -298,7 +300,7 @@ def main() :
 
 					if ( processing_pol == 'co' ) :
 
-						print( f'-> extracting cell for single POL - singlePlot - at row= {row} and col={col} ... ' )
+						#print( f'-> extracting cell for single POL - singlePlot - at row= {row} and col={col} ... ' )
 
 						cell_24hr_tseries_for_singlePol = function_cell_24hr_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 						#print(f'--> cell tseries is= {cell_24hr_tseries_for_singlePol}')
@@ -306,7 +308,7 @@ def main() :
 
 					elif ( processing_pol == 'pm2.5') :
 
-						print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
+						#print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
 						cell_24hr_tseries_for_pm25 = function_pm25_daily_cell_tseries( aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
@@ -324,8 +326,7 @@ def main() :
 
 				daily_2d_array_scen = function_3Dto2D( domain_rows , domain_cols , daily_tensor_scen )
 
-				array2raster( daily_2d_array_scen , NCOLS , NROWS , fig_dir )
-
+				array2raster( raster_dir , processing_pol , file_date_tag , daily_2d_array_scen )
 				# print( f'-> raster file = { output_raster }')
 				# print( " " )
 
@@ -652,23 +653,53 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
 
 #====================================================================================================
 # function to produce raster image
-def array2raster1( newRasterfn , raster_origin , pixelWidth , pixelHeight , array ) :
 
-	cols = array.shape[1]
-	rows = array.shape[0]
+def array2raster( raster_dir , processing_pol , file_date_tag , output_array ) :
 
-	originX = raster_origin[0]
-	originY = raster_origin[1]
+	raster_name = 'raster_'+processing_pol+'_'+file_date_tag+'.tiff'
+	path = raster_dir + raster_name
 
+	print( f'-> raster name= {raster_name}')
+	print( f'-> raster path= {path}')
+
+	no_of_bands = 1
+	datatype = gdal.GDT_Float32
+	#epsg_code = 4326 # output coord-ref-sys
+
+	raster_origin = ( llx , lly ) # unit? metere or degree? it can be either meter, or degrees --> ImportFromProj4(+units=m)
+
+	pixelWidth = 1000 # meters
+	pixelHeight = 1000 # meters
+
+	Xorig = raster_origin[0]
+	Yorig = raster_origin[1]
+
+	rows = output_array.shape[0]
+	cols = output_array.shape[1]
+
+	geotransform = ( Xorig , pixelWidth , 0 , Yorig , 0 , pixelHeight ) # units? either meter or degrees
+
+	# get the class of coordinate system
+	srs = osr.SpatialReference()                 
+	#srs.ImportFromEPSG( epsg_code )
+	srs.ImportFromProj4( f'+proj=lcc +lat_0={ycent} +lon_0={xcent} +units=m ' )
+
+	# Initialize driver & create file
 	driver = gdal.GetDriverByName('GTiff')
-	outRaster = driver.Create(newRasterfn, cols, rows, 1, gdal.GDT_Byte)
-	outRaster.SetGeoTransform((originX, pixelWidth, 0, originY, 0, pixelHeight))
-	outband = outRaster.GetRasterBand(1)
-	outband.WriteArray(array)
-	outRasterSRS = osr.SpatialReference()
-	outRasterSRS.ImportFromEPSG(4326)
-	outRaster.SetProjection(outRasterSRS.ExportToWkt())
-	outband.FlushCache()
+	# create output raster/matrix dataseet to put data into it
+	out_raster = driver.Create( path, cols, rows, no_of_bands , datatype ) # (path, cols, rows, bands, dtype-> GDAL data type arg)
+
+	out_raster.SetGeoTransform(geotransform)  # Specify its coordinates
+	out_raster.SetProjection( srs.ExportToWkt() )
+
+	print( f'-> writing the raster ...')
+	out_raster.GetRasterBand( no_of_bands ).WriteArray( output_array )  # write my array to the raster
+	out_raster.FlushCache()
+
+	# Once we're done, close the dataset properly
+	out_raster = None
+
+	del out_raster
 
 # def array2raster( input_array , NCOLS , NROWS , fig_dir ) :
 # 	" array > raster"
