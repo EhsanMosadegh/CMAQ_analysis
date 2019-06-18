@@ -644,7 +644,7 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
 			### take average of each z-axis
 			cell_z_axis_mean = cell_z_axis.mean()
 			### asign the cell mean to 2D array
-			mesh_2d [ row ][ col ] = cell_z_axis_mean
+			mesh_2d [ row , col ] = cell_z_axis_mean
 
 	print(" ")
 	print( f'-> shape of 2D array output of function: 3Dto2D= { mesh_2d.shape }' )
