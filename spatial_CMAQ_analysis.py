@@ -9,7 +9,7 @@ from netCDF4 import Dataset
 import numpy as np
 from mpl_toolkits.basemap import Basemap
 #from osgeo import gdal, gdal_array, osr , ogr
-from osgeo import gdal 
+from osgeo import gdal
 import ogr, os, osr
 #import rasterio
 #from rasterio.transform import from_origin
@@ -110,7 +110,7 @@ def main() :
 		# input_dir = '/Volumes/USFSdata/no_oct/'   # '/' at the end
 		# mcip_dir = '/Volumes/USFSdata/'   # '/' at the end
 		# fig_dir = '/Volumes/USFSdata/no_oct/cmaq_figs/'  # '/' at the end
-		# raster_dir = 
+		# raster_dir =
 
 		input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
 		mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
@@ -120,10 +120,10 @@ def main() :
 	elif ( platform == 'cluster' ) :
 
 		input_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/'
-                mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/'
-                fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/cmaq_figs'
-                raster_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/raster_dir/'
-	
+		mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/'
+		fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/cmaq_figs'
+		raster_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/raster_dir/'
+
 	else:
 
 		print( '-> ERROR: specify running platform ' )
@@ -178,7 +178,7 @@ def main() :
 		print(day_list)
 		print( f'-> processing for day= {day_of_the_month}' )
 		print(" ")
-		
+
 		# prepare the day flags
 		if day_of_the_month <= 9 :
 			# if jday is less than 10, add zero before it
@@ -284,7 +284,7 @@ def main() :
 
 		#====================================================================================================
 		# process netcdf files for each cell with a specific function
-		# single plot:  
+		# single plot:
 
 		if ( processing_method == 'single_plot' ) :
 
@@ -555,7 +555,7 @@ def main() :
 		theMap_zoomed = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
 
 		x_mesh, y_mesh = theMap_zoomed(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
-		
+
 		#basemap_instance.fillcontinents(lake_color='aqua')
 
 		#my_levels = [ 0.02 , 0.05 ]
@@ -563,9 +563,9 @@ def main() :
 
 		### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
 		colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=max_conc_threshold ) #levels=my_levels , colors=my_colors
-		
+
 		#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
-		
+
 		theMap_zoomed.drawmapboundary(color='k' ) #, fill_color='aqua')
 		theMap_zoomed.drawcoastlines(color = '0.15')
 		theMap_zoomed.drawstates()
@@ -681,7 +681,7 @@ def array2raster( raster_dir , processing_pol , file_date_tag , output_array ) :
 	geotransform = ( Xorig , pixelWidth , 0 , Yorig , 0 , pixelHeight ) # units? either meter or degrees
 
 	# get the class of coordinate system
-	srs = osr.SpatialReference()                 
+	srs = osr.SpatialReference()
 	#srs.ImportFromEPSG( epsg_code )
 	srs.ImportFromProj4( f'+proj=lcc +lat_0={ycent} +lon_0={xcent} +units=m ' )
 
@@ -714,7 +714,7 @@ def array2raster( raster_dir , processing_pol , file_date_tag , output_array ) :
 # 	transformation_matrix = from_origin( ulx , uly , pixel_size , pixel_size )  # coordinates of uppper-left corner
 
 # 	new_dataset = rasterio.open ( raster_full_path , 'w' , driver='GTiff' , height=NROWS , width=NCOLS , count=1 , dtype=str(input_array.dtype) , crs= '+proj=lcc' , transform=transformation_matrix )  # a dataset to store our grid
-	
+
 # 	print( f'-> writing raster file ...')
 # 	new_dataset.write( input_array , 1 )
 # 	new_dataset.close()
