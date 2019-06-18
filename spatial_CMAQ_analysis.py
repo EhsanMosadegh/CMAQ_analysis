@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+## -*- coding: utf-8 -*-
 
 #====================================================================================================
 # import libraries
@@ -288,6 +288,7 @@ def main() :
 
 		if ( processing_method == 'single_plot' ) :
 
+			print('-> processing for single plot ...')
 			### create an empty tensor for each cell and day as container of daily 24-hr t-step concentrations
 			daily_tensor_scen = np.empty ( shape= ( 24 , domain_rows , domain_cols ))  # when assignin gby index, z-dim should be 1.
 
@@ -342,7 +343,8 @@ def main() :
 		# diff plot
 
 		elif ( processing_method == 'diff_plot' ) :
-
+			
+			print('-> processing for diff plot ...')
 			### create an empty tensor for each cell and day as container of daily 24-hr t-step concentrations
 			daily_tensor_scen = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
 			daily_tensor_base = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
