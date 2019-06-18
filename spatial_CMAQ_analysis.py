@@ -119,10 +119,11 @@ def main() :
 
 	elif ( platform == 'cluster' ) :
 
-		input_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/cmaq_usfs_data/'
-		mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/'
-		fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/cmaq_figs/'  # '/' at the end
-		raster_dir = '/storage/ehsanm/USFS_CA_WRF_1km/plots/CMAQ_analysis/raster_dir/'
+		input_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/'
+                mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/'
+                fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/cmaq_figs'
+                raster_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/raster_dir/'
+	
 	else:
 
 		print( '-> ERROR: specify running platform ' )
