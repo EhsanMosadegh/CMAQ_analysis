@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-## -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 #====================================================================================================
 # import libraries
@@ -107,15 +107,15 @@ def main() :
 	### input directory setting
 	if ( platform == 'Mac' ) :
 
-		# input_dir = '/Volumes/USFSdata/no_oct/'   # '/' at the end
-		# mcip_dir = '/Volumes/USFSdata/'   # '/' at the end
-		# fig_dir = '/Volumes/USFSdata/no_oct/cmaq_figs/'  # '/' at the end
-		# raster_dir =
+		input_dir = '/Volumes/USFSdata/no_oct/'   # '/' at the end
+		mcip_dir = '/Volumes/USFSdata/'   # '/' at the end
+		fig_dir = '/Volumes/USFSdata/no_oct/cmaq_figs/'  # '/' at the end
+		raster_dir =
 
-		input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
-		mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
-		fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'  # '/' at the end
-		raster_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/raster_dir/'
+		# input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
+		# mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
+		# fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'  # '/' at the end
+		# raster_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/raster_dir/'
 
 	elif ( platform == 'cluster' ) :
 
@@ -141,6 +141,33 @@ def main() :
 	print('-> MCIP input directory is:')
 	print(mcip_dir)
 	print(" ")
+
+	#====================================================================================================
+	### open MCIP file to get lon-lat of domain
+
+	print('-> opening MCIP file...')
+	mcip_file = 'GRIDDOT2D_'+mcip_date_tag
+	mcip_in = mcip_dir + mcip_file
+	mcip_open = Dataset( mcip_in )
+
+	### get some info
+	print('-> MCIP file info:')
+	print('-> MCIP file dimensions: %s' %str( mcip_open.variables['LATD'].dimensions ) )
+	print('-> shape of each dimension: %s' %( str(mcip_open.variables['LATD'].shape ) ))
+
+	### extract lat and lon parameteres
+	lat_mesh = np.array( mcip_open.variables['LATD'][ 0 , 0 , : , : ] ) # select only rosws and cols for the 1st timestep and layer = [ tstep=0 , lay=0]
+	lon_mesh = np.array( mcip_open.variables['LOND'][ 0 , 0 , : , : ] )
+
+	# get the min of each array as the origin of array
+	array_origin_lat = lat_mesh.min()
+	array_origin_lon = lon_mesh.min()
+
+	print('-> closing MCIP file...')
+	mcip_open.close()
+	print(" ")
+
+	#====================================================================================================
 
 # def function_3D_mesh_maker ( days_to_run_in_month , domain_rows , domain_cols , cmaq_file_month , scenario , input_path_scen , input_path_base ) :
 # 	" processes the files and days and returns two 3D meshes"
@@ -328,7 +355,7 @@ def main() :
 
 				daily_2d_array_scen = function_3Dto2D( domain_rows , domain_cols , daily_tensor_scen )
 
-				array2raster( raster_dir , processing_pol , file_date_tag , daily_2d_array_scen )
+				array2raster( raster_dir , processing_pol , file_date_tag , daily_2d_array_scen , array_origin_lon , array_origin_lat )
 				# print( f'-> raster file = { output_raster }')
 				# print( " " )
 
@@ -343,7 +370,7 @@ def main() :
 		# diff plot
 
 		elif ( processing_method == 'diff_plot' ) :
-			
+
 			print('-> processing for diff plot ...')
 			### create an empty tensor for each cell and day as container of daily 24-hr t-step concentrations
 			daily_tensor_scen = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
@@ -476,26 +503,6 @@ def main() :
 			raise SystemExit()
 
 	#====================================================================================================
-	### open MCIP file to get lon-lat of domain
-
-	print('-> opening MCIP file...')
-	mcip_file = 'GRIDDOT2D_'+mcip_date_tag
-	mcip_in = mcip_dir + mcip_file
-	mcip_open = Dataset( mcip_in )
-
-	### get some info
-	print('-> MCIP file info:')
-	print('-> MCIP file dimensions: %s' %str( mcip_open.variables['LATD'].dimensions ) )
-	print('-> shape of each dimension: %s' %( str(mcip_open.variables['LATD'].shape ) ))
-
-	### extract lat and lon parameteres
-	lat_mesh = np.array( mcip_open.variables['LATD'][ 0 , 0 , : , : ] ) # select only rosws and cols for the 1st timestep and layer = [ tstep=0 , lay=0]
-	lon_mesh = np.array( mcip_open.variables['LOND'][ 0 , 0 , : , : ] )
-	print('-> closing MCIP file...')
-	mcip_open.close()
-	print(" ")
-
-	#====================================================================================================
 	### time-series plotting
 	#====================================================================================================
 
@@ -554,9 +561,9 @@ def main() :
 
 
 		### create Basemap model instance from its class, it is a map that color mesh sits on it.
-		theMap_zoomed = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+		theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
 
-		x_mesh, y_mesh = theMap_zoomed(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
+		x_mesh, y_mesh = theMap(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
 
 		#basemap_instance.fillcontinents(lake_color='aqua')
 
@@ -564,19 +571,19 @@ def main() :
 		#my_colors = ( 'g' , 'b' , 'r' )
 
 		### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
-		colorMesh = theMap_zoomed.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=max_conc_threshold ) #levels=my_levels , colors=my_colors
+		colorMesh = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=max_conc_threshold ) #levels=my_levels , colors=my_colors
 
 		#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
-		theMap_zoomed.drawmapboundary(color='k' ) #, fill_color='aqua')
-		theMap_zoomed.drawcoastlines(color = '0.15')
-		theMap_zoomed.drawstates()
-		theMap_zoomed.drawcounties(linewidth=0.5 , color='k')
+		theMap.drawmapboundary(color='k' ) #, fill_color='aqua')
+		theMap.drawcoastlines(color = '0.15')
+		theMap.drawstates()
+		theMap.drawcounties(linewidth=0.5 , color='k' )
 
-		#theMap_zoomed.bluemarble()
+		#theMap.bluemarble()
 
 		### create colorbar
-		colorbar = theMap_zoomed.colorbar( colorMesh , 'bottom' , label= f'{cmaq_pol} mean concentration {pol_unit}' )
+		colorbar = theMap.colorbar( colorMesh , 'bottom' , label= f'{cmaq_pol} mean concentration {pol_unit}' )
 		#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 		#colorbar = basemap_instance.colorbar(cs, location='bottom')
 		#plt.subplot( figsize=(10,10) )
@@ -657,7 +664,7 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
 #====================================================================================================
 # function to produce raster image
 
-def array2raster( raster_dir , processing_pol , file_date_tag , output_array ) :
+def array2raster( raster_dir , processing_pol , file_date_tag , output_array , array_origin_lon , array_origin_lat ) :
 
 	raster_name = 'raster_'+processing_pol+'_'+file_date_tag+'.tiff'
 	path = raster_dir + raster_name
@@ -665,11 +672,17 @@ def array2raster( raster_dir , processing_pol , file_date_tag , output_array ) :
 	print( f'-> raster name= {raster_name}')
 	print( f'-> raster path= {path}')
 
+# center of domain
+	xcent =-120.806 # degrees
+	ycent =40.000 # degrees
+	upper_lat = 40.450
+	lower_lat = 36.450
+
 	no_of_bands = 1
 	datatype = gdal.GDT_Float32
 	#epsg_code = 4326 # output coord-ref-sys
 
-	raster_origin = ( llx , lly ) # unit? metere or degree? it can be either meter, or degrees --> ImportFromProj4(+units=m)
+	raster_origin = ( array_origin_lon , array_origin_lat ) # unit? metere or degree? it can be either meter, or degrees --> ImportFromProj4(+units=m)
 
 	pixelWidth = 1000 # meters
 	pixelHeight = 1000 # meters
@@ -682,10 +695,10 @@ def array2raster( raster_dir , processing_pol , file_date_tag , output_array ) :
 
 	geotransform = ( Xorig , pixelWidth , 0 , Yorig , 0 , pixelHeight ) # units? either meter or degrees
 
-	# get the class of coordinate system
-	srs = osr.SpatialReference()
-	#srs.ImportFromEPSG( epsg_code )
-	srs.ImportFromProj4( f'+proj=lcc +lat_0={ycent} +lon_0={xcent} +units=m ' )
+	# get the class of coordinate reference system
+	crs = osr.SpatialReference()
+	#crs.ImportFromEPSG( epsg_code )
+	crs.ImportFromProj4( f'+proj=lcc +lat_0={ycent} +lon_0={xcent}  +lat_1={upper_lat}  +lat_2={lower_lat}  +units=m ' )
 
 	# Initialize driver & create file
 	driver = gdal.GetDriverByName('GTiff')
@@ -693,7 +706,7 @@ def array2raster( raster_dir , processing_pol , file_date_tag , output_array ) :
 	out_raster = driver.Create( path, cols, rows, no_of_bands , datatype ) # (path, cols, rows, bands, dtype-> GDAL data type arg)
 
 	out_raster.SetGeoTransform(geotransform)  # Specify its coordinates
-	out_raster.SetProjection( srs.ExportToWkt() )
+	out_raster.SetProjection( crs.ExportToWkt() )
 
 	print( f'-> writing the raster ...')
 	out_raster.GetRasterBand( no_of_bands ).WriteArray( output_array )  # write my array to the raster
