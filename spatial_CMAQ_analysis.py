@@ -22,8 +22,8 @@ import time
 start = time.time()
 
 ### run time settings
-cmaq_file_month = '07'		 # 07, 08, 09, 10, 11
-sim_month = 'jul'  			# jul, aug, sep, oct, nov
+cmaq_file_month = '07'		#  07, 08, 	09,  10,  11
+sim_month = 'jul'  				# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
 days_to_run_in_month = 1
@@ -31,15 +31,15 @@ scenario = '1' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
 cmaq_pol = 'CO'  # for plot title 'CO' ro 'PM2.5'
-pol_unit = 'ppmV'		#'[ppmV]' or [ug/m^3]
+pol_unit = '[ppmV]'		#'[ppmV]' or [ug/m^3]
 max_conc_threshold = 0.2  # for Basemap plot
-include_pmdiag = 'yes'  # 'yes' OR 'no'
+include_pmdiag = 'no'  # 'yes' OR 'no'
 
 ### spatial plot
 spatial_plotting = 'yes' # yes or no
 processing_pol = 'co' 		# 'co' or 'pm2.5'
-processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
-produce_raster = 'yes' 	# 'yes' OR 'no'
+processing_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
+produce_raster = 'no' 	# 'yes' OR 'no'
 
 ### time-series plot
 timeseries_plotting = 'no' # yes or not
@@ -108,14 +108,14 @@ def main() :
 	### input directory setting
 	if ( platform == 'Mac' ) :
 
-		input_dir = '/Volumes/USFSdata/no_oct/'   # '/' at the end
+		input_dir = '/Volumes/USFSdata/cmaq_output/'   # '/' at the end
 		mcip_dir = '/Volumes/USFSdata/'   # '/' at the end
-		fig_dir = '/Volumes/USFSdata/no_oct/cmaq_figs/'  # '/' at the end
+		fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'  # '/' at the end
 		raster_dir = '/Volumes/USFSdata/raster_dir/'
 
 		# input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
 		# mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
-		# fig_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/cmaq_figs/'  # '/' at the end
+		# fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'  # '/' at the end
 		# raster_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/raster_dir/'
 
 	elif ( platform == 'cluster' ) :
@@ -236,7 +236,7 @@ def main() :
 			if ( processing_method == 'single_plot' ) :
 
 				# define input files
-				print('-> setting path for single POL and single_plot...')
+				print('-> setting path for CO and single_plot...')
 				aconc_input_scen = input_path_scen + aconc_scen
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				print('-> opening/reading CMAQ files:')
@@ -246,7 +246,7 @@ def main() :
 			# for difference between 2 scenarios
 			elif ( processing_method == 'diff_plot' ) :  # open 2 netcdf files: "aconc_scen" and "aconc_baseline"
 				# define input files
-				print('-> setting path for single POL and diff_plot...')
+				print('-> setting path for CO and diff_plot...')
 				aconc_input_scen = input_path_scen + aconc_scen
 				aconc_input_base = input_path_base + aconc_base
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
@@ -266,6 +266,7 @@ def main() :
 
 			if ( processing_method == 'single_plot' ) :
 
+				print('-> setting path for PM2.5 and single_plot...')
 				# define input files
 				aconc_input_scen = input_path_scen + aconc_scen
 				pmdiag_input_scen = input_path_scen + pmdiag_scen
@@ -281,6 +282,7 @@ def main() :
 
 			elif ( processing_method == 'diff_plot' ) :
 
+				print('-> setting path for PM2.5 and diff_plot...')
 				# define input files
 				aconc_input_scen = input_path_scen + aconc_scen
 				pmdiag_input_scen = input_path_scen + pmdiag_scen
@@ -338,7 +340,7 @@ def main() :
 
 					elif ( processing_pol == 'pm2.5') :
 
-						#print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
+						print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
 						cell_24hr_tseries_for_pm25 = function_pm25_daily_cell_tseries( include_pmdiag , aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
@@ -386,7 +388,7 @@ def main() :
 
 					if ( processing_pol == 'co' ) :
 
-						#print( f'-> extracting cell for single POL - diff - at row= {row} and col={col} ... ' )
+						#print( f'-> extracting cell for CO - diff - at row= {row} and col={col} ... ' )
 
 						# we calculate cell means for each scenario
 						cell_24hr_timeSeries_array_scen = function_cell_24hr_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
@@ -394,6 +396,8 @@ def main() :
 
 					elif ( processing_pol == 'pm2.5' ) :
 
+						print( f'-> extracting cell for PM2.5 - diff - at row= {row} and col={col} ... ' )
+						
 						# we calculate cell means
 						cell_24hr_timeSeries_array_scen = function_pm25_daily_cell_tseries( include_pmdiag , aconc_open_scen , pmdiag_open_scen , lay , row , col )
 						cell_24hr_timeSeries_array_base = function_pm25_daily_cell_tseries( include_pmdiag , aconc_open_base , pmdiag_open_base , lay , row , col )
@@ -996,18 +1000,18 @@ def function_pm25_daily_cell_tseries ( include_pmdiag , aconc_open , pmdiag_open
 		### species from pmdiag [3]
 		PM25AT = pmdiag_open.variables['PM25AT'][:,lay,row,col]
 		PM25AT = np.array(PM25AT)
-		print( f'-> PM25AT time-series= {PM25AT}')
+		#print( f'-> PM25AT time-series= {PM25AT}')
 		print( f'-> mean of PM25AT= {PM25AT.mean()}')
 
 		PM25AC = pmdiag_open.variables['PM25AC'][:,lay,row,col]
 		PM25AC = np.array(PM25AC)
-		print( f'-> PM25AT time-series= {PM25AC}')
-		print( f'-> mean of PM25AT= {PM25AC.mean()}')
+		#print( f'-> PM25AC time-series= {PM25AC}')
+		print( f'-> mean of PM25AC= {PM25AC.mean()}')
 
 		PM25CO = pmdiag_open.variables['PM25CO'][:,lay,row,col]
 		PM25CO = np.array(PM25CO)
-		print( f'-> PM25AT time-series= {PM25CO}')
-		print( f'-> mean of PM25AT= {PM25CO.mean()}')
+		#print( f'-> PM25CO time-series= {PM25CO}')
+		print( f'-> mean of PM25CO= {PM25CO.mean()}')
 
 		 # species calculated inside SpecDef file [0]
 		 # perform arithmetic operations on arrays
@@ -1075,6 +1079,7 @@ def function_pm25_daily_cell_tseries ( include_pmdiag , aconc_open , pmdiag_open
 	else:
 
 		print( '-> PMDIAG file is _NOT_ included in PM2.5 calculations ...' )
+		print( f'-> PM2.5 concentrations will be over-estimated!')
 
 		 # species calculated inside SpecDef file [0]
 		 # perform arithmetic operations on arrays
