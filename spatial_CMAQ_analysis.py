@@ -33,6 +33,7 @@ mcip_date_tag = '161001'
 cmaq_pol = 'CO'  # for plot title 'CO' ro 'PM2.5'
 pol_unit = 'ppmV'		#'[ppmV]' or [ug/m^3]
 max_conc_threshold = 0.2  # for Basemap plot
+include_pmdiag = 'yes'  # 'yes' OR 'no'
 
 ### spatial plot
 spatial_plotting = 'yes' # yes or no
@@ -339,7 +340,7 @@ def main() :
 
 						#print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
-						cell_24hr_tseries_for_pm25 = function_pm25_daily_cell_tseries( aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						cell_24hr_tseries_for_pm25 = function_pm25_daily_cell_tseries( include_pmdiag , aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
 						daily_tensor_scen [:,row,col] = cell_24hr_tseries_for_pm25 # fill tensor for all cells in domain
 
@@ -394,8 +395,8 @@ def main() :
 					elif ( processing_pol == 'pm2.5' ) :
 
 						# we calculate cell means
-						cell_24hr_timeSeries_array_scen = function_pm25_daily_cell_tseries( aconc_open_scen , pmdiag_open_scen , lay , row , col )
-						cell_24hr_timeSeries_array_base = function_pm25_daily_cell_tseries( aconc_open_base , pmdiag_open_base , lay , row , col )
+						cell_24hr_timeSeries_array_scen = function_pm25_daily_cell_tseries( include_pmdiag , aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						cell_24hr_timeSeries_array_base = function_pm25_daily_cell_tseries( include_pmdiag , aconc_open_base , pmdiag_open_base , lay , row , col )
 
 					else:
 						pass
@@ -760,7 +761,7 @@ def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row 
 #====================================================================================================
 ### function to
 
-def function_pm25_daily_cell_tseries ( aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
+def function_pm25_daily_cell_tseries ( include_pmdiag , aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
 	" returns daily timeseries for pm2.5 for each cell"
 
 	print( f'-> processing row= {row} and col= {col}' )
@@ -988,78 +989,155 @@ def function_pm25_daily_cell_tseries ( aconc_open , pmdiag_open , lay , row , co
 	AMNJ = aconc_open.variables['AMNJ'][:,lay,row,col]
 	AMNJ = np.array(AMNJ)
 
-	# species from pmdiag [3]
-	PM25AT = pmdiag_open.variables['PM25AT'][:,lay,row,col]
-	PM25AT = np.array(PM25AT)
+	if ( include_pmdiag == 'yes' ) :
 
-	PM25AC = pmdiag_open.variables['PM25AC'][:,lay,row,col]
-	PM25AC = np.array(PM25AC)
+		print( '-> PMDIAG file is included in PM2.5 calculations ...' )
 
-	PM25CO = pmdiag_open.variables['PM25CO'][:,lay,row,col]
-	PM25CO = np.array(PM25CO)
+		### species from pmdiag [3]
+		PM25AT = pmdiag_open.variables['PM25AT'][:,lay,row,col]
+		PM25AT = np.array(PM25AT)
+		print( f'-> PM25AT time-series= {PM25AT}')
+		print( f'-> mean of PM25AT= {PM25AT.mean()}')
 
-	 # species calculated inside SpecDef file [0]
-	 # perform arithmetic operations on arrays
-	ANAK = 0.8373*ASEACAT + 0.0626*ASOIL + 0.0023*ACORS
-	AMGK = 0.0997*ASEACAT + 0.0170*ASOIL + 0.0032*ACORS
-	AKK = 0.0310*ASEACAT + 0.0242*ASOIL + 0.0176*ACORS
-	ACAK = 0.0320*ASEACAT + 0.0838*ASOIL + 0.0562*ACORS
+		PM25AC = pmdiag_open.variables['PM25AC'][:,lay,row,col]
+		PM25AC = np.array(PM25AC)
+		print( f'-> PM25AT time-series= {PM25AC}')
+		print( f'-> mean of PM25AT= {PM25AC.mean()}')
 
-	APOCI = ALVPO1I /1.39 + ASVPO1I /1.32 + ASVPO2I /1.26
-	ASOCI = ALVOO1I /2.27 + ALVOO2I /2.06 + ASVOO1I /1.88 + ASVOO2I /1.73
-	APOCJ = ALVPO1J /1.39 + ASVPO1J /1.32 + ASVPO2J /1.26 +ASVPO3J /1.21 + AIVPO1J /1.17
-	ASOCJ = AXYL1J /2.42  + AXYL2J /1.93  + AXYL3J /2.30 \
-	+ATOL1J /2.26  + ATOL2J /1.82  + ATOL3J /2.70 \
-	+ABNZ1J /2.68  + ABNZ2J /2.23  + ABNZ3J /3.00 \
-	+AISO1J /2.20  + AISO2J /2.23  + AISO3J /2.80 \
-	+ATRP1J /1.84  + ATRP2J /1.83  + ASQTJ /1.52  \
-	+AALK1J /1.56  + AALK2J /1.42                   \
-	+AORGCJ /2.00  + AOLGBJ /2.10  + AOLGAJ /2.50 \
-	+APAH1J /1.63  + APAH2J /1.49  + APAH3J /1.77 \
-	+ALVOO1J /2.27 + ALVOO2J /2.06 + ASVOO1J /1.88\
-	+ASVOO2J /1.73 + ASVOO3J /1.60 + APCSOJ  /2.00
+		PM25CO = pmdiag_open.variables['PM25CO'][:,lay,row,col]
+		PM25CO = np.array(PM25CO)
+		print( f'-> PM25AT time-series= {PM25CO}')
+		print( f'-> mean of PM25AT= {PM25CO.mean()}')
 
-	APOMI = ALVPO1I  + ASVPO1I  + ASVPO2I
-	ASOMI = ALVOO1I  + ALVOO2I  + ASVOO1I  + ASVOO2I
-	APOMJ = ALVPO1J  + ASVPO1J  + ASVPO2J  +ASVPO3J  + AIVPO1J
-	ASOMJ = AXYL1J   + AXYL2J   + AXYL3J   + ATOL1J  \
-	+ATOL2J   + ATOL3J   + ABNZ1J   + ABNZ2J  \
-	+ABNZ3J   + AISO1J   + AISO2J   + AISO3J  \
-	+ATRP1J   + ATRP2J   + ASQTJ    + AALK1J  \
-	+AALK2J   + APAH1J   + APAH2J   + APAH3J  \
-	+AORGCJ   + AOLGBJ   + AOLGAJ               \
-	+ALVOO1J  + ALVOO2J  + ASVOO1J  + ASVOO2J \
-	+ASVOO3J  + APCSOJ
+		 # species calculated inside SpecDef file [0]
+		 # perform arithmetic operations on arrays
+		ANAK = 0.8373*ASEACAT + 0.0626*ASOIL + 0.0023*ACORS
+		AMGK = 0.0997*ASEACAT + 0.0170*ASOIL + 0.0032*ACORS
+		AKK = 0.0310*ASEACAT + 0.0242*ASOIL + 0.0176*ACORS
+		ACAK = 0.0320*ASEACAT + 0.0838*ASOIL + 0.0562*ACORS
 
-	AOCI = APOCI + ASOCI
-	AOCJ = APOCJ + ASOCJ
-	AOMI = APOMI    + ASOMI
-	AOMJ = APOMJ    + ASOMJ
-	ASOILJ = 2.20*AALJ + 2.49*ASIJ + 1.63*ACAJ + 2.42*AFEJ + 1.94*ATIJ
-	ATOTI = ASO4I + ANO3I + ANH4I + ANAI + ACLI + AECI + AOMI + AOTHRI
-	ATOTJ = ASO4J + ANO3J + ANH4J + ANAJ + ACLJ + AECJ + AOMJ + AOTHRJ + AFEJ + ASIJ + ATIJ + ACAJ + AMGJ + AMNJ + AALJ + AKJ
-	ATOTK = ASOIL + ACORS + ASEACAT + ACLK + ASO4K + ANO3K + ANH4K
-# !! PM2.5 species computed using modeled size distribution,
-# reference: https://github.com/USEPA/CMAQ/blob/5.2/CCTM/src/MECHS/cb6r3_ae6_aq/SpecDef_cb6r3_ae6_aq.txt
-	PM25_HP      = (AH3OPI * PM25AT + AH3OPJ * PM25AC + AH3OPK * PM25CO) * (1.0/19.0)
-	PM25_CL      = ACLI * PM25AT + ACLJ * PM25AC + ACLK * PM25CO
-	PM25_EC      = AECI * PM25AT + AECJ * PM25AC
-	PM25_NA      = ANAI * PM25AT + ANAJ * PM25AC + ANAK * PM25CO
-	PM25_MG      = AMGJ * PM25AC + AMGK * PM25CO
-	PM25_K       = AKJ * PM25AC + AKK * PM25CO
-	PM25_CA      = ACAJ * PM25AC + ACAK * PM25CO
-	PM25_NH4     = ANH4I * PM25AT + ANH4J * PM25AC + ANH4K * PM25CO
-	PM25_NO3     = ANO3I * PM25AT + ANO3J * PM25AC + ANO3K * PM25CO
-	PM25_OC      = AOCI * PM25AT + AOCJ * PM25AC
-	PM25_OM      = AOMI * PM25AT + AOMJ * PM25AC
-	PM25_SOIL    = ASOILJ * PM25AC + ASOIL * PM25CO
-	PM25_SO4     = ASO4I * PM25AT + ASO4J * PM25AC + ASO4K * PM25CO
-	PM25_TOT     = ATOTI * PM25AT + ATOTJ * PM25AC + ATOTK * PM25CO
-	PM25_UNSPEC1 = PM25_TOT - ( PM25_CL + PM25_EC + PM25_NA + PM25_NH4 + PM25_NO3 + PM25_OC + PM25_SOIL + PM25_SO4 )
+		APOCI = ALVPO1I /1.39 + ASVPO1I /1.32 + ASVPO2I /1.26
+		ASOCI = ALVOO1I /2.27 + ALVOO2I /2.06 + ASVOO1I /1.88 + ASVOO2I /1.73
+		APOCJ = ALVPO1J /1.39 + ASVPO1J /1.32 + ASVPO2J /1.26 +ASVPO3J /1.21 + AIVPO1J /1.17
+		ASOCJ = AXYL1J /2.42  + AXYL2J /1.93  + AXYL3J /2.30 \
+		+ATOL1J /2.26  + ATOL2J /1.82  + ATOL3J /2.70 \
+		+ABNZ1J /2.68  + ABNZ2J /2.23  + ABNZ3J /3.00 \
+		+AISO1J /2.20  + AISO2J /2.23  + AISO3J /2.80 \
+		+ATRP1J /1.84  + ATRP2J /1.83  + ASQTJ /1.52  \
+		+AALK1J /1.56  + AALK2J /1.42                   \
+		+AORGCJ /2.00  + AOLGBJ /2.10  + AOLGAJ /2.50 \
+		+APAH1J /1.63  + APAH2J /1.49  + APAH3J /1.77 \
+		+ALVOO1J /2.27 + ALVOO2J /2.06 + ASVOO1J /1.88\
+		+ASVOO2J /1.73 + ASVOO3J /1.60 + APCSOJ  /2.00
 
-	# now sum all species to get hourly PM2.5 concentratiosn
-	pm25_cell_daily_tseries = PM25_HP + PM25_CL + PM25_EC + PM25_NA + PM25_MG + PM25_K + PM25_CA + \
-					PM25_NH4 + PM25_NO3 + PM25_OC + PM25_OM + PM25_SOIL + PM25_SO4 + PM25_TOT + PM25_UNSPEC1
+		APOMI = ALVPO1I  + ASVPO1I  + ASVPO2I
+		ASOMI = ALVOO1I  + ALVOO2I  + ASVOO1I  + ASVOO2I
+		APOMJ = ALVPO1J  + ASVPO1J  + ASVPO2J  +ASVPO3J  + AIVPO1J
+		ASOMJ = AXYL1J   + AXYL2J   + AXYL3J   + ATOL1J  \
+		+ATOL2J   + ATOL3J   + ABNZ1J   + ABNZ2J  \
+		+ABNZ3J   + AISO1J   + AISO2J   + AISO3J  \
+		+ATRP1J   + ATRP2J   + ASQTJ    + AALK1J  \
+		+AALK2J   + APAH1J   + APAH2J   + APAH3J  \
+		+AORGCJ   + AOLGBJ   + AOLGAJ               \
+		+ALVOO1J  + ALVOO2J  + ASVOO1J  + ASVOO2J \
+		+ASVOO3J  + APCSOJ
+
+		AOCI = APOCI + ASOCI
+		AOCJ = APOCJ + ASOCJ
+		AOMI = APOMI    + ASOMI
+		AOMJ = APOMJ    + ASOMJ
+		ASOILJ = 2.20*AALJ + 2.49*ASIJ + 1.63*ACAJ + 2.42*AFEJ + 1.94*ATIJ
+		ATOTI = ASO4I + ANO3I + ANH4I + ANAI + ACLI + AECI + AOMI + AOTHRI
+		ATOTJ = ASO4J + ANO3J + ANH4J + ANAJ + ACLJ + AECJ + AOMJ + AOTHRJ + AFEJ + ASIJ + ATIJ + ACAJ + AMGJ + AMNJ + AALJ + AKJ
+		ATOTK = ASOIL + ACORS + ASEACAT + ACLK + ASO4K + ANO3K + ANH4K
+	# !! PM2.5 species computed using modeled size distribution,
+	# reference: https://github.com/USEPA/CMAQ/blob/5.2/CCTM/src/MECHS/cb6r3_ae6_aq/SpecDef_cb6r3_ae6_aq.txt
+		PM25_HP      = (AH3OPI * PM25AT + AH3OPJ * PM25AC + AH3OPK * PM25CO) * (1.0/19.0)
+		PM25_CL      = ACLI * PM25AT + ACLJ * PM25AC + ACLK * PM25CO
+		PM25_EC      = AECI * PM25AT + AECJ * PM25AC
+		PM25_NA      = ANAI * PM25AT + ANAJ * PM25AC + ANAK * PM25CO
+		PM25_MG      = AMGJ * PM25AC + AMGK * PM25CO
+		PM25_K       = AKJ * PM25AC + AKK * PM25CO
+		PM25_CA      = ACAJ * PM25AC + ACAK * PM25CO
+		PM25_NH4     = ANH4I * PM25AT + ANH4J * PM25AC + ANH4K * PM25CO
+		PM25_NO3     = ANO3I * PM25AT + ANO3J * PM25AC + ANO3K * PM25CO
+		PM25_OC      = AOCI * PM25AT + AOCJ * PM25AC
+		PM25_OM      = AOMI * PM25AT + AOMJ * PM25AC
+		PM25_SOIL    = ASOILJ * PM25AC + ASOIL * PM25CO
+		PM25_SO4     = ASO4I * PM25AT + ASO4J * PM25AC + ASO4K * PM25CO
+		PM25_TOT     = ATOTI * PM25AT + ATOTJ * PM25AC + ATOTK * PM25CO
+		PM25_UNSPEC1 = PM25_TOT - ( PM25_CL + PM25_EC + PM25_NA + PM25_NH4 + PM25_NO3 + PM25_OC + PM25_SOIL + PM25_SO4 )
+
+		# now sum all species to get hourly PM2.5 concentratiosn
+		pm25_cell_daily_tseries = PM25_HP + PM25_CL + PM25_EC + PM25_NA + PM25_MG + PM25_K + PM25_CA + \
+						PM25_NH4 + PM25_NO3 + PM25_OC + PM25_OM + PM25_SOIL + PM25_SO4 + PM25_TOT + PM25_UNSPEC1
+
+	else:
+
+		print( '-> PMDIAG file is _NOT_ included in PM2.5 calculations ...' )
+
+		 # species calculated inside SpecDef file [0]
+		 # perform arithmetic operations on arrays
+		ANAK = 0.8373*ASEACAT + 0.0626*ASOIL + 0.0023*ACORS
+		AMGK = 0.0997*ASEACAT + 0.0170*ASOIL + 0.0032*ACORS
+		AKK = 0.0310*ASEACAT + 0.0242*ASOIL + 0.0176*ACORS
+		ACAK = 0.0320*ASEACAT + 0.0838*ASOIL + 0.0562*ACORS
+
+		APOCI = ALVPO1I /1.39 + ASVPO1I /1.32 + ASVPO2I /1.26
+		ASOCI = ALVOO1I /2.27 + ALVOO2I /2.06 + ASVOO1I /1.88 + ASVOO2I /1.73
+		APOCJ = ALVPO1J /1.39 + ASVPO1J /1.32 + ASVPO2J /1.26 +ASVPO3J /1.21 + AIVPO1J /1.17
+		ASOCJ = AXYL1J /2.42  + AXYL2J /1.93  + AXYL3J /2.30 \
+		+ATOL1J /2.26  + ATOL2J /1.82  + ATOL3J /2.70 \
+		+ABNZ1J /2.68  + ABNZ2J /2.23  + ABNZ3J /3.00 \
+		+AISO1J /2.20  + AISO2J /2.23  + AISO3J /2.80 \
+		+ATRP1J /1.84  + ATRP2J /1.83  + ASQTJ /1.52  \
+		+AALK1J /1.56  + AALK2J /1.42                   \
+		+AORGCJ /2.00  + AOLGBJ /2.10  + AOLGAJ /2.50 \
+		+APAH1J /1.63  + APAH2J /1.49  + APAH3J /1.77 \
+		+ALVOO1J /2.27 + ALVOO2J /2.06 + ASVOO1J /1.88\
+		+ASVOO2J /1.73 + ASVOO3J /1.60 + APCSOJ  /2.00
+
+		APOMI = ALVPO1I  + ASVPO1I  + ASVPO2I
+		ASOMI = ALVOO1I  + ALVOO2I  + ASVOO1I  + ASVOO2I
+		APOMJ = ALVPO1J  + ASVPO1J  + ASVPO2J  +ASVPO3J  + AIVPO1J
+		ASOMJ = AXYL1J   + AXYL2J   + AXYL3J   + ATOL1J  \
+		+ATOL2J   + ATOL3J   + ABNZ1J   + ABNZ2J  \
+		+ABNZ3J   + AISO1J   + AISO2J   + AISO3J  \
+		+ATRP1J   + ATRP2J   + ASQTJ    + AALK1J  \
+		+AALK2J   + APAH1J   + APAH2J   + APAH3J  \
+		+AORGCJ   + AOLGBJ   + AOLGAJ               \
+		+ALVOO1J  + ALVOO2J  + ASVOO1J  + ASVOO2J \
+		+ASVOO3J  + APCSOJ
+
+		AOCI = APOCI + ASOCI
+		AOCJ = APOCJ + ASOCJ
+		AOMI = APOMI    + ASOMI
+		AOMJ = APOMJ    + ASOMJ
+		ASOILJ = 2.20*AALJ + 2.49*ASIJ + 1.63*ACAJ + 2.42*AFEJ + 1.94*ATIJ
+		ATOTI = ASO4I + ANO3I + ANH4I + ANAI + ACLI + AECI + AOMI + AOTHRI
+		ATOTJ = ASO4J + ANO3J + ANH4J + ANAJ + ACLJ + AECJ + AOMJ + AOTHRJ + AFEJ + ASIJ + ATIJ + ACAJ + AMGJ + AMNJ + AALJ + AKJ
+		ATOTK = ASOIL + ACORS + ASEACAT + ACLK + ASO4K + ANO3K + ANH4K
+	# !! PM2.5 species computed using modeled size distribution,
+	# reference: https://github.com/USEPA/CMAQ/blob/5.2/CCTM/src/MECHS/cb6r3_ae6_aq/SpecDef_cb6r3_ae6_aq.txt
+		PM25_HP      = (AH3OPI  + AH3OPJ  + AH3OPK ) * (1.0/19.0)
+		PM25_CL      = ACLI  + ACLJ  + ACLK 
+		PM25_EC      = AECI  + AECJ 
+		PM25_NA      = ANAI  + ANAJ  + ANAK 
+		PM25_MG      = AMGJ  + AMGK 
+		PM25_K       = AKJ  + AKK 
+		PM25_CA      = ACAJ  + ACAK 
+		PM25_NH4     = ANH4I  + ANH4J  + ANH4K 
+		PM25_NO3     = ANO3I  + ANO3J  + ANO3K 
+		PM25_OC      = AOCI  + AOCJ 
+		PM25_OM      = AOMI  + AOMJ 
+		PM25_SOIL    = ASOILJ + ASOIL 
+		PM25_SO4     = ASO4I  + ASO4J  + ASO4K 
+		PM25_TOT     = ATOTI  + ATOTJ  + ATOTK 
+		PM25_UNSPEC1 = PM25_TOT - ( PM25_CL + PM25_EC + PM25_NA + PM25_NH4 + PM25_NO3 + PM25_OC + PM25_SOIL + PM25_SO4 )
+
+		# now sum all species to get hourly PM2.5 concentratiosn
+		pm25_cell_daily_tseries = PM25_HP + PM25_CL + PM25_EC + PM25_NA + PM25_MG + PM25_K + PM25_CA + \
+						PM25_NH4 + PM25_NO3 + PM25_OC + PM25_OM + PM25_SOIL + PM25_SO4 + PM25_TOT + PM25_UNSPEC1
 
 	# function returns the mean of pm2.5 for each cell
 	return pm25_cell_daily_tseries
