@@ -22,12 +22,12 @@ import time
 start = time.time()
 
 ### run time settings
-cmaq_file_month = '10'		 # 07, 08, 09, 10, 11
-sim_month = 'oct'  			# jul, aug, sep, oct, nov
+cmaq_file_month = '07'		 # 07, 08, 09, 10, 11
+sim_month = 'jul'  			# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
 days_to_run_in_month = 1
-scenario = '4' 			# 1-5, baseline
+scenario = '1' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
 cmaq_pol = 'CO'  # for plot title 'CO' ro 'PM2.5'
@@ -110,7 +110,7 @@ def main() :
 		input_dir = '/Volumes/USFSdata/no_oct/'   # '/' at the end
 		mcip_dir = '/Volumes/USFSdata/'   # '/' at the end
 		fig_dir = '/Volumes/USFSdata/no_oct/cmaq_figs/'  # '/' at the end
-		raster_dir =
+		raster_dir = '/Volumes/USFSdata/raster_dir/'
 
 		# input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
 		# mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
@@ -666,7 +666,7 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
 
 def array2raster( raster_dir , processing_pol , file_date_tag , output_array , array_origin_lon , array_origin_lat ) :
 
-	raster_name = 'raster_'+processing_pol+'_'+file_date_tag+'.tiff'
+	raster_name = 'raster_'+processing_pol+'_'+file_date_tag+'.tif'
 	path = raster_dir + raster_name
 
 	print( f'-> raster name= {raster_name}')
@@ -698,7 +698,8 @@ def array2raster( raster_dir , processing_pol , file_date_tag , output_array , a
 	# get the class of coordinate reference system
 	crs = osr.SpatialReference()
 	#crs.ImportFromEPSG( epsg_code )
-	crs.ImportFromProj4( f'+proj=lcc +lat_0={ycent} +lon_0={xcent}  +lat_1={upper_lat}  +lat_2={lower_lat}  +units=m ' )
+	# ??? how define/set projection parameters for lcc for my dataset???
+	crs.ImportFromProj4( '+proj=lcc +lat_0=40.000  +lon_0=-120.806  +lat_1=40.450  +lat_2=36.450  +units=m , +datum=WGS84 +no_defs' )
 
 	# Initialize driver & create file
 	driver = gdal.GetDriverByName('GTiff')
@@ -706,6 +707,7 @@ def array2raster( raster_dir , processing_pol , file_date_tag , output_array , a
 	out_raster = driver.Create( path, cols, rows, no_of_bands , datatype ) # (path, cols, rows, bands, dtype-> GDAL data type arg)
 
 	out_raster.SetGeoTransform(geotransform)  # Specify its coordinates
+	# ??? how set projection for lcc???
 	out_raster.SetProjection( crs.ExportToWkt() )
 
 	print( f'-> writing the raster ...')
@@ -714,6 +716,7 @@ def array2raster( raster_dir , processing_pol , file_date_tag , output_array , a
 
 	# Once we're done, close the dataset properly
 	out_raster = None
+	print(" ")
 
 	del out_raster
 
@@ -767,11 +770,7 @@ def function_pm25_daily_cell_tseries ( aconc_open , pmdiag_open , lay , row , co
 	#print('-> extracting several species from CMAQ files for pm2.5 ...')
 	# species from aconc [1]
 	AH3OPI = aconc_open.variables['AH3OPI'][:,lay,row,col]
-	#print( f'-> shape of AORGCJ= {AH3OPI.shape }')
-	#print(f'-> type of AH3= { type(AH3OPI) }')
 	AH3OPI = np.array(AH3OPI)
-	# print(f'-> AH3OPI: {AH3OPI}')
-	# print(f'-> AH3OPI mean= {AH3OPI_mean}')
 
 	AH3OPJ = aconc_open.variables['AH3OPJ'][:,lay,row,col]
 	AH3OPJ = np.array(AH3OPJ)
