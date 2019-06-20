@@ -22,22 +22,23 @@ import time
 start = time.time()
 
 ### run time settings
-cmaq_file_month = '07'		#  07, 08, 	09,  10,  11
-sim_month = 'jul'  				# jul, aug, sep, oct, nov
+cmaq_file_month = '10'		#  07, 08, 	09,  10,  11
+sim_month = 'oct'  				# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
 days_to_run_in_month = 1
 scenario = '1' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
-cmaq_pol = 'CO'  # for plot title 'CO' ro 'PM2.5'
+processing_pol = 'single_pol' 		# 'pm2.5' OR 'single_pol'== nh3,o3,no2,no,co
+cmaq_pol = 'NH3'  # for plot title 'CO' OR 'PM2.5' OR 'NH3' OR 'O3' OR 'HNO3'
+
 pol_unit = '[ppmV]'		#'[ppmV]' or [ug/m^3]
 max_conc_threshold = 0.2  # for Basemap plot
 include_pmdiag = 'no'  # 'yes' OR 'no'
 
 ### spatial plot
 spatial_plotting = 'yes' # yes or no
-processing_pol = 'co' 		# 'co' or 'pm2.5'
 processing_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
 produce_raster = 'no' 	# 'yes' OR 'no'
 
@@ -90,7 +91,7 @@ newRasterfn = 'co_test_raster.tif'
 print( f'-> CMAQ year= {cmaq_file_year}')
 print( f'-> CMAQ month of analysis= {cmaq_file_month}')
 print( f'-> LANDIS scenarios= {scenario}')
-print( f'-> processing pollutant= {processing_pol}')
+print( f'-> processing pollutant= {cmaq_pol}')
 print( f'-> processing method= {processing_method}')
 print( f'-> number of days to run= {days_to_run_in_month}')
 print( f'-> platform is= {platform}')
@@ -231,7 +232,7 @@ def main() :
 		#====================================================================================================
 		### define netcdf files based on each processing method and pollutant
 
-		if ( processing_pol == 'co') : # (processing_pol == 'no2')  # we need only 1 file: "aconc"
+		if ( processing_pol == 'single_pol') : # we need only 1 file: "aconc"
 			# for single scenario plot
 			if ( processing_method == 'single_plot' ) :
 
@@ -330,7 +331,7 @@ def main() :
 
 				for col in range( 0 , domain_cols , 1 ) :
 
-					if ( processing_pol == 'co' ) :
+					if ( processing_pol == 'single_pol' ) :
 
 						#print( f'-> extracting cell for single POL - singlePlot - at row= {row} and col={col} ... ' )
 
@@ -358,7 +359,7 @@ def main() :
 
 				daily_2d_array_scen = function_3Dto2D( domain_rows , domain_cols , daily_tensor_scen )
 
-				array2raster( raster_dir , processing_pol , file_date_tag , daily_2d_array_scen , array_origin_lon , array_origin_lat )
+				array2raster( raster_dir , cmaq_pol , file_date_tag , daily_2d_array_scen , array_origin_lon , array_origin_lat )
 				# print( f'-> raster file = { output_raster }')
 				# print( " " )
 
@@ -386,7 +387,7 @@ def main() :
 
 				for col in range( 0 , domain_cols , 1 ) :
 
-					if ( processing_pol == 'co' ) :
+					if ( processing_pol == 'single_pol' ) :
 
 						#print( f'-> extracting cell for CO - diff - at row= {row} and col={col} ... ' )
 
@@ -424,7 +425,7 @@ def main() :
 		#====================================================================================================
 		### closing nc files for each day
 
-		if ( processing_pol == 'co' ) :
+		if ( processing_pol == 'single_pol' ) :
 
 			if ( processing_method == 'single_plot' ) :
 
@@ -669,9 +670,9 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
 #====================================================================================================
 # function to produce raster image
 
-def array2raster( raster_dir , processing_pol , file_date_tag , output_array , array_origin_lon , array_origin_lat ) :
+def array2raster( raster_dir , cmaq_pol , file_date_tag , output_array , array_origin_lon , array_origin_lat ) :
 
-	raster_name = 'raster_'+processing_pol+'_'+file_date_tag+'.tif'
+	raster_name = 'raster_'+cmaq_pol+'_'+file_date_tag+'.tif'
 	path = raster_dir + raster_name
 
 	print( f'-> raster name= {raster_name}')
