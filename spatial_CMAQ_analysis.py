@@ -333,7 +333,7 @@ def main() :
 
 					if ( processing_pol == 'single_pol' ) :
 
-						#print( f'-> extracting cell for single POL - singlePlot - at row= {row} and col={col} ... ' )
+						#print( f'-> extracting cell for {cmaq_pol} - singlePlot - at row= {row} and col={col} ... ' )
 
 						cell_24hr_tseries_for_singlePol = function_cell_24hr_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 						#print(f'--> cell tseries is= {cell_24hr_tseries_for_singlePol}')
@@ -389,7 +389,7 @@ def main() :
 
 					if ( processing_pol == 'single_pol' ) :
 
-						#print( f'-> extracting cell for CO - diff - at row= {row} and col={col} ... ' )
+						print( f'-> extracting cell for {cmaq_pol} - diff - at row= {row} and col={col} ... ' )
 
 						# we calculate cell means for each scenario
 						cell_24hr_timeSeries_array_scen = function_cell_24hr_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
@@ -658,6 +658,9 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
 
 			### take average of each z-axis
 			cell_z_axis_mean = cell_z_axis.mean()
+
+			print( f'-> mean= {cell_z_axis_mean} for {cmaq_pol} @ row= {row} and col= {col}')
+
 			### asign the cell mean to 2D array
 			mesh_2d [ row , col ] = cell_z_axis_mean
 
