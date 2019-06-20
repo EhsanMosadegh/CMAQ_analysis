@@ -26,15 +26,15 @@ cmaq_file_month = '10'		#  07, 08, 	09,  10,  11
 sim_month = 'oct'  				# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
-days_to_run_in_month = 1
-scenario = '1' 			# 1-5, baseline
+days_to_run_in_month = 15
+scenario = '4' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
 processing_pol = 'single_pol' 		# 'pm2.5' OR 'single_pol'== nh3,o3,no2,no,co
-cmaq_pol = 'NH3'  # for plot title 'CO' OR 'PM2.5' OR 'NH3' OR 'O3' OR 'HNO3'
+cmaq_pol = 'O3'  # for plot title 'CO' OR 'PM2.5' OR 'NH3' OR 'O3' OR 'HNO3'
 
 pol_unit = '[ppmV]'		#'[ppmV]' or [ug/m^3]
-max_conc_threshold = 0.2  # for Basemap plot
+max_conc_threshold = 0.07  # for Basemap plot
 include_pmdiag = 'no'  # 'yes' OR 'no'
 
 ### spatial plot
@@ -92,6 +92,7 @@ print( f'-> CMAQ year= {cmaq_file_year}')
 print( f'-> CMAQ month of analysis= {cmaq_file_month}')
 print( f'-> LANDIS scenarios= {scenario}')
 print( f'-> processing pollutant= {cmaq_pol}')
+print( f'-> max. conc. threshold for spatial plotting= {max_conc_threshold}')
 print( f'-> processing method= {processing_method}')
 print( f'-> number of days to run= {days_to_run_in_month}')
 print( f'-> platform is= {platform}')
@@ -237,7 +238,7 @@ def main() :
 			if ( processing_method == 'single_plot' ) :
 
 				# define input files
-				print('-> setting path for CO and single_plot...')
+				print( f'-> setting path for {cmaq_pol} and single_plot...')
 				aconc_input_scen = input_path_scen + aconc_scen
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				print('-> opening/reading CMAQ files:')
@@ -247,12 +248,12 @@ def main() :
 			# for difference between 2 scenarios
 			elif ( processing_method == 'diff_plot' ) :  # open 2 netcdf files: "aconc_scen" and "aconc_baseline"
 				# define input files
-				print('-> setting path for CO and diff_plot...')
+				print( f'-> setting path for {cmaq_pol} and diff_plot...')
 				aconc_input_scen = input_path_scen + aconc_scen
 				aconc_input_base = input_path_base + aconc_base
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				aconc_open_base = Dataset( aconc_input_base , 'r' )
-				print('-> opening/reading CMAQ files for single POL:')
+				print( f'-> opening/reading CMAQ files for {cmaq_pol}:')
 				print( aconc_input_scen )
 				print( aconc_input_base )
 				print( " ")
@@ -303,7 +304,7 @@ def main() :
 				pmdiag_open_base = Dataset( pmdiag_input_base , 'r' )
 
 			else:
-				print('-> ERROR: select single or diff methid! ')
+				print('-> ERROR: select single or diff method! ')
 				print('-> exiting ...')
 				raise SystemExit()
 
@@ -315,7 +316,9 @@ def main() :
 
 		#====================================================================================================
 		# process netcdf files for each cell with a specific function
+		#====================================================================================================
 		# single plot:
+		#====================================================================================================
 
 		if ( processing_method == 'single_plot' ) :
 
@@ -324,8 +327,7 @@ def main() :
 			daily_tensor_scen = np.empty ( shape= ( 24 , domain_rows , domain_cols ))  # when assignin gby index, z-dim should be 1.
 
 			#print(f'-> shape of daily tseries array={daily_tensor_scen.shape }')
-			#print('-> traversing each cell and extract pollutants ...')
-
+			print('-> traversing each cell and extract pollutants ...')
 			### traverse each cell in the C-storing style for each day: row and then col
 			for row in range( 0 , domain_rows , 1 ) :
 
@@ -372,6 +374,7 @@ def main() :
 
 		#====================================================================================================
 		# diff plot
+		#====================================================================================================
 
 		elif ( processing_method == 'diff_plot' ) :
 
@@ -381,7 +384,7 @@ def main() :
 			daily_tensor_base = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
 
 
-			print('-> traversing each cell and extract pollutants ...')
+			print('-> traversing each cell to extract pollutants ...')
 			### traverse each cell in the C-storing style for each day: row and then col
 			for row in range( 0 , domain_rows , 1 ) :
 
@@ -389,7 +392,7 @@ def main() :
 
 					if ( processing_pol == 'single_pol' ) :
 
-						print( f'-> extracting cell for {cmaq_pol} - diff - at row= {row} and col={col} ... ' )
+						#print( f'-> extracting cell for {cmaq_pol} - diff - at row= {row} and col={col} ... ' )
 
 						# we calculate cell means for each scenario
 						cell_24hr_timeSeries_array_scen = function_cell_24hr_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
@@ -421,6 +424,8 @@ def main() :
 
 		else:
 			print('-> ERROR: processing method NOT defined!')
+
+		#====================================================================================================
 
 		#====================================================================================================
 		### closing nc files for each day
@@ -478,7 +483,7 @@ def main() :
 
 			### we only have one 3D tensor
 
-			print('-> change mesh 3D to 2D for single plot ...')
+			print('-> changing monthly 3D mesh of time-series to 2D for single plotting ...')
 
 			monthly_mean_mesh_2d = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed )
 
@@ -494,10 +499,10 @@ def main() :
 			print('-----------------------------')
 
 			### we have 2 tensors
-			print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-LANDIS scenario ...')
+			print('-> changing monthly 3D mesh of time-series to 2D for diff-plotting for mesh-3D-LANDIS scenario ...')
 			monthly_mean_2d_mesh_scen = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed )
 
-			print('-> change mesh 3D-to-2D for diff-plot for mesh-3D-baseline scenario ...')
+			print('-> changing monthly 3D mesh of time-series to 2D for diff-plotting for mesh-3D-baseline scenario ...')
 			monthly_mean_2d_mesh_base = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_base )
 
 			# now subtract 2 meshes to get the diff mesh for spatial plotting
@@ -640,19 +645,19 @@ def main() :
 #====================================================================================================
 ### function to change 3D to 2D array
 
-def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
+def function_3Dto2D ( domain_rows , domain_cols , monthly_tseries_tensor  ) :
 	" returns monthly mean of each cell, changes 3D mesh of daily mean conc to a 2D mesh of monthly mean conc"
 
 	### define a 2d array
 	mesh_2d = np.ndarray( shape= ( domain_rows , domain_cols ) )
 
-	for row in range( 0 , mesh_3d.shape[1] , 1 ) :
+	for row in range( 0 , monthly_tseries_tensor.shape[1] , 1 ) :
 
-		for col in range( 0 , mesh_3d.shape[2] , 1 ) :
+		for col in range( 0 , monthly_tseries_tensor.shape[2] , 1 ) :
 
 			#print(f'-> processing mesh-3D-monthly mean @ row= {row} and col= {col} ')
 
-			cell_z_axis = mesh_3d [ : , row , col ]
+			cell_z_axis = monthly_tseries_tensor [ : , row , col ]
 
 			#print(f'-> size of z-axis is= { cell_z_axis.shape } ')
 
@@ -665,7 +670,7 @@ def function_3Dto2D ( domain_rows , domain_cols , mesh_3d  ) :
 			mesh_2d [ row , col ] = cell_z_axis_mean
 
 	print(" ")
-	print( f'-> shape of 2D array output of function: 3Dto2D= { mesh_2d.shape }' )
+	print( f'-> shape of monthly 2D array, output of function_3Dto2D= { mesh_2d.shape }' )
 	print(" ")
 	### function returns a 2D array to be used for plotting
 	return mesh_2d
