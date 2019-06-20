@@ -26,15 +26,15 @@ cmaq_file_month = '10'		#  07, 08, 	09,  10,  11
 sim_month = 'oct'  				# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
-days_to_run_in_month = 15
-scenario = '4' 			# 1-5, baseline
+days_to_run_in_month = 5
+scenario = '5' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
 processing_pol = 'single_pol' 		# 'pm2.5' OR 'single_pol'== nh3,o3,no2,no,co
 cmaq_pol = 'O3'  # for plot title 'CO' OR 'PM2.5' OR 'NH3' OR 'O3' OR 'HNO3'
 
 pol_unit = '[ppmV]'		#'[ppmV]' or [ug/m^3]
-max_conc_threshold = 0.07  # for Basemap plot
+max_conc_threshold = 0.0001  # for Basemap plot
 include_pmdiag = 'no'  # 'yes' OR 'no'
 
 ### spatial plot
@@ -140,7 +140,7 @@ def main() :
 	print('-> CMAQ input directory is:')
 	print(input_path_scen)
 	print(input_path_base)
-
+	print(" ")
 	print('-> MCIP input directory is:')
 	print(mcip_dir)
 	print(" ")
@@ -206,6 +206,7 @@ def main() :
 		print( " ")
 		print('-> no. of days to process are:')
 		print(day_list)
+		print(" ")
 		print( f'-> processing for day= {day_of_the_month}' )
 		print(" ")
 
@@ -499,10 +500,10 @@ def main() :
 			print('-----------------------------')
 
 			### we have 2 tensors
-			print('-> changing monthly 3D mesh of time-series to 2D for diff-plotting for mesh-3D-LANDIS scenario ...')
+			print( f'-> changing monthly 3D mesh of time-series to 2D for diff-plotting for 3D LANDIS scenario ({scenario}) mesh ...')
 			monthly_mean_2d_mesh_scen = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed )
 
-			print('-> changing monthly 3D mesh of time-series to 2D for diff-plotting for mesh-3D-baseline scenario ...')
+			print('-> changing monthly 3D mesh of time-series to 2D for diff-plotting for 3D "baseline" scenario mesh ...')
 			monthly_mean_2d_mesh_base = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_base )
 
 			# now subtract 2 meshes to get the diff mesh for spatial plotting
@@ -641,6 +642,7 @@ def main() :
 
 	end = time.time()
 	print( f'-> run time of main function= { (( end - start ) / 60 ) :.2f} min' )  # f-string
+	print('*** COMPLETED SUCCESSFULLY! ***')
 
 #====================================================================================================
 ### function to change 3D to 2D array
@@ -670,7 +672,7 @@ def function_3Dto2D ( domain_rows , domain_cols , monthly_tseries_tensor  ) :
 			mesh_2d [ row , col ] = cell_z_axis_mean
 
 	print(" ")
-	print( f'-> shape of monthly 2D array, output of function_3Dto2D= { mesh_2d.shape }' )
+	print( f'-> shape of monthly 2D array, output of function_3Dto2D = { mesh_2d.shape }' )
 	print(" ")
 	### function returns a 2D array to be used for plotting
 	return mesh_2d
