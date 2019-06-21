@@ -517,10 +517,15 @@ def main() :
 			print( f'-> monthly mean diff-mesh = {monthly_mean_2d_mesh_diff}')
 			print( " ")
 			print( '-> diff matrix statistics:')
+
+			diff_mesh_min = np.amin( monthly_mean_2d_mesh_diff )
+			diff_mesh_average = np.amean( monthly_mean_2d_mesh_diff )
+			diff_mesh_max = np.amax( monthly_mean_2d_mesh_diff )
+
 			print( f'-> shape = {monthly_mean_2d_mesh_diff.shape } and dimension = {monthly_mean_2d_mesh_diff.ndim }')
-			print( f'-> min = {monthly_mean_2d_mesh_diff.min() }')
-			print( f'-> average = {monthly_mean_2d_mesh_diff.mean()} ')
-			print( f'-> max = {monthly_mean_2d_mesh_diff.max() }')
+			print( f'-> min = { diff_mesh_min }')
+			print( f'-> average = { diff_mesh_average } ')
+			print( f'-> max = { diff_mesh_max }')
 			print('-----------------------------')
 		else:
 			print('-> ERROR: check processing method for 3Dto2D ...')
@@ -601,7 +606,8 @@ def main() :
 		#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
 		# set the color limit 
-		plt.clim( -0.2 , 0.2 ) # units???
+		plt.clim( diff_mesh_min , diff_mesh_max ) # units???
+		
 		# set the map features
 		theMap.drawmapboundary(color='k' ) #, fill_color='aqua')
 		theMap.drawcoastlines(color = '0.15')
