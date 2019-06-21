@@ -26,7 +26,7 @@ cmaq_file_month = '10'		#  07, 08, 	09,  10,  11
 sim_month = 'oct'  				# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
-days_to_run_in_month = 2
+days_to_run_in_month = 1
 scenario = '5' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
@@ -467,7 +467,7 @@ def main() :
 			pass
 
 	#====================================================================================================
-	### change 3D to 2D array to make monthly_mean_mesh_2d: used for spatial plots
+	### change 3D to 2D array to make monthly_mean_2d_mesh_diff: used for spatial plots
 
 	if ( spatial_plotting == 'yes' ) :
 
@@ -486,7 +486,7 @@ def main() :
 
 			print('-> changing monthly 3D mesh of time-series to 2D for single plotting ...')
 
-			monthly_mean_mesh_2d = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed )
+			monthly_mean_2d_mesh_diff = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed )
 
 		elif ( processing_method == 'diff_plot' ) :
 
@@ -508,18 +508,20 @@ def main() :
 
 			print ('-> now subtract 2 meshes to get the diff mesh for spatial plotting ')
 
-			monthly_mean_mesh_2d = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
+			monthly_mean_2d_mesh_diff = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
 			print( " ")
 			print( f'-> monthly mesh scenario = {monthly_mean_2d_mesh_scen} ')
 			print( " ")
 			print( f'-> monthly mesh baseline = {monthly_mean_2d_mesh_base} ')
 			print( " ")
-			print( f'-> monthly mean diff-mesh = {monthly_mean_mesh_2d}')
+			print( f'-> monthly mean diff-mesh = {monthly_mean_2d_mesh_diff}')
 			print( " ")
-			print( f'-> shape = {monthly_mean_mesh_2d.shape } and dimension = {monthly_mean_mesh_2d.ndim }')
-			print( f'-> min = {monthly_mean_mesh_2d.min() }')
-			print( f'-> max = {monthly_mean_mesh_2d.max() }')
-
+			print( '-> diff matrix statistics:')
+			print( f'-> shape = {monthly_mean_2d_mesh_diff.shape } and dimension = {monthly_mean_2d_mesh_diff.ndim }')
+			print( f'-> min = {monthly_mean_2d_mesh_diff.min() }')
+			print( f'-> average = {monthly_mean_2d_mesh_diff.mean()} ')
+			print( f'-> max = {monthly_mean_2d_mesh_diff.max() }')
+			print('-----------------------------')
 		else:
 			print('-> ERROR: check processing method for 3Dto2D ...')
 			print('-> exiting ...')
@@ -529,131 +531,134 @@ def main() :
 	### time-series plotting
 	#====================================================================================================
 
-# 	if ( timeseries_plotting == 'yes') :
+	if ( timeseries_plotting == 'yes') :
 
-# 		print('-> time-series plotting is yes ...')
+		print('-> time-series plotting is yes ...')
 
-# 		if( processing_method != 'single_plot') :
+		if( processing_method != 'single_plot') :
 
-# 			print('-> WARNING: single plot is not set for time-series ...')
+			print('-> WARNING: single plot is not set for time-series ...')
 
-# 		else :
+		else :
 
-# 			row_ = favorite_row
-# 			col_ = favorite_col
-# 			conc_timeseries_list = monthly_tseries_tensor_from_scen [ : , row_ , col_ ]
+			row_ = favorite_row
+			col_ = favorite_col
+			conc_timeseries_list = monthly_tseries_tensor_from_scen [ : , row_ , col_ ]
 
-# 			x_ = [ *range(1, ((days_to_run_in_month*24)+1) , 1) ]  # x bar is no. of hours in aconc files
-# 			y_ = conc_timeseries_list		#.tolist  # y-bar is hourly concentrations/timeseries
+			x_ = [ *range(1, ((days_to_run_in_month*24)+1) , 1) ]  # x bar is no. of hours in aconc files
+			y_ = conc_timeseries_list		#.tolist  # y-bar is hourly concentrations/timeseries
 
-# 			print(f'-> size of x_ = {len(x_)}')
-# 			print(f'-> x_ = {x_}' )
-# 			print(f'-> size of y_ = {len(y_)}')
-# 			print(f'-> y_ = {y_}' )
+			print(f'-> size of x_ = {len(x_)}')
+			print(f'-> x_ = {x_}' )
+			print(f'-> size of y_ = {len(y_)}')
+			print(f'-> y_ = {y_}' )
 
-# 			plt.plot( x_ , y_ )
-# 			#plt.show()
-
-
-# 			plot_name = cmaq_pol+'_timeseries'+'_scen_'+scenario+'_'+cmaq_file_year+'-'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'.png'
-# 			plot_dir = fig_dir
-# 			saved_plot = fig_dir+plot_name
-
-# 			plt.savefig( saved_plot , dpi=1200 , format='png' )
-# 			plt.close()
+			plt.plot( x_ , y_ )
+			#plt.show()
 
 
-# 	#====================================================================================================
-# 	### Spatial plotting
-# 	#====================================================================================================
-# 	# use Basemap library and make spatial plots
+			plot_name = cmaq_pol+'_timeseries'+'_scen_'+scenario+'_'+cmaq_file_year+'-'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'.png'
+			plot_dir = fig_dir
+			saved_plot = fig_dir+plot_name
 
-# 	if ( spatial_plotting == 'yes') :
-
-# 		print('-> spatial plotting ...')
-
-# 		### plot dots from grid coordinates of the dots
-# 		#plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
-
-# 		# ### create a Basemap class/model instance for a specific projection
-# 		# # basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
-# 		# theMap = Basemap(projection='lcc' ,
-# 		# 													 llcrnrx=llx , llcrnry=lly , urcrnrx=urcornerx , urcrnry=urcornery ,
-# 		# 													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
-# 		# 													 resolution='f' , area_thresh=0.5)
+			plt.savefig( saved_plot , dpi=1200 , format='png' )
+			plt.close()
 
 
-# 		### create Basemap model instance from its class, it is a map that color mesh sits on it.
-# 		theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+	#====================================================================================================
+	### Spatial plotting
+	#====================================================================================================
+	# use Basemap library and make spatial plots
 
-# 		x_mesh, y_mesh = theMap(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
+	if ( spatial_plotting == 'yes') :
 
-# 		#basemap_instance.fillcontinents(lake_color='aqua')
+		print('-> spatial plotting ...')
 
-# 		#my_levels = [ 0.02 , 0.05 ]
-# 		#my_colors = ( 'g' , 'b' , 'r' )
+		### plot dots from grid coordinates of the dots
+		#plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
 
-# 		### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
-# 		colorMesh = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_mesh_2d , cmap=plt.cm.OrRd , shading='flat' , vmin=0.0 , vmax=max_conc_threshold ) #levels=my_levels , colors=my_colors
+		# ### create a Basemap class/model instance for a specific projection
+		# # basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
+		# theMap = Basemap(projection='lcc' ,
+		# 													 llcrnrx=llx , llcrnry=lly , urcrnrx=urcornerx , urcrnry=urcornery ,
+		# 													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
+		# 													 resolution='f' , area_thresh=0.5)
 
-# 		#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
-# 		theMap.drawmapboundary(color='k' ) #, fill_color='aqua')
-# 		theMap.drawcoastlines(color = '0.15')
-# 		theMap.drawstates()
-# 		theMap.drawcounties(linewidth=0.5 , color='k' )
+		### create Basemap model instance from its class, it is a map that color mesh sits on it.
+		theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
 
-# 		#theMap.bluemarble()
+		x_mesh, y_mesh = theMap(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
 
-# 		### create colorbar
-# 		colorbar = theMap.colorbar( colorMesh , 'bottom' , label= f'{cmaq_pol} mean concentration {pol_unit}' )
-# 		#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
-# 		#colorbar = basemap_instance.colorbar(cs, location='bottom')
-# 		#plt.subplot( figsize=(10,10) )
-# 		if ( processing_method == 'single_plot' ) :
+		#basemap_instance.fillcontinents(lake_color='aqua')
 
-# 			plt.title(f' {cmaq_pol} monthly mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=7 )
+		#my_levels = [ 0.02 , 0.05 ]
+		#my_colors = ( 'g' , 'b' , 'r' )
 
-# 		elif ( processing_method == 'diff_plot' ) :
+		### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
+		colorMesh = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh_diff , cmap='RdBu_r' , shading='flat' )#, vmin=0.0 , vmax=max_conc_threshold ) #levels=my_levels , colors=my_colors
 
-# 			plt.title(f' {cmaq_pol} monthly mean concentration difference between LANDIS scenario-{scenario} and baseline for {sim_month}, {cmaq_file_year} ' , fontsize=7 )
+		#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
-# 		print(" ")
+		# set the color limit 
+		plt.clim( -0.2 , 0.2 ) # units???
+		# set the map features
+		theMap.drawmapboundary(color='k' ) #, fill_color='aqua')
+		theMap.drawcoastlines(color = '0.15')
+		theMap.drawstates()
+		theMap.drawcounties(linewidth=0.5 , color='k' )
 
-# 		#====================================================================================================
-# 		# save the plots
-# 		#====================================================================================================
+		#theMap.bluemarble()
 
-# 		### path for saving plots
-# 		print('-> fig directory is:')
-# 		print(fig_dir)
+		### create colorbar
+		colorbar = theMap.colorbar( colorMesh , 'bottom' , label= f'{cmaq_pol} mean concentration {pol_unit}' )
+		#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
+		#colorbar = basemap_instance.colorbar(cs, location='bottom')
+		#plt.subplot( figsize=(10,10) )
+		if ( processing_method == 'single_plot' ) :
 
-# 		### plot name
-# 		if ( processing_method == 'single_plot' ) :
+			plt.title(f' {cmaq_pol} monthly mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=7 )
 
-# 			fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+		elif ( processing_method == 'diff_plot' ) :
 
-# 		elif ( processing_method == 'diff_plot' ) :
+			plt.title(f' {cmaq_pol} monthly mean concentration difference between LANDIS scenario-{scenario} and baseline for {sim_month}, {cmaq_file_year} ' , fontsize=7 )
 
-# 			fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_difference_from_baseline_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+		print(" ")
 
-# 		else:
-# 			pass
+		#====================================================================================================
+		# save the plots
+		#====================================================================================================
 
-# 		### plot full path
-# 		out_fig = fig_dir + fig_name
-# 		print('-> output figure is stored at:')
-# 		print(out_fig)
-# 		### export the figure
-# 		plt.savefig( out_fig , dpi=1200 , format='png')
-# 		### opens a window to show the results - after savefig
-# 		#plt.show()
-# 		### close the plot
-# 		plt.close()
+		### path for saving plots
+		print('-> fig directory is:')
+		print(fig_dir)
 
-# 	end = time.time()
-# 	print( f'-> run time of main function= { (( end - start ) / 60 ) :.2f} min' )  # f-string
-# 	print('*** COMPLETED SUCCESSFULLY! ***')
+		### plot name
+		if ( processing_method == 'single_plot' ) :
+
+			fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+
+		elif ( processing_method == 'diff_plot' ) :
+
+			fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_difference_from_baseline_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+
+		else:
+			pass
+
+		### plot full path
+		out_fig = fig_dir + fig_name
+		print('-> output figure is stored at:')
+		print(out_fig)
+		### export the figure
+		plt.savefig( out_fig , dpi=1200 , format='png')
+		### opens a window to show the results - after savefig
+		#plt.show()
+		### close the plot
+		plt.close()
+
+	end = time.time()
+	print( f'-> run time of main function= { (( end - start ) / 60 ) :.2f} min' )  # f-string
+	print('*** COMPLETED SUCCESSFULLY! ***')
 
 #====================================================================================================
 
