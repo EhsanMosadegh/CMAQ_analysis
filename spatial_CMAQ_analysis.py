@@ -30,7 +30,7 @@ days_to_run_in_month = 5
 scenario = '5' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
-processing_pol = 'single_pol' 		# 'pm2.5' OR 'single_pol'== nh3,o3,no2,no,co
+processing_POL = 'single_POL' 		# 'pm2.5' OR 'single_POL'== nh3,o3,no2,no,co
 cmaq_pol = 'O3'  # for plot title 'CO' OR 'PM2.5' OR 'NH3' OR 'O3' OR 'HNO3'
 
 pol_unit = '[ppmV]'		#'[ppmV]' or [ug/m^3]
@@ -178,13 +178,13 @@ def main() :
 	print('-> month of analysis is=' , cmaq_file_month )
 
 	# ### define the monthly array mesh
-	# if ( processing_pol == 'co' ) :
+	# if ( processing_POL == 'co' ) :
 
 	#monthly_tseries_tensor_from_scen = np.ndarray( shape=( 24 , domain_rows , domain_cols ) )
 	monthly_tseries_tensor_from_scen = np.empty( shape=( 0 , domain_rows , domain_cols ) ) # use zero for concatenate method
 	monthly_tseries_tensor_from_base = np.empty( shape=( 0 , domain_rows , domain_cols ) ) # zero means there is no cell in z-dir
 
-	# elif ( processing_pol == 'pm2.5' ) :
+	# elif ( processing_POL == 'pm2.5' ) :
 
 	# 	monthly_tseries_tensor_from_scen = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 	# 	monthly_tseries_tensor_from_base = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
@@ -234,7 +234,7 @@ def main() :
 		#====================================================================================================
 		### define netcdf files based on each processing method and pollutant
 
-		if ( processing_pol == 'single_pol') : # we need only 1 file: "aconc"
+		if ( processing_POL == 'single_POL') : # we need only 1 file: "aconc"
 			# for single scenario plot
 			if ( processing_method == 'single_plot' ) :
 
@@ -265,7 +265,7 @@ def main() :
 				print('-> exiting ...')
 				raise SystemExit()
 
-		elif ( processing_pol == 'pm2.5' ) :   # we need 2 files: "aconc" and "pmdiag" files
+		elif ( processing_POL == 'pm2.5' ) :   # we need 2 files: "aconc" and "pmdiag" files
 
 			if ( processing_method == 'single_plot' ) :
 
@@ -334,7 +334,7 @@ def main() :
 
 				for col in range( 0 , domain_cols , 1 ) :
 
-					if ( processing_pol == 'single_pol' ) :
+					if ( processing_POL == 'single_POL' ) :
 
 						#print( f'-> extracting cell for {cmaq_pol} - singlePlot - at row= {row} and col={col} ... ' )
 
@@ -342,7 +342,7 @@ def main() :
 						#print(f'--> cell tseries is= {cell_24hr_tseries_for_singlePol}')
 						daily_tensor_scen [:,row,col]  = cell_24hr_tseries_for_singlePol
 
-					elif ( processing_pol == 'pm2.5') :
+					elif ( processing_POL == 'pm2.5') :
 
 						print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
@@ -380,7 +380,7 @@ def main() :
 		elif ( processing_method == 'diff_plot' ) :
 
 			print('-> processing for diff plot ...')
-			### create an empty tensor for each cell and day as container of daily 24-hr t-step concentrations
+			### create an empty tensor for each day as container of daily 24-hr t-step concentrations and then fill each cell up for each cell
 			daily_tensor_scen = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
 			daily_tensor_base = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
 
@@ -391,7 +391,7 @@ def main() :
 
 				for col in range( 0 , domain_cols , 1 ) :
 
-					if ( processing_pol == 'single_pol' ) :
+					if ( processing_POL == 'single_POL' ) :
 
 						#print( f'-> extracting cell for {cmaq_pol} - diff - at row= {row} and col={col} ... ' )
 
@@ -399,7 +399,7 @@ def main() :
 						cell_24hr_timeSeries_array_scen = function_cell_24hr_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 						cell_24hr_timeSeries_array_base = function_cell_24hr_timeSeries_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
 
-					elif ( processing_pol == 'pm2.5' ) :
+					elif ( processing_POL == 'pm2.5' ) :
 
 						print( f'-> extracting cell for PM2.5 - diff - at row= {row} and col={col} ... ' )
 						
@@ -431,7 +431,7 @@ def main() :
 		#====================================================================================================
 		### closing nc files for each day
 
-		if ( processing_pol == 'single_pol' ) :
+		if ( processing_POL == 'single_POL' ) :
 
 			if ( processing_method == 'single_plot' ) :
 
@@ -447,7 +447,7 @@ def main() :
 			else:
 				pass
 
-		elif ( processing_pol == 'pm25' ) :
+		elif ( processing_POL == 'pm25' ) :
 
 			if ( processing_method == 'single_plot' ) :
 
