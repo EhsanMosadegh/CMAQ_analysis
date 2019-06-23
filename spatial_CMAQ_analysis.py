@@ -519,12 +519,12 @@ def main() :
 			print( '-> diff matrix statistics:')
 
 			diff_mesh_min = np.amin( monthly_mean_2d_mesh_diff )
-			diff_mesh_average = np.amean( monthly_mean_2d_mesh_diff )
+			#diff_mesh_average = np.amean( monthly_mean_2d_mesh_diff )
 			diff_mesh_max = np.amax( monthly_mean_2d_mesh_diff )
 
 			print( f'-> shape = {monthly_mean_2d_mesh_diff.shape } and dimension = {monthly_mean_2d_mesh_diff.ndim }')
 			print( f'-> min = { diff_mesh_min }')
-			print( f'-> average = { diff_mesh_average } ')
+			#print( f'-> average = { diff_mesh_average } ')
 			print( f'-> max = { diff_mesh_max }')
 			print('-----------------------------')
 		else:
@@ -601,13 +601,20 @@ def main() :
 		#my_colors = ( 'g' , 'b' , 'r' )
 
 		### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
-		colorMesh = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh_diff , cmap='RdBu_r' , shading='flat' )#, vmin=0.0 , vmax=max_conc_threshold ) #levels=my_levels , colors=my_colors
+		print( '-> making the colormesh ...')
+		print( f'-> shape of x_mesh = {x_mesh.shape }')
+		print( f'-> shape of y_mesh = {y_mesh.shape }')
+		print( f'-> shape of monthly_mean_diff_mesh = {monthly_mean_2d_mesh_diff.shape }')
+
+		colorMesh = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh_diff , cmap='RdBu_r' , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 ) 
+		
+		# set the color limit 
+		plt.clim( -5e-8 , 5e-8 ) # units???
+		#colorMesh.set_clim( diff_mesh_min*1.5 , diff_mesh_max*1.5 )
+		#levels=my_levels , colors=my_colors
 
 		#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
-		# set the color limit 
-		plt.clim( diff_mesh_min , diff_mesh_max ) # units???
-		
 		# set the map features
 		theMap.drawmapboundary(color='k' ) #, fill_color='aqua')
 		theMap.drawcoastlines(color = '0.15')
@@ -616,18 +623,20 @@ def main() :
 
 		#theMap.bluemarble()
 
-		### create colorbar
-		colorbar = theMap.colorbar( colorMesh , 'bottom' , label= f'{cmaq_pol} mean concentration {pol_unit}' )
+		### create colorbar/legend in a seperate obj to play with it later
+		colorbar = theMap.colorbar( colorMesh , 'bottom' , size='4%' )
+		colorbar.set_label( label= f'{cmaq_pol} mean concentration {pol_unit}' , size=8 )
+		colorbar.ax.tick_params( labelsize= 5 ) # provide access to the usual axis methods including tick formatting
 		#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 		#colorbar = basemap_instance.colorbar(cs, location='bottom')
 		#plt.subplot( figsize=(10,10) )
 		if ( processing_method == 'single_plot' ) :
 
-			plt.title(f' {cmaq_pol} monthly mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=7 )
+			plt.title(f' {cmaq_pol} monthly mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=8 )
 
 		elif ( processing_method == 'diff_plot' ) :
 
-			plt.title(f' {cmaq_pol} monthly mean concentration difference between LANDIS scenario-{scenario} and baseline for {sim_month}, {cmaq_file_year} ' , fontsize=7 )
+			plt.title(f' {cmaq_pol} monthly mean concentration difference: LANDIS scenario {scenario} - baseline, {sim_month}, {cmaq_file_year} ' , fontsize=8 )
 
 		print(" ")
 
