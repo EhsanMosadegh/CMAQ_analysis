@@ -26,7 +26,7 @@ cmaq_file_month = '10'		#  07, 08, 	09,  10,  11
 sim_month = 'oct'  				# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
-days_to_run_in_month = 1
+days_to_run_in_month = 3
 scenario = '1' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
@@ -493,14 +493,14 @@ def main() :
 
 			print( f'-> monthly mean mesh = {monthly_mean_2d_mesh}')
 			print( " ")
-			print( '-> diff matrix statistics:')
+			print( '-> monthly mean mesh statistics:')
 
 			print( f'-> shape = {monthly_mean_2d_mesh.shape } and dimension = {monthly_mean_2d_mesh.ndim }')
 
-			( diff_mesh_min , diff_mesh_max ) = min_max_of_mesh( monthly_mean_2d_mesh )
+			( mean_mesh_min , mean_mesh_max ) = min_max_of_mesh( monthly_mean_2d_mesh )
 
-			print( f'-> min mine is = { diff_mesh_min } ')
-			print( f'-> max mine is = { diff_mesh_max } ')
+			print( f'-> min of average mesh = { mean_mesh_min } ')
+			print( f'-> max of average mesh = { mean_mesh_max } ')
 			print('-----------------------------')
 
 		elif ( processing_method == 'diff_plot' ) :
@@ -537,8 +537,8 @@ def main() :
 
 			( diff_mesh_min , diff_mesh_max ) = min_max_of_mesh( monthly_mean_2d_mesh )
 
-			print( f'-> min mine is = { diff_mesh_min } ')
-			print( f'-> max mine is = { diff_mesh_max } ')
+			print( f'-> min of diff mesh = { diff_mesh_min } ')
+			print( f'-> max of diff mesh = { diff_mesh_max } ')
 			print('-----------------------------')
 
 		else:
@@ -614,24 +614,29 @@ def main() :
 		#my_levels = [ 0.02 , 0.05 ]
 		#my_colors = ( 'g' , 'b' , 'r' )
 
+		# set the color map 
+		if ( processing_method == 'single_plot' ) :
+
+			color_mapping_function = 'Reds'
+
+		if ( processing_method == 'diff_plot' ) :
+
+			color_mapping_function = 'RedBu_r'
+
 		### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
 		print( '-> making the colormesh ...')
 		print( f'-> shape of x_mesh = {x_mesh.shape }')
 		print( f'-> shape of y_mesh = {y_mesh.shape }')
 		print( f'-> shape of monthly_mean_diff_mesh = {monthly_mean_2d_mesh.shape }')
 
-		colorMesh = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh , cmap='RdBu_r' , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 ) 
-		
-		# set the color limit 
-		#plt.clim( diff_mesh_min , diff_mesh_max ) # units???
-		if ( processing_method == 'single_POL' ) :
-
-			plt.clim( 0 ,  )
-
-		#colorMesh.set_clim( diff_mesh_min*1.5 , diff_mesh_max*1.5 )
-		#levels=my_levels , colors=my_colors
-
+		# define the image first
+		colorMesh = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh , cmap=color_mapping_function , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 ) 
 		#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
+		
+		# then, set the color limit 
+		if ( processing_method == 'single_plot' ) :
+
+			plt.clim( mean_mesh_min ,  mean_mesh_max )
 
 		# set the map features
 		theMap.drawmapboundary(color='k' ) #, fill_color='aqua')
