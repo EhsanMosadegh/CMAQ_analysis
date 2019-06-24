@@ -27,19 +27,18 @@ sim_month = 'oct'  				# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
 days_to_run_in_month = 1
-scenario = '5' 			# 1-5, baseline
+scenario = '1' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
 processing_POL = 'single_POL' 		# 'pm2.5' OR 'single_POL'== nh3,o3,no2,no,co
 cmaq_pol = 'O3'  # for plot title 'CO' OR 'PM2.5' OR 'NH3' OR 'O3' OR 'HNO3'
 
 pol_unit = '[ppmV]'		#'[ppmV]' or [ug/m^3]
-max_conc_threshold = 0.0001  # for Basemap plot
-include_pmdiag = 'no'  # 'yes' OR 'no'
+include_pmdiag = 'yes'  # 'yes' OR 'no'
 
 ### spatial plot
 spatial_plotting = 'yes' # yes or no
-processing_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
+processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
 produce_raster = 'no' 	# 'yes' OR 'no'
 
 ### time-series plot
@@ -48,7 +47,7 @@ favorite_row = 5
 favorite_col = 5
 
 platform = 'Mac'  # 'Mac' or 'cluster'
-
+storage = 'personal' # 'personal' OR '10T'
 
 # ### Basemap plot setting
 # center of domain
@@ -92,7 +91,7 @@ print( f'-> CMAQ year= {cmaq_file_year}')
 print( f'-> CMAQ month of analysis= {cmaq_file_month}')
 print( f'-> LANDIS scenarios= {scenario}')
 print( f'-> processing pollutant= {cmaq_pol}')
-print( f'-> max. conc. threshold for spatial plotting= {max_conc_threshold}')
+#print( f'-> max. conc. threshold for spatial plotting= {max_conc_threshold}')
 print( f'-> processing method= {processing_method}')
 print( f'-> number of days to run= {days_to_run_in_month}')
 print( f'-> platform is= {platform}')
@@ -110,15 +109,19 @@ def main() :
 	### input directory setting
 	if ( platform == 'Mac' ) :
 
-		input_dir = '/Volumes/USFSdata/cmaq_output/'   # '/' at the end
-		mcip_dir = '/Volumes/USFSdata/'   # '/' at the end
-		fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'  # '/' at the end
-		raster_dir = '/Volumes/USFSdata/raster_dir/'
+		if ( storage == '10T') :
 
-		# input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
-		# mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
-		# fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'  # '/' at the end
-		# raster_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/raster_dir/'
+			input_dir = '/Volumes/USFSdata/cmaq_output/'   # '/' at the end
+			mcip_dir = '/Volumes/USFSdata/'   # '/' at the end
+			fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'  # '/' at the end
+			raster_dir = '/Volumes/USFSdata/raster_dir/'
+
+		if ( storage == 'personal') :
+
+			input_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
+			mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
+			fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'  # '/' at the end
+			raster_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/raster_dir/'
 
 	elif ( platform == 'cluster' ) :
 
@@ -401,7 +404,7 @@ def main() :
 
 					elif ( processing_POL == 'pm2.5' ) :
 
-						print( f'-> extracting cell for PM2.5 - diff - at row= {row} and col={col} ... ' )
+						#print( f'-> extracting cell for PM2.5 - diff - at row= {row} and col={col} ... ' )
 
 						# we calculate cell means
 						cell_24hr_timeSeries_array_scen = function_pm25_daily_cell_tseries( include_pmdiag , aconc_open_scen , pmdiag_open_scen , lay , row , col )
@@ -467,7 +470,7 @@ def main() :
 			pass
 
 	#====================================================================================================
-	### change 3D to 2D array to make monthly_mean_2d_mesh_diff: used for spatial plots
+	### change 3D to 2D array to make monthly_mean_2d_mesh: used for spatial plots
 
 	if ( spatial_plotting == 'yes' ) :
 
@@ -486,7 +489,19 @@ def main() :
 
 			print('-> changing monthly 3D mesh of time-series to 2D for single plotting ...')
 
-			monthly_mean_2d_mesh_diff = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed )
+			monthly_mean_2d_mesh = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed )
+
+			print( f'-> monthly mean mesh = {monthly_mean_2d_mesh}')
+			print( " ")
+			print( '-> diff matrix statistics:')
+
+			print( f'-> shape = {monthly_mean_2d_mesh.shape } and dimension = {monthly_mean_2d_mesh.ndim }')
+
+			( diff_mesh_min , diff_mesh_max ) = min_max_of_mesh( monthly_mean_2d_mesh )
+
+			print( f'-> min mine is = { diff_mesh_min } ')
+			print( f'-> max mine is = { diff_mesh_max } ')
+			print('-----------------------------')
 
 		elif ( processing_method == 'diff_plot' ) :
 
@@ -508,25 +523,24 @@ def main() :
 
 			print ('-> now subtract 2 meshes to get the diff mesh for spatial plotting ')
 
-			monthly_mean_2d_mesh_diff = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
+			monthly_mean_2d_mesh = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
 			print( " ")
 			print( f'-> monthly mesh scenario = {monthly_mean_2d_mesh_scen} ')
 			print( " ")
 			print( f'-> monthly mesh baseline = {monthly_mean_2d_mesh_base} ')
 			print( " ")
-			print( f'-> monthly mean diff-mesh = {monthly_mean_2d_mesh_diff}')
+			print( f'-> monthly mean diff-mesh = {monthly_mean_2d_mesh}')
 			print( " ")
 			print( '-> diff matrix statistics:')
 
-			diff_mesh_min = np.amin( monthly_mean_2d_mesh_diff )
-			#diff_mesh_average = np.amean( monthly_mean_2d_mesh_diff )
-			diff_mesh_max = np.amax( monthly_mean_2d_mesh_diff )
+			print( f'-> shape = {monthly_mean_2d_mesh.shape } and dimension = {monthly_mean_2d_mesh.ndim }')
 
-			print( f'-> shape = {monthly_mean_2d_mesh_diff.shape } and dimension = {monthly_mean_2d_mesh_diff.ndim }')
-			print( f'-> min = { diff_mesh_min }')
-			#print( f'-> average = { diff_mesh_average } ')
-			print( f'-> max = { diff_mesh_max }')
+			( diff_mesh_min , diff_mesh_max ) = min_max_of_mesh( monthly_mean_2d_mesh )
+
+			print( f'-> min mine is = { diff_mesh_min } ')
+			print( f'-> max mine is = { diff_mesh_max } ')
 			print('-----------------------------')
+
 		else:
 			print('-> ERROR: check processing method for 3Dto2D ...')
 			print('-> exiting ...')
@@ -604,12 +618,16 @@ def main() :
 		print( '-> making the colormesh ...')
 		print( f'-> shape of x_mesh = {x_mesh.shape }')
 		print( f'-> shape of y_mesh = {y_mesh.shape }')
-		print( f'-> shape of monthly_mean_diff_mesh = {monthly_mean_2d_mesh_diff.shape }')
+		print( f'-> shape of monthly_mean_diff_mesh = {monthly_mean_2d_mesh.shape }')
 
-		colorMesh = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh_diff , cmap='RdBu_r' , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 ) 
+		colorMesh = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh , cmap='RdBu_r' , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 ) 
 		
 		# set the color limit 
-		plt.clim( -5e-8 , 5e-8 ) # units???
+		#plt.clim( diff_mesh_min , diff_mesh_max ) # units???
+		if ( processing_method == 'single_POL' ) :
+
+			plt.clim( 0 ,  )
+
 		#colorMesh.set_clim( diff_mesh_min*1.5 , diff_mesh_max*1.5 )
 		#levels=my_levels , colors=my_colors
 
@@ -676,6 +694,35 @@ def main() :
 	print('*** COMPLETED SUCCESSFULLY! ***')
 
 #====================================================================================================
+
+#====================================================================================================
+# function to calculate min-max of a 2D array
+
+def min_max_of_mesh( monthly_mean_2d_mesh ) :
+
+	print( '-> getting the min/max of mesh ...')
+
+	list_from_mesh = []
+
+	( mesh_row , mesh_col ) = monthly_mean_2d_mesh.shape
+
+	print( f'-> row of mesh = {mesh_row} and col of mesh = {mesh_col} ')
+
+	for row in range( mesh_row ) :
+		for col in range( mesh_col ) :
+
+			#print( f'-> loop for row = {row} and col = {col}')
+
+			val = monthly_mean_2d_mesh[row,col] 
+			list_from_mesh.append( val )
+
+	print( f'-> size of list_from_mesh = { len(list_from_mesh) } ')
+
+	min_diff_mesh = min( list_from_mesh )
+	max_diff_mesh = max( list_from_mesh )
+
+	return min_diff_mesh , max_diff_mesh
+
 
 #====================================================================================================
 ### function to change 3D to 2D array
@@ -813,7 +860,7 @@ def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row 
 def function_pm25_daily_cell_tseries ( include_pmdiag , aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
 	" returns daily timeseries for pm2.5 for each cell"
 
-	print( f'-> processing row= {row} and col= {col}' )
+	#print( f'-> processing row= {row} and col= {col}' )
 
 	# loop inside 24 time-steps and extract pm concentrations
 	# extract PM2.5 species from input files
@@ -1046,17 +1093,17 @@ def function_pm25_daily_cell_tseries ( include_pmdiag , aconc_open , pmdiag_open
 		PM25AT = pmdiag_open.variables['PM25AT'][:,lay,row,col]
 		PM25AT = np.array(PM25AT)
 		#print( f'-> PM25AT time-series= {PM25AT}')
-		print( f'-> mean of PM25AT= {PM25AT.mean()}')
+		#print( f'-> mean of PM25AT= {PM25AT.mean()}')
 
 		PM25AC = pmdiag_open.variables['PM25AC'][:,lay,row,col]
 		PM25AC = np.array(PM25AC)
 		#print( f'-> PM25AC time-series= {PM25AC}')
-		print( f'-> mean of PM25AC= {PM25AC.mean()}')
+		#print( f'-> mean of PM25AC= {PM25AC.mean()}')
 
 		PM25CO = pmdiag_open.variables['PM25CO'][:,lay,row,col]
 		PM25CO = np.array(PM25CO)
 		#print( f'-> PM25CO time-series= {PM25CO}')
-		print( f'-> mean of PM25CO= {PM25CO.mean()}')
+		#print( f'-> mean of PM25CO= {PM25CO.mean()}')
 
 		 # species calculated inside SpecDef file [0]
 		 # perform arithmetic operations on arrays
