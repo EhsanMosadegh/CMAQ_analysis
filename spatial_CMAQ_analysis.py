@@ -26,7 +26,7 @@ cmaq_file_month = '10'		#  07, 08, 	09,  10,  11
 sim_month = 'oct'  				# jul, aug, sep, oct, nov
 
 cmaq_file_year = '2016'
-days_to_run_in_month = 3
+days_to_run_in_month = 31
 scenario = '1' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
@@ -585,7 +585,7 @@ def main() :
 
 
 	#====================================================================================================
-	### Spatial plotting
+	### Spatial plotting with Basemap
 	#====================================================================================================
 	# use Basemap library and make spatial plots
 
@@ -635,6 +635,10 @@ def main() :
 		
 		# then, set the color limit 
 		if ( processing_method == 'single_plot' ) :
+
+			plt.clim( mean_mesh_min ,  mean_mesh_max )
+
+		if ( processing_method == 'diff_plot' ) :
 
 			plt.clim( mean_mesh_min ,  mean_mesh_max )
 
