@@ -24,14 +24,14 @@ start = time.time()
 ### run time settings
 cmaq_file_month = '10'		#  07, 08, 	09,  10,  11
 sim_month = 'oct'  				# jul, aug, sep, oct, nov
-
 cmaq_file_year = '2016'
-days_to_run_in_month = 1
-scenario = '1' 			# 1-5, baseline
 mcip_date_tag = '161001'
 
-processing_POL = 'single_POL' 		# 'pm2.5' OR 'single_POL'== nh3,o3,no2,no,co
+scenario = '1' 			# 1-5, baseline
+days_to_run_in_month = 3
+
 cmaq_pol = 'O3'  # for plot title 'CO' OR 'PM2.5' OR 'NH3' OR 'O3' OR 'HNO3'
+processing_POL = 'single_POL' 		# 'pm2.5' OR 'single_POL'== nh3,o3,no2,no,co
 
 pol_unit = '[ppmV]'		#'[ppmV]' or [ug/m^3]
 include_pmdiag = 'yes'  # 'yes' OR 'no'
@@ -39,12 +39,15 @@ include_pmdiag = 'yes'  # 'yes' OR 'no'
 ### spatial plot
 spatial_plotting = 'yes' # yes or no
 processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
+vmin_mine = 35
+vmax_mine = 50
+
 produce_raster = 'no' 	# 'yes' OR 'no'
 
 ### set mapping parameters for spatial plotting
 mapping = 'no' # 'yes' OR 'no'
-lower_bound_conc = 0.0
-upper_bound_conc = 0.120
+lower_bound_mapping_conc = 0.0
+upper_bound_mapping_conc = 0.120
 
 
 ### time-series plot
@@ -101,9 +104,9 @@ print( f'-> processing method= {processing_method}')
 print( f'-> number of days to run= {days_to_run_in_month}')
 print( f'-> platform is= {platform}')
 print( f'-> spatial plotting= {spatial_plotting}')
-print( f'-> spatial mapping= {mapping}')
-print( f'-> lower-bound mapping conc= {lower_bound_conc}')
-print( f'-> upper-bound mapping conc= {upper_bound_conc}')
+print( f'-> mapping spatial data= {mapping}')
+print( f'-> vmin in spatial plot= {vmin_mine}')
+print( f'-> vmax in spatial plot= {vmax_mine}')
 print( f'-> produce raster= {produce_raster}')
 print( f'-> time-series plotting= {timeseries_plotting}')
 print(" ")
@@ -479,20 +482,27 @@ def main() :
 			pass
 
 	#====================================================================================================
-	### change 3D to 2D array to make monthly_mean_2d_mesh: used for spatial plots
+	# change 3D to 2D array to make monthly_mean_2d_mesh: used for spatial plots
+	#====================================================================================================
 
 	if ( spatial_plotting == 'yes' ) :
 
 		# intermed file is directed to be used in spatial plotting; and the original tensor is used for time-series plotting
 		monthly_tseries_tensor_from_scen_intermed = monthly_tseries_tensor_from_scen  
 
+		# for ozone, change ppm to ppb for plotting
+		if ( cmaq_pol == 'O3' ) :
+			print( '-> changing ppm to ppb for ozone ...' )
+			pol_unit = '[ppb]'
+
+			monthly_tseries_tensor_from_scen_intermed = monthly_tseries_tensor_from_scen_intermed * 1000
+
 		if ( processing_method == 'single_plot' ) :
 
 			### look at the 3D tensors for scenario
 			print('-----------------------------')
 			print('-> 3D data mesh info:')
-			print( f'-> LANDIS scenario, monthly tensor: number of dimensions= { monthly_tseries_tensor_from_scen_intermed.ndim}' )
-			print( f'-> LANDIS scenario, monthly tensor: shape of data-mesh= { monthly_tseries_tensor_from_scen_intermed.shape}' )
+			print( f'-> monthly tensor for LANDIS scenario: dimensions= { monthly_tseries_tensor_from_scen_intermed.ndim} and shape of data-mesh= { monthly_tseries_tensor_from_scen_intermed.shape}' )
 			print('-----------------------------')
 
 			### we only have one 3D tensor
@@ -572,12 +582,6 @@ def main() :
 			print('-> ERROR: check processing method for 3Dto2D ...')
 			print('-> exiting ...')
 			raise SystemExit()
-
-		# for ozone, change ppm to ppb for plotting
-		print( '-> changing ppm to ppb for ozone ...' )
-		if ( cmaq_pol == 'O3' ) :
-
-			monthly_mean_2d_mesh = monthly_mean_2d_mesh * 1000
 
 	#====================================================================================================
 	### time-series plotting
@@ -664,7 +668,7 @@ def main() :
 		print( f'-> shape of monthly_mean_diff_mesh = {monthly_mean_2d_mesh.shape }')
 		print(" ")
 		# define the image first
-		colorMesh = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh , cmap=color_mapping_function , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 ) 
+		colorImage = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh , cmap=color_mapping_function , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 ) 
 		#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 		
 		# then, set the color limit 
@@ -672,9 +676,10 @@ def main() :
 
 			if ( mapping == 'yes' ) :
 
-				plt.clim( lower_bound_conc , upper_bound_conc )
+				plt.clim( lower_bound_mapping_conc , upper_bound_mapping_conc )
 
-			plt.clim( mean_mesh_min ,  mean_mesh_max )
+			#plt.clim( vmin=mean_mesh_min ,  vmax=mean_mesh_max )
+			plt.clim( vmin=vmin_mine , vmax=vmax_mine )
 
 		if ( processing_method == 'diff_plot' ) :
 
@@ -689,7 +694,7 @@ def main() :
 		#theMap.bluemarble()
 
 		### create colorbar/legend in a seperate obj to play with it later
-		colorbar = theMap.colorbar( colorMesh , 'bottom' , size='4%' )
+		colorbar = theMap.colorbar( colorImage , 'bottom' , size='4%' )
 		colorbar.set_label( label= f'{cmaq_pol} mean concentration {pol_unit}' , size=8 )
 		colorbar.ax.tick_params( labelsize= 5 ) # provide access to the usual axis methods including tick formatting
 		#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
@@ -744,9 +749,9 @@ def main() :
 
 #====================================================================================================
 # function to map concentrations from abs value to map space
-def mapping_function( abs_conc , lower_bound_conc , upper_bound_conc ) :
+def mapping_function( abs_conc , lower_bound_mapping_conc , upper_bound_mapping_conc ) :
 
-	mapped_conc = abs_conc * ( (abs_conc - lower_bound_conc) / (upper_bound_conc - lower_bound_conc) )
+	mapped_conc = abs_conc * ( (abs_conc - lower_bound_mapping_conc) / (upper_bound_mapping_conc - lower_bound_mapping_conc) )
 
 	return mapped_conc
 
@@ -809,7 +814,7 @@ def function_3Dto2D ( domain_rows , domain_cols , monthly_tseries_tensor  ) :
 			if ( mapping == 'yes' ) :
 				#print('-> apply mapping function...')
 
-				conc_mapped = mapping_function( cell_z_axis_mean , lower_bound_conc , upper_bound_conc ) 
+				conc_mapped = mapping_function( cell_z_axis_mean , lower_bound_mapping_conc , upper_bound_mapping_conc ) 
 
 				mesh_2d_mapped [ row , col ] = conc_mapped
 
