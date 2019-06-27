@@ -23,24 +23,24 @@ start = time.time()
 
 ### run time settings
 cmaq_file_month = '10'		#  07, 08, 	09,  10,  11
-sim_month = 'oct'  				# jul, aug, sep, oct, nov
+sim_month = 'Oct'  				# Jul, Aug, Sep, Oct, Nov
 cmaq_file_year = '2016'
 mcip_date_tag = '161001'
 
-scenario = '1' 			# 1-5, baseline
-days_to_run_in_month = 3
+scenario = '2' 			# 1-5, baseline
+days_to_run_in_month = 31
 
 cmaq_pol = 'O3'  # for plot title 'CO' OR 'PM2.5' OR 'NH3' OR 'O3' OR 'HNO3'
-processing_POL = 'single_POL' 		# 'pm2.5' OR 'single_POL'== nh3,o3,no2,no,co
+processing_pollutant = 'single_pollutant' 		# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
 
 pol_unit = '[ppmV]'		#'[ppmV]' or [ug/m^3]
 include_pmdiag = 'yes'  # 'yes' OR 'no'
 
 ### spatial plot
-spatial_plotting = 'yes' # yes or no
+spatial_plotting = 'no' # yes or no
 processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
-vmin_mine = 35
-vmax_mine = 50
+vmin_mine = -0.4
+vmax_mine = 0.4
 
 produce_raster = 'no' 	# 'yes' OR 'no'
 
@@ -51,12 +51,12 @@ upper_bound_mapping_conc = 0.120
 
 
 ### time-series plot
-timeseries_plotting = 'no' # yes or not
-favorite_row = 5
-favorite_col = 5
+timeseries_plotting = 'yes' # yes or not
+# favorite_row = 5
+# favorite_col = 5
 
 platform = 'Mac'  # 'Mac' or 'cluster'
-storage = 'personal' # 'personal' OR '10T'
+storage = '10T' # 'personal' OR '10T'
 
 # ### Basemap plot setting
 # center of domain
@@ -105,10 +105,14 @@ print( f'-> number of days to run= {days_to_run_in_month}')
 print( f'-> platform is= {platform}')
 print( f'-> spatial plotting= {spatial_plotting}')
 print( f'-> mapping spatial data= {mapping}')
-print( f'-> vmin in spatial plot= {vmin_mine}')
-print( f'-> vmax in spatial plot= {vmax_mine}')
 print( f'-> produce raster= {produce_raster}')
 print( f'-> time-series plotting= {timeseries_plotting}')
+if (processing_method=='single_plot'):
+	print( f'-> vmin= {vmin_mine} and vmax= {vmax_mine} ')
+if (processing_method=='diff_plot'):
+	pass
+
+
 print(" ")
 
 #====================================================================================================
@@ -192,13 +196,13 @@ def main() :
 	print('-> month of analysis is=' , cmaq_file_month )
 
 	# ### define the monthly array mesh
-	# if ( processing_POL == 'co' ) :
+	# if ( processing_pollutant == 'co' ) :
 
 	#monthly_tseries_tensor_from_scen = np.ndarray( shape=( 24 , domain_rows , domain_cols ) )
 	monthly_tseries_tensor_from_scen = np.empty( shape=( 0 , domain_rows , domain_cols ) ) # use zero for concatenate method
 	monthly_tseries_tensor_from_base = np.empty( shape=( 0 , domain_rows , domain_cols ) ) # zero means there is no cell in z-dir
 
-	# elif ( processing_POL == 'pm2.5' ) :
+	# elif ( processing_pollutant == 'pm2.5' ) :
 
 	# 	monthly_tseries_tensor_from_scen = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
 	# 	monthly_tseries_tensor_from_base = np.empty( shape=( days_to_run_in_month , domain_rows , domain_cols ) )
@@ -248,7 +252,7 @@ def main() :
 		#====================================================================================================
 		### define netcdf files based on each processing method and pollutant
 
-		if ( processing_POL == 'single_POL') : # we need only 1 file: "aconc"
+		if ( processing_pollutant == 'single_pollutant') : # we need only 1 file: "aconc"
 			# for single scenario plot
 			if ( processing_method == 'single_plot' ) :
 
@@ -279,7 +283,7 @@ def main() :
 				print('-> exiting ...')
 				raise SystemExit()
 
-		elif ( processing_POL == 'pm2.5' ) :   # we need 2 files: "aconc" and "pmdiag" files
+		elif ( processing_pollutant == 'pm2.5' ) :   # we need 2 files: "aconc" and "pmdiag" files
 
 			if ( processing_method == 'single_plot' ) :
 
@@ -348,7 +352,7 @@ def main() :
 
 				for col in range( 0 , domain_cols , 1 ) :
 
-					if ( processing_POL == 'single_POL' ) :
+					if ( processing_pollutant == 'single_pollutant' ) :
 
 						#print( f'-> extracting cell for {cmaq_pol} - singlePlot - at row= {row} and col={col} ... ' )
 
@@ -356,7 +360,7 @@ def main() :
 						#print(f'--> cell tseries is= {cell_24hr_tseries_for_singlePol}')
 						daily_tensor_scen [:,row,col]  = cell_24hr_tseries_for_singlePol
 
-					elif ( processing_POL == 'pm2.5') :
+					elif ( processing_pollutant == 'pm2.5') :
 
 						print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
@@ -406,7 +410,7 @@ def main() :
 
 				for col in range( 0 , domain_cols , 1 ) :
 
-					if ( processing_POL == 'single_POL' ) :
+					if ( processing_pollutant == 'single_pollutant' ) :
 
 						#print( f'-> extracting cell for {cmaq_pol} - diff - at row= {row} and col={col} ... ' )
 
@@ -414,7 +418,7 @@ def main() :
 						cell_24hr_timeSeries_array_scen = function_cell_24hr_timeSeries_singlePOL( aconc_open_scen , cmaq_pol , lay , row , col )
 						cell_24hr_timeSeries_array_base = function_cell_24hr_timeSeries_singlePOL( aconc_open_base , cmaq_pol , lay , row , col )
 
-					elif ( processing_POL == 'pm2.5' ) :
+					elif ( processing_pollutant == 'pm2.5' ) :
 
 						#print( f'-> extracting cell for PM2.5 - diff - at row= {row} and col={col} ... ' )
 
@@ -446,7 +450,7 @@ def main() :
 		#====================================================================================================
 		### closing nc files for each day
 
-		if ( processing_POL == 'single_POL' ) :
+		if ( processing_pollutant == 'single_pollutant' ) :
 
 			if ( processing_method == 'single_plot' ) :
 
@@ -462,7 +466,7 @@ def main() :
 			else:
 				pass
 
-		elif ( processing_POL == 'pm25' ) :
+		elif ( processing_pollutant == 'pm25' ) :
 
 			if ( processing_method == 'single_plot' ) :
 
@@ -485,103 +489,112 @@ def main() :
 	# change 3D to 2D array to make monthly_mean_2d_mesh: used for spatial plots
 	#====================================================================================================
 
-	if ( spatial_plotting == 'yes' ) :
+	#if ( spatial_plotting == 'yes' ) :
 
-		# intermed file is directed to be used in spatial plotting; and the original tensor is used for time-series plotting
-		monthly_tseries_tensor_from_scen_intermed = monthly_tseries_tensor_from_scen  
+	# intermed file is directed to be used in spatial plotting; and the original tensor is used for time-series plotting
+	monthly_tseries_tensor_from_scen_intermed = monthly_tseries_tensor_from_scen
 
-		# for ozone, change ppm to ppb for plotting
+	# for scenario ozone, change ppm to ppb for plotting
+	if ( cmaq_pol == 'O3' ) :
+
+		print( '-> changing ppm to ppb for scenario ozone...' )
+		pol_unit = '[ppb]'
+
+		monthly_tseries_tensor_from_scen_intermed = monthly_tseries_tensor_from_scen_intermed * 1000
+
+	if ( processing_method == 'single_plot' ) :
+
+		### look at the 3D tensors for scenario
+		print('-----------------------------')
+		print('-> 3D data mesh info:')
+		print( f'-> monthly tensor for LANDIS scenario: dimensions= { monthly_tseries_tensor_from_scen_intermed.ndim} and shape of data-mesh= { monthly_tseries_tensor_from_scen_intermed.shape}' )
+		print('-----------------------------')
+
+		### we only have one 3D tensor
+
+		print('-> changing monthly 3D mesh of time-series to 2D for single plotting ...')
+
+		monthly_mean_2d_mesh_and_mapped = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed )
+
+		if ( mapping == 'yes' ) :
+			print('-> mapping abs concentrations to mapped domain ...')
+
+			monthly_mean_2d_mesh = monthly_mean_2d_mesh_and_mapped[1]
+
+		else :
+			print('-> using the absolute concentrations from 2D mesh array...')
+
+			monthly_mean_2d_mesh = monthly_mean_2d_mesh_and_mapped[0]
+
+		print( f'-> monthly mean mesh = {monthly_mean_2d_mesh}')
+		print( " ")
+		print( '-> monthly mean mesh statistics:')
+
+		print( f'-> shape = {monthly_mean_2d_mesh.shape } and dimension = {monthly_mean_2d_mesh.ndim }')
+
+		( mean_mesh_min , mean_mesh_mean , mean_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh )
+
+		print( f'-> min of average mesh = { round( mean_mesh_min , 6 ) } ')
+		print( f'-> mean of average mesh = { round( mean_mesh_mean , 6 ) } ')
+		print( f'-> max of average mesh = { round( mean_mesh_max , 6 ) } ')
+		print( f'-> row no. of max value = { row_of_max_cell } ')
+		print( f'-> col no. of max value = { col_of_max_cell } ')
+		print('-----------------------------')
+
+		#print( f'-> applying the mapp function...')
+
+
+	elif ( processing_method == 'diff_plot' ) :
+
 		if ( cmaq_pol == 'O3' ) :
-			print( '-> changing ppm to ppb for ozone ...' )
+			print( '-> changing ppm to ppb for baseline ozone...' )
 			pol_unit = '[ppb]'
 
-			monthly_tseries_tensor_from_scen_intermed = monthly_tseries_tensor_from_scen_intermed * 1000
+			monthly_tseries_tensor_from_base = monthly_tseries_tensor_from_base * 1000
 
-		if ( processing_method == 'single_plot' ) :
+		### look at the 3D meshes
+		print('-----------------------------')
+		print('-> check 3D data mesh info:')
+		print( f'-> LANDIS scenario, monthly mean tensor: dimensions= {monthly_tseries_tensor_from_scen_intermed.ndim} and shape of tensor= {monthly_tseries_tensor_from_scen_intermed.shape} ' )
+		print( f'-> baseline, monthly mean tensor: dimensions= {monthly_tseries_tensor_from_base.ndim} and shape of tensor= {monthly_tseries_tensor_from_base.shape} ' )
+		print('-----------------------------')
 
-			### look at the 3D tensors for scenario
-			print('-----------------------------')
-			print('-> 3D data mesh info:')
-			print( f'-> monthly tensor for LANDIS scenario: dimensions= { monthly_tseries_tensor_from_scen_intermed.ndim} and shape of data-mesh= { monthly_tseries_tensor_from_scen_intermed.shape}' )
-			print('-----------------------------')
+		### we have 2 tensors
+		print( f'-> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario ({scenario}) mesh ...')
+		monthly_mean_2d_mesh_scen_and_mapped = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed )
+		monthly_mean_2d_mesh_scen = monthly_mean_2d_mesh_scen_and_mapped[0]
 
-			### we only have one 3D tensor
+		print('-> now, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D "baseline" scenario mesh ...')
+		monthly_mean_2d_mesh_base_and_mapped = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_base )
+		monthly_mean_2d_mesh_base = monthly_mean_2d_mesh_base_and_mapped[0]
 
-			print('-> changing monthly 3D mesh of time-series to 2D for single plotting ...')
+		print ('-> now subtract 2 meshes to get the diff mesh for spatial plotting ')
 
-			monthly_mean_2d_mesh_and_mapped = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed )
+		monthly_mean_2d_mesh = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
+		print( " ")
+		print( f'-> monthly mesh scenario = {monthly_mean_2d_mesh_scen} ')
+		print( " ")
+		print( f'-> monthly mesh baseline = {monthly_mean_2d_mesh_base} ')
+		print( " ")
+		print( f'-> monthly mean diff-mesh = {monthly_mean_2d_mesh}')
+		print( " ")
+		print( '-> diff matrix statistics:')
 
-			if ( mapping == 'yes' ) :
-				print('-> mapping abs concentrations to mapped domain ...')
+		print( f'-> shape = {monthly_mean_2d_mesh.shape } and dimension = {monthly_mean_2d_mesh.ndim }')
 
-				monthly_mean_2d_mesh = monthly_mean_2d_mesh_and_mapped[1]
+		( diff_mesh_min , diff_mesh_mean , diff_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh )
 
-			else :
-				print('-> using absolute concentrations in 2D mesh array...')
+		print( f'-> min of diff mesh = { diff_mesh_min } ')
+		print( f'-> average of diff mesh = { diff_mesh_mean } ')
+		print( f'-> max of diff mesh = { diff_mesh_max } ')
+		print( f'-> row no. of max value = { row_of_max_cell } ')
+		print( f'-> col no. of max value = { col_of_max_cell } ')
+		print('-----------------------------')
 
-				monthly_mean_2d_mesh = monthly_mean_2d_mesh_and_mapped[0]
-
-			print( f'-> monthly mean mesh = {monthly_mean_2d_mesh}')
-			print( " ")
-			print( '-> monthly mean mesh statistics:')
-
-			print( f'-> shape = {monthly_mean_2d_mesh.shape } and dimension = {monthly_mean_2d_mesh.ndim }')
-
-			( mean_mesh_min , mean_mesh_mean , mean_mesh_max ) = min_mean_max_of_mesh( monthly_mean_2d_mesh )
-
-			print( f'-> min of average mesh = { round( mean_mesh_min , 6 ) } ')
-			print( f'-> mean of average mesh = { round( mean_mesh_mean , 6 ) } ')
-			print( f'-> max of average mesh = { round( mean_mesh_max , 6 ) } ')
-			print('-----------------------------')
-
-			print( f'-> applying the mapp function...')
-
-
-		elif ( processing_method == 'diff_plot' ) :
-
-			### look at the 3D meshes
-			print('-----------------------------')
-			print('-> check 3D data mesh info:')
-			print( f'-> LANDIS scenario, monthly mean tensor: number of dimensions= {monthly_tseries_tensor_from_scen_intermed.ndim}' )
-			print( f'-> LANDIS scenario, monthly mean tensor: shape of tensor= {monthly_tseries_tensor_from_scen_intermed.shape}' )
-			print( f'-> baseline, monthly tensor: number of dimensions= {monthly_tseries_tensor_from_base.ndim}' )
-			print( f'-> baseline, monthly tensor: shape of tensor= {monthly_tseries_tensor_from_base.shape}' )
-			print('-----------------------------')
-
-			### we have 2 tensors
-			print( f'-> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario ({scenario}) mesh ...')
-			monthly_mean_2d_mesh_scen_and_mapped = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed )
-			monthly_mean_2d_mesh_scen = monthly_mean_2d_mesh_scen_and_mapped[0]
-
-			print('-> now, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D "baseline" scenario mesh ...')
-			monthly_mean_2d_mesh_base_and_mapped = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_base )
-			monthly_mean_2d_mesh_base = monthly_mean_2d_mesh_base_and_mapped[0]
-
-			print ('-> now subtract 2 meshes to get the diff mesh for spatial plotting ')
-
-			monthly_mean_2d_mesh = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
-			print( " ")
-			print( f'-> monthly mesh scenario = {monthly_mean_2d_mesh_scen} ')
-			print( " ")
-			print( f'-> monthly mesh baseline = {monthly_mean_2d_mesh_base} ')
-			print( " ")
-			print( f'-> monthly mean diff-mesh = {monthly_mean_2d_mesh}')
-			print( " ")
-			print( '-> diff matrix statistics:')
-
-			print( f'-> shape = {monthly_mean_2d_mesh.shape } and dimension = {monthly_mean_2d_mesh.ndim }')
-
-			( diff_mesh_min , diff_mesh_mean , diff_mesh_max ) = min_mean_max_of_mesh( monthly_mean_2d_mesh )
-
-			print( f'-> min of diff mesh = { diff_mesh_min } ')
-			print( f'-> average of diff mesh = { diff_mesh_mean } ')
-			print( f'-> max of diff mesh = { diff_mesh_max } ')
-			print('-----------------------------')
-
-		else:
-			print('-> ERROR: check processing method for 3Dto2D ...')
-			print('-> exiting ...')
-			raise SystemExit()
+	else:
+		print('-> ERROR: check processing method for 3Dto2D ...')
+		print('-> exiting ...')
+		raise SystemExit()
 
 	#====================================================================================================
 	### time-series plotting
@@ -593,25 +606,36 @@ def main() :
 
 		if( processing_method != 'single_plot') :
 
-			print('-> WARNING: single plot is not set for time-series ...')
+			print('-> ERROR: time-series analysis setting is not set correctly, change "diff_plot" to "single_plot" ...')
 
 		else :
 
-			row_ = favorite_row
-			col_ = favorite_col
+			row_ = row_of_max_cell
+			col_ = col_of_max_cell
 			conc_timeseries_list = monthly_tseries_tensor_from_scen [ : , row_ , col_ ]
+
+			if ( cmaq_pol == 'O3' ) :
+
+				conc_timeseries_list = conc_timeseries_list*1000 # change to ppb
 
 			x_ = [ *range(1, ((days_to_run_in_month*24)+1) , 1) ]  # x bar is no. of hours in aconc files
 			y_ = conc_timeseries_list		#.tolist  # y-bar is hourly concentrations/timeseries
 
-			print(f'-> size of x_ = {len(x_)}')
+			print(f'-> size of x_ axis list = {len(x_)}')
 			print(f'-> x_ = {x_}' )
-			print(f'-> size of y_ = {len(y_)}')
+			print(f'-> size of y_ axis list = {len(y_)}')
 			print(f'-> y_ = {y_}' )
 
 			plt.plot( x_ , y_ )
 			#plt.show()
+			xticks_position = [ i*24 for i in range(0 , days_to_run_in_month , 1) ]
+			xticks_labels = [ f'{i+1}' for i in range (0 , days_to_run_in_month , 1)]
+			plt.xticks( xticks_position , xticks_labels , fontsize=6 )
+			plt.yticks(fontsize=6)
 
+			plt.xlabel(f' days in {sim_month}')
+			plt.ylabel( f' {cmaq_pol} concentration')
+			plt.title( f'time-series of {cmaq_pol} for {sim_month}, 2016')
 
 			plot_name = cmaq_pol+'_timeseries'+'_scen_'+scenario+'_'+cmaq_file_year+'-'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'.png'
 			plot_dir = fig_dir
@@ -651,7 +675,7 @@ def main() :
 		#my_levels = [ 0.02 , 0.05 ]
 		#my_colors = ( 'g' , 'b' , 'r' )
 
-		# set the color map 
+		# set the color map
 		if ( processing_method == 'single_plot' ) :
 
 			color_mapping_function = 'Reds'
@@ -668,10 +692,10 @@ def main() :
 		print( f'-> shape of monthly_mean_diff_mesh = {monthly_mean_2d_mesh.shape }')
 		print(" ")
 		# define the image first
-		colorImage = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh , cmap=color_mapping_function , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 ) 
+		colorImage = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh , cmap=color_mapping_function , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 )
 		#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
-		
-		# then, set the color limit 
+
+		# then, set the color limit
 		if ( processing_method == 'single_plot' ) :
 
 			if ( mapping == 'yes' ) :
@@ -683,7 +707,11 @@ def main() :
 
 		if ( processing_method == 'diff_plot' ) :
 
-			plt.clim( diff_mesh_min ,  diff_mesh_max )
+			#plt.clim( diff_mesh_min ,  diff_mesh_max )
+			#print( f'-> plot the image for vmin={diff_mesh_min} and vmax={diff_mesh_max}')
+
+			plt.clim( vmin_mine , vmax_mine )
+			print( f'-> plot the image for vmin={vmin_mine} and vmax={vmax_mine}')
 
 		# set the map features
 		theMap.drawmapboundary(color='k' ) #, fill_color='aqua')
@@ -741,14 +769,17 @@ def main() :
 		### close the plot
 		plt.close()
 
+	print('------------------------------------')
 	end = time.time()
 	print( f'-> run time of main function= { (( end - start ) / 60 ) :.2f} min' )  # f-string
-	print('*** COMPLETED SUCCESSFULLY! ***')
+	print('*** MAIN COMPLETED SUCCESSFULLY! ***')
+	print('------------------------------------')
 
 #====================================================================================================
-
+### functions
 #====================================================================================================
 # function to map concentrations from abs value to map space
+
 def mapping_function( abs_conc , lower_bound_mapping_conc , upper_bound_mapping_conc ) :
 
 	mapped_conc = abs_conc * ( (abs_conc - lower_bound_mapping_conc) / (upper_bound_mapping_conc - lower_bound_mapping_conc) )
@@ -758,7 +789,7 @@ def mapping_function( abs_conc , lower_bound_mapping_conc , upper_bound_mapping_
 #====================================================================================================
 # function to calculate min-max of a 2D array
 
-def min_mean_max_of_mesh( monthly_mean_2d_mesh ) :
+def function_min_mean_max_of_mesh( monthly_mean_2d_mesh ) :
 
 	print( '-> getting the min/mean/max of mesh ...')
 
@@ -773,8 +804,8 @@ def min_mean_max_of_mesh( monthly_mean_2d_mesh ) :
 
 			#print( f'-> loop for row = {row} and col = {col}')
 
-			val = monthly_mean_2d_mesh[row,col] 
-			list_from_mesh.append( val )
+			cell_val = monthly_mean_2d_mesh[ row , col ]
+			list_from_mesh.append( cell_val )
 
 	print( f'-> size of list_from_mesh = { len(list_from_mesh) } ')
 
@@ -782,8 +813,25 @@ def min_mean_max_of_mesh( monthly_mean_2d_mesh ) :
 	mean_of_mesh = np.mean( list_from_mesh )
 	max_of_mesh = np.max( list_from_mesh )
 
+	# loop again to find the row-col of max cell
+	if ( timeseries_plotting == 'yes' ) :
 
-	return min_of_mesh , mean_of_mesh , max_of_mesh
+		for row in raneg(mesh_row) :
+			for col in range(mesh_col) :
+
+				cell_val = monthly_mean_2d_mesh[ row , col ]
+
+				if ( max_of_mesh == cell_val ) :
+
+					row_of_max = row
+					col_of_max = col
+					break
+
+				else:
+
+					print('-> ERROR: could not get the row/col of max value')
+
+	return min_of_mesh , mean_of_mesh , max_of_mesh , row_of_max , col_of_max
 
 
 #====================================================================================================
@@ -814,7 +862,7 @@ def function_3Dto2D ( domain_rows , domain_cols , monthly_tseries_tensor  ) :
 			if ( mapping == 'yes' ) :
 				#print('-> apply mapping function...')
 
-				conc_mapped = mapping_function( cell_z_axis_mean , lower_bound_mapping_conc , upper_bound_mapping_conc ) 
+				conc_mapped = mapping_function( cell_z_axis_mean , lower_bound_mapping_conc , upper_bound_mapping_conc )
 
 				mesh_2d_mapped [ row , col ] = conc_mapped
 
@@ -904,7 +952,7 @@ def array2raster( raster_dir , cmaq_pol , file_date_tag , output_array , array_o
 # 	new_dataset.close()
 
 #====================================================================================================
-### function to
+# function to
 
 def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
 	" returns 24-hr time series of singlePOL"
@@ -924,7 +972,7 @@ def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row 
 	return cell_24hr_series_array
 
 #====================================================================================================
-### function to
+# function to
 
 def function_pm25_daily_cell_tseries ( include_pmdiag , aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
 	" returns daily timeseries for pm2.5 for each cell"
