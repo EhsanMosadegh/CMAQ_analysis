@@ -28,7 +28,7 @@ cmaq_file_year = '2016'
 mcip_date_tag = '161001'
 
 scenario = '2' 			# 1-5, baseline
-days_to_run_in_month = 31
+days_to_run_in_month = 5
 
 cmaq_pol = 'O3'  # for plot title 'CO' OR 'PM2.5' OR 'NH3' OR 'O3' OR 'HNO3'
 processing_pollutant = 'single_pollutant' 		# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
@@ -37,23 +37,21 @@ pol_unit = '[ppmV]'		#'[ppmV]' or [ug/m^3]
 include_pmdiag = 'yes'  # 'yes' OR 'no'
 
 ### spatial plot
-spatial_plotting = 'no' # yes or no
-processing_method = 'single_plot' 	# 'single_plot' or 'diff_plot'
-vmin_mine = -0.4
-vmax_mine = 0.4
+spatial_plotting = 'yes' # yes or no
+plot_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
+vmin_mine_singlePlot = -0.4
+vmax_mine_singlePlot = 0.4
 
 produce_raster = 'no' 	# 'yes' OR 'no'
 
 ### set mapping parameters for spatial plotting
 mapping = 'no' # 'yes' OR 'no'
-lower_bound_mapping_conc = 0.0
-upper_bound_mapping_conc = 0.120
+# lower_bound_mapping_conc = 0.0
+# upper_bound_mapping_conc = 0.120
 
 
 ### time-series plot
 timeseries_plotting = 'yes' # yes or not
-# favorite_row = 5
-# favorite_col = 5
 
 platform = 'Mac'  # 'Mac' or 'cluster'
 storage = '10T' # 'personal' OR '10T'
@@ -100,16 +98,16 @@ print( f'-> CMAQ year= {cmaq_file_year}')
 print( f'-> CMAQ month of analysis= {cmaq_file_month}')
 print( f'-> LANDIS scenarios= {scenario}')
 print( f'-> processing pollutant= {cmaq_pol}')
-print( f'-> processing method= {processing_method}')
+print( f'-> spatial plotting= {spatial_plotting}')
+print( f'-> time-series plotting= {timeseries_plotting}')
+print( f'-> processing method= {plot_method}')
 print( f'-> number of days to run= {days_to_run_in_month}')
 print( f'-> platform is= {platform}')
-print( f'-> spatial plotting= {spatial_plotting}')
 print( f'-> mapping spatial data= {mapping}')
 print( f'-> produce raster= {produce_raster}')
-print( f'-> time-series plotting= {timeseries_plotting}')
-if (processing_method=='single_plot'):
-	print( f'-> vmin= {vmin_mine} and vmax= {vmax_mine} ')
-if (processing_method=='diff_plot'):
+if (plot_method=='single_plot'):
+	print( f'-> for single plot: vmin= {vmin_mine_singlePlot} and vmax= {vmax_mine_singlePlot} ')
+if (plot_method=='diff_plot'):
 	pass
 
 
@@ -254,7 +252,7 @@ def main() :
 
 		if ( processing_pollutant == 'single_pollutant') : # we need only 1 file: "aconc"
 			# for single scenario plot
-			if ( processing_method == 'single_plot' ) :
+			if ( plot_method == 'single_plot' ) :
 
 				# define input files
 				print( f'-> setting path for {cmaq_pol} and single_plot...')
@@ -265,7 +263,7 @@ def main() :
 				print( " ")
 
 			# for difference between 2 scenarios
-			elif ( processing_method == 'diff_plot' ) :  # open 2 netcdf files: "aconc_scen" and "aconc_baseline"
+			elif ( plot_method == 'diff_plot' ) :  # open 2 netcdf files: "aconc_scen" and "aconc_baseline"
 				# define input files
 				print( f'-> setting path for {cmaq_pol} and diff_plot...')
 				aconc_input_scen = input_path_scen + aconc_scen
@@ -285,7 +283,7 @@ def main() :
 
 		elif ( processing_pollutant == 'pm2.5' ) :   # we need 2 files: "aconc" and "pmdiag" files
 
-			if ( processing_method == 'single_plot' ) :
+			if ( plot_method == 'single_plot' ) :
 
 				print('-> setting path for PM2.5 and single_plot...')
 				# define input files
@@ -301,7 +299,7 @@ def main() :
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
 
-			elif ( processing_method == 'diff_plot' ) :
+			elif ( plot_method == 'diff_plot' ) :
 
 				print('-> setting path for PM2.5 and diff_plot...')
 				# define input files
@@ -339,7 +337,7 @@ def main() :
 		# single plot:
 		#====================================================================================================
 
-		if ( processing_method == 'single_plot' ) :
+		if ( plot_method == 'single_plot' ) :
 
 			print('-> processing for single plot ...')
 			### create an empty tensor for each cell and day as container of daily 24-hr t-step concentrations
@@ -396,7 +394,7 @@ def main() :
 		# diff plot
 		#====================================================================================================
 
-		elif ( processing_method == 'diff_plot' ) :
+		elif ( plot_method == 'diff_plot' ) :
 
 			print('-> processing for diff plot ...')
 			### create an empty tensor for each day as container of daily 24-hr t-step concentrations and then fill each cell up for each cell
@@ -452,12 +450,12 @@ def main() :
 
 		if ( processing_pollutant == 'single_pollutant' ) :
 
-			if ( processing_method == 'single_plot' ) :
+			if ( plot_method == 'single_plot' ) :
 
 				print('-> closing ACONC file ...')
 				aconc_open_scen.close()
 
-			elif ( processing_method == 'diff_plot' ) :
+			elif ( plot_method == 'diff_plot' ) :
 
 				print('-> closing ACONC scen and baseline files ...')
 				aconc_open_scen.close()
@@ -468,13 +466,13 @@ def main() :
 
 		elif ( processing_pollutant == 'pm25' ) :
 
-			if ( processing_method == 'single_plot' ) :
+			if ( plot_method == 'single_plot' ) :
 
 				print('-> closing ACONC and PMDIAG files ...')
 				aconc_open_scen.close()
 				pmdiag_open_scen.close()
 
-			elif ( processing_method == 'diff_plot' ) :
+			elif ( plot_method == 'diff_plot' ) :
 
 				print('-> closing ACONC and PMDIAG files for both scen and baseline ...')
 				aconc_open_scen.close()
@@ -502,7 +500,7 @@ def main() :
 
 		monthly_tseries_tensor_from_scen_intermed = monthly_tseries_tensor_from_scen_intermed * 1000
 
-	if ( processing_method == 'single_plot' ) :
+	if ( plot_method == 'single_plot' ) :
 
 		### look at the 3D tensors for scenario
 		print('-----------------------------')
@@ -544,7 +542,7 @@ def main() :
 		#print( f'-> applying the mapp function...')
 
 
-	elif ( processing_method == 'diff_plot' ) :
+	elif ( plot_method == 'diff_plot' ) :
 
 		if ( cmaq_pol == 'O3' ) :
 			print( '-> changing ppm to ppb for baseline ozone...' )
@@ -601,49 +599,45 @@ def main() :
 	#====================================================================================================
 
 	if ( timeseries_plotting == 'yes') :
+		print('-> time-series plotting is YES, so we plot time-series...')
 
-		print('-> time-series plotting is yes ...')
+		row_ = row_of_max_cell
+		col_ = col_of_max_cell
+		conc_timeseries_list = monthly_tseries_tensor_from_scen [ : , row_ , col_ ]
 
-		if( processing_method != 'single_plot') :
+		if ( cmaq_pol == 'O3' ) :
 
-			print('-> ERROR: time-series analysis setting is not set correctly, change "diff_plot" to "single_plot" ...')
+			conc_timeseries_list = conc_timeseries_list*1000 # change to ppb
 
-		else :
+		x_ = [ *range(1, ((days_to_run_in_month*24)+1) , 1) ]  # x bar is no. of hours in aconc files
+		y_ = conc_timeseries_list		#.tolist  # y-bar is hourly concentrations/timeseries
 
-			row_ = row_of_max_cell
-			col_ = col_of_max_cell
-			conc_timeseries_list = monthly_tseries_tensor_from_scen [ : , row_ , col_ ]
+		print(f'-> size of x_ axis list = {len(x_)}')
+		#print(f'-> x_ = {x_}' )
+		print(f'-> size of y_ axis list = {len(y_)}')
+		#print(f'-> y_ = {y_}' )
 
-			if ( cmaq_pol == 'O3' ) :
+		plt.plot( x_ , y_ )
+		#plt.show()
+		xticks_position = [ i*24 for i in range(0 , days_to_run_in_month+1 , 1) ]
+		xticks_labels = [ f'{i+1}' for i in range (0 , days_to_run_in_month , 1)]
+		plt.xticks( xticks_position , xticks_labels , fontsize=6 )
+		plt.yticks(fontsize=6)
 
-				conc_timeseries_list = conc_timeseries_list*1000 # change to ppb
+		plt.xlabel(f' days in {sim_month}')
+		plt.ylabel( f' {cmaq_pol} concentration')
+		plt.title( f'time-series of {cmaq_pol} for {sim_month}, 2016')
+		plt.grid(True)
 
-			x_ = [ *range(1, ((days_to_run_in_month*24)+1) , 1) ]  # x bar is no. of hours in aconc files
-			y_ = conc_timeseries_list		#.tolist  # y-bar is hourly concentrations/timeseries
+		plot_name = cmaq_pol+'_timeseries'+'_scen_'+scenario+'_'+cmaq_file_year+'-'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'.png'
+		plot_dir = fig_dir
+		saved_plot = fig_dir+plot_name
 
-			print(f'-> size of x_ axis list = {len(x_)}')
-			print(f'-> x_ = {x_}' )
-			print(f'-> size of y_ axis list = {len(y_)}')
-			print(f'-> y_ = {y_}' )
-
-			plt.plot( x_ , y_ )
-			#plt.show()
-			xticks_position = [ i*24 for i in range(0 , days_to_run_in_month , 1) ]
-			xticks_labels = [ f'{i+1}' for i in range (0 , days_to_run_in_month , 1)]
-			plt.xticks( xticks_position , xticks_labels , fontsize=6 )
-			plt.yticks(fontsize=6)
-
-			plt.xlabel(f' days in {sim_month}')
-			plt.ylabel( f' {cmaq_pol} concentration')
-			plt.title( f'time-series of {cmaq_pol} for {sim_month}, 2016')
-
-			plot_name = cmaq_pol+'_timeseries'+'_scen_'+scenario+'_'+cmaq_file_year+'-'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'.png'
-			plot_dir = fig_dir
-			saved_plot = fig_dir+plot_name
-
-			plt.savefig( saved_plot , dpi=1200 , format='png' )
-			plt.close()
-
+		plt.savefig( saved_plot , dpi=1200 , format='png' )
+		plt.close()
+		print('-> time-series plot saved at:')
+		print(saved_plot)
+		print(" ")
 
 	#====================================================================================================
 	### Spatial plotting with Basemap
@@ -676,13 +670,13 @@ def main() :
 		#my_colors = ( 'g' , 'b' , 'r' )
 
 		# set the color map
-		if ( processing_method == 'single_plot' ) :
+		if ( plot_method == 'single_plot' ) :
 
 			color_mapping_function = 'Reds'
 
-		if ( processing_method == 'diff_plot' ) :
+		if ( plot_method == 'diff_plot' ) :
 
-			color_mapping_function = 'RdBu_r'
+			color_mapping_function = 'Reds' #'RdBu_r'
 
 		### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
 		print(" ")
@@ -696,22 +690,22 @@ def main() :
 		#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
 		# then, set the color limit
-		if ( processing_method == 'single_plot' ) :
+		if ( plot_method == 'single_plot' ) :
 
 			if ( mapping == 'yes' ) :
 
 				plt.clim( lower_bound_mapping_conc , upper_bound_mapping_conc )
 
 			#plt.clim( vmin=mean_mesh_min ,  vmax=mean_mesh_max )
-			plt.clim( vmin=vmin_mine , vmax=vmax_mine )
+			plt.clim( vmin=vmin_mine_singlePlot , vmax=vmax_mine_singlePlot )
 
-		if ( processing_method == 'diff_plot' ) :
+		if ( plot_method == 'diff_plot' ) :
 
-			#plt.clim( diff_mesh_min ,  diff_mesh_max )
-			#print( f'-> plot the image for vmin={diff_mesh_min} and vmax={diff_mesh_max}')
+			plt.clim( diff_mesh_min ,  diff_mesh_max )
+			print( f'-> plot the image for vmin={diff_mesh_min} and vmax={diff_mesh_max}')
 
-			plt.clim( vmin_mine , vmax_mine )
-			print( f'-> plot the image for vmin={vmin_mine} and vmax={vmax_mine}')
+			# plt.clim( vmin_mine_singlePlot , vmax_mine )
+			# print( f'-> plot the image for vmin={vmin_mine} and vmax={vmax_mine}')
 
 		# set the map features
 		theMap.drawmapboundary(color='k' ) #, fill_color='aqua')
@@ -728,11 +722,11 @@ def main() :
 		#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
 		#colorbar = basemap_instance.colorbar(cs, location='bottom')
 		#plt.subplot( figsize=(10,10) )
-		if ( processing_method == 'single_plot' ) :
+		if ( plot_method == 'single_plot' ) :
 
 			plt.title(f' {cmaq_pol} monthly mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=8 )
 
-		elif ( processing_method == 'diff_plot' ) :
+		elif ( plot_method == 'diff_plot' ) :
 
 			plt.title(f' {cmaq_pol} monthly mean concentration difference: LANDIS scenario {scenario} - baseline, {sim_month}, {cmaq_file_year} ' , fontsize=8 )
 
@@ -743,22 +737,22 @@ def main() :
 		#====================================================================================================
 
 		### path for saving plots
-		print('-> fig directory is:')
-		print(fig_dir)
+		# print('-> fig directory is:')
+		# print(fig_dir)
 
 		### plot name
-		if ( processing_method == 'single_plot' ) :
+		if ( plot_method == 'single_plot' ) :
 
 			fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
 
-		elif ( processing_method == 'diff_plot' ) :
+		elif ( plot_method == 'diff_plot' ) :
 
 			fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_difference_from_baseline_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
 
 		else:
 			pass
 
-		### plot full path
+		### full path of the plot
 		out_fig = fig_dir + fig_name
 		print('-> output figure is stored at:')
 		print(out_fig)
@@ -816,7 +810,7 @@ def function_min_mean_max_of_mesh( monthly_mean_2d_mesh ) :
 	# loop again to find the row-col of max cell
 	if ( timeseries_plotting == 'yes' ) :
 
-		for row in raneg(mesh_row) :
+		for row in range(mesh_row) :
 			for col in range(mesh_col) :
 
 				cell_val = monthly_mean_2d_mesh[ row , col ]
@@ -826,10 +820,6 @@ def function_min_mean_max_of_mesh( monthly_mean_2d_mesh ) :
 					row_of_max = row
 					col_of_max = col
 					break
-
-				else:
-
-					print('-> ERROR: could not get the row/col of max value')
 
 	return min_of_mesh , mean_of_mesh , max_of_mesh , row_of_max , col_of_max
 
