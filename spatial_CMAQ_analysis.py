@@ -148,8 +148,8 @@ def main() :
 
 		input_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/'
 		mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/'
-		fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/cmaq_figs'
-		raster_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/raster_dir/'
+		fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/'
+		raster_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/raster_dir/'
 
 	else:
 
