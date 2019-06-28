@@ -44,7 +44,9 @@ def main() :
 	### spatial plot
 	spatial_plotting = 'yes' # yes or no
 	plot_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
-	colorbar_method = 'zeroToMax'		# 'zeroToMax' , 'minToMax'
+	colorbar_method = 'minToMax'		# 'zeroToMax' , 'minToMax' , 'minusAbsoluteMaxToMax'
+	minus_abs_max_diffPlot = -5
+	abs_max_diffPlot = 5
 	vmin_mine_singlePlot = -0.4
 	vmax_mine_singlePlot = 0.4
 
@@ -100,7 +102,7 @@ def main() :
 	pixelHeight = NCOLS
 	newRasterfn = 'co_test_raster.tif'
 
-	print( f'-> emission scenario= {scenario}')
+	print( f'-> scenario= {scenario}')
 	print( f'-> CMAQ month= {cmaq_file_month}')
 	print( f'-> number of days to run= {days_to_run_in_month}')
 	print( f'-> CMAQ year= {cmaq_file_year}')
@@ -113,6 +115,9 @@ def main() :
 			print( f'-> for single plot: vmin= {vmin_mine_singlePlot} and vmax= {vmax_mine_singlePlot} ')
 		if (plot_method=='diff_plot'):
 			print( f'-> colorbar method for spatial diff plot= {colorbar_method}')
+			if ( colorbar_method == 'minusAbsoluteMaxToMax' ):
+				print( f'-> for diff plot: minus absolute Max. values= {minus_abs_max_diffPlot}')
+				print( f'-> for diff plot: plus absolute Max. values= {abs_max_diffPlot}')				
 	print( f'-> time-series plotting= {timeseries_plotting}')
 	print( f'-> platform is= {platform}')
 	print( f'-> mapping spatial data= {mapping}')
@@ -532,7 +537,8 @@ def main() :
 		print( f'-> shape = {monthly_mean_2d_mesh.shape } and dimension = {monthly_mean_2d_mesh.ndim }')
 
 		( mean_mesh_min , mean_mesh_mean , mean_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting )
-
+		
+		print('-----------------------------')
 		print( f'-> min of average mesh = { round( mean_mesh_min , 6 ) } ')
 		print( f'-> mean of average mesh = { round( mean_mesh_mean , 6 ) } ')
 		print( f'-> max of average mesh = { round( mean_mesh_max , 6 ) } ')
@@ -583,6 +589,7 @@ def main() :
 
 		( diff_mesh_min , diff_mesh_mean , diff_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting )
 
+		print('-----------------------------')
 		print( f'-> min of diff mesh = { diff_mesh_min } ')
 		print( f'-> average of diff mesh = { diff_mesh_mean } ')
 		print( f'-> max of diff mesh = { diff_mesh_max } ')
@@ -693,8 +700,8 @@ def main() :
 		# then, set the color limit
 		if ( plot_method == 'single_plot' ) :
 			print( f'-> plot method= {plot_method}')
+			
 			if ( mapping == 'yes' ) :
-
 				plt.clim( lower_bound_mapping_conc , upper_bound_mapping_conc )
 
 			#plt.clim( vmin=mean_mesh_min ,  vmax=mean_mesh_max )
@@ -702,15 +709,24 @@ def main() :
 
 		if ( plot_method == 'diff_plot' ) :
 			print( f'-> plot method= {plot_method}')
+			
 			if ( colorbar_method == 'zeroToMax' ) :
+				
 				print(f'-> colorbar method= {colorbar_method}')
 				plt.clim( 0.0 ,  diff_mesh_max )
 				print( f'-> plot the image for vmin={0.0} and vmax={diff_mesh_max}')
 
 			if ( colorbar_method == 'minToMax' ) :
 
+				print(f'-> colorbar method= {colorbar_method}')
 				plt.clim( diff_mesh_min ,  diff_mesh_max )
 				print( f'-> plot the image for vmin={diff_mesh_min} and vmax={diff_mesh_max}')
+
+			if ( colorbar_method == 'minusAbsoluteMaxToMax' ) :
+
+				print(f'-> colorbar method= {colorbar_method}')
+				plt.clim( minus_abs_max_diffPlot ,  abs_max_diffPlot )
+				print( f'-> plot the image for vmin={minus_abs_max_diffPlot} and vmax={abs_max_diffPlot}')
 
 			# plt.clim( vmin_mine_singlePlot , vmax_mine )
 			# print( f'-> plot the image for vmin={vmin_mine} and vmax={vmax_mine}')
@@ -726,8 +742,8 @@ def main() :
 		### create colorbar/legend in a seperate obj to play with it later
 		colorbar = theMap.colorbar( colorImage , 'bottom' , size='4%' )
 
-		colorbar_label = f' {cmaq_pol} mean concentration [{pol_unit}] ' 
-		colorbar.set_label( label=colorbar_label , size=8 )
+		colorbar_label = f' {cmaq_pol} concentration [{pol_unit}] ' 
+		colorbar.set_label( label=colorbar_label , size=6 )
 
 		colorbar.ax.tick_params( labelsize= 5 ) # provide access to the usual axis methods including tick formatting
 		#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
@@ -735,11 +751,11 @@ def main() :
 		#plt.subplot( figsize=(10,10) )
 		if ( plot_method == 'single_plot' ) :
 
-			plt.title(f' {cmaq_pol} monthly mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=8 )
+			plt.title(f' {cmaq_pol} monthly mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=6 )
 
 		elif ( plot_method == 'diff_plot' ) :
 
-			plt.title(f' {cmaq_pol} monthly mean concentration difference: LANDIS scenario {scenario} - baseline, {sim_month}, {cmaq_file_year} ' , fontsize=8 )
+			plt.title(f' {cmaq_pol} monthly mean concentration for {sim_month}, scenario{scenario}_minus_baseline' , fontsize=6 )
 
 		print(" ")
 
@@ -758,7 +774,7 @@ def main() :
 
 		elif ( plot_method == 'diff_plot' ) :
 
-			fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_difference_from_baseline_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days' + '.png'
+			fig_name = cmaq_pol + '_monthlyMean' + '_scen_' + scenario + '_difference_from_baseline_' + cmaq_file_year+'-'+cmaq_file_month + '_summed_' + str(days_to_run_in_month) + '_days_colorbarMethod_' +colorbar_method+ '.png'
 
 		else:
 			pass
