@@ -61,7 +61,7 @@ def main() :
 	### time-series plot
 	timeseries_plotting = 'yes' # yes or not
 
-	platform = 'Mac'  # 'Mac' or 'cluster'
+	platform = 'cluster'  # 'Mac' or 'cluster'
 	storage = '10T' # 'personal' OR '10T'
 
 	# ### Basemap plot setting
@@ -148,8 +148,8 @@ def main() :
 
 		input_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/'
 		mcip_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/'
-		fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/cmaq_figs'
-		raster_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/raster_dir/'
+		fig_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/'
+		raster_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/raster_dir/'
 
 	else:
 
@@ -539,9 +539,9 @@ def main() :
 		( mean_mesh_min , mean_mesh_mean , mean_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting )
 		
 		print('-----------------------------')
-		print( f'-> min of average mesh = { round( mean_mesh_min , 6 ) } ')
-		print( f'-> mean of average mesh = { round( mean_mesh_mean , 6 ) } ')
-		print( f'-> max of average mesh = { round( mean_mesh_max , 6 ) } ')
+		print( f'-> stats: min of average mesh = { round( mean_mesh_min , 6 ) } ')
+		print( f'-> stats: mean of average mesh = { round( mean_mesh_mean , 6 ) } ')
+		print( f'-> stats: max of average mesh = { round( mean_mesh_max , 6 ) } ')
 		print( f'-> row no. of max value = { row_of_max_cell } ')
 		print( f'-> col no. of max value = { col_of_max_cell } ')
 		print('-----------------------------')
@@ -590,9 +590,9 @@ def main() :
 		( diff_mesh_min , diff_mesh_mean , diff_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting )
 
 		print('-----------------------------')
-		print( f'-> min of diff mesh = { diff_mesh_min } ')
-		print( f'-> average of diff mesh = { diff_mesh_mean } ')
-		print( f'-> max of diff mesh = { diff_mesh_max } ')
+		print( f'-> stats: min of diff mesh = { diff_mesh_min } ')
+		print( f'-> stats: average of diff mesh = { diff_mesh_mean } ')
+		print( f'-> stats: max of diff mesh = { diff_mesh_max } ')
 		print( f'-> row no. of max value = { row_of_max_cell } ')
 		print( f'-> col no. of max value = { col_of_max_cell } ')
 		print('-----------------------------')
