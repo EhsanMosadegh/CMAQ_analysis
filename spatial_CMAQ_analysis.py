@@ -33,7 +33,7 @@ def main() :
 	mcip_date_tag = '161001'
 
 	scenario = '1' 			# 1-5, baseline
-	days_to_run_in_month = 1
+	days_to_run_in_month = 2
 
 	cmaq_pol = 'CO'  # for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
 	processing_pollutant = 'single_pollutant' 		# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
@@ -727,7 +727,7 @@ def main() :
 				print(f'-> colorbar method= {colorbar_method}')
 				plt.clim( minus_abs_max_diffPlot ,  abs_max_diffPlot )
 				print( f'-> plot the image for vmin={minus_abs_max_diffPlot} and vmax={abs_max_diffPlot}')
-
+		print(" ")
 			# plt.clim( vmin_mine_singlePlot , vmax_mine )
 			# print( f'-> plot the image for vmin={vmin_mine} and vmax={vmax_mine}')
 
