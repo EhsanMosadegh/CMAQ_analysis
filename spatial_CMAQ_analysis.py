@@ -44,7 +44,7 @@ def main() :
 	### spatial plot
 	spatial_plotting = 'yes' # yes or no
 	plot_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
-	colorbar_method = 'minToMax'		# 'zeroToMax' , 'minToMax' , 'minusAbsoluteMaxToMax'
+	colorbar_method = 'min_to_max'		# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
 	minus_abs_max_diffPlot = -5
 	abs_max_diffPlot = 5
 	vmin_mine_singlePlot = -0.4
@@ -115,7 +115,7 @@ def main() :
 			print( f'-> for single plot: vmin= {vmin_mine_singlePlot} and vmax= {vmax_mine_singlePlot} ')
 		if (plot_method=='diff_plot'):
 			print( f'-> colorbar method for spatial diff plot= {colorbar_method}')
-			if ( colorbar_method == 'minusAbsoluteMaxToMax' ):
+			if ( colorbar_method == 'minus_abs_max_to_max' ):
 				print( f'-> for diff plot: minus absolute Max. values= {minus_abs_max_diffPlot}')
 				print( f'-> for diff plot: plus absolute Max. values= {abs_max_diffPlot}')				
 	print( f'-> time-series plotting= {timeseries_plotting}')
@@ -710,19 +710,19 @@ def main() :
 		if ( plot_method == 'diff_plot' ) :
 			print( f'-> plot method= {plot_method}')
 			
-			if ( colorbar_method == 'zeroToMax' ) :
+			if ( colorbar_method == 'zero_to_max' ) :
 				
 				print(f'-> colorbar method= {colorbar_method}')
 				plt.clim( 0.0 ,  diff_mesh_max )
 				print( f'-> plot the image for vmin={0.0} and vmax={diff_mesh_max}')
 
-			if ( colorbar_method == 'minToMax' ) :
+			if ( colorbar_method == 'min_to_max' ) :
 
 				print(f'-> colorbar method= {colorbar_method}')
 				plt.clim( diff_mesh_min ,  diff_mesh_max )
 				print( f'-> plot the image for vmin={diff_mesh_min} and vmax={diff_mesh_max}')
 
-			if ( colorbar_method == 'minusAbsoluteMaxToMax' ) :
+			if ( colorbar_method == 'minus_abs_max_to_max' ) :
 
 				print(f'-> colorbar method= {colorbar_method}')
 				plt.clim( minus_abs_max_diffPlot ,  abs_max_diffPlot )
