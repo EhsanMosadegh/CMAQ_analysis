@@ -23,7 +23,9 @@ unlimit
 limit
  
 echo "CO job =====> submitted" 			
+date
 
 python -u ../run_scripts/spatial_CMAQ_analysis_scen4_sep.py
 
 echo "CO job =====> ended"
+date
