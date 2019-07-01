@@ -1,0 +1,30 @@
+-> we are currently at=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/stats_logs
+-> log directory=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/
+-> change to log dir...
+-> we are at work directory=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs
+-> list of files at current dir=
+total 64
+drwxr-xr-x 2 ehsanm grid    7 Jun 30 22:09 .
+drwxr-xr-x 9 ehsanm grid   13 Jun 30 22:05 ..
+-rw-r--r-- 1 ehsanm grid 8078 Jun 30 22:02 log.co.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid   21 Jun 30 22:09 log_list.txt
+-rw-r--r-- 1 ehsanm grid   23 Jun 30 22:09 minDiffMesh_list_total_for_co.txt
+-rw-r--r-- 1 ehsanm grid  619 Jun 30 21:25 vmax_list_total_for_co.txt
+-rw-r--r-- 1 ehsanm grid  199 Jun 30 21:23 vmin_list_total_for_co.txt
+-> get the list of log files in the log directory and write to file
+-> get the number of lines in log list
+1 log_list.txt
+-> NOTE: old output file will be removed first: minDiffMesh_list_total_for_co.txt
+-> loop and read in log_list... 
+-> log file is= log.co.scen1.jul.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -3.700868950948233e-06
+-> size of the minDiffMesh list is=
+1
+-----------------------------------------------------------------
+-> absolute max value from the file: minDiffMesh_list_total_for_co.txt , is=
+-3.700868950948233e-06
+-----------------------------------------------------------------

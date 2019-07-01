@@ -4,7 +4,7 @@
 log_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/'
 
 stats_property=max
-stats_pattern='vmax' #'minDiffMesh'
+stats_pattern='minDiffMesh'
 log_file_pattern=log.co.scen*
 
 pollutant='co'

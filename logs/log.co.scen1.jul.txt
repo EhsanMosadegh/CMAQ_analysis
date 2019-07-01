@@ -1,0 +1,191 @@
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+CO job =====> submitted
+-> scenario= 1
+-> CMAQ month= 07
+-> number of days to run= 3
+-> CMAQ year= 2016
+-> processing pollutant= CO
+-> pollutat unit= ppmV
+-> spatial plotting= yes
+-> processing method for spatial plot= diff_plot
+-> colorbar method for spatial diff plot= min_to_max
+-> time-series plotting= yes
+-> platform is= cluster
+-> mapping spatial data= no
+-> produce raster= no
+ 
+-> CMAQ input directory is:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_1/
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/
+ 
+-> MCIP input directory is:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/
+ 
+-> opening MCIP file...
+-> MCIP file info:
+-> MCIP file dimensions: ('TSTEP', 'LAY', 'ROW', 'COL')
+-> shape of each dimension: (1, 1, 266, 251)
+-> closing MCIP file...
+ 
+-> month of analysis is= 07
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3]
+ 
+-> processing for day= 1
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160701.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160701.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3]
+ 
+-> processing for day= 2
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160702.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160702.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3]
+ 
+-> processing for day= 3
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160703.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160703.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+-> check 3D data mesh info:
+-> LANDIS scenario, monthly mean tensor: dimensions= 3 and shape of tensor= (72, 265, 250) 
+-> baseline, monthly mean tensor: dimensions= 3 and shape of tensor= (72, 265, 250) 
+-----------------------------
+-> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario (1) mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D "baseline" scenario mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now subtract 2 meshes to get the diff mesh for spatial plotting 
+ 
+-> monthly mesh scenario= [[0.07967568 0.07934962 0.0791527  ... 0.07030662 0.07073947 0.07231118]
+ [0.07977032 0.07944224 0.07928632 ... 0.07058191 0.07129387 0.07324588]
+ [0.07970407 0.07953098 0.07935457 ... 0.07093473 0.07182334 0.07394682]
+ ...
+ [0.08023582 0.08016232 0.0801308  ... 0.07841871 0.07837966 0.07838463]
+ [0.08022277 0.0801497  0.08010714 ... 0.07859823 0.0786175  0.07860628]
+ [0.08018701 0.08013147 0.08010606 ... 0.07897476 0.07898673 0.07895931]] 
+ 
+-> monthly mesh baseline= [[0.07967568 0.07934962 0.0791527  ... 0.07030662 0.07073947 0.07231118]
+ [0.07977032 0.07944224 0.07928632 ... 0.07058191 0.07129387 0.07324588]
+ [0.07970407 0.07953098 0.07935457 ... 0.07093473 0.07182334 0.07394682]
+ ...
+ [0.08023581 0.08016232 0.0801308  ... 0.07841871 0.07837966 0.07838463]
+ [0.08022276 0.0801497  0.08010714 ... 0.07859823 0.0786175  0.07860628]
+ [0.08018701 0.08013147 0.08010606 ... 0.07897476 0.07898673 0.07895931]] 
+ 
+-> monthly mean diff-mesh= [[-5.17401427e-10  0.00000000e+00  0.00000000e+00 ... -6.20881721e-10
+  -8.27842281e-10 -1.03480294e-10]
+ [ 4.13921147e-10  1.55220430e-09 -1.03480280e-10 ... -1.65568458e-09
+  -2.06960574e-10 -3.10440867e-10]
+ [ 2.06960574e-10  1.03480294e-10 -5.17401427e-10 ... -2.06960574e-10
+  -1.34524372e-09 -3.10440854e-10]
+ ...
+ [ 2.48352687e-09  2.06960574e-10 -1.44872400e-09 ... -2.06960574e-10
+  -3.10440854e-10  3.10440867e-10]
+ [ 1.34524372e-09  0.00000000e+00 -1.13828315e-09 ...  3.10440854e-10
+   1.03480280e-10  6.20881721e-10]
+ [-3.10440867e-10 -3.10440854e-10  0.00000000e+00 ...  0.00000000e+00
+   3.10440854e-10 -4.13921147e-10]]
+ 
+-> diff matrix statistics:
+-> shape = (265, 250) and dimension = 2
+-> getting the min/mean/max of mesh ...
+-> row of mesh = 265 and col of mesh = 250 
+-> size of list_from_mesh = 66250 
+-----------------------------
+-> stats: minDiffMesh= -3.700868950948233e-06 
+-> stats: meanDiffMesh= 1.2670086333586723e-06 
+-> stats: maxDiffMesh= 0.0022805659100413322 
+-> row no. of max value= 173 
+-> col no. of max value= 193 
+-----------------------------
+-> time-series plotting is YES, so we plot time-series...
+-> size of x_ axis list = 72
+-> size of y_ axis list = 72
+-> time-series plot saved at:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/CO_timeseries_scen_1_2016-07_summed_3_days.png
+ 
+-> spatial plotting ...
+../run_scripts/spatial_CMAQ_analysis_scen1_jul.py:671: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+ 
+-> making the colormesh ...
+-> shape of x_mesh= (266, 251)
+-> shape of y_mesh= (266, 251)
+-> shape of monthly_mean_diff_mesh= (265, 250)
+ 
+-> plot method= diff_plot
+-> colorbar method= min_to_max
+-> plot the image for vmin= -3.700868950948233e-06 and vmax= 0.0022805659100413322
+ 
+../run_scripts/spatial_CMAQ_analysis_scen1_jul.py:737: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawstates()
+../run_scripts/spatial_CMAQ_analysis_scen1_jul.py:738: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawcounties(linewidth=0.5 , color='k' )
+ 
+-> output figure is stored at:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/CO_monthlyMean_scen_1_difference_from_baseline_2016-07_summed_3_days_colorbarMethod_min_to_max.png
+------------------------------------
+-> run time of main function= 2.94 min
+*** MAIN COMPLETED SUCCESSFULLY! ***
+------------------------------------
+CO job =====> ended

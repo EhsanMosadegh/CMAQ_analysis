@@ -1,0 +1,124 @@
+-> we are currently at=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis
+-> log directory=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/
+-> change to log dir...
+-> we are at work directory=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs
+-> list of files at current dir=
+total 849
+drwxr-xr-x 2 ehsanm grid    29 Jun 30 21:21 .
+drwxr-xr-x 9 ehsanm grid    14 Jun 30 21:22 ..
+-rw-r--r-- 1 ehsanm grid 29009 Jun 30 19:02 log.co.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid 29009 Jun 30 19:02 log.co.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid 27307 Jun 30 19:04 log.co.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid 29006 Jun 30 19:02 log.co.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid 28116 Jun 30 19:02 log.co.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid 29007 Jun 28 16:13 log.co.scen2_aug.txt
+-rw-r--r-- 1 ehsanm grid 28998 Jun 28 16:12 log.co.scen2_jul.txt
+-rw-r--r-- 1 ehsanm grid 27303 Jun 28 16:11 log.co.scen2_nov.txt
+-rw-r--r-- 1 ehsanm grid 29002 Jun 28 16:13 log.co.scen2_oct.txt
+-rw-r--r-- 1 ehsanm grid 28111 Jun 28 16:12 log.co.scen2_sep.txt
+-rw-r--r-- 1 ehsanm grid 28998 Jun 28 16:13 log.co.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid 29002 Jun 28 16:13 log.co.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid 27302 Jun 28 16:11 log.co.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid 28997 Jun 28 16:13 log.co.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid 28113 Jun 28 16:12 log.co.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid 29005 Jun 28 16:13 log.co.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid 28967 Jun 28 16:13 log.co.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid 27304 Jun 28 16:11 log.co.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid 29001 Jun 28 16:12 log.co.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid 28109 Jun 28 16:12 log.co.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid 29002 Jun 28 16:33 log.co.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid 28962 Jun 28 16:33 log.co.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid 27306 Jun 28 16:32 log.co.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid 28961 Jun 28 16:33 log.co.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid 28111 Jun 28 16:32 log.co.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid   525 Jun 30 21:21 log_list.txt
+-rw-r--r-- 1 ehsanm grid   199 Jun 30 21:21 vmin_list_total_for_co.txt
+-> get the list of log files in the log directory and write to file
+-> get the number of lines in log list
+25 log_list.txt
+-> NOTE: old output file will be removed first: vmin_list_total_for_co.txt
+-> loop and read in log_list... 
+-> log file is= log.co.scen1.aug.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin= -0.0002879658914221178 and vmax= 0.00025111548001727213
+-> log file is= log.co.scen1.jul.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin= -2.7725272761930375e-06 and vmax= 0.0002215224949102257
+-> log file is= log.co.scen1.nov.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin= -0.00016839515374994507 and vmax= 0.0003782565994509407
+-> log file is= log.co.scen1.oct.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin= -1.7024176096613886e-09 and vmax= 0.036544047125805446
+-> log file is= log.co.scen1.sep.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin= -1.3510831114310617e-05 and vmax= 0.0006864108248717249
+-> log file is= log.co.scen2_aug.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-1.7925455980671856e-09 and vmax=0.0028385957702994347
+-> log file is= log.co.scen2_jul.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-0.0004294491322931332 and vmax=0.3505153539340182
+-> log file is= log.co.scen2_nov.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-0.00016839551771509476 and vmax=0.002311033164632728
+-> log file is= log.co.scen2_oct.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-2.7138539471227574e-09 and vmax=0.39795356746562704
+-> log file is= log.co.scen2_sep.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-1.1491827252838038e-05 and vmax=0.08896508100959989
+-> log file is= log.co.scen3.aug.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-9.733823039259626e-09 and vmax=0.3545272946357727
+-> log file is= log.co.scen3.jul.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-0.00023509924530341897 and vmax=0.24498966865001187
+-> log file is= log.co.scen3.nov.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-0.00016818917088809449 and vmax=0.00335409954704087
+-> log file is= log.co.scen3.oct.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-2.233171328414052e-09 and vmax=0.4675222189235751
+-> log file is= log.co.scen3.sep.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-1.2702722516313991e-05 and vmax=0.029128309297892785
+-> log file is= log.co.scen4.aug.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-6.092652198030901e-08 and vmax=0.0025392238110784476
+-> log file is= log.co.scen4.jul.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-7.261291787186153e-06 and vmax=0.029876721852649293
+-> log file is= log.co.scen4.nov.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-0.00016839546419079865 and vmax=0.0005922099553990617
+-> log file is= log.co.scen4.oct.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-2.052915351602458e-09 and vmax=0.06178114457075956
+-> log file is= log.co.scen4.sep.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-9.12886526849288e-06 and vmax=0.010225802597900222
+-> log file is= log.co.scen5.aug.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-6.074626598961963e-08 and vmax=0.024351948531725065
+-> log file is= log.co.scen5.jul.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-4.091630539590496e-06 and vmax=0.9502323570771403
+-> log file is= log.co.scen5.nov.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-0.00016839538925680908 and vmax=2.6531774422189347e-06
+-> log file is= log.co.scen5.oct.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-4.505398132348404e-08 and vmax=1.4879040056839585
+-> log file is= log.co.scen5.sep.txt
+-> capturing stats_pattern= vmin
+-> extracting pattern= vmin=-4.1264833675475066e-06 and vmax=0.35030640125688584
+-> size of the vmin list is=
+25
+-----------------------------------------------
+-> absolute min value from the file: vmin_list_total_for_co.txt is=
+-0.00016839515374994507
+-----------------------------------------------
