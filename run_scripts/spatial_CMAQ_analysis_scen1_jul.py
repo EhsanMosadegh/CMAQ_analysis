@@ -33,7 +33,7 @@ def main() :
 	mcip_date_tag = '161001'
 
 	scenario = '1' 			# 1-5, baseline
-	days_to_run_in_month = 3
+	days_to_run_in_month = 4
 
 	cmaq_pol = 'CO'  # for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
 	processing_pollutant = 'single_pollutant' 		# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
