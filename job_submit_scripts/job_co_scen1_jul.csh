@@ -23,10 +23,10 @@ unlimit
 limit
 
  
-echo "CO job =====> submitted at"
+echo "CO job =====> submitted"
 date 			
 
 python -u ../run_scripts/spatial_CMAQ_analysis_scen1_jul.py
 
-echo "CO job =====> ended at"
+echo "CO job =====> ended"
 date
