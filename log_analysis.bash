@@ -1,15 +1,14 @@
 #!/bin/bash -f
 
 #log_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis/log_dir'
-log_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/'
+log_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/'
 
-stats_property=min
-stats_pattern='minDiffMesh'
-log_file_pattern=log.o3*
+stats_property=max
+stats_pattern='vmax' #'minDiffMesh'
+log_file_pattern=log.co.scen*
 
-mon=10
-scenario=1
-output_file_name=$stats_pattern'_scen_'$scenario'_month_'$mon.txt
+pollutant='co'
+output_file_name=$stats_pattern'_list_total_for_'$pollutant.txt
 
 current_dir=$(pwd)
 echo '-> we are currently at='
@@ -38,10 +37,10 @@ echo '-> get the number of lines in log list'
 wc -l log_list.txt
 
 # check and remove the file is it exist before
-echo '-> output file will be removed first:' $output_file_name
+echo '-> NOTE: old output file will be removed first:' $output_file_name
 rm ./$output_file_name
 
-echo '-> loop and read in log_list'
+echo '-> loop and read in log_list... '
 while read log_list_line
 do 
 	echo '-> log file is=' $log_list_line
@@ -56,10 +55,10 @@ done < log_list.txt
 
 echo '-> size of the' $stats_pattern 'list is=' 
 cat $output_file_name | py -l 'print(len(l))'
-
-echo '-> absolute' $stats_property 'value from the file:' $output_file_name 'is='
+echo '-----------------------------------------------------------------'
+echo '-> absolute' $stats_property 'value from the file:' $output_file_name ', is='
 cat $output_file_name | py -l 'min(l)'
-
+echo '-----------------------------------------------------------------'
 
 #--- method 1 to read each line
 
