@@ -1,8 +1,8 @@
 #!/bin/csh -f 
 
-#$ -o ../logs/log.co.scen3	 			 ##$ output file name
+#$ -o ../logs/log.co.scen5.oct.txt	 			 ##$ output file name
 
-#$ -N co3						##$ name of my job
+#$ -N s5oct						##$ name of my job
 #$ -S /bin/csh						##$ specify the shell
 #$ -cwd							##$ job is submitted from here
 #$ -V  							##$ uses current env variables / preserves your environment
@@ -24,6 +24,6 @@ limit
  
 echo "CO job =====> submitted" 			
 
-python ../runScripts/spatial_CMAQ_analysis_co_oct_scen3.py 
+python -u ../run_scripts/spatial_CMAQ_analysis_scen5_oct.py
 
 echo "CO job =====> ended"

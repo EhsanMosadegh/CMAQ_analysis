@@ -1,8 +1,8 @@
 #!/bin/csh -f 
 
-#$ -o ../logs/log.pm25.2	 			 ##$ output file name
+#$ -o ../logs/log.co.scen4.aug.txt	 			 ##$ output file name
 
-#$ -N pm25-2						##$ name of my job
+#$ -N s4aug						##$ name of my job
 #$ -S /bin/csh						##$ specify the shell
 #$ -cwd							##$ job is submitted from here
 #$ -V  							##$ uses current env variables / preserves your environment
@@ -22,8 +22,8 @@ module list
 unlimit
 limit
  
-echo "job =====> submitted" 			
+echo "CO job =====> submitted" 			
 
-python ../runScripts/spatial_CMAQ_analysis_pm25_scen2.py
+python -u ../run_scripts/spatial_CMAQ_analysis_scen4_aug.py
 
-echo "job =====> ended"
+echo "CO job =====> ended"
