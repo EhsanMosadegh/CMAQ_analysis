@@ -1,13 +1,25 @@
 #!/bin/bash -f
+#---------------------------------
 
 #log_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis/log_dir'
 log_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/'
 
-stats_property=max
-stats_pattern='minDiffMesh'
-log_file_pattern=log.co.scen*
+#---------------------------------
+# run-time setting
 
 pollutant='co'
+stats_property='min'
+stats_pattern='minDiffMesh'
+log_file_pattern=log.${pollutant}.scen*
+
+#---------------------------------
+
+echo '-> pollutant=' ${pollutant}
+echo '-> statistical parameter=' ${stats_property}
+echo '-> stats patter=' ${stats_pattern}
+echo '  '
+#---------------------------------
+
 output_file_name=$stats_pattern'_list_total_for_'$pollutant.txt
 
 current_dir=$(pwd)
