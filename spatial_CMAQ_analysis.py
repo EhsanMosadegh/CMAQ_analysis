@@ -539,11 +539,11 @@ def main() :
 		( mean_mesh_min , mean_mesh_mean , mean_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting )
 		
 		print('-----------------------------')
-		print( f'-> stats: min of average mesh = { round( mean_mesh_min , 6 ) } ')
-		print( f'-> stats: mean of average mesh = { round( mean_mesh_mean , 6 ) } ')
-		print( f'-> stats: max of average mesh = { round( mean_mesh_max , 6 ) } ')
-		print( f'-> row no. of max value = { row_of_max_cell } ')
-		print( f'-> col no. of max value = { col_of_max_cell } ')
+		print( f'-> stats: minAverageMesh= { round( mean_mesh_min , 6 ) } ')
+		print( f'-> stats: meanAverageMesh= { round( mean_mesh_mean , 6 ) } ')
+		print( f'-> stats: maxAverageMesh= { round( mean_mesh_max , 6 ) } ')
+		print( f'-> row no. of max value= { row_of_max_cell } ')
+		print( f'-> col no. of max value= { col_of_max_cell } ')
 		print('-----------------------------')
 
 		#print( f'-> applying the mapp function...')
@@ -577,11 +577,11 @@ def main() :
 
 		monthly_mean_2d_mesh = monthly_mean_2d_mesh_scen - monthly_mean_2d_mesh_base
 		print( " ")
-		print( f'-> monthly mesh scenario = {monthly_mean_2d_mesh_scen} ')
+		print( f'-> monthly mesh scenario= {monthly_mean_2d_mesh_scen} ')
 		print( " ")
-		print( f'-> monthly mesh baseline = {monthly_mean_2d_mesh_base} ')
+		print( f'-> monthly mesh baseline= {monthly_mean_2d_mesh_base} ')
 		print( " ")
-		print( f'-> monthly mean diff-mesh = {monthly_mean_2d_mesh}')
+		print( f'-> monthly mean diff-mesh= {monthly_mean_2d_mesh}')
 		print( " ")
 		print( '-> diff matrix statistics:')
 
@@ -590,11 +590,11 @@ def main() :
 		( diff_mesh_min , diff_mesh_mean , diff_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting )
 
 		print('-----------------------------')
-		print( f'-> stats: min of diff mesh = { diff_mesh_min } ')
-		print( f'-> stats: average of diff mesh = { diff_mesh_mean } ')
-		print( f'-> stats: max of diff mesh = { diff_mesh_max } ')
-		print( f'-> row no. of max value = { row_of_max_cell } ')
-		print( f'-> col no. of max value = { col_of_max_cell } ')
+		print( f'-> stats: minDiffMesh= { diff_mesh_min } ')
+		print( f'-> stats: meanDiffMesh= { diff_mesh_mean } ')
+		print( f'-> stats: maxDiffMesh= { diff_mesh_max } ')
+		print( f'-> row no. of max value= { row_of_max_cell } ')
+		print( f'-> col no. of max value= { col_of_max_cell } ')
 		print('-----------------------------')
 
 	else:
@@ -689,9 +689,9 @@ def main() :
 		### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
 		print(" ")
 		print( '-> making the colormesh ...')
-		print( f'-> shape of x_mesh = {x_mesh.shape }')
-		print( f'-> shape of y_mesh = {y_mesh.shape }')
-		print( f'-> shape of monthly_mean_diff_mesh = {monthly_mean_2d_mesh.shape }')
+		print( f'-> shape of x_mesh= {x_mesh.shape }')
+		print( f'-> shape of y_mesh= {y_mesh.shape }')
+		print( f'-> shape of monthly_mean_diff_mesh= {monthly_mean_2d_mesh.shape }')
 		print(" ")
 		# define the image first
 		colorImage = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh , cmap=color_mapping_function , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 )
@@ -714,19 +714,19 @@ def main() :
 				
 				print(f'-> colorbar method= {colorbar_method}')
 				plt.clim( 0.0 ,  diff_mesh_max )
-				print( f'-> plot the image for vmin={0.0} and vmax={diff_mesh_max}')
+				print( f'-> plot the image for vmin= {0.0} and vmax= {diff_mesh_max}')
 
 			if ( colorbar_method == 'min_to_max' ) :
 
 				print(f'-> colorbar method= {colorbar_method}')
 				plt.clim( diff_mesh_min ,  diff_mesh_max )
-				print( f'-> plot the image for vmin={diff_mesh_min} and vmax={diff_mesh_max}')
+				print( f'-> plot the image for vmin= {diff_mesh_min} and vmax= {diff_mesh_max}')
 
 			if ( colorbar_method == 'minus_abs_max_to_max' ) :
 
 				print(f'-> colorbar method= {colorbar_method}')
 				plt.clim( minus_abs_max_diffPlot ,  abs_max_diffPlot )
-				print( f'-> plot the image for vmin={minus_abs_max_diffPlot} and vmax={abs_max_diffPlot}')
+				print( f'-> plot the image for vmin= {minus_abs_max_diffPlot} and vmax= {abs_max_diffPlot}')
 		print(" ")
 			# plt.clim( vmin_mine_singlePlot , vmax_mine )
 			# print( f'-> plot the image for vmin={vmin_mine} and vmax={vmax_mine}')

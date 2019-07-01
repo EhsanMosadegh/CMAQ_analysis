@@ -1,10 +1,10 @@
 #!/bin/bash -f
 
-log_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis/log_dir'
-#log_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/'
+#log_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis/log_dir'
+log_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/'
 
 stats_property=min
-stats_pattern='vmin'
+stats_pattern='minDiffMesh'
 log_file_pattern=log.o3*
 
 mon=10
