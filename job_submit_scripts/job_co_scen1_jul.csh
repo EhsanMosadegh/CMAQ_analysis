@@ -21,9 +21,12 @@ module load intel/2015
 module list
 unlimit
 limit
+
  
-echo "CO job =====> submitted" 			
+echo "CO job =====> submitted at"
+date 			
 
 python -u ../run_scripts/spatial_CMAQ_analysis_scen1_jul.py
 
-echo "CO job =====> ended"
+echo "CO job =====> ended at"
+date
