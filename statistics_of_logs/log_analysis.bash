@@ -22,6 +22,8 @@ echo '  '
 
 output_file_name=$stats_pattern'_list_total_for_'$pollutant.txt
 
+#---------------------------------
+
 current_dir=$(pwd)
 echo '-> we are currently at='
 echo $current_dir
@@ -29,24 +31,24 @@ echo $current_dir
 echo '-> log directory=' 
 echo $log_dir
 
-echo '-> change to log dir...'
+echo '-> we change dir to <logs/> dir...'
 cd $log_dir
 
 work_dir=$(pwd)
 echo '-> we are at work directory=' 
 echo $work_dir
 
-echo '-> list of files at current dir='
+echo '-> we list of files at current dir='
 ls -la .
 
 #echo '-> log files in work directory='
 
 #log_files=$(grep -irnH 'vmin' .)
-echo '-> get the list of log files in the log directory and write to file'
-ls $log_file_pattern > log_list.txt
+echo '-> se get the list of log files in the log directory and write to file'
+ls $log_file_pattern > log_list_for_${pollutant}_${stats_property}.txt
 
-echo '-> get the number of lines in log list'
-wc -l log_list.txt
+echo '-> we get the number of lines in log list'
+wc -l log_list_for_${pollutant}_${stats_property}.txt 
 
 # check and remove the file is it exist before
 echo '-> NOTE: old output file will be removed first:' $output_file_name
@@ -63,7 +65,7 @@ do
 
 	grep -o $stats_pattern.* $log_list_line | cut -f2 -d' ' >> $output_file_name
 
-done < log_list.txt
+done < log_list_for_${pollutant}_${stats_property}.txt
 
 echo '-> size of the' $stats_pattern 'list is=' 
 cat $output_file_name | py -l 'print(len(l))'
