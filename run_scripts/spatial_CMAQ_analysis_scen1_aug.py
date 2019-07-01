@@ -27,8 +27,8 @@ def main() :
 	start = time.time()
 
 	### run time settings
-	cmaq_file_month = '07'		#  07, 08, 	09,  10,  11
-	sim_month = 'Jul'  				# Jul, Aug, Sep, Oct, Nov
+	cmaq_file_month = '08'		#  07, 08, 	09,  10,  11
+	sim_month = 'Aug'  				# Jul, Aug, Sep, Oct, Nov
 	cmaq_file_year = '2016'
 	mcip_date_tag = '161001'
 

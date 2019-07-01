@@ -32,7 +32,7 @@ def main() :
 	cmaq_file_year = '2016'
 	mcip_date_tag = '161001'
 
-	scenario = '1' 			# 1-5, baseline
+	scenario = '2' 			# 1-5, baseline
 	days_to_run_in_month = 31
 
 	cmaq_pol = 'CO'  # for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
