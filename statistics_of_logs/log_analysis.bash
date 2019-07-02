@@ -1,25 +1,29 @@
 #!/bin/bash -f
 #---------------------------------
-
-#log_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis/log_dir'
-home_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/'
-log_dir=${home_dir}'logs/co_minMax/'
-statistics_dir=${home_dir}'statistics_of_logs/'
-
-#---------------------------------
 # run-time setting
 
 pollutant='co'
-stats_property='max'
+stats_property='min'
+
 stats_pattern=$stats_property'DiffMesh'
 log_file_pattern=log.${pollutant}.scen*
 
 #---------------------------------
 
-echo '-> pollutant=' ${pollutant}
-echo '-> statistical parameter=' ${stats_property}
-echo '-> stats patter=' ${stats_pattern}
+home_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis/'
+#home_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/'
+log_dir=${home_dir}'logs/co_minMax/'
+statistics_dir=${home_dir}'statistics_of_logs/'
+
+#---------------------------------
+
+echo '-------------------------------'
+echo '-> pollutant is=' ${pollutant}
+echo '-> statistical property is=' ${stats_property}
+echo '-> stats patter is=' ${stats_pattern}
+echo '-------------------------------'
 echo '  '
+
 #---------------------------------
 
 output_file_name=$stats_pattern'_list_total_for_'$pollutant.txt
@@ -43,18 +47,22 @@ echo $work_dir
 echo '-> we list of files at current dir='
 ls -la .
 
+# check and remove the file is it exist before
+echo '-> NOTE: old output files will be removed first:' 
+echo $output_file_name 
+echo $'log_list_for_'${pollutant}_${stats_property}.txt
+
+rm ./$output_file_name
+rm ./log_list_for_${pollutant}_${stats_property}.txt
+
 #echo '-> log files in work directory='
 
 #log_files=$(grep -irnH 'vmin' .)
-echo '-> se get the list of log files in the log directory and write to file'
+echo '-> now we get the list of *log* files in the log directory and write to file'
 ls $log_file_pattern > log_list_for_${pollutant}_${stats_property}.txt
 
-echo '-> we get the number of lines in log list'
+echo '-> number of lines in log list=' 
 wc -l log_list_for_${pollutant}_${stats_property}.txt 
-
-# check and remove the file is it exist before
-echo '-> NOTE: old output file will be removed first:' $output_file_name
-rm ./$output_file_name
 
 echo '-> loop and read in log_list... '
 while read log_list_line
@@ -72,16 +80,16 @@ done < log_list_for_${pollutant}_${stats_property}.txt
 echo ' '
 echo '-> size of the' $stats_pattern 'output list is=' 
 cat $output_file_name | py -l 'print(len(l))'
-echo '-----------------------------------------------------------------'
-echo '-> now we do the arithmetic operations in python\
-since shell does not understtand scientific notation calculations!!!'
+echo '------------------------------------------------'
+echo '-> now we do the arithmetic operations in python since shell 
+					does _not_ understand arithmetic operations specially with scientific notation!!!'
 echo ' '
 echo '-> change dir to stats again...'
 cd ${statistics_dir}
 
-python min_max.py
+python get_min_max.py
 
-echo '-----------------------------------------------------------------'
+echo '------------------------------------------------'
 
 #if [ $stats_property == 'min' ]; then
 	

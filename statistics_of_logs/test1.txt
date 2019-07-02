@@ -1,0 +1,33 @@
+-> pollutant= co
+-> statistical parameter= max
+-> stats patter= maxDiffMesh
+  
+-> we are currently at=
+/Users/ehsan/Documents/Python_projects/CMAQ_analysis/statistics_of_logs
+-> log directory=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/co_minMax/
+-> we change dir to <logs/> dir...
+-> now we are at=
+/Users/ehsan/Documents/Python_projects/CMAQ_analysis/statistics_of_logs
+-> we list of files at current dir=
+total 24
+drwxr-xr-x   6 ehsan  staff   192 Jul  2 10:42 .
+drwxr-xr-x  13 ehsan  staff   416 Jul  2 10:41 ..
+drwxr-xr-x   6 ehsan  staff   192 Jul  2 10:11 co_stats
+-rw-r--r--   1 ehsan  staff   803 Jul  2 10:41 get_min_max.py
+-rwxr-xr-x   1 ehsan  staff  3448 Jul  2 10:41 log_analysis.bash
+-rw-r--r--   1 ehsan  staff   438 Jul  2 10:42 test1.txt
+-> se get the list of log files in the log directory and write to file
+-> we get the number of lines in log list
+       0 log_list_for_co_max.txt
+-> NOTE: old output file will be removed first: maxDiffMesh_list_total_for_co.txt
+-> loop and read in log_list... 
+ 
+-> size of the maxDiffMesh output list is=
+0
+-----------------------------------------------------------------
+-> now we do the arithmetic operations in python since shell 
+					does _not_ understand arithmetic operations specially with scientific notation!!!
+ 
+-> change dir to stats again...
+-----------------------------------------------------------------
