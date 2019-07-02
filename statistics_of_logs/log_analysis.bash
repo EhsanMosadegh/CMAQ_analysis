@@ -2,14 +2,16 @@
 #---------------------------------
 
 #log_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis/log_dir'
-log_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/'
+home_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/'
+log_dir=${home_dir}'logs/co_minMax/'
+statistics_dir=${home_dir}'statistics_of_logs/'
 
 #---------------------------------
 # run-time setting
 
 pollutant='co'
-stats_property='min'
-stats_pattern='minDiffMesh'
+stats_property='max'
+stats_pattern=$stats_property'DiffMesh'
 log_file_pattern=log.${pollutant}.scen*
 
 #---------------------------------
@@ -35,7 +37,7 @@ echo '-> we change dir to <logs/> dir...'
 cd $log_dir
 
 work_dir=$(pwd)
-echo '-> we are at work directory=' 
+echo '-> now we are at=' 
 echo $work_dir
 
 echo '-> we list of files at current dir='
@@ -57,7 +59,8 @@ rm ./$output_file_name
 echo '-> loop and read in log_list... '
 while read log_list_line
 do 
-	echo '-> log file is=' $log_list_line
+	echo ' '
+	echo '-> opening log file=' $log_list_line
 	echo '-> capturing stats_pattern=' $stats_pattern
 
 	thePattern=$(grep -o $stats_pattern.* $log_list_line)
@@ -66,13 +69,38 @@ do
 	grep -o $stats_pattern.* $log_list_line | cut -f2 -d' ' >> $output_file_name
 
 done < log_list_for_${pollutant}_${stats_property}.txt
-
-echo '-> size of the' $stats_pattern 'list is=' 
+echo ' '
+echo '-> size of the' $stats_pattern 'output list is=' 
 cat $output_file_name | py -l 'print(len(l))'
 echo '-----------------------------------------------------------------'
-echo '-> absolute' $stats_property 'value from the file:' $output_file_name ', is='
-cat $output_file_name | py -l 'min(l)'
+echo '-> now we do the arithmetic operations in python\
+since shell does not understtand scientific notation calculations!!!'
+echo ' '
+echo '-> change dir to stats again...'
+
+cd ${statistics_dir}
+
+python min_max.py
+
 echo '-----------------------------------------------------------------'
+
+#if [ $stats_property == 'min' ]; then
+	
+#	echo '-> absolute' $stats_property 'value from the file:' $output_file_name ', is='
+#	cat $output_file_name | py -l 'min(l)'
+
+#elif [ $stats_property == 'max' ]; then
+
+#        echo '-> absolute' $stats_property 'value from the file:' $output_file_name ', is='
+#        cat $output_file_name | py -l 'max(l)'
+
+#else
+
+#	echo '-> WARNING: set the stats_property correctly...'
+
+#fi
+
+#echo '-----------------------------------------------------------------'
 
 #--- method 1 to read each line
 
