@@ -684,7 +684,7 @@ def main() :
 
 		if ( plot_method == 'diff_plot' ) :
 
-			color_mapping_function = 'Reds' #'RdBu_r'
+			color_mapping_function = 'RdBu_r'
 
 		### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
 		print(" ")

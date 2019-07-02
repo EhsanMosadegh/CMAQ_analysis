@@ -44,9 +44,9 @@ def main() :
 	### spatial plot
 	spatial_plotting = 'yes' # yes or no
 	plot_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
-	colorbar_method = 'min_to_max'		# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
-	minus_abs_max_diffPlot = -5
-	abs_max_diffPlot = 5
+	colorbar_method = 'minus_abs_max_to_max'		# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
+	minus_abs_max_diffPlot = -0.000221
+	abs_max_diffPlot = 0.000221
 	vmin_mine_singlePlot = -0.4
 	vmax_mine_singlePlot = 0.4
 
@@ -684,7 +684,7 @@ def main() :
 
 		if ( plot_method == 'diff_plot' ) :
 
-			color_mapping_function = 'Reds' #'RdBu_r'
+			color_mapping_function = 'RdBu_r'
 
 		### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
 		print(" ")
