@@ -77,7 +77,6 @@ echo '-> now we do the arithmetic operations in python\
 since shell does not understtand scientific notation calculations!!!'
 echo ' '
 echo '-> change dir to stats again...'
-
 cd ${statistics_dir}
 
 python min_max.py
