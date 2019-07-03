@@ -11,6 +11,7 @@ from mpl_toolkits.basemap import Basemap
 #from osgeo import gdal, gdal_array, osr , ogr
 from osgeo import gdal
 import ogr, os, osr
+from os import environ
 #import rasterio
 #from rasterio.transform import from_origin
 import time
@@ -44,7 +45,7 @@ def main() :
 	### spatial plot
 	spatial_plotting = 'yes' # yes or no
 	plot_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
-	colorbar_method = 'minus_abs_max_to_max'		# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
+	colorbar_method= environ.get('COLOR_METHOD') 	#'minus_abs_max_to_max'		# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
 	minus_abs_max_diffPlot = -1.4879
 	abs_max_diffPlot = 1.4879
 	vmin_mine_singlePlot = -0.4
