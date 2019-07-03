@@ -25,9 +25,9 @@ maxnice      0
 maxrtprio    0 
 maxrttime    unlimited
 CO job =====> submitted
-Mon Jul  1 19:55:48 EDT 2019
--> scenario= 5
--> CMAQ month= 10
+Tue Jul  2 18:10:49 EDT 2019
+-> scenario= 2
+-> CMAQ month= 08
 -> number of days to run= 31
 -> CMAQ year= 2016
 -> processing pollutant= CO
@@ -35,15 +35,15 @@ Mon Jul  1 19:55:48 EDT 2019
 -> spatial plotting= yes
 -> processing method for spatial plot= diff_plot
 -> colorbar method for spatial diff plot= minus_abs_max_to_max
--> for diff plot: minus absolute Max. values= -0.000221
--> for diff plot: plus absolute Max. values= 0.000221
+-> for diff plot: minus absolute Max. values= -1.4879
+-> for diff plot: plus absolute Max. values= 1.4879
 -> time-series plotting= yes
 -> platform is= cluster
 -> mapping spatial data= no
 -> produce raster= no
  
 -> CMAQ input directory is:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/
  
 -> MCIP input directory is:
@@ -55,7 +55,7 @@ Mon Jul  1 19:55:48 EDT 2019
 -> shape of each dimension: (1, 1, 266, 251)
 -> closing MCIP file...
  
--> month of analysis is= 10
+-> month of analysis is= 08
 -----------------------------
  
 -> no. of days to process are:
@@ -65,8 +65,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161001.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161001.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160801.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160801.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -80,8 +80,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161002.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161002.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160802.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160802.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -95,8 +95,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161003.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161003.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160803.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160803.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -110,8 +110,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161004.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161004.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160804.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160804.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -125,8 +125,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161005.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161005.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160805.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160805.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -140,8 +140,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161006.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161006.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160806.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160806.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -155,8 +155,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161007.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161007.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160807.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160807.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -170,8 +170,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161008.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161008.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160808.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160808.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -185,8 +185,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161009.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161009.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160809.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160809.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -200,8 +200,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161010.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161010.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160810.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160810.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -215,8 +215,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161011.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161011.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160811.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160811.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -230,8 +230,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161012.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161012.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160812.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160812.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -245,8 +245,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161013.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161013.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160813.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160813.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -260,8 +260,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161014.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161014.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160814.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160814.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -275,8 +275,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161015.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161015.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160815.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160815.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -290,8 +290,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161016.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161016.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160816.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160816.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -305,8 +305,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161017.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161017.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160817.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160817.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -320,8 +320,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161018.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161018.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160818.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160818.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -335,8 +335,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161019.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161019.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160819.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160819.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -350,8 +350,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161020.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161020.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160820.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160820.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -365,8 +365,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161021.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161021.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160821.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160821.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -380,8 +380,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161022.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161022.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160822.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160822.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -395,8 +395,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161023.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161023.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160823.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160823.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -410,8 +410,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161024.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161024.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160824.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160824.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -425,8 +425,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161025.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161025.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160825.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160825.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -440,8 +440,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161026.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161026.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160826.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160826.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -455,8 +455,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161027.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161027.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160827.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160827.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -470,8 +470,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161028.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161028.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160828.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160828.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -485,8 +485,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161029.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161029.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160829.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160829.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -500,8 +500,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161030.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161030.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160830.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160830.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -515,8 +515,8 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161031.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161031.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160831.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160831.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract pollutants ...
@@ -526,7 +526,7 @@ Mon Jul  1 19:55:48 EDT 2019
 -> LANDIS scenario, monthly mean tensor: dimensions= 3 and shape of tensor= (744, 265, 250) 
 -> baseline, monthly mean tensor: dimensions= 3 and shape of tensor= (744, 265, 250) 
 -----------------------------
--> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario (5) mesh ...
+-> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario (2) mesh ...
  
 -> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
  
@@ -536,35 +536,35 @@ Mon Jul  1 19:55:48 EDT 2019
  
 -> now subtract 2 meshes to get the diff mesh for spatial plotting 
  
--> monthly mesh scenario= [[0.07665979 0.07601711 0.07567381 ... 0.07138225 0.07203451 0.07389745]
- [0.07732186 0.07642785 0.07603994 ... 0.07179325 0.07257958 0.07485071]
- [0.07752232 0.07676419 0.07631838 ... 0.07224305 0.0731203  0.0754973 ]
+-> monthly mesh scenario= [[0.07985343 0.07960772 0.07935385 ... 0.07125495 0.07169422 0.07321158]
+ [0.0798952  0.07964826 0.07950362 ... 0.07166304 0.07231171 0.07426598]
+ [0.07981238 0.07968945 0.07955274 ... 0.07208284 0.07298417 0.07511712]
  ...
- [0.07867268 0.07850496 0.07838243 ... 0.07839786 0.07859082 0.07890267]
- [0.07872554 0.0785668  0.07844416 ... 0.07869824 0.07886001 0.07903988]
- [0.07876498 0.07861536 0.07850903 ... 0.07911723 0.0792066  0.0793473 ]] 
+ [0.07963774 0.07952711 0.0794944  ... 0.07908598 0.07910493 0.07915815]
+ [0.07967489 0.07957773 0.07952847 ... 0.07925492 0.07929535 0.07929909]
+ [0.07969482 0.07961884 0.0795808  ... 0.07951607 0.07953966 0.07955367]] 
  
--> monthly mesh baseline= [[0.07665979 0.07601711 0.07567381 ... 0.07131915 0.07198391 0.07386293]
- [0.07732186 0.07642785 0.07603994 ... 0.07172092 0.07252349 0.07481257]
- [0.07752232 0.07676419 0.07631838 ... 0.0721554  0.07305495 0.0754547 ]
+-> monthly mesh baseline= [[0.07985343 0.07960772 0.07935385 ... 0.07125484 0.07169411 0.07321148]
+ [0.0798952  0.07964826 0.07950362 ... 0.07166292 0.0723116  0.07426586]
+ [0.07981239 0.07968945 0.07955274 ... 0.07208272 0.07298405 0.075117  ]
  ...
- [0.07863329 0.07846145 0.07833632 ... 0.07775529 0.07795435 0.07831352]
- [0.07868924 0.07852574 0.07840049 ... 0.07810117 0.07826844 0.07849107]
- [0.07873097 0.07857684 0.07846848 ... 0.07863615 0.07875279 0.07892813]] 
+ [0.07963766 0.07952703 0.07949431 ... 0.07908499 0.07910397 0.07915724]
+ [0.07967481 0.07957765 0.07952838 ... 0.07925404 0.07929454 0.07929834]
+ [0.07969474 0.07961876 0.07958071 ... 0.07951555 0.07953923 0.07955328]] 
  
--> monthly mean diff-mesh= [[5.20739507e-10 1.04147900e-09 1.08153589e-09 ... 6.31044248e-05
-  5.05935281e-05 3.45268517e-05]
- [2.00284428e-10 6.80967047e-10 1.03146479e-09 ... 7.23255298e-05
-  5.60837347e-05 3.81377996e-05]
- [3.30469305e-10 8.21166135e-10 1.26179187e-09 ... 8.76550392e-05
-  6.53501240e-05 4.25965115e-05]
+-> monthly mean diff-mesh= [[ 8.01137628e-11  2.20312865e-10  1.00142256e-11 ...  1.08714386e-07
+   1.07432565e-07  1.01143634e-07]
+ [ 2.40341316e-10  5.20739507e-10  1.50213314e-10 ...  1.13561269e-07
+   1.14282293e-07  1.13290885e-07]
+ [-1.20170651e-10 -1.00142256e-11  1.30184877e-10 ...  1.20571224e-07
+   1.21452475e-07  1.20731451e-07]
  ...
- [3.93880852e-05 4.35092877e-05 4.61156790e-05 ... 6.42567092e-04
-  6.36470134e-04 5.89150505e-04]
- [3.62968453e-05 4.10625030e-05 4.36706468e-05 ... 5.97070772e-04
-  5.91567657e-04 5.48811710e-04]
- [3.40078246e-05 3.85183801e-05 4.05472613e-05 ... 4.81078852e-04
-  4.53815225e-04 4.19168983e-04]]
+ [ 7.76202288e-08  8.46101552e-08  8.91365832e-08 ...  9.91227646e-07
+   9.62426746e-07  9.13707559e-07]
+ [ 7.75501292e-08  8.31781215e-08  8.79448909e-08 ...  8.77746491e-07
+   8.07146231e-07  7.54691741e-07]
+ [ 7.61381240e-08  8.26573821e-08  8.56816769e-08 ...  5.21200158e-07
+   4.29299650e-07  3.89413007e-07]]
  
 -> diff matrix statistics:
 -> shape = (265, 250) and dimension = 2
@@ -572,20 +572,20 @@ Mon Jul  1 19:55:48 EDT 2019
 -> row of mesh = 265 and col of mesh = 250 
 -> size of list_from_mesh = 66250 
 -----------------------------
--> stats: minDiffMesh= -4.505398132348404e-08 
--> stats: meanDiffMesh= 0.007847791427612716 
--> stats: maxDiffMesh= 1.4879040056839585 
--> row no. of max value= 142 
--> col no. of max value= 184 
+-> stats: minDiffMesh= -1.7925455980671856e-09 
+-> stats: meanDiffMesh= 1.0616102505707345e-05 
+-> stats: maxDiffMesh= 0.0028385957702994347 
+-> row no. of max value= 166 
+-> col no. of max value= 170 
 -----------------------------
 -> time-series plotting is YES, so we plot time-series...
 -> size of x_ axis list = 744
 -> size of y_ axis list = 744
 -> time-series plot saved at:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/CO_timeseries_scen_5_2016-10_summed_31_days.png
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/CO_timeseries_scen_2_2016-08_summed_31_days.png
  
 -> spatial plotting ...
-../run_scripts/spatial_CMAQ_analysis_scen5_oct.py:671: MatplotlibDeprecationWarning: 
+../run_scripts/spatial_CMAQ_analysis_scen2_aug.py:671: MatplotlibDeprecationWarning: 
 The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
   theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
  
@@ -596,20 +596,20 @@ The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3.
  
 -> plot method= diff_plot
 -> colorbar method= minus_abs_max_to_max
--> plot the image for vmin= -0.000221 and vmax= 0.000221
+-> plot the image for vmin= -1.4879 and vmax= 1.4879
  
-../run_scripts/spatial_CMAQ_analysis_scen5_oct.py:737: MatplotlibDeprecationWarning: 
+../run_scripts/spatial_CMAQ_analysis_scen2_aug.py:737: MatplotlibDeprecationWarning: 
 The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
   theMap.drawstates()
-../run_scripts/spatial_CMAQ_analysis_scen5_oct.py:738: MatplotlibDeprecationWarning: 
+../run_scripts/spatial_CMAQ_analysis_scen2_aug.py:738: MatplotlibDeprecationWarning: 
 The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
   theMap.drawcounties(linewidth=0.5 , color='k' )
  
 -> output figure is stored at:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/CO_monthlyMean_scen_5_difference_from_baseline_2016-10_summed_31_days_colorbarMethod_minus_abs_max_to_max.png
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/CO_monthlyMean_scen_2_difference_from_baseline_2016-08_summed_31_days_colorbarMethod_minus_abs_max_to_max.png
 ------------------------------------
--> run time of main function= 20.85 min
+-> run time of main function= 23.90 min
 *** MAIN COMPLETED SUCCESSFULLY! ***
 ------------------------------------
 CO job =====> ended
-Mon Jul  1 20:16:40 EDT 2019
+Tue Jul  2 18:34:53 EDT 2019

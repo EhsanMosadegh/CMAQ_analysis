@@ -45,8 +45,8 @@ def main() :
 	spatial_plotting = 'yes' # yes or no
 	plot_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
 	colorbar_method = 'minus_abs_max_to_max'		# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
-	minus_abs_max_diffPlot = -0.000221
-	abs_max_diffPlot = 0.000221
+	minus_abs_max_diffPlot = -1.4879 
+	abs_max_diffPlot = 1.4879
 	vmin_mine_singlePlot = -0.4
 	vmax_mine_singlePlot = 0.4
 

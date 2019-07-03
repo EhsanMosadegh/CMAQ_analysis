@@ -1,18 +1,18 @@
-#!/bin/bash -f
+#!/bin/csh -f
 
 echo '-> set environmental variables first'
-
+#setenv 
 
 
 
 
 echo '-> looping for scen and month...'
 
-for scen_no in 1 2 3 4 5
-do
-	for month_name in 'jul' 'aug' 'sep' 'oct' 'nov'
-	do
+foreach scen_no (1 2 3 4 5)
+
+	foreach month_name ('jul' 'aug' 'sep' 'oct' 'nov')
+
 		qsub ./job_co_scen${scen_no}_${month_name}.csh
 		#echo '-> job script= job_co_scen'${scen_no}'_'${month_name}'.csh'
-	done
-done
+	end
+end

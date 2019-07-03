@@ -10,16 +10,16 @@ log_file_pattern=log.${pollutant}.scen*
 
 #---------------------------------
 
-home_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis/'
-#home_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/'
-log_dir=${home_dir}'logs/co_minMax/'
-statistics_dir=${home_dir}'statistics_of_logs/'
+#home_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis'
+home_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis'
+log_dir=${home_dir}'/logs'	#/co_minMax'
+statistics_dir=${home_dir}'/statistics_of_logs'
 
 #---------------------------------
 
 echo '-------------------------------'
-echo '-> pollutant is=' ${pollutant}
-echo '-> statistical property is=' ${stats_property}
+echo '-> chk: pollutant is=' ${pollutant}
+echo '-> chk: statistical property is=' ${stats_property}
 echo '-> stats patter is=' ${stats_pattern}
 echo '-------------------------------'
 echo '  '

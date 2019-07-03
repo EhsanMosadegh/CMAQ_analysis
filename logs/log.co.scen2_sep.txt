@@ -25,7 +25,7 @@ maxnice      0
 maxrtprio    0 
 maxrttime    unlimited
 CO job =====> submitted
-Mon Jul  1 19:33:03 EDT 2019
+Tue Jul  2 18:10:49 EDT 2019
 -> scenario= 2
 -> CMAQ month= 09
 -> number of days to run= 30
@@ -35,8 +35,8 @@ Mon Jul  1 19:33:03 EDT 2019
 -> spatial plotting= yes
 -> processing method for spatial plot= diff_plot
 -> colorbar method for spatial diff plot= minus_abs_max_to_max
--> for diff plot: minus absolute Max. values= -0.000221
--> for diff plot: plus absolute Max. values= 0.000221
+-> for diff plot: minus absolute Max. values= -1.4879
+-> for diff plot: plus absolute Max. values= 1.4879
 -> time-series plotting= yes
 -> platform is= cluster
 -> mapping spatial data= no
@@ -581,7 +581,7 @@ The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3.
  
 -> plot method= diff_plot
 -> colorbar method= minus_abs_max_to_max
--> plot the image for vmin= -0.000221 and vmax= 0.000221
+-> plot the image for vmin= -1.4879 and vmax= 1.4879
  
 ../run_scripts/spatial_CMAQ_analysis_scen2_sep.py:737: MatplotlibDeprecationWarning: 
 The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
@@ -593,8 +593,8 @@ The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3.
 -> output figure is stored at:
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/CO_monthlyMean_scen_2_difference_from_baseline_2016-09_summed_30_days_colorbarMethod_minus_abs_max_to_max.png
 ------------------------------------
--> run time of main function= 22.36 min
+-> run time of main function= 22.91 min
 *** MAIN COMPLETED SUCCESSFULLY! ***
 ------------------------------------
 CO job =====> ended
-Mon Jul  1 19:55:31 EDT 2019
+Tue Jul  2 18:33:54 EDT 2019

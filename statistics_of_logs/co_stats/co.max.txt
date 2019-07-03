@@ -1,18 +1,22 @@
--> pollutant= co
--> statistical parameter= max
--> stats patter= maxDiffMesh
+-------------------------------
+-> chk: pollutant is= co
+-> chk: statistical property is= max
+-> stats patter is= maxDiffMesh
+-------------------------------
   
 -> we are currently at=
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/statistics_of_logs
 -> log directory=
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs
 -> we change dir to <logs/> dir...
--> we are at work directory=
+-> now we are at=
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs
 -> we list of files at current dir=
-total 849
-drwxr-xr-x 2 ehsanm grid    29 Jul  1 15:54 .
-drwxr-xr-x 9 ehsanm grid    13 Jul  1 15:38 ..
+total 864
+drwxr-xr-x 4 ehsanm grid    33 Jul  2 13:54 .
+drwxr-xr-x 9 ehsanm grid    13 Jul  1 20:23 ..
+drwxr-xr-x 2 ehsanm grid     2 Jul  2 13:36 co_-maxMax
+drwxr-xr-x 2 ehsanm grid     2 Jul  2 13:42 co_minMax
 -rw-r--r-- 1 ehsanm grid 29038 Jul  1 14:21 log.co.scen1.aug.txt
 -rw-r--r-- 1 ehsanm grid 29038 Jul  1 15:35 log.co.scen1.jul.txt
 -rw-r--r-- 1 ehsanm grid 27336 Jul  1 14:20 log.co.scen1.nov.txt
@@ -38,91 +42,183 @@ drwxr-xr-x 9 ehsanm grid    13 Jul  1 15:38 ..
 -rw-r--r-- 1 ehsanm grid 27337 Jul  1 14:40 log.co.scen5.nov.txt
 -rw-r--r-- 1 ehsanm grid 28992 Jul  1 14:42 log.co.scen5.oct.txt
 -rw-r--r-- 1 ehsanm grid 28142 Jul  1 14:41 log.co.scen5.sep.txt
--rw-r--r-- 1 ehsanm grid   525 Jul  1 15:54 log_list_for_co_min.txt
--rw-r--r-- 1 ehsanm grid   588 Jul  1 15:54 minDiffMesh_list_total_for_co.txt
--> se get the list of log files in the log directory and write to file
--> we get the number of lines in log list
+-rw-r--r-- 1 ehsanm grid   525 Jul  2 13:54 log_list_for_co_max.txt
+-rw-r--r-- 1 ehsanm grid   525 Jul  2 13:47 log_list_for_co_min.txt
+-rw-r--r-- 1 ehsanm grid   519 Jul  2 13:54 maxDiffMesh_list_total_for_co.txt
+-rw-r--r-- 1 ehsanm grid   588 Jul  2 13:47 minDiffMesh_list_total_for_co.txt
+-> NOTE: old output files will be removed first:
+maxDiffMesh_list_total_for_co.txt
+log_list_for_co_max.txt
+-> now we get the list of *log* files in the log directory and write to file
+-> number of lines in log list=
 25 log_list_for_co_max.txt
--> NOTE: old output file will be removed first: maxDiffMesh_list_total_for_co.txt
 -> loop and read in log_list... 
--> log file is= log.co.scen1.aug.txt
+ 
+-> opening log file= log.co.scen1.aug.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.00025111548001727213
--> log file is= log.co.scen1.jul.txt
+ 
+-> opening log file= log.co.scen1.jul.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.0002215224949102257
--> log file is= log.co.scen1.nov.txt
+ 
+-> opening log file= log.co.scen1.nov.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.0003782565994509407
--> log file is= log.co.scen1.oct.txt
+ 
+-> opening log file= log.co.scen1.oct.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.036544047125805446
--> log file is= log.co.scen1.sep.txt
+ 
+-> opening log file= log.co.scen1.sep.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.0006864108248717249
--> log file is= log.co.scen2_aug.txt
+ 
+-> opening log file= log.co.scen2_aug.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.0028385957702994347
--> log file is= log.co.scen2_jul.txt
+ 
+-> opening log file= log.co.scen2_jul.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.3505153539340182
--> log file is= log.co.scen2_nov.txt
+ 
+-> opening log file= log.co.scen2_nov.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.002311033164632728
--> log file is= log.co.scen2_oct.txt
+ 
+-> opening log file= log.co.scen2_oct.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.39795356746562704
--> log file is= log.co.scen2_sep.txt
+ 
+-> opening log file= log.co.scen2_sep.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.08896508100959989
--> log file is= log.co.scen3.aug.txt
+ 
+-> opening log file= log.co.scen3.aug.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.3545272946357727
--> log file is= log.co.scen3.jul.txt
+ 
+-> opening log file= log.co.scen3.jul.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.24498966865001187
--> log file is= log.co.scen3.nov.txt
+ 
+-> opening log file= log.co.scen3.nov.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.00335409954704087
--> log file is= log.co.scen3.oct.txt
+ 
+-> opening log file= log.co.scen3.oct.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.4675222189235751
--> log file is= log.co.scen3.sep.txt
+ 
+-> opening log file= log.co.scen3.sep.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.029128309297892785
--> log file is= log.co.scen4.aug.txt
+ 
+-> opening log file= log.co.scen4.aug.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.0025392238110784476
--> log file is= log.co.scen4.jul.txt
+ 
+-> opening log file= log.co.scen4.jul.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.029876721852649293
--> log file is= log.co.scen4.nov.txt
+ 
+-> opening log file= log.co.scen4.nov.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.0005922099553990617
--> log file is= log.co.scen4.oct.txt
+ 
+-> opening log file= log.co.scen4.oct.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.06178114457075956
--> log file is= log.co.scen4.sep.txt
+ 
+-> opening log file= log.co.scen4.sep.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.010225802597900222
--> log file is= log.co.scen5.aug.txt
+ 
+-> opening log file= log.co.scen5.aug.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.024351948531725065
--> log file is= log.co.scen5.jul.txt
+ 
+-> opening log file= log.co.scen5.jul.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.9502323570771403
--> log file is= log.co.scen5.nov.txt
+ 
+-> opening log file= log.co.scen5.nov.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 2.6531774422189347e-06
--> log file is= log.co.scen5.oct.txt
+ 
+-> opening log file= log.co.scen5.oct.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 1.4879040056839585
--> log file is= log.co.scen5.sep.txt
+ 
+-> opening log file= log.co.scen5.sep.txt
 -> capturing stats_pattern= maxDiffMesh
 -> extracting pattern= maxDiffMesh= 0.35030640125688584
--> size of the maxDiffMesh list is=
+ 
+-> size of the maxDiffMesh output list is=
 25
------------------------------------------------------------------
--> absolute max value from the file: maxDiffMesh_list_total_for_co.txt , is=
-0.0002215224949102257
------------------------------------------------------------------
+------------------------------------------------
+-> now we do the arithmetic operations in python since shell 
+					does _not_ understand arithmetic operations specially with scientific notation!!!
+ 
+-> change dir to stats again...
+------------------------------------------------
+-> now we are inside python...
+-> we are at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/statistics_of_logs
+------------------------------------------------
+-> chk: pollutant is= co
+-> chk: statisticsl property is= max
+------------------------------------------------
+-> log file is= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/maxDiffMesh_list_total_for_co.txt
+ 
+-> line to append is= 0.00025111548001727213
+
+-> line to append is= 0.0002215224949102257
+
+-> line to append is= 0.0003782565994509407
+
+-> line to append is= 0.036544047125805446
+
+-> line to append is= 0.0006864108248717249
+
+-> line to append is= 0.0028385957702994347
+
+-> line to append is= 0.3505153539340182
+
+-> line to append is= 0.002311033164632728
+
+-> line to append is= 0.39795356746562704
+
+-> line to append is= 0.08896508100959989
+
+-> line to append is= 0.3545272946357727
+
+-> line to append is= 0.24498966865001187
+
+-> line to append is= 0.00335409954704087
+
+-> line to append is= 0.4675222189235751
+
+-> line to append is= 0.029128309297892785
+
+-> line to append is= 0.0025392238110784476
+
+-> line to append is= 0.029876721852649293
+
+-> line to append is= 0.0005922099553990617
+
+-> line to append is= 0.06178114457075956
+
+-> line to append is= 0.010225802597900222
+
+-> line to append is= 0.024351948531725065
+
+-> line to append is= 0.9502323570771403
+
+-> line to append is= 2.6531774422189347e-06
+
+-> line to append is= 1.4879040056839585
+
+-> line to append is= 0.35030640125688584
+
+-> chk: max of the list= 1.4879040056839585
+------------------------------------------------

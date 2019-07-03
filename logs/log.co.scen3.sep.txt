@@ -25,8 +25,8 @@ maxnice      0
 maxrtprio    0 
 maxrttime    unlimited
 CO job =====> submitted
-Mon Jul  1 19:33:03 EDT 2019
--> scenario= 4
+Tue Jul  2 18:10:49 EDT 2019
+-> scenario= 3
 -> CMAQ month= 09
 -> number of days to run= 30
 -> CMAQ year= 2016
@@ -35,15 +35,15 @@ Mon Jul  1 19:33:03 EDT 2019
 -> spatial plotting= yes
 -> processing method for spatial plot= diff_plot
 -> colorbar method for spatial diff plot= minus_abs_max_to_max
--> for diff plot: minus absolute Max. values= -0.000221
--> for diff plot: plus absolute Max. values= 0.000221
+-> for diff plot: minus absolute Max. values= -1.4879
+-> for diff plot: plus absolute Max. values= 1.4879
 -> time-series plotting= yes
 -> platform is= cluster
 -> mapping spatial data= no
 -> produce raster= no
  
 -> CMAQ input directory is:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/
  
 -> MCIP input directory is:
@@ -65,7 +65,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160901.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160901.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160901.nc
  
 -> processing for diff plot ...
@@ -80,7 +80,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160902.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160902.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160902.nc
  
 -> processing for diff plot ...
@@ -95,7 +95,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160903.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160903.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160903.nc
  
 -> processing for diff plot ...
@@ -110,7 +110,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160904.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160904.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160904.nc
  
 -> processing for diff plot ...
@@ -125,7 +125,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160905.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160905.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160905.nc
  
 -> processing for diff plot ...
@@ -140,7 +140,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160906.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160906.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160906.nc
  
 -> processing for diff plot ...
@@ -155,7 +155,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160907.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160907.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160907.nc
  
 -> processing for diff plot ...
@@ -170,7 +170,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160908.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160908.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160908.nc
  
 -> processing for diff plot ...
@@ -185,7 +185,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160909.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160909.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160909.nc
  
 -> processing for diff plot ...
@@ -200,7 +200,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160910.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160910.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160910.nc
  
 -> processing for diff plot ...
@@ -215,7 +215,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160911.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160911.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160911.nc
  
 -> processing for diff plot ...
@@ -230,7 +230,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160912.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160912.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160912.nc
  
 -> processing for diff plot ...
@@ -245,7 +245,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160913.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160913.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160913.nc
  
 -> processing for diff plot ...
@@ -260,7 +260,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160914.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160914.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160914.nc
  
 -> processing for diff plot ...
@@ -275,7 +275,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160915.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160915.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160915.nc
  
 -> processing for diff plot ...
@@ -290,7 +290,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160916.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160916.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160916.nc
  
 -> processing for diff plot ...
@@ -305,7 +305,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160917.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160917.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160917.nc
  
 -> processing for diff plot ...
@@ -320,7 +320,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160918.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160918.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160918.nc
  
 -> processing for diff plot ...
@@ -335,7 +335,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160919.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160919.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160919.nc
  
 -> processing for diff plot ...
@@ -350,7 +350,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160920.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160920.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160920.nc
  
 -> processing for diff plot ...
@@ -365,7 +365,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160921.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160921.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160921.nc
  
 -> processing for diff plot ...
@@ -380,7 +380,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160922.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160922.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160922.nc
  
 -> processing for diff plot ...
@@ -395,7 +395,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160923.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160923.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160923.nc
  
 -> processing for diff plot ...
@@ -410,7 +410,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160924.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160924.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160924.nc
  
 -> processing for diff plot ...
@@ -425,7 +425,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160925.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160925.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160925.nc
  
 -> processing for diff plot ...
@@ -440,7 +440,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160926.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160926.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160926.nc
  
 -> processing for diff plot ...
@@ -455,7 +455,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160927.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160927.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160927.nc
  
 -> processing for diff plot ...
@@ -470,7 +470,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160928.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160928.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160928.nc
  
 -> processing for diff plot ...
@@ -485,7 +485,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160929.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160929.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160929.nc
  
 -> processing for diff plot ...
@@ -500,7 +500,7 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> setting path for CO and diff_plot...
 -> opening/reading CMAQ files for CO:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160930.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_3/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160930.nc
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160930.nc
  
 -> processing for diff plot ...
@@ -511,7 +511,7 @@ Mon Jul  1 19:33:03 EDT 2019
 -> LANDIS scenario, monthly mean tensor: dimensions= 3 and shape of tensor= (720, 265, 250) 
 -> baseline, monthly mean tensor: dimensions= 3 and shape of tensor= (720, 265, 250) 
 -----------------------------
--> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario (4) mesh ...
+-> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario (3) mesh ...
  
 -> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
  
@@ -521,13 +521,13 @@ Mon Jul  1 19:33:03 EDT 2019
  
 -> now subtract 2 meshes to get the diff mesh for spatial plotting 
  
--> monthly mesh scenario= [[0.07891861 0.07838091 0.077908   ... 0.07142071 0.07198767 0.07370622]
- [0.07923003 0.07877916 0.07842795 ... 0.0718215  0.07259584 0.07474061]
- [0.0791929  0.07893977 0.07868772 ... 0.07221459 0.07318748 0.07536408]
+-> monthly mesh scenario= [[0.07891861 0.0783809  0.07790799 ... 0.07141785 0.07198498 0.07370459]
+ [0.07923002 0.07877915 0.07842794 ... 0.07181783 0.07259235 0.07473809]
+ [0.07919288 0.07893975 0.07868771 ... 0.07220979 0.07318305 0.07536047]
  ...
- [0.07993751 0.07984545 0.07980323 ... 0.07899632 0.079057   0.07917335]
- [0.07997158 0.07990433 0.07986044 ... 0.07912097 0.0791778  0.07925797]
- [0.07998319 0.07993104 0.07990625 ... 0.07931916 0.0793534  0.07943422]] 
+ [0.0799355  0.07984338 0.07980112 ... 0.0789931  0.0790536  0.07916982]
+ [0.07996965 0.07990233 0.07985842 ... 0.07911813 0.07917466 0.07925476]
+ [0.07998134 0.07992915 0.07990433 ... 0.07931737 0.0793512  0.07943196]] 
  
 -> monthly mesh baseline= [[0.07891861 0.0783809  0.07790799 ... 0.07141715 0.07198426 0.07370388]
  [0.07923002 0.07877915 0.07842793 ... 0.07181654 0.07259104 0.07473677]
@@ -537,19 +537,19 @@ Mon Jul  1 19:33:03 EDT 2019
  [0.07996234 0.07989372 0.0798487  ... 0.0791044  0.07916359 0.0792444 ]
  [0.07997396 0.07992075 0.07989517 ... 0.07931068 0.07934455 0.07942523]] 
  
--> monthly mean diff-mesh= [[1.84194909e-09 7.70928131e-09 1.02962885e-08 ... 3.56580648e-06
-  3.40792661e-06 2.33073822e-06]
- [9.87201929e-09 1.12793512e-08 1.11034347e-08 ... 4.95508106e-06
-  4.79931219e-06 3.84105369e-06]
- [1.67431103e-08 2.03235282e-08 1.78193053e-08 ... 6.65514833e-06
-  6.34369337e-06 5.56402115e-06]
+-> monthly mean diff-mesh= [[6.93317917e-10 1.40733189e-09 3.72529030e-09 ... 7.05621723e-07
+  7.22933975e-07 7.04141955e-07]
+ [2.06960574e-10 1.14863118e-09 4.39791216e-09 ... 1.28951958e-06
+  1.31220246e-06 1.32079133e-06]
+ [1.12793512e-09 2.80431575e-09 4.97740177e-09 ... 1.86247958e-06
+  1.90861109e-06 1.94851309e-06]
  ...
- [9.25498704e-06 1.08906275e-05 1.22415419e-05 ... 2.07262114e-05
-  1.91135849e-05 1.73755301e-05]
- [9.23661929e-06 1.06101545e-05 1.17399730e-05 ... 1.65651449e-05
-  1.42090643e-05 1.35675590e-05]
- [9.22971716e-06 1.02893760e-05 1.10814865e-05 ... 8.48205139e-06
-  8.85196237e-06 8.99165041e-06]]
+ [7.25106026e-06 8.81924190e-06 1.01356871e-05 ... 1.75017760e-05
+  1.57112773e-05 1.38495635e-05]
+ [7.31011646e-06 8.61720699e-06 9.71813376e-06 ... 1.37277051e-05
+  1.10764988e-05 1.03571866e-05]
+ [7.38427043e-06 8.39255129e-06 9.16282750e-06 ... 6.69669567e-06
+  6.65264411e-06 6.72890908e-06]]
  
 -> diff matrix statistics:
 -> shape = (265, 250) and dimension = 2
@@ -557,20 +557,20 @@ Mon Jul  1 19:33:03 EDT 2019
 -> row of mesh = 265 and col of mesh = 250 
 -> size of list_from_mesh = 66250 
 -----------------------------
--> stats: minDiffMesh= -9.12886526849288e-06 
--> stats: meanDiffMesh= 0.0001383355704902728 
--> stats: maxDiffMesh= 0.010225802597900222 
--> row no. of max value= 177 
--> col no. of max value= 175 
+-> stats: minDiffMesh= -1.2702722516313991e-05 
+-> stats: meanDiffMesh= 8.359160402442175e-05 
+-> stats: maxDiffMesh= 0.029128309297892785 
+-> row no. of max value= 146 
+-> col no. of max value= 188 
 -----------------------------
 -> time-series plotting is YES, so we plot time-series...
 -> size of x_ axis list = 720
 -> size of y_ axis list = 720
 -> time-series plot saved at:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/CO_timeseries_scen_4_2016-09_summed_30_days.png
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/CO_timeseries_scen_3_2016-09_summed_30_days.png
  
 -> spatial plotting ...
-../run_scripts/spatial_CMAQ_analysis_scen4_sep.py:671: MatplotlibDeprecationWarning: 
+../run_scripts/spatial_CMAQ_analysis_scen3_sep.py:671: MatplotlibDeprecationWarning: 
 The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
   theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
  
@@ -581,20 +581,20 @@ The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3.
  
 -> plot method= diff_plot
 -> colorbar method= minus_abs_max_to_max
--> plot the image for vmin= -0.000221 and vmax= 0.000221
+-> plot the image for vmin= -1.4879 and vmax= 1.4879
  
-../run_scripts/spatial_CMAQ_analysis_scen4_sep.py:737: MatplotlibDeprecationWarning: 
+../run_scripts/spatial_CMAQ_analysis_scen3_sep.py:737: MatplotlibDeprecationWarning: 
 The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
   theMap.drawstates()
-../run_scripts/spatial_CMAQ_analysis_scen4_sep.py:738: MatplotlibDeprecationWarning: 
+../run_scripts/spatial_CMAQ_analysis_scen3_sep.py:738: MatplotlibDeprecationWarning: 
 The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
   theMap.drawcounties(linewidth=0.5 , color='k' )
  
 -> output figure is stored at:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/CO_monthlyMean_scen_4_difference_from_baseline_2016-09_summed_30_days_colorbarMethod_minus_abs_max_to_max.png
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/CO_monthlyMean_scen_3_difference_from_baseline_2016-09_summed_30_days_colorbarMethod_minus_abs_max_to_max.png
 ------------------------------------
--> run time of main function= 22.57 min
+-> run time of main function= 22.93 min
 *** MAIN COMPLETED SUCCESSFULLY! ***
 ------------------------------------
 CO job =====> ended
-Mon Jul  1 19:55:44 EDT 2019
+Tue Jul  2 18:33:55 EDT 2019
