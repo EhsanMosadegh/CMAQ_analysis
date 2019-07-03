@@ -34,7 +34,7 @@ def main() :
 	mcip_date_tag = '161001'
 
 	scenario = '1' 			# 1-5, baseline
-	days_to_run_in_month = 31 
+	days_to_run_in_month = 1 
 
 	cmaq_pol = 'CO'  # for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
 	processing_pollutant = 'single_pollutant' 		# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
@@ -46,8 +46,8 @@ def main() :
 	spatial_plotting = 'yes' # yes or no
 	plot_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
 	colorbar_method= environ.get('COLOR_METHOD') 	#'minus_abs_max_to_max'		# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
-	minus_abs_max_diffPlot = -1.4879
-	abs_max_diffPlot = 1.4879
+	minus_abs_max_diffPlot= environ.get('MINUS_ABS_MAX') 
+	abs_max_diffPlot= environ.get('ABS_MAX')
 	vmin_mine_singlePlot = -0.4
 	vmax_mine_singlePlot = 0.4
 
