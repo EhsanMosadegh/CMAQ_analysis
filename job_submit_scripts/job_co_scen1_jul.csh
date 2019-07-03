@@ -22,10 +22,6 @@ module list
 unlimit
 limit
 
-setenv COLOR_METHOD 'minus_abs_max_to_max'
-setenv MINUS_ABS_MAX '-1.5'
-setenv ABS_MAX '1.5'
-
  
 echo "CO job =====> submitted"
 date 			

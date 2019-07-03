@@ -11,6 +11,7 @@ from mpl_toolkits.basemap import Basemap
 #from osgeo import gdal, gdal_array, osr , ogr
 from osgeo import gdal
 import ogr, os, osr
+from os import environ
 #import rasterio
 #from rasterio.transform import from_origin
 import time
@@ -27,42 +28,40 @@ def main() :
 	start = time.time()
 
 	### run time settings
-	cmaq_file_month = '10'		#  07, 08, 	09,  10,  11
-	sim_month = 'Oct'  				# Jul, Aug, Sep, Oct, Nov
-	cmaq_file_year = '2016'
-	mcip_date_tag = '161001'
+	cmaq_file_month= '07'																			#  07, 08, 	09,  10,  11
+	sim_month= 'Jul'  																				# Jul, Aug, Sep, Oct, Nov
+	cmaq_file_year= '2016'
+	mcip_date_tag= '161001'
 
-	scenario = '1' 			# 1-5, baseline
-	days_to_run_in_month = 2
-
-	cmaq_pol = 'CO'  # for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
-	processing_pollutant = 'single_pollutant' 		# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
-
-	pol_unit = 'ppmV'		#'[ppmV]' or [ug/m^3]
-	include_pmdiag_file = 'yes'  # 'yes' OR 'no'
+	scenario= '1' 																						# 1-5, baseline
+	days_to_run_in_month= 31 
+	cmaq_pol= environ.get('CMAQ_POL') 												# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
+	processing_pollutant= environ.get('PROCESSING_POLLUTANT') # 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
+	pol_unit= environ.get('POL_UNIT') 												#	'ppmV' or 'ug/m^3'
+	include_pmdiag_file= 'yes' 					 											# 'yes' OR 'no'
 
 	### spatial plot
-	spatial_plotting = 'yes' # yes or no
-	plot_method = 'diff_plot' 	# 'single_plot' or 'diff_plot'
-	colorbar_method = 'min_to_max'		# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
-	minus_abs_max_diffPlot = -5
-	abs_max_diffPlot = 5
-	vmin_mine_singlePlot = -0.4
-	vmax_mine_singlePlot = 0.4
+	spatial_plotting= environ.get('SPATIAL_PLOTTING_KEY')		 	# yes or no
+	plot_method= environ.get('PLOT_METHOD')										# 'single_plot' or 'diff_plot'
+	colorbar_method= environ.get('COLOR_METHOD') 							# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
+	minus_abs_max_diffPlot= environ.get('MINUS_ABS_MAX_DIFF') 
+	abs_max_diffPlot= environ.get('ABS_MAX_DIFF')
+	vmin_mine_singlePlot= -0.4
+	vmax_mine_singlePlot= 0.4
 
-	produce_raster = 'no' 	# 'yes' OR 'no'
+	produce_raster= environ.get('PRODUCE_RASTER') 						# 'yes' OR 'no'
 
 	### set mapping parameters for spatial plotting
-	mapping = 'no' # 'yes' OR 'no'
-	lower_bound_mapping_conc = 0.0
-	upper_bound_mapping_conc = 0.120
+	mapping= 'no' # 'yes' OR 'no'
+	lower_bound_mapping_conc= 0.0
+	upper_bound_mapping_conc= 0.120
 
 
 	### time-series plot
-	timeseries_plotting = 'yes' # yes or not
+	timeseries_plotting= environ.get('TIMESERIES_PLOTTING') 	# yes or not
 
-	platform = 'cluster'  # 'Mac' or 'cluster'
-	storage = '10T' # 'personal' OR '10T'
+	platform= 'cluster'  # 'Mac' or 'cluster'
+	storage= '10T' # 'personal' OR '10T'
 
 	# ### Basemap plot setting
 	# center of domain

@@ -2,10 +2,6 @@
 
 echo '-> set environmental variables first'
 
-
-
-
-
 echo '-> looping for scen and month...'
 
 for scen_no in 1 2 3 4 5
