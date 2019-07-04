@@ -34,7 +34,7 @@ def main() :
 	mcip_date_tag= '161001'
 	
 	scenario= '1' 																						# 1-5, baseline
-	days_to_run_in_month= 5 
+	days_to_run_in_month= 31 
 	cmaq_pol= environ.get('CMAQ_POL') 												# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
 	processing_pollutant= environ.get('PROCESSING_POLLUTANT') # 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
 	pol_unit= environ.get('POL_UNIT') 												#	'ppmV' or 'ug/m^3'

@@ -497,10 +497,10 @@ def main() :
 	# intermed file is directed to be used in spatial plotting; and the original tensor is used for time-series plotting
 	monthly_tseries_tensor_from_scen_intermed = monthly_tseries_tensor_from_scen
 
-	# for scenario ozone, change ppm to ppb for plotting
-	if ( cmaq_pol == 'O3' ) :
+	# for o3 and N and so2, change ppm to ppb for plotting
+	if any([cmaq_pol=='O3',cmaq_pol=='NH3',cmaq_pol=='HNO3',cmaq_pol=='NO2',cmaq_pol=='SO2']) :
 
-		print( '-> changing ppm to ppb for scenario ozone...' )
+		print( f'-> changing ppm to ppb for scenario pol={cmaq_pol} ...' )
 		pol_unit = 'ppb'
 
 		monthly_tseries_tensor_from_scen_intermed = monthly_tseries_tensor_from_scen_intermed * 1000
@@ -550,8 +550,9 @@ def main() :
 
 	elif ( plot_method == 'diff_plot' ) :
 
-		if ( cmaq_pol == 'O3' ) :
-			print( '-> changing ppm to ppb for baseline ozone...' )
+		if any([cmaq_pol=='O3',cmaq_pol=='NH3',cmaq_pol=='HNO3',cmaq_pol=='NO2',cmaq_pol=='SO2']) :
+
+			print( f'-> changing ppm to ppb for baseline pol={cmaq_pol} ...' )
 			pol_unit = 'ppb'
 
 			monthly_tseries_tensor_from_base = monthly_tseries_tensor_from_base * 1000
