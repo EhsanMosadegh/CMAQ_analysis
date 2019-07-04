@@ -1,0 +1,271 @@
+-------------------------------
+-> chk: pollutant is= CO
+-> chk: statistical property is= min
+-> stats patter is= minDiffMesh
+-------------------------------
+  
+-> we are currently at=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/statistics_of_logs
+-> log directory=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/multiPol_logs/
+-> we change dir to <logs/>(work) dir...
+-> now we are at=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/multiPol_logs
+-> we list of files at current dir=
+total 1830
+drwxr-xr-x 2 ehsanm grid    79 Jul  3 15:26 .
+drwxr-xr-x 5 ehsanm grid   130 Jul  3 15:05 ..
+-rw-r--r-- 1 ehsanm grid 27318 Jul  3 13:00 log.CO.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid 27318 Jul  3 13:00 log.CO.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid 25616 Jul  3 12:59 log.CO.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid 27315 Jul  3 12:59 log.CO.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid 26425 Jul  3 12:58 log.CO.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid 27318 Jul  3 12:59 log.CO.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid 27309 Jul  3 12:59 log.CO.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid 25614 Jul  3 12:58 log.CO.scen2.nov.txt
+-rw-r--r-- 1 ehsanm grid 27313 Jul  3 12:59 log.CO.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid 26422 Jul  3 12:59 log.CO.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid 27309 Jul  3 12:59 log.CO.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid 27313 Jul  3 13:00 log.CO.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid 25613 Jul  3 12:58 log.CO.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid 27308 Jul  3 12:59 log.CO.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid 26424 Jul  3 12:59 log.CO.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid 27316 Jul  3 13:00 log.CO.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid 27278 Jul  3 12:59 log.CO.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid 25615 Jul  3 12:59 log.CO.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid 27312 Jul  3 12:59 log.CO.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid 26420 Jul  3 12:58 log.CO.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid 27313 Jul  3 13:21 log.CO.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid 27273 Jul  3 13:20 log.CO.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid 25617 Jul  3 13:21 log.CO.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid 27272 Jul  3 13:22 log.CO.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid 26422 Jul  3 13:21 log.CO.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid   525 Jul  3 15:26 log_list_for_CO_min.txt
+-rw-r--r-- 1 ehsanm grid 27489 Jul  3 13:24 log.O3.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid 27504 Jul  3 13:23 log.O3.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid 25594 Jul  3 13:20 log.O3.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid 27495 Jul  3 13:23 log.O3.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid 26639 Jul  3 13:22 log.O3.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid 27501 Jul  3 13:22 log.O3.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid 27489 Jul  3 13:23 log.O3.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid 25594 Jul  3 13:21 log.O3.scen2.nov.txt
+-rw-r--r-- 1 ehsanm grid 27493 Jul  3 13:23 log.O3.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid 26640 Jul  3 13:22 log.O3.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid 27494 Jul  3 13:23 log.O3.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid 27487 Jul  3 13:23 log.O3.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid 25594 Jul  3 13:22 log.O3.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid 27492 Jul  3 13:23 log.O3.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid 26637 Jul  3 13:22 log.O3.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid 27499 Jul  3 13:46 log.O3.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid 27489 Jul  3 13:45 log.O3.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid 25597 Jul  3 13:46 log.O3.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid 27495 Jul  3 13:46 log.O3.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid 26638 Jul  3 13:45 log.O3.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid 27499 Jul  3 13:47 log.O3.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid 27490 Jul  3 13:46 log.O3.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid 25597 Jul  3 13:42 log.O3.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid 27490 Jul  3 13:47 log.O3.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid 26638 Jul  3 13:46 log.O3.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:24 log.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:23 log.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:20 log.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid  3086 Jul  3 13:23 log.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:22 log.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:22 log.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid  2966 Jul  3 13:23 log.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:21 log.scen2.nov.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:23 log.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:22 log.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:23 log.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:23 log.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:22 log.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:23 log.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:22 log.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:46 log.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:45 log.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:46 log.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:46 log.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:45 log.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:47 log.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:46 log.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:42 log.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:47 log.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid  3432 Jul  3 13:46 log.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid   588 Jul  3 15:26 minDiffMesh_list_total_for_CO.txt
+-> NOTE: old output files will be removed first:
+minDiffMesh_list_total_for_CO.txt
+log_list_for_CO_min.txt
+-> now we get the list of *log* files in the log directory and write to file
+-> number of lines in log list=
+25 log_list_for_CO_min.txt
+-> loop and read in log_list... 
+ 
+-> opening log file= log.CO.scen1.aug.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.0002879658914221178
+ 
+-> opening log file= log.CO.scen1.jul.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -2.7725272761930375e-06
+ 
+-> opening log file= log.CO.scen1.nov.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.00016839515374994507
+ 
+-> opening log file= log.CO.scen1.oct.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -1.7024176096613886e-09
+ 
+-> opening log file= log.CO.scen1.sep.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -1.3510831114310617e-05
+ 
+-> opening log file= log.CO.scen2.aug.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -1.7925455980671856e-09
+ 
+-> opening log file= log.CO.scen2.jul.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.0004294491322931332
+ 
+-> opening log file= log.CO.scen2.nov.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.00016839551771509476
+ 
+-> opening log file= log.CO.scen2.oct.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -2.7138539471227574e-09
+ 
+-> opening log file= log.CO.scen2.sep.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -1.1491827252838038e-05
+ 
+-> opening log file= log.CO.scen3.aug.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -9.733823039259626e-09
+ 
+-> opening log file= log.CO.scen3.jul.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.00023509924530341897
+ 
+-> opening log file= log.CO.scen3.nov.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.00016818917088809449
+ 
+-> opening log file= log.CO.scen3.oct.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -2.233171328414052e-09
+ 
+-> opening log file= log.CO.scen3.sep.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -1.2702722516313991e-05
+ 
+-> opening log file= log.CO.scen4.aug.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -6.092652198030901e-08
+ 
+-> opening log file= log.CO.scen4.jul.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -7.261291787186153e-06
+ 
+-> opening log file= log.CO.scen4.nov.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.00016839546419079865
+ 
+-> opening log file= log.CO.scen4.oct.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -2.052915351602458e-09
+ 
+-> opening log file= log.CO.scen4.sep.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -9.12886526849288e-06
+ 
+-> opening log file= log.CO.scen5.aug.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -6.074626598961963e-08
+ 
+-> opening log file= log.CO.scen5.jul.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -4.091630539590496e-06
+ 
+-> opening log file= log.CO.scen5.nov.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.00016839538925680908
+ 
+-> opening log file= log.CO.scen5.oct.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -4.505398132348404e-08
+ 
+-> opening log file= log.CO.scen5.sep.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -4.1264833675475066e-06
+ 
+-> size of the minDiffMesh output list is=
+25
+------------------------------------------------
+-> now we do the arithmetic operations in python since shell 
+					does _not_ understand arithmetic operations specially with scientific notation!!!
+ 
+-> we are currently at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/multiPol_logs
+------------------------------------------------
+-> now we are inside python...
+-> we are at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/multiPol_logs
+------------------------------------------------
+-> chk: pollutant is= CO
+-> chk: statisticsl property is= min
+------------------------------------------------
+-> log file is= minDiffMesh_list_total_for_CO.txt
+ 
+-> line to append is= -0.0002879658914221178
+
+-> line to append is= -2.7725272761930375e-06
+
+-> line to append is= -0.00016839515374994507
+
+-> line to append is= -1.7024176096613886e-09
+
+-> line to append is= -1.3510831114310617e-05
+
+-> line to append is= -1.7925455980671856e-09
+
+-> line to append is= -0.0004294491322931332
+
+-> line to append is= -0.00016839551771509476
+
+-> line to append is= -2.7138539471227574e-09
+
+-> line to append is= -1.1491827252838038e-05
+
+-> line to append is= -9.733823039259626e-09
+
+-> line to append is= -0.00023509924530341897
+
+-> line to append is= -0.00016818917088809449
+
+-> line to append is= -2.233171328414052e-09
+
+-> line to append is= -1.2702722516313991e-05
+
+-> line to append is= -6.092652198030901e-08
+
+-> line to append is= -7.261291787186153e-06
+
+-> line to append is= -0.00016839546419079865
+
+-> line to append is= -2.052915351602458e-09
+
+-> line to append is= -9.12886526849288e-06
+
+-> line to append is= -6.074626598961963e-08
+
+-> line to append is= -4.091630539590496e-06
+
+-> line to append is= -0.00016839538925680908
+
+-> line to append is= -4.505398132348404e-08
+
+-> line to append is= -4.1264833675475066e-06
+
+----------------------------------------
+-> chk: min of the list= -0.0004294491322931332
+------------------------------------------------

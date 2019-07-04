@@ -1,9 +1,15 @@
 #!/bin/bash -f
-#---------------------------------
+#------------------------------------------------------------------------
 # run-time setting
+# NOTE: this script writes its output to <logs/> directory
+# to run: bash "script_name" > POL_logs/log.POL.minOrMax.txt
+# to check the end result either open the log file and check the end of the log file for abs min/max values, 
+# or do-> grep 'chk' on_the_logfile_of_bash_script
+# I defined 'chk' as a keyword to check importent parameters and end value
+#------------------------------------------------------------------------
 
-pollutant='co'
-stats_property='min'
+pollutant='NH3'
+stats_property='max'
 
 stats_pattern=$stats_property'DiffMesh'
 log_file_pattern=log.${pollutant}.scen*
@@ -11,9 +17,9 @@ log_file_pattern=log.${pollutant}.scen*
 #---------------------------------
 
 #home_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis'
-home_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis'
-log_dir=${home_dir}'/logs'	#/co_minMax'
-statistics_dir=${home_dir}'/statistics_of_logs'
+home_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/'
+log_dir=${home_dir}'logs/min_max_logs/'
+statistics_dir=${home_dir}'statistics_of_logs/'
 
 #---------------------------------
 
@@ -37,7 +43,7 @@ echo $current_dir
 echo '-> log directory=' 
 echo $log_dir
 
-echo '-> we change dir to <logs/> dir...'
+echo '-> we change dir to <logs/>(work) dir...'
 cd $log_dir
 
 work_dir=$(pwd)
@@ -84,11 +90,8 @@ echo '------------------------------------------------'
 echo '-> now we do the arithmetic operations in python since shell 
 					does _not_ understand arithmetic operations specially with scientific notation!!!'
 echo ' '
-echo '-> change dir to stats again...'
-cd ${statistics_dir}
-
-python get_min_max.py
-
+echo '-> we are currently at=' $(pwd)
+python ${statistics_dir}/get_min_max.py
 echo '------------------------------------------------'
 
 #if [ $stats_property == 'min' ]; then
@@ -108,16 +111,6 @@ echo '------------------------------------------------'
 #fi
 
 #echo '-----------------------------------------------------------------'
-
-#--- method 1 to read each line
-
-# echo '-> open file and do for loop to show the lines ...'
-#??? how open the file first?
-
-# for word in $log_files; do
-
-# 	echo the new word= $word
-# done
 
 #--- method 2 to read each line
 

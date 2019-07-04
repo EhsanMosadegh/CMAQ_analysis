@@ -1,0 +1,379 @@
+-------------------------------
+-> chk: pollutant is= NH3
+-> chk: statistical property is= max
+-> stats patter is= maxDiffMesh
+-------------------------------
+  
+-> we are currently at=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/statistics_of_logs
+-> log directory=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/min_max_logs/
+-> we change dir to <logs/>(work) dir...
+-> now we are at=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/min_max_logs
+-> we list of files at current dir=
+total 5305
+drwxr-xr-x 2 ehsanm grid   187 Jul  3 17:57 .
+drwxr-xr-x 4 ehsanm grid    54 Jul  3 17:47 ..
+-rw-r--r-- 1 ehsanm grid 27318 Jul  3 13:00 log.CO.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid 27318 Jul  3 13:00 log.CO.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid 25616 Jul  3 12:59 log.CO.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid 27315 Jul  3 12:59 log.CO.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid 26425 Jul  3 12:58 log.CO.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid 27318 Jul  3 12:59 log.CO.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid 27309 Jul  3 12:59 log.CO.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid 25614 Jul  3 12:58 log.CO.scen2.nov.txt
+-rw-r--r-- 1 ehsanm grid 27313 Jul  3 12:59 log.CO.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid 26422 Jul  3 12:59 log.CO.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid 27309 Jul  3 12:59 log.CO.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid 27313 Jul  3 13:00 log.CO.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid 25613 Jul  3 12:58 log.CO.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid 27308 Jul  3 12:59 log.CO.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid 26424 Jul  3 12:59 log.CO.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid 27316 Jul  3 13:00 log.CO.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid 27278 Jul  3 12:59 log.CO.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid 25615 Jul  3 12:59 log.CO.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid 27312 Jul  3 12:59 log.CO.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid 26420 Jul  3 12:58 log.CO.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid 27313 Jul  3 13:21 log.CO.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid 27273 Jul  3 13:20 log.CO.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid 25617 Jul  3 13:21 log.CO.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid 27272 Jul  3 13:22 log.CO.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid 26422 Jul  3 13:21 log.CO.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid 27758 Jul  3 14:40 log.HNO3.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid 27756 Jul  3 14:40 log.HNO3.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid 26049 Jul  3 14:39 log.HNO3.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid 27758 Jul  3 14:41 log.HNO3.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid 26904 Jul  3 14:39 log.HNO3.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid 27761 Jul  3 14:40 log.HNO3.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid 27758 Jul  3 14:40 log.HNO3.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid 26047 Jul  3 14:39 log.HNO3.scen2.nov.txt
+-rw-r--r-- 1 ehsanm grid 27722 Jul  3 14:40 log.HNO3.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid 26900 Jul  3 14:39 log.HNO3.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid 27761 Jul  3 14:41 log.HNO3.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid 27762 Jul  3 14:40 log.HNO3.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid 26049 Jul  3 14:39 log.HNO3.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid 27725 Jul  3 14:41 log.HNO3.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid 26900 Jul  3 14:39 log.HNO3.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid 27759 Jul  3 15:04 log.HNO3.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid 27758 Jul  3 15:03 log.HNO3.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid 26046 Jul  3 15:04 log.HNO3.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid 27760 Jul  3 15:03 log.HNO3.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid 26896 Jul  3 15:03 log.HNO3.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid 27758 Jul  3 15:04 log.HNO3.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid 27760 Jul  3 15:04 log.HNO3.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid 26047 Jul  3 15:03 log.HNO3.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid 27760 Jul  3 15:04 log.HNO3.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid 26900 Jul  3 15:04 log.HNO3.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid   525 Jul  3 15:29 log_list_for_CO_max.txt
+-rw-r--r-- 1 ehsanm grid   525 Jul  3 15:27 log_list_for_CO_min.txt
+-rw-r--r-- 1 ehsanm grid   550 Jul  3 17:57 log_list_for_NH3_min.txt
+-rw-r--r-- 1 ehsanm grid   525 Jul  3 16:41 log_list_for_O3_max.txt
+-rw-r--r-- 1 ehsanm grid   525 Jul  3 16:47 log_list_for_O3_min.txt
+-rw-r--r-- 1 ehsanm grid 27696 Jul  3 14:40 log.NH3.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid 27696 Jul  3 14:40 log.NH3.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid 25983 Jul  3 14:39 log.NH3.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid 27692 Jul  3 14:40 log.NH3.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid 26838 Jul  3 14:39 log.NH3.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid 27696 Jul  3 14:41 log.NH3.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid 27690 Jul  3 14:41 log.NH3.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid 25984 Jul  3 14:39 log.NH3.scen2.nov.txt
+-rw-r--r-- 1 ehsanm grid 27692 Jul  3 14:41 log.NH3.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid 26836 Jul  3 14:39 log.NH3.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid 27692 Jul  3 14:40 log.NH3.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid 27693 Jul  3 14:40 log.NH3.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid 25985 Jul  3 14:39 log.NH3.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid 27692 Jul  3 14:40 log.NH3.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid 26840 Jul  3 14:39 log.NH3.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid 27693 Jul  3 14:40 log.NH3.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid 27695 Jul  3 14:40 log.NH3.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid 25984 Jul  3 14:38 log.NH3.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid 27695 Jul  3 14:40 log.NH3.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid 26836 Jul  3 14:39 log.NH3.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid 27695 Jul  3 14:40 log.NH3.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid 27689 Jul  3 14:40 log.NH3.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid 25981 Jul  3 14:39 log.NH3.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid 27692 Jul  3 14:40 log.NH3.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid 26838 Jul  3 14:39 log.NH3.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid 27693 Jul  3 15:05 log.NO2.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid 27694 Jul  3 15:06 log.NO2.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid 25984 Jul  3 15:04 log.NO2.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid 27693 Jul  3 15:06 log.NO2.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid 26837 Jul  3 15:05 log.NO2.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid 27661 Jul  3 15:05 log.NO2.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid 27697 Jul  3 15:05 log.NO2.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid 25988 Jul  3 15:05 log.NO2.scen2.nov.txt
+-rw-r--r-- 1 ehsanm grid 27697 Jul  3 15:06 log.NO2.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid 26835 Jul  3 15:04 log.NO2.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid 27692 Jul  3 15:05 log.NO2.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid 27694 Jul  3 15:05 log.NO2.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid 25990 Jul  3 15:04 log.NO2.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid 27692 Jul  3 15:05 log.NO2.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid 26833 Jul  3 15:04 log.NO2.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid 27697 Jul  3 15:06 log.NO2.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid 27694 Jul  3 15:06 log.NO2.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid 25985 Jul  3 15:04 log.NO2.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid 27692 Jul  3 15:06 log.NO2.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid 26835 Jul  3 15:04 log.NO2.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid 27696 Jul  3 15:06 log.NO2.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid 27691 Jul  3 15:05 log.NO2.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid 25988 Jul  3 15:05 log.NO2.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid 27691 Jul  3 15:06 log.NO2.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid 26799 Jul  3 15:04 log.NO2.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid 27489 Jul  3 13:24 log.O3.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid 27504 Jul  3 13:23 log.O3.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid 25594 Jul  3 13:20 log.O3.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid 27495 Jul  3 13:23 log.O3.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid 26639 Jul  3 13:22 log.O3.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid 27501 Jul  3 13:22 log.O3.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid 27489 Jul  3 13:23 log.O3.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid 25594 Jul  3 13:21 log.O3.scen2.nov.txt
+-rw-r--r-- 1 ehsanm grid 27493 Jul  3 13:23 log.O3.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid 26640 Jul  3 13:22 log.O3.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid 27494 Jul  3 13:23 log.O3.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid 27487 Jul  3 13:23 log.O3.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid 25594 Jul  3 13:22 log.O3.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid 27492 Jul  3 13:23 log.O3.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid 26637 Jul  3 13:22 log.O3.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid 27499 Jul  3 13:46 log.O3.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid 27489 Jul  3 13:45 log.O3.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid 25597 Jul  3 13:46 log.O3.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid 27495 Jul  3 13:46 log.O3.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid 26638 Jul  3 13:45 log.O3.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid 27499 Jul  3 13:47 log.O3.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid 27490 Jul  3 13:46 log.O3.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid 25597 Jul  3 13:42 log.O3.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid 27490 Jul  3 13:47 log.O3.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid 26638 Jul  3 13:46 log.O3.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid  6246 Jul  3 15:07 log.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid  6032 Jul  3 15:06 log.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid  6378 Jul  3 15:04 log.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid  6157 Jul  3 15:07 log.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid  5729 Jul  3 15:05 log.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid  6676 Jul  3 15:26 log.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid  6032 Jul  3 15:26 log.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid  6032 Jul  3 15:25 log.scen2.nov.txt
+-rw-r--r-- 1 ehsanm grid  6224 Jul  3 15:26 log.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid  5518 Jul  3 15:25 log.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid  6503 Jul  3 15:27 log.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid  6246 Jul  3 15:27 log.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid  6364 Jul  3 15:26 log.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid  5758 Jul  3 15:28 log.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid  6378 Jul  3 15:27 log.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid  6864 Jul  3 15:27 log.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid  6864 Jul  3 15:27 log.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid  6864 Jul  3 15:25 log.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid  6864 Jul  3 15:27 log.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid  6864 Jul  3 15:25 log.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid  6864 Jul  3 15:27 log.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid  6172 Jul  3 15:27 log.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid  6864 Jul  3 15:26 log.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid  6864 Jul  3 15:28 log.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid  6864 Jul  3 15:27 log.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid 27655 Jul  3 15:07 log.SO2.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid 27694 Jul  3 15:06 log.SO2.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid 25986 Jul  3 15:04 log.SO2.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid 27695 Jul  3 15:07 log.SO2.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid 26804 Jul  3 15:05 log.SO2.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid 27658 Jul  3 15:26 log.SO2.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid 27660 Jul  3 15:26 log.SO2.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid 25988 Jul  3 15:25 log.SO2.scen2.nov.txt
+-rw-r--r-- 1 ehsanm grid 27695 Jul  3 15:26 log.SO2.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid 26804 Jul  3 15:25 log.SO2.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid 27692 Jul  3 15:27 log.SO2.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid 27697 Jul  3 15:27 log.SO2.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid 25990 Jul  3 15:26 log.SO2.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid 27692 Jul  3 15:28 log.SO2.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid 26804 Jul  3 15:27 log.SO2.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid 27693 Jul  3 15:27 log.SO2.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid 27660 Jul  3 15:27 log.SO2.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid 25987 Jul  3 15:25 log.SO2.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid 27693 Jul  3 15:27 log.SO2.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid 26800 Jul  3 15:25 log.SO2.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid 27696 Jul  3 15:27 log.SO2.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid 27659 Jul  3 15:27 log.SO2.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid 25988 Jul  3 15:26 log.SO2.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid 27659 Jul  3 15:28 log.SO2.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid 26802 Jul  3 15:27 log.SO2.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid   519 Jul  3 15:29 maxDiffMesh_list_total_for_CO.txt
+-rw-r--r-- 1 ehsanm grid   518 Jul  3 16:41 maxDiffMesh_list_total_for_O3.txt
+-rw-r--r-- 1 ehsanm grid   588 Jul  3 15:27 minDiffMesh_list_total_for_CO.txt
+-rw-r--r-- 1 ehsanm grid   584 Jul  3 17:57 minDiffMesh_list_total_for_NH3.txt
+-rw-r--r-- 1 ehsanm grid   534 Jul  3 16:47 minDiffMesh_list_total_for_O3.txt
+-> NOTE: old output files will be removed first:
+maxDiffMesh_list_total_for_NH3.txt
+log_list_for_NH3_max.txt
+-> now we get the list of *log* files in the log directory and write to file
+-> number of lines in log list=
+25 log_list_for_NH3_max.txt
+-> loop and read in log_list... 
+ 
+-> opening log file= log.NH3.scen1.aug.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 1.3656386997302097e-06
+ 
+-> opening log file= log.NH3.scen1.jul.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 1.5607175469505989e-06
+ 
+-> opening log file= log.NH3.scen1.nov.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.0007540243329886842
+ 
+-> opening log file= log.NH3.scen1.oct.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.0003094540774460299
+ 
+-> opening log file= log.NH3.scen1.sep.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 5.626110213822108e-06
+ 
+-> opening log file= log.NH3.scen2.aug.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 2.1449734581886168e-05
+ 
+-> opening log file= log.NH3.scen2.jul.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.002269841724278938
+ 
+-> opening log file= log.NH3.scen2.nov.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.0007540248441456343
+ 
+-> opening log file= log.NH3.scen2.oct.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.002411855420520665
+ 
+-> opening log file= log.NH3.scen2.sep.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.0004622131173828852
+ 
+-> opening log file= log.NH3.scen3.aug.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.002511454483577439
+ 
+-> opening log file= log.NH3.scen3.jul.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.0017579284962094858
+ 
+-> opening log file= log.NH3.scen3.nov.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.0007540240265621612
+ 
+-> opening log file= log.NH3.scen3.oct.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.0031259450032045982
+ 
+-> opening log file= log.NH3.scen3.sep.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.00020608380500335363
+ 
+-> opening log file= log.NH3.scen4.aug.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 2.062663728294407e-05
+ 
+-> opening log file= log.NH3.scen4.jul.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.00021459342959798494
+ 
+-> opening log file= log.NH3.scen4.nov.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.0007540265636133137
+ 
+-> opening log file= log.NH3.scen4.oct.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.00042052174784444916
+ 
+-> opening log file= log.NH3.scen4.sep.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 7.053537530297693e-05
+ 
+-> opening log file= log.NH3.scen5.aug.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.00016722317263113276
+ 
+-> opening log file= log.NH3.scen5.jul.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.00619048057440094
+ 
+-> opening log file= log.NH3.scen5.nov.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.0007540237790123472
+ 
+-> opening log file= log.NH3.scen5.oct.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.008868438435385607
+ 
+-> opening log file= log.NH3.scen5.sep.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.0020198015083159634
+ 
+-> size of the maxDiffMesh output list is=
+25
+------------------------------------------------
+-> now we do the arithmetic operations in python since shell 
+					does _not_ understand arithmetic operations specially with scientific notation!!!
+ 
+-> we are currently at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/min_max_logs
+------------------------------------------------
+-> now we are inside python...
+-> we are at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/min_max_logs
+------------------------------------------------
+-> chk: pollutant is= NH3
+-> chk: statisticsl property is= max
+------------------------------------------------
+-> log file is= maxDiffMesh_list_total_for_NH3.txt
+ 
+-> line to append is= 1.3656386997302097e-06
+
+-> line to append is= 1.5607175469505989e-06
+
+-> line to append is= 0.0007540243329886842
+
+-> line to append is= 0.0003094540774460299
+
+-> line to append is= 5.626110213822108e-06
+
+-> line to append is= 2.1449734581886168e-05
+
+-> line to append is= 0.002269841724278938
+
+-> line to append is= 0.0007540248441456343
+
+-> line to append is= 0.002411855420520665
+
+-> line to append is= 0.0004622131173828852
+
+-> line to append is= 0.002511454483577439
+
+-> line to append is= 0.0017579284962094858
+
+-> line to append is= 0.0007540240265621612
+
+-> line to append is= 0.0031259450032045982
+
+-> line to append is= 0.00020608380500335363
+
+-> line to append is= 2.062663728294407e-05
+
+-> line to append is= 0.00021459342959798494
+
+-> line to append is= 0.0007540265636133137
+
+-> line to append is= 0.00042052174784444916
+
+-> line to append is= 7.053537530297693e-05
+
+-> line to append is= 0.00016722317263113276
+
+-> line to append is= 0.00619048057440094
+
+-> line to append is= 0.0007540237790123472
+
+-> line to append is= 0.008868438435385607
+
+-> line to append is= 0.0020198015083159634
+
+----------------------------------------
+-> chk: max of the list= 0.008868438435385607
+------------------------------------------------

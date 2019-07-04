@@ -1,0 +1,586 @@
+-> scenario= 5
+-> CMAQ month= 10
+-> number of days to run= 31
+-> CMAQ year= 2016
+-> processing pollutant= NH3
+-> pollutat unit= ppmV
+-> spatial plotting= yes
+-> processing method for spatial plot= diff_plot
+-> colorbar method for spatial diff plot= min_to_max
+-> time-series plotting= yes
+-> platform is= cluster
+-> mapping spatial data= no
+-> produce raster= no
+ 
+-> CMAQ input directory is:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/
+ 
+-> MCIP input directory is:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/
+ 
+-> opening MCIP file...
+-> MCIP file info:
+-> MCIP file dimensions: ('TSTEP', 'LAY', 'ROW', 'COL')
+-> shape of each dimension: (1, 1, 266, 251)
+-> closing MCIP file...
+ 
+-> month of analysis is= 10
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 1
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161001.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161001.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 2
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161002.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161002.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 3
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161003.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161003.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 4
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161004.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161004.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 5
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161005.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161005.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 6
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161006.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161006.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 7
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161007.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161007.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 8
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161008.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161008.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 9
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161009.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161009.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 10
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161010.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161010.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 11
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161011.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161011.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 12
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161012.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161012.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 13
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161013.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161013.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 14
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161014.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161014.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 15
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161015.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161015.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 16
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161016.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161016.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 17
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161017.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161017.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 18
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161018.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161018.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 19
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161019.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161019.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 20
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161020.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161020.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 21
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161021.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161021.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 22
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161022.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161022.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 23
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161023.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161023.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 24
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161024.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161024.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 25
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161025.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161025.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 26
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161026.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161026.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 27
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161027.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161027.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 28
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161028.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161028.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 29
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161029.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161029.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 30
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161030.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161030.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 31
+ 
+-> setting path for NH3 and diff_plot...
+-> opening/reading CMAQ files for NH3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_5/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen5_mpi_standard_20161031.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161031.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract pollutants ...
+-> closing ACONC scen and baseline files ...
+-----------------------------
+-> check 3D data mesh info:
+-> LANDIS scenario, monthly mean tensor: dimensions= 3 and shape of tensor= (744, 265, 250) 
+-> baseline, monthly mean tensor: dimensions= 3 and shape of tensor= (744, 265, 250) 
+-----------------------------
+-> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario (5) mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D "baseline" scenario mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now subtract 2 meshes to get the diff mesh for spatial plotting 
+ 
+-> monthly mesh scenario= [[5.96666019e-05 1.10955868e-04 5.42320432e-04 ... 3.76118359e-08
+  3.74632708e-08 3.71586881e-08]
+ [6.95779757e-05 1.08720839e-04 1.86056967e-04 ... 3.76028685e-08
+  3.68560236e-08 3.63923483e-08]
+ [8.56381190e-05 1.08935121e-04 1.28169288e-04 ... 3.76414995e-08
+  3.67245413e-08 3.58681623e-08]
+ ...
+ [3.09181126e-04 2.67381648e-04 1.78483892e-04 ... 9.18137598e-07
+  8.28047716e-07 6.75267007e-07]
+ [2.10173445e-04 1.95593367e-04 1.62406787e-04 ... 7.57669964e-07
+  6.45808224e-07 5.24595913e-07]
+ [1.68563795e-04 1.62924356e-04 1.48054860e-04 ... 5.53113851e-07
+  3.91512546e-07 2.94970042e-07]] 
+ 
+-> monthly mesh baseline= [[5.96665825e-05 1.10955843e-04 5.42320401e-04 ... 3.77519976e-08
+  3.75787412e-08 3.72408620e-08]
+ [6.95779541e-05 1.08720816e-04 1.86056938e-04 ... 3.77553954e-08
+  3.69809883e-08 3.64744300e-08]
+ [8.56381010e-05 1.08935101e-04 1.28169261e-04 ... 3.77796513e-08
+  3.68587361e-08 3.59548864e-08]
+ ...
+ [3.09069082e-04 2.67253932e-04 1.78346762e-04 ... 3.31429716e-07
+  2.48698644e-07 2.15569280e-07]
+ [2.10068639e-04 1.95472509e-04 1.62277380e-04 ... 2.07707262e-07
+  1.54025896e-07 1.28666961e-07]
+ [1.68467184e-04 1.62812979e-04 1.47938963e-04 ... 1.43068429e-07
+  1.26636941e-07 1.09009482e-07]] 
+ 
+-> monthly mean diff-mesh= [[ 1.94338882e-11  2.50337003e-11  3.03674887e-11 ... -1.40161699e-10
+  -1.15470422e-10 -8.21738609e-11]
+ [ 2.15279646e-11  2.33359425e-11  2.87618531e-11 ... -1.52526874e-10
+  -1.24964657e-10 -8.20816772e-11]
+ [ 1.79763110e-11  1.95764456e-11  2.70570090e-11 ... -1.38151878e-10
+  -1.34194797e-10 -8.67240037e-11]
+ ...
+ [ 1.12043803e-07  1.27715900e-07  1.37129344e-07 ...  5.86707882e-07
+   5.79349072e-07  4.59697728e-07]
+ [ 1.04806175e-07  1.20857841e-07  1.29406927e-07 ...  5.49962702e-07
+   4.91782328e-07  3.95928952e-07]
+ [ 9.66107990e-08  1.11377751e-07  1.15897822e-07 ...  4.10045422e-07
+   2.64875605e-07  1.85960560e-07]]
+ 
+-> diff matrix statistics:
+-> shape = (265, 250) and dimension = 2
+-> getting the min/mean/max of mesh ...
+-> row of mesh = 265 and col of mesh = 250 
+-> size of list_from_mesh = 66250 
+-----------------------------
+-> stats: minDiffMesh= -1.6753612585673587e-08 
+-> stats: meanDiffMesh= 3.759550279184295e-05 
+-> stats: maxDiffMesh= 0.008868438435385607 
+-> row no. of max value= 142 
+-> col no. of max value= 184 
+-----------------------------
+-> time-series plotting is YES, so we plot time-series...
+-> size of x_ axis list = 744
+-> size of y_ axis list = 744
+-> time-series plot saved at:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/NH3_timeseries_scen_5_2016-10_summed_31_days.png
+ 
+-> spatial plotting ...
+ 
+-> making the colormesh ...
+-> shape of x_mesh= (266, 251)
+-> shape of y_mesh= (266, 251)
+-> shape of monthly_mean_diff_mesh= (265, 250)
+ 
+-> plot method= diff_plot
+-> colorbar method= min_to_max
+-> plot the image for vmin= -1.6753612585673587e-08 and vmax= 0.008868438435385607
+ 
+ 
+-> output figure is stored at:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/cmaq_figs/NH3_monthlyMean_scen_5_difference_from_baseline_2016-10_summed_31_days_colorbarMethod_min_to_max.png
+------------------------------------
+-> run time of main function= 25.72 min
+*** MAIN COMPLETED SUCCESSFULLY! ***
+------------------------------------
