@@ -28,28 +28,28 @@ def main() :
 	start = time.time()
 
 	### run time settings
-	cmaq_file_month= '07'																			#  07, 08, 	09,  10,  11
-	sim_month= 'Jul'  																				# Jul, Aug, Sep, Oct, Nov
+	cmaq_file_month= '11'																			#  07, 08, 	09,  10,  11
+	sim_month= 'Nov'  																				# Jul, Aug, Sep, Oct, Nov
 	cmaq_file_year= '2016'
 	mcip_date_tag= '161001'
 
 	scenario= '1' 																						# 1-5, baseline
-	days_to_run_in_month= 31 
-	cmaq_pol= environ.get('CMAQ_POL') 												# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
-	processing_pollutant= environ.get('PROCESSING_POLLUTANT') # 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
-	pol_unit= environ.get('POL_UNIT') 												#	'ppmV' or 'ug/m^3'
+	days_to_run_in_month= 1 
+	cmaq_pol= 'PM2.5'												# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
+	processing_pollutant= 'pm2.5' # 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
+	pol_unit= 'ug/m^3' 												#	'ppmV' or 'ug/m^3'
 	include_pmdiag_file= 'yes' 					 											# 'yes' OR 'no'
 
 	### spatial plot
-	spatial_plotting= environ.get('SPATIAL_PLOTTING_KEY')		 	# yes or no
-	plot_method= environ.get('PLOT_METHOD')										# 'single_plot' or 'diff_plot'
-	colorbar_method= environ.get('COLOR_METHOD') 							# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
-	minus_abs_max_diffPlot= environ.get('MINUS_ABS_MAX_DIFF') 
-	abs_max_diffPlot= environ.get('ABS_MAX_DIFF')
+	spatial_plotting= 'yes'		 	# yes or no
+	plot_method= 'diff_plot'								# 'single_plot' or 'diff_plot'
+	colorbar_method= 'min_to_max'						# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
+	minus_abs_max_diffPlot= ''
+	abs_max_diffPlot= ''
 	vmin_mine_singlePlot= -0.4
 	vmax_mine_singlePlot= 0.4
 
-	produce_raster= environ.get('PRODUCE_RASTER') 						# 'yes' OR 'no'
+	produce_raster= 'no' 						# 'yes' OR 'no'
 
 	### set mapping parameters for spatial plotting
 	mapping= 'no' # 'yes' OR 'no'
@@ -60,7 +60,7 @@ def main() :
 	### time-series plot
 	timeseries_plotting= environ.get('TIMESERIES_PLOTTING') 	# yes or not
 
-	platform= 'cluster'  # 'Mac' or 'cluster'
+	platform= 'Mac'  # 'Mac' or 'cluster'
 	storage= '10T' # 'personal' OR '10T'
 
 	# ### Basemap plot setting
