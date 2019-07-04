@@ -8,7 +8,7 @@
 # I defined 'chk' as a keyword to check importent parameters and end value
 #------------------------------------------------------------------------
 
-pollutant='NH3'
+pollutant='SO2'
 stats_property='max'
 
 stats_pattern=$stats_property'DiffMesh'

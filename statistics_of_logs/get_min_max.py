@@ -8,7 +8,7 @@ import numpy as np
 import os
 #--------------------------------------------------------
 
-pollutant='NH3'
+pollutant='SO2'
 stats_property='max'
 
 #--------------------------------------------------------
