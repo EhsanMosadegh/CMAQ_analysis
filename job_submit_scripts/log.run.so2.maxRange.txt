@@ -1,0 +1,60 @@
+-> set environmental variables first
+-> processing pollutant= single_pollutant
+-> pollutant unit= ppmV
+-> spatial plotting= yes
+-> plotting mehtod= diff_plot
+-> colorbar method= minus_abs_max_to_max
+-> produce raster= no
+-> time-series plotting= yes
+-> minus-abs max values for diff plot= -0.616
+-> abs max values for diff plot= 0.616
+Your job 1529 ("s1jul") has been submitted
+-> job script= job_scen1_jul.csh --> SO2
+Your job 1530 ("s1aug") has been submitted
+-> job script= job_scen1_aug.csh --> SO2
+Your job 1531 ("s1sep") has been submitted
+-> job script= job_scen1_sep.csh --> SO2
+Your job 1532 ("s1oct") has been submitted
+-> job script= job_scen1_oct.csh --> SO2
+Your job 1533 ("s1nov") has been submitted
+-> job script= job_scen1_nov.csh --> SO2
+Your job 1534 ("s2jul") has been submitted
+-> job script= job_scen2_jul.csh --> SO2
+Your job 1535 ("s2aug") has been submitted
+-> job script= job_scen2_aug.csh --> SO2
+Your job 1536 ("s2sep") has been submitted
+-> job script= job_scen2_sep.csh --> SO2
+Your job 1537 ("s2oct") has been submitted
+-> job script= job_scen2_oct.csh --> SO2
+Your job 1538 ("s2nov") has been submitted
+-> job script= job_scen2_nov.csh --> SO2
+Your job 1539 ("s3jul") has been submitted
+-> job script= job_scen3_jul.csh --> SO2
+Your job 1540 ("s3aug") has been submitted
+-> job script= job_scen3_aug.csh --> SO2
+Your job 1541 ("s3sep") has been submitted
+-> job script= job_scen3_sep.csh --> SO2
+Your job 1542 ("s3oct") has been submitted
+-> job script= job_scen3_oct.csh --> SO2
+Your job 1543 ("s3nov") has been submitted
+-> job script= job_scen3_nov.csh --> SO2
+Your job 1544 ("s4jul") has been submitted
+-> job script= job_scen4_jul.csh --> SO2
+Your job 1545 ("s4aug") has been submitted
+-> job script= job_scen4_aug.csh --> SO2
+Your job 1546 ("s4sep") has been submitted
+-> job script= job_scen4_sep.csh --> SO2
+Your job 1547 ("s4oct") has been submitted
+-> job script= job_scen4_oct.csh --> SO2
+Your job 1548 ("s4nov") has been submitted
+-> job script= job_scen4_nov.csh --> SO2
+Your job 1549 ("s5jul") has been submitted
+-> job script= job_scen5_jul.csh --> SO2
+Your job 1550 ("s5aug") has been submitted
+-> job script= job_scen5_aug.csh --> SO2
+Your job 1551 ("s5sep") has been submitted
+-> job script= job_scen5_sep.csh --> SO2
+Your job 1552 ("s5oct") has been submitted
+-> job script= job_scen5_oct.csh --> SO2
+Your job 1553 ("s5nov") has been submitted
+-> job script= job_scen5_nov.csh --> SO2
