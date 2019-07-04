@@ -58,7 +58,7 @@ def main() :
 
 
 	### time-series plot
-	timeseries_plotting= environ.get('TIMESERIES_PLOTTING') 	# yes or not
+	timeseries_plotting= 'yes' 	# yes or not
 
 	platform= 'Mac'  # 'Mac' or 'cluster'
 	storage= '10T' # 'personal' OR '10T'
@@ -270,7 +270,7 @@ def main() :
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
 				print('-> opening/reading CMAQ files:')
 				print( aconc_input_scen )
-				print( " ")
+				print(" ")
 
 			# for difference between 2 scenarios
 			elif ( plot_method == 'diff_plot' ) :  # open 2 netcdf files: "aconc_scen" and "aconc_baseline"
@@ -283,7 +283,7 @@ def main() :
 				print( f'-> opening/reading CMAQ files for {cmaq_pol}:')
 				print( aconc_input_scen )
 				print( aconc_input_base )
-				print( " ")
+				print(" ")
 
 			else:
 
@@ -303,7 +303,7 @@ def main() :
 				print('-> opening/reading CMAQ files for pm2.5:')
 				print( aconc_input_scen )
 				print( pmdiag_input_scen )
-				print( " ")
+				print(" ")
 
 				# define netcdf file
 				aconc_open_scen = Dataset( aconc_input_scen , 'r' )
@@ -329,6 +329,7 @@ def main() :
 				pmdiag_open_scen = Dataset( pmdiag_input_scen , 'r' )
 				aconc_open_base = Dataset( aconc_input_base , 'r' )
 				pmdiag_open_base = Dataset( pmdiag_input_base , 'r' )
+				print(" ")
 
 			else:
 				print('-> ERROR: select single or diff method! ')
@@ -354,7 +355,7 @@ def main() :
 			daily_tensor_scen = np.empty ( shape= ( 24 , domain_rows , domain_cols ))  # when assignin gby index, z-dim should be 1.
 
 			#print(f'-> shape of daily tseries array={daily_tensor_scen.shape }')
-			print('-> traversing each cell and extract pollutants ...')
+			print('-> traversing each cell and extract species ...')
 			### traverse each cell in the C-storing style for each day: row and then col
 			for row in range( 0 , domain_rows , 1 ) :
 
@@ -370,7 +371,7 @@ def main() :
 
 					elif ( processing_pollutant == 'pm2.5') :
 
-						print( f'-> extracting cell for pm2.5 at row= {row} and col={col} ... ' )
+						print( f'-> inside loop: extracting cell for pm2.5 at row= {row} and col={col} ... ' )
 
 						cell_24hr_tseries_for_pm25 = function_pm25_daily_cell_tseries( include_pmdiag_file , aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
@@ -410,7 +411,7 @@ def main() :
 			daily_tensor_base = np.empty ( shape=( 24 , domain_rows , domain_cols ) )
 
 
-			print('-> traversing each cell to extract pollutants ...')
+			print('-> traversing each cell to extract species ...')
 			### traverse each cell in the C-storing style for each day: row and then col
 			for row in range( 0 , domain_rows , 1 ) :
 
@@ -426,11 +427,16 @@ def main() :
 
 					elif ( processing_pollutant == 'pm2.5' ) :
 
-						#print( f'-> extracting cell for PM2.5 - diff - at row= {row} and col={col} ... ' )
-
+						print(" ")
+						print('-----------------------------------------------------------')
 						# we calculate cell means
+						print( f'-> inside loop: extracting cell for PM2.5 - diff - Landis - at row= {row} and col= {col} ... ' )
 						cell_24hr_timeSeries_array_scen = function_pm25_daily_cell_tseries( include_pmdiag_file , aconc_open_scen , pmdiag_open_scen , lay , row , col )
+						print(" ")
+						print( f'-> inside loop: extracting cell for PM2.5 - diff - baseline - at row= {row} and col= {col} ... ' )
 						cell_24hr_timeSeries_array_base = function_pm25_daily_cell_tseries( include_pmdiag_file , aconc_open_base , pmdiag_open_base , lay , row , col )
+						print('-----------------------------------------------------------')
+						print(" ")
 
 					else:
 						pass
@@ -440,11 +446,11 @@ def main() :
 					daily_tensor_base [: , row , col] = cell_24hr_timeSeries_array_base
 
 			### now we add/concatenate each daily tensor to monthly tensor
-			#print( f'-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+			print( f'-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 
 			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen ,  daily_tensor_scen ) , axis=0 ) # along axis=0 of the tensor
 
-			#print( f'-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
+			print( f'-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= {day_of_the_month-1} , row= {row} , col= {col}' )
 
 			monthly_tseries_tensor_from_base = np.concatenate( ( monthly_tseries_tensor_from_base ,  daily_tensor_base ) , axis=0 ) # along axis=0 of the tensor
 
@@ -1004,12 +1010,12 @@ def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row 
 
 def function_pm25_daily_cell_tseries ( include_pmdiag_file , aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
 	" returns daily timeseries for pm2.5 for each cell"
-
-	#print( f'-> processing row= {row} and col= {col}' )
-
+	print(" ")
 	# loop inside 24 time-steps and extract pm concentrations
 	# extract PM2.5 species from input files
-	#print('-> extracting several species from CMAQ files for pm2.5 ...')
+	print('-> inside pm2.5 daily function: extracting several species from CMAQ files for pm2.5 ...')
+	print( f'-> processing row= {row} and col= {col}' )
+
 	# species from aconc [1]
 	AH3OPI = aconc_open.variables['AH3OPI'][:,lay,row,col]
 	AH3OPI = np.array(AH3OPI)
