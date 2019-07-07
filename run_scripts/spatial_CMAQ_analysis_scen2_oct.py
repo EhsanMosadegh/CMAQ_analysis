@@ -1232,7 +1232,7 @@ def function_pm25_daily_cell_tseries ( include_pmdiag_file , aconc_open , pmdiag
 
 	if ( include_pmdiag_file == 'yes' ) :
 
-		print( '-> PMDIAG file is included in PM2.5 calculations ...' )
+		#print( '-> PMDIAG file is included in PM2.5 calculations ...' )
 
 		### species from pmdiag [3]
 		PM25AT = pmdiag_open.variables['PM25AT'][:,lay,row,col]
