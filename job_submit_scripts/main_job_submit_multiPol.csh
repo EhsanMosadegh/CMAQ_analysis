@@ -25,7 +25,7 @@ echo '-> minus-abs max values for diff plot=' ${MINUS_ABS_MAX_DIFF}
 echo '-> abs max values for diff plot=' ${ABS_MAX_DIFF}
 echo '------------------------------------------------------'
 
-foreach species ('CO' 'O3')# 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
+foreach species ('N2O' 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
 
 	setenv CMAQ_POL ${species}                                    # for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
 
@@ -39,7 +39,7 @@ foreach species ('CO' 'O3')# 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
 
 					setenv CMAQ_MONTH_STRING 'Jul'
 					setenv CMAQ_MONTH_NUMBER '07'
-					setenv DAYS_IN_MONTH_TO_RUN '1'
+					setenv DAYS_IN_MONTH_TO_RUN '31'
 
 					setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
@@ -47,7 +47,7 @@ foreach species ('CO' 'O3')# 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
 
 					setenv CMAQ_MONTH_STRING 'Aug'
 					setenv CMAQ_MONTH_NUMBER '08'
-					setenv DAYS_IN_MONTH_TO_RUN '1'
+					setenv DAYS_IN_MONTH_TO_RUN '31'
 
 					setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
@@ -55,19 +55,19 @@ foreach species ('CO' 'O3')# 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
 
 					setenv CMAQ_MONTH_STRING 'Sep'
 					setenv CMAQ_MONTH_NUMBER '09'
-					setenv DAYS_IN_MONTH_TO_RUN '1'
+					setenv DAYS_IN_MONTH_TO_RUN '30'
 
 				else if ($month_name == 'oct') then
 
 					setenv CMAQ_MONTH_STRING 'Oct'
 					setenv CMAQ_MONTH_NUMBER '10'
-					setenv DAYS_IN_MONTH_TO_RUN '1'
+					setenv DAYS_IN_MONTH_TO_RUN '31'
 
 				else if ($month_name == 'nov') then
 
 					setenv CMAQ_MONTH_STRING 'Nov'
 					setenv CMAQ_MONTH_NUMBER '11'
-					setenv DAYS_IN_MONTH_TO_RUN '1'
+					setenv DAYS_IN_MONTH_TO_RUN '29'
 
 				else
 
