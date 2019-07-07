@@ -47,9 +47,9 @@ def main() :
 	plot_method= environ.get('PLOT_METHOD')										# 'single_plot' or 'diff_plot'
 	colorbar_method= environ.get('COLOR_METHOD') 							# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
 	minus_abs_max_diffPlot= environ.get('MINUS_ABS_MAX_DIFF') 
-	minus_abs_max_diffPlot= int(minus_abs_max_diffPlot)
+	#minus_abs_max_diffPlot= int(minus_abs_max_diffPlot)
 	abs_max_diffPlot= environ.get('ABS_MAX_DIFF')
-	abs_max_diffPlot= int(abs_max_diffPlot)
+	#abs_max_diffPlot= int(abs_max_diffPlot)
 	vmin_mine_singlePlot= -0.4
 	vmax_mine_singlePlot= 0.4
 
@@ -120,6 +120,7 @@ def main() :
 		if (plot_method=='diff_plot'):
 			print( f'-> colorbar method for spatial diff plot= {colorbar_method}')
 			if ( colorbar_method == 'minus_abs_max_to_max' ):
+				
 				print( f'-> for diff plot: minus absolute Max. values= {minus_abs_max_diffPlot}')
 				print( f'-> for diff plot: plus absolute Max. values= {abs_max_diffPlot}')				
 	print( f'-> time-series plotting= {timeseries_plotting}')
