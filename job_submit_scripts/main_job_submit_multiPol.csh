@@ -33,7 +33,7 @@ foreach species ('CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
 
 			setenv LANDIS_SCENARIO ${scen_no}
 
-			foreach month_name ('jul' 'aug') #'sep' 'oct' 'nov')
+			foreach month_name ('jul' 'aug' 'sep' 'oct' 'nov')
 				
 				if ($month_name == 'jul') then
 
