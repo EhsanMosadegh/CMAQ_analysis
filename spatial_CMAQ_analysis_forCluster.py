@@ -823,7 +823,7 @@ def mapping_function( abs_conc , lower_bound_mapping_conc , upper_bound_mapping_
 
 def function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting ) :
 
-	print( '-> getting the min/mean/max of mesh ...')
+	print( '-> getting the min/mean/max from the mean 2D mesh of our domain ...')
 
 	list_from_mesh = []
 
@@ -844,6 +844,7 @@ def function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting ) 
 	min_of_mesh = np.min( list_from_mesh )
 	mean_of_mesh = np.mean( list_from_mesh )
 	max_of_mesh = np.max( list_from_mesh )
+	# include std, median, 
 
 	# loop again to find the row-col of max cell
 	if ( timeseries_plotting == 'yes' ) :
