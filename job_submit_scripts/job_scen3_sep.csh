@@ -22,10 +22,10 @@ module list
 unlimit
 limit
  
-echo " job =====> submitted" 			
+echo " job" ${JOB_NAME}" =====> submitted" 			
 date
 
-python -u ../run_scripts/spatial_CMAQ_analysis_scen3_sep.py > ../logs/log.${CMAQ_POL}.scen3.sep.txt
+python -u ../run_scripts/spatial_CMAQ_analysis_for_cluster.py > ../logs/log.${CMAQ_POL}.scen${LANDIS_SCENARIO}.${CMAQ_MONTH_STRING}.txt
 
-echo " job =====> ended"
+echo " job" ${JOB_NAME}" =====> ended"
 date
