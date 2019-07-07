@@ -35,7 +35,7 @@ foreach species ('CO') # 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
 
 			foreach month_name ('jul' 'aug') #'sep' 'oct' 'nov')
 				
-				if (month_name=='jul') then
+				if ($month_name == 'jul') then
 
 					setenv CMAQ_MONTH_STRING 'Jul'
 					setenv CMAQ_MONTH_NUMBER '07'
@@ -43,7 +43,7 @@ foreach species ('CO') # 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
 
 					setenv JOB_NAME ${scen_no}${CMAQ_MONTH_STRING}
 
-				else if (month_name=='aug')
+				else if ($month_name == 'aug') then
 
 					setenv CMAQ_MONTH_STRING 'Aug'
 					setenv CMAQ_MONTH_NUMBER '08'
@@ -51,19 +51,19 @@ foreach species ('CO') # 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
 
 					setenv JOB_NAME ${scen_no}${CMAQ_MONTH_STRING}
 
-				else if (month_name=='sep')
+				else if ($month_name == 'sep') then
 
 					setenv CMAQ_MONTH_STRING 'Sep'
 					setenv CMAQ_MONTH_NUMBER '09'
 					setenv DAYS_IN_MONTH_TO_RUN '30'
 
-				else if (month_name=='oct')
+				else if ($month_name == 'oct') then
 
 					setenv CMAQ_MONTH_STRING 'Oct'
 					setenv CMAQ_MONTH_NUMBER '10'
 					setenv DAYS_IN_MONTH_TO_RUN '31'
 
-				else if (month_name=='nov')
+				else if ($month_name == 'nov') then
 
 					setenv CMAQ_MONTH_STRING 'Nov'
 					setenv CMAQ_MONTH_NUMBER '11'
