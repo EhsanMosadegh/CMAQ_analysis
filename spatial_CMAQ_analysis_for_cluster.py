@@ -28,13 +28,13 @@ def main() :
 	start = time.time()
 
 	### run time settings
-	cmaq_file_month= '07'																			#  07, 08, 	09,  10,  11
-	sim_month= 'Jul'  																				# Jul, Aug, Sep, Oct, Nov
+	cmaq_file_month= environ.get('CMAQ_MONTH_NUMBER')																			#  07, 08, 	09,  10,  11
+	sim_month= environ.get('CMAQ_MONTH_STRING')  																				# Jul, Aug, Sep, Oct, Nov
 	cmaq_file_year= '2016'
 	mcip_date_tag= '161001'
 
-	scenario= '1' 																						# 1-5, baseline
-	days_to_run_in_month= 31 
+	scenario= environ.get('LANDIS_SCENARIO') 																						# 1-5, baseline
+	days_to_run_in_month= environ.get('DAYS_IN_MONTH_TO_RUN') 
 	cmaq_pol= environ.get('CMAQ_POL') 												# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
 	processing_pollutant= environ.get('PROCESSING_POLLUTANT') # 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
 	pol_unit= environ.get('POL_UNIT') 												#	'ppmV' or 'ug/m^3'
@@ -102,7 +102,8 @@ def main() :
 	newRasterfn = 'co_test_raster.tif'
 
 	print( f'-> scenario= {scenario}')
-	print( f'-> CMAQ month= {cmaq_file_month}')
+	print( f'-> CMAQ month= {sim_month}')
+	print( f'-> CMAQ month number= {cmaq_file_month}')
 	print( f'-> number of days to run= {days_to_run_in_month}')
 	print( f'-> CMAQ year= {cmaq_file_year}')
 	print( f'-> processing pollutant= {cmaq_pol}')
@@ -1233,7 +1234,7 @@ def function_pm25_daily_cell_tseries ( include_pmdiag_file , aconc_open , pmdiag
 
 	if ( include_pmdiag_file == 'yes' ) :
 
-		print( '-> PMDIAG file is included in PM2.5 calculations ...' )
+		#print( '-> PMDIAG file is included in PM2.5 calculations ...' )
 
 		### species from pmdiag [3]
 		PM25AT = pmdiag_open.variables['PM25AT'][:,lay,row,col]
