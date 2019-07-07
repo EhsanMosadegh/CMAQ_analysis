@@ -28,15 +28,13 @@ def main() :
 	start = time.time()
 
 	### run time settings
-	cmaq_file_month= environ.get('CMAQ_MONTH_NUMBER')																			#  07, 08, 	09,  10,  11
-	sim_month= environ.get('CMAQ_MONTH_STRING')  																				# Jul, Aug, Sep, Oct, Nov
+	cmaq_file_month= '08'																			#  07, 08, 	09,  10,  11
+	sim_month= 'Aug'  																				# Jul, Aug, Sep, Oct, Nov
 	cmaq_file_year= '2016'
 	mcip_date_tag= '161001'
 
-	scenario= environ.get('LANDIS_SCENARIO') 																						# 1-5, baseline
-	days_to_run_in_month= environ.get('DAYS_IN_MONTH_TO_RUN') 
-	days_to_run_in_month= int(days_to_run_in_month)
-	print( f'-> type of days to run= { type( days_to_run_in_month )}')
+	scenario= '2' 																						# 1-5, baseline
+	days_to_run_in_month= 31 
 	cmaq_pol= environ.get('CMAQ_POL') 												# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
 	processing_pollutant= environ.get('PROCESSING_POLLUTANT') # 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
 	pol_unit= environ.get('POL_UNIT') 												#	'ppmV' or 'ug/m^3'
@@ -47,9 +45,7 @@ def main() :
 	plot_method= environ.get('PLOT_METHOD')										# 'single_plot' or 'diff_plot'
 	colorbar_method= environ.get('COLOR_METHOD') 							# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
 	minus_abs_max_diffPlot= environ.get('MINUS_ABS_MAX_DIFF') 
-	minus_abs_max_diffPlot= int(minus_abs_max_diffPlot)
 	abs_max_diffPlot= environ.get('ABS_MAX_DIFF')
-	abs_max_diffPlot= int(abs_max_diffPlot)
 	vmin_mine_singlePlot= -0.4
 	vmax_mine_singlePlot= 0.4
 
@@ -106,8 +102,7 @@ def main() :
 	newRasterfn = 'co_test_raster.tif'
 
 	print( f'-> scenario= {scenario}')
-	print( f'-> CMAQ month= {sim_month}')
-	print( f'-> CMAQ month number= {cmaq_file_month}')
+	print( f'-> CMAQ month= {cmaq_file_month}')
 	print( f'-> number of days to run= {days_to_run_in_month}')
 	print( f'-> CMAQ year= {cmaq_file_year}')
 	print( f'-> processing pollutant= {cmaq_pol}')
@@ -828,7 +823,7 @@ def mapping_function( abs_conc , lower_bound_mapping_conc , upper_bound_mapping_
 
 def function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting ) :
 
-	print( '-> getting the min/mean/max from the mean 2D mesh of our domain ...')
+	print( '-> getting the min/mean/max of mesh ...')
 
 	list_from_mesh = []
 
@@ -849,7 +844,6 @@ def function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting ) 
 	min_of_mesh = np.min( list_from_mesh )
 	mean_of_mesh = np.mean( list_from_mesh )
 	max_of_mesh = np.max( list_from_mesh )
-	# include std, median, 
 
 	# loop again to find the row-col of max cell
 	if ( timeseries_plotting == 'yes' ) :

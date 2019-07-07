@@ -1,8 +1,8 @@
 #!/bin/csh -f 
 
-#$ -o ../logs/log.scen1.jul.txt	 			 ##$ output file name
+#$ -o ../logs/log.scen1.sep.txt	 			 ##$ output file name
 
-#$ -N S1jul						##$ name of my job
+#$ -N s1sep						##$ name of my job
 #$ -S /bin/csh						##$ specify the shell
 #$ -cwd							##$ job is submitted from here
 #$ -V  							##$ uses current env variables / preserves your environment
@@ -22,10 +22,10 @@ module list
 unlimit
 limit
  
-echo " job" ${JOB_NAME}" =====> submitted" 			
+echo " job =====> submitted" 			
 date
 
-python -u ../run_scripts/spatial_CMAQ_analysis_for_cluster.py > ../logs/log.${CMAQ_POL}.scen${LANDIS_SCENARIO}.${CMAQ_MONTH_STRING}.txt
+python -u ../run_scripts/spatial_CMAQ_analysis_scen1_sep.py > ../logs/log.${CMAQ_POL}.scen1.sep.txt
 
-echo " job" ${JOB_NAME}" =====> ended"
+echo " job =====> ended"
 date

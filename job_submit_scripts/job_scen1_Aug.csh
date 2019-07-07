@@ -1,8 +1,8 @@
 #!/bin/csh -f 
 
-#$ -o ../logs/log.scen1.jul.txt	 			 ##$ output file name
+#$ -o ../logs/log.scen1.aug.txt	 			 ##$ output file name
 
-#$ -N S1jul						##$ name of my job
+#$ -N S1aug						##$ name of my job
 #$ -S /bin/csh						##$ specify the shell
 #$ -cwd							##$ job is submitted from here
 #$ -V  							##$ uses current env variables / preserves your environment

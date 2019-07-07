@@ -25,11 +25,11 @@ echo '-> minus-abs max values for diff plot=' ${MINUS_ABS_MAX_DIFF}
 echo '-> abs max values for diff plot=' ${ABS_MAX_DIFF}
 echo '------------------------------------------------------'
 
-foreach species ('CO') # 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
+foreach species ('CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
 
 	setenv CMAQ_POL ${species}                                    # for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
 
-		foreach scen_no (1 2) # 3 4 5)
+		foreach scen_no (1 2 3 4 5)
 
 			setenv LANDIS_SCENARIO ${scen_no}
 
@@ -41,7 +41,7 @@ foreach species ('CO') # 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
 					setenv CMAQ_MONTH_NUMBER '07'
 					setenv DAYS_IN_MONTH_TO_RUN '1'
 
-					setenv JOB_NAME ${scen_no}${CMAQ_MONTH_STRING}
+					setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
 				else if ($month_name == 'aug') then
 
@@ -49,25 +49,25 @@ foreach species ('CO') # 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
 					setenv CMAQ_MONTH_NUMBER '08'
 					setenv DAYS_IN_MONTH_TO_RUN '1'
 
-					setenv JOB_NAME ${scen_no}${CMAQ_MONTH_STRING}
+					setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
 				else if ($month_name == 'sep') then
 
 					setenv CMAQ_MONTH_STRING 'Sep'
 					setenv CMAQ_MONTH_NUMBER '09'
-					setenv DAYS_IN_MONTH_TO_RUN '30'
+					setenv DAYS_IN_MONTH_TO_RUN '1'
 
 				else if ($month_name == 'oct') then
 
 					setenv CMAQ_MONTH_STRING 'Oct'
 					setenv CMAQ_MONTH_NUMBER '10'
-					setenv DAYS_IN_MONTH_TO_RUN '31'
+					setenv DAYS_IN_MONTH_TO_RUN '1'
 
 				else if ($month_name == 'nov') then
 
 					setenv CMAQ_MONTH_STRING 'Nov'
 					setenv CMAQ_MONTH_NUMBER '11'
-					setenv DAYS_IN_MONTH_TO_RUN '29'
+					setenv DAYS_IN_MONTH_TO_RUN '1'
 
 				else
 
@@ -77,7 +77,7 @@ foreach species ('CO') # 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5')
 
 				echo '-> job name=' ${JOB_NAME}
 
-				#qsub ./job_scen${LANDIS_SCENARIO}_${CMAQ_MONTH_STRING}.csh
+				qsub ./job_scen${LANDIS_SCENARIO}_${CMAQ_MONTH_STRING}.csh
 				echo '-> job script= job_scen'${scen_no}'_'${month_name}'.csh' '-->' ${CMAQ_POL}
 		
 			end
