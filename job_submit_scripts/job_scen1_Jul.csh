@@ -1,6 +1,6 @@
 #!/bin/csh -f 
 
-#$ -o ../logs/log.scen1.aug.txt	 			 ##$ output file name
+#$ -o ../logs/log.scen1.jul.txt	 			 ##$ output file name
 
 #$ -N ${JOB_NAME}						##$ name of my job
 #$ -S /bin/csh						##$ specify the shell
