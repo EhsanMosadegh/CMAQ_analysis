@@ -542,11 +542,13 @@ def main() :
 
 		print( f'-> shape = {monthly_mean_2d_mesh.shape } and dimension = {monthly_mean_2d_mesh.ndim }')
 
-		( mean_mesh_min , mean_mesh_mean , mean_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting )
+		( mean_mesh_min , mean_mesh_mean , mean_mesh_median , mean_mesh_std , mean_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting )
 		
 		print('-----------------------------')
 		print( f'-> stats: minAverageMesh= { round( mean_mesh_min , 6 ) } ')
 		print( f'-> stats: meanAverageMesh= { round( mean_mesh_mean , 6 ) } ')
+		print( f'-> stats: medianAverageMesh= { round( mean_mesh_median , 6 ) } ')
+		print( f'-> stats: stdAverageMesh= { round( mean_mesh_std , 6 ) } ')
 		print( f'-> stats: maxAverageMesh= { round( mean_mesh_max , 6 ) } ')
 		print( f'-> row no. of max value= { row_of_max_cell } ')
 		print( f'-> col no. of max value= { col_of_max_cell } ')
@@ -594,11 +596,13 @@ def main() :
 
 		print( f'-> shape = {monthly_mean_2d_mesh.shape } and dimension = {monthly_mean_2d_mesh.ndim }')
 
-		( diff_mesh_min , diff_mesh_mean , diff_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting )
+		( diff_mesh_min , diff_mesh_mean , diff_mesh_median , diff_mesh_std , diff_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting )
 
 		print('-----------------------------')
 		print( f'-> stats: minDiffMesh= { diff_mesh_min } ')
 		print( f'-> stats: meanDiffMesh= { diff_mesh_mean } ')
+		print( f'-> stats: medianDiffMesh= { diff_mesh_median } ')
+		print( f'-> stats: stdDiffMesh= { diff_mesh_std } ')
 		print( f'-> stats: maxDiffMesh= { diff_mesh_max } ')
 		print( f'-> row no. of max value= { row_of_max_cell } ')
 		print( f'-> col no. of max value= { col_of_max_cell } ')
@@ -850,7 +854,10 @@ def function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting ) 
 
 	min_of_mesh = np.min( list_from_mesh )
 	mean_of_mesh = np.mean( list_from_mesh )
+	median_of_mesh= np.median( list_from_mesh )
+	std_of_mesh= np.std( list_from_mesh )
 	max_of_mesh = np.max( list_from_mesh )
+	
 	# include std, median, 
 
 	# loop again to find the row-col of max cell
@@ -867,7 +874,7 @@ def function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting ) 
 					col_of_max = col
 					break
 
-	return min_of_mesh , mean_of_mesh , max_of_mesh , row_of_max , col_of_max
+	return min_of_mesh , mean_of_mesh , median_of_mesh , std_of_mesh , max_of_mesh , row_of_max , col_of_max
 
 
 #====================================================================================================
