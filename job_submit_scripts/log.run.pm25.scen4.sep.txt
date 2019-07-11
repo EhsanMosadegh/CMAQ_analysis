@@ -1,0 +1,15 @@
+-> set environmental variables first
+------------------------------------------------------
+-> processing pollutant= pm2.5
+-> pollutant unit= ug/m^3
+-> spatial plotting= yes
+-> plotting mehtod= diff_plot
+-> colorbar method= min_to_max
+-> produce raster= no
+-> time-series plotting= yes
+-> minus-abs max values for diff plot=
+-> abs max values for diff plot=
+------------------------------------------------------
+-> job name= S4Sep
+Your job 2122 ("s4sep") has been submitted
+-> job script= job_scen4_sep.csh --> PM2.5

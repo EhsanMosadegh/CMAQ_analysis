@@ -83,12 +83,14 @@ do
 	grep -o $stats_pattern.* $log_list_line | cut -f2 -d' ' >> $output_file_name
 
 done < log_list_for_${pollutant}_${stats_property}.txt
+
 echo ' '
 echo '-> size of the' $stats_pattern 'output list is=' 
 cat $output_file_name | py -l 'print(len(l))'
 echo '------------------------------------------------'
-echo '-> now we do the arithmetic operations in python since shell 
-					does _not_ understand arithmetic operations specially with scientific notation!!!'
+echo '-> now we do the arithmetic operations in python since shell \
+	does _not_ understand arithmetic operations specially with scientific notation!!!'
+
 echo ' '
 echo '-> we are currently at=' $(pwd)
 python ${statistics_dir}/get_min_max.py

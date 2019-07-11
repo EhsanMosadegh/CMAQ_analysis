@@ -1,0 +1,27 @@
+-> set environmental variables first
+------------------------------------------------------
+-> processing pollutant= pm2.5
+-> pollutant unit= ug/m^3
+-> spatial plotting= yes
+-> plotting mehtod= diff_plot
+-> colorbar method= min_to_max
+-> produce raster= no
+-> time-series plotting= yes
+-> minus-abs max values for diff plot=
+-> abs max values for diff plot=
+------------------------------------------------------
+-> job name= S1Nov
+Your job 2117 ("s1nov") has been submitted
+-> job script= job_scen1_nov.csh --> PM2.5
+-> job name= S2Nov
+Your job 2118 ("s2nov") has been submitted
+-> job script= job_scen2_nov.csh --> PM2.5
+-> job name= S3Nov
+Your job 2119 ("s3nov") has been submitted
+-> job script= job_scen3_nov.csh --> PM2.5
+-> job name= S4Nov
+Your job 2120 ("s4nov") has been submitted
+-> job script= job_scen4_nov.csh --> PM2.5
+-> job name= S5Nov
+Your job 2121 ("s5nov") has been submitted
+-> job script= job_scen5_nov.csh --> PM2.5

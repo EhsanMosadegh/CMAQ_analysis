@@ -1,0 +1,300 @@
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+ job S2aug =====> submitted
+Mon Jul  8 20:33:48 EDT 2019
+Traceback (most recent call last):
+  File "../run_scripts/spatial_CMAQ_analysis_for_cluster.py", line 1407, in <module>
+    main()
+  File "../run_scripts/spatial_CMAQ_analysis_for_cluster.py", line 639, in main
+    plt.plot( x_ , y_ )
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 2787, in plot
+    return gca().plot(
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 920, in gca
+    return gcf().gca(**kwargs)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 597, in gcf
+    return figure()
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 539, in figure
+    **kwargs)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/backend_bases.py", line 3252, in new_figure_manager
+    return cls.new_figure_manager_given_figure(num, fig)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/backends/_backend_tk.py", line 946, in new_figure_manager_given_figure
+    window = tk.Tk(className="matplotlib")
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/tkinter/__init__.py", line 2023, in __init__
+    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+_tkinter.TclError: couldn't connect to display "localhost:11.0"
+ job S2aug =====> ended
+Mon Jul  8 21:00:30 EDT 2019
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+ job S2aug =====> submitted
+Mon Jul  8 21:26:20 EDT 2019
+Traceback (most recent call last):
+  File "../run_scripts/spatial_CMAQ_analysis_for_cluster.py", line 1407, in <module>
+    main()
+  File "../run_scripts/spatial_CMAQ_analysis_for_cluster.py", line 639, in main
+    plt.plot( x_ , y_ )
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 2787, in plot
+    return gca().plot(
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 920, in gca
+    return gcf().gca(**kwargs)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 597, in gcf
+    return figure()
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 539, in figure
+    **kwargs)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/backend_bases.py", line 3252, in new_figure_manager
+    return cls.new_figure_manager_given_figure(num, fig)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/backends/_backend_tk.py", line 946, in new_figure_manager_given_figure
+    window = tk.Tk(className="matplotlib")
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/tkinter/__init__.py", line 2023, in __init__
+    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+_tkinter.TclError: couldn't connect to display "localhost:11.0"
+ job S2aug =====> ended
+Mon Jul  8 21:52:34 EDT 2019
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+ job S2aug =====> submitted
+Mon Jul  8 22:34:03 EDT 2019
+Traceback (most recent call last):
+  File "../run_scripts/spatial_CMAQ_analysis_for_cluster.py", line 1407, in <module>
+    main()
+  File "../run_scripts/spatial_CMAQ_analysis_for_cluster.py", line 639, in main
+    plt.plot( x_ , y_ )
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 2787, in plot
+    return gca().plot(
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 920, in gca
+    return gcf().gca(**kwargs)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 597, in gcf
+    return figure()
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 539, in figure
+    **kwargs)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/backend_bases.py", line 3252, in new_figure_manager
+    return cls.new_figure_manager_given_figure(num, fig)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/backends/_backend_tk.py", line 946, in new_figure_manager_given_figure
+    window = tk.Tk(className="matplotlib")
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/tkinter/__init__.py", line 2023, in __init__
+    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+_tkinter.TclError: couldn't connect to display "localhost:11.0"
+ job S2aug =====> ended
+Mon Jul  8 22:58:40 EDT 2019
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+ job S2aug =====> submitted
+Mon Jul  8 23:35:35 EDT 2019
+Traceback (most recent call last):
+  File "../run_scripts/spatial_CMAQ_analysis_for_cluster.py", line 1407, in <module>
+    main()
+  File "../run_scripts/spatial_CMAQ_analysis_for_cluster.py", line 639, in main
+    plt.plot( x_ , y_ )
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 2787, in plot
+    return gca().plot(
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 920, in gca
+    return gcf().gca(**kwargs)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 597, in gcf
+    return figure()
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 539, in figure
+    **kwargs)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/backend_bases.py", line 3252, in new_figure_manager
+    return cls.new_figure_manager_given_figure(num, fig)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/backends/_backend_tk.py", line 946, in new_figure_manager_given_figure
+    window = tk.Tk(className="matplotlib")
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/tkinter/__init__.py", line 2023, in __init__
+    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+_tkinter.TclError: couldn't connect to display "localhost:11.0"
+ job S2aug =====> ended
+Tue Jul  9 00:01:29 EDT 2019
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+ job S2aug =====> submitted
+Tue Jul  9 00:29:20 EDT 2019
+Traceback (most recent call last):
+  File "../run_scripts/spatial_CMAQ_analysis_for_cluster.py", line 1407, in <module>
+    main()
+  File "../run_scripts/spatial_CMAQ_analysis_for_cluster.py", line 639, in main
+    plt.plot( x_ , y_ )
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 2787, in plot
+    return gca().plot(
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 920, in gca
+    return gcf().gca(**kwargs)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 597, in gcf
+    return figure()
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 539, in figure
+    **kwargs)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/backend_bases.py", line 3252, in new_figure_manager
+    return cls.new_figure_manager_given_figure(num, fig)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/backends/_backend_tk.py", line 946, in new_figure_manager_given_figure
+    window = tk.Tk(className="matplotlib")
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/tkinter/__init__.py", line 2023, in __init__
+    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+_tkinter.TclError: couldn't connect to display "localhost:11.0"
+ job S2aug =====> ended
+Tue Jul  9 00:55:47 EDT 2019
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+ job S2aug =====> submitted
+Tue Jul  9 01:21:50 EDT 2019
+Traceback (most recent call last):
+  File "../run_scripts/spatial_CMAQ_analysis_for_cluster.py", line 1407, in <module>
+    main()
+  File "../run_scripts/spatial_CMAQ_analysis_for_cluster.py", line 639, in main
+    plt.plot( x_ , y_ )
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 2787, in plot
+    return gca().plot(
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 920, in gca
+    return gcf().gca(**kwargs)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 597, in gcf
+    return figure()
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/pyplot.py", line 539, in figure
+    **kwargs)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/backend_bases.py", line 3252, in new_figure_manager
+    return cls.new_figure_manager_given_figure(num, fig)
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/site-packages/matplotlib/backends/_backend_tk.py", line 946, in new_figure_manager_given_figure
+    window = tk.Tk(className="matplotlib")
+  File "/scratch/ehsanm/virtualEnv/virenvConda/lib/python3.7/tkinter/__init__.py", line 2023, in __init__
+    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+_tkinter.TclError: couldn't connect to display "localhost:11.0"
+ job S2aug =====> ended
+Tue Jul  9 01:47:38 EDT 2019
