@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+############################################################
+# author: Ehsan Mosadegh
+# usage: to analyze CMAQ output files spatially
+# date: June 1, 2019
+# email: ehsan.mosadegh@gmail.com, ehsanm@dri.edu
+# notes:
+############################################################
 
 #====================================================================================================
 # import libraries
