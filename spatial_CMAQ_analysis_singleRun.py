@@ -164,8 +164,8 @@ def main() :
 		raise SystemExit()
 
 	### set input pathes
-	input_path_scen = input_dir + 'scen_' + scenario + '/' #+ sim_month + '/'
-	input_path_base = input_dir + 'scen_baseline' + '/' #+ sim_month + '/'
+	input_path_scen = input_dir + 'scen_' + scenario + '/'
+	input_path_base = input_dir + 'scen_baseline' + '/' 
 
 	print('-> CMAQ input directory is:')
 	print(input_path_scen)
@@ -179,26 +179,48 @@ def main() :
 	#====================================================================================================
 	# open MCIP file to get lon-lat of domain
 
-	print('-> opening MCIP file...')
-	mcip_file = 'GRIDDOT2D_'+mcip_date_tag
-	mcip_in = mcip_dir + mcip_file
-	mcip_open = Dataset( mcip_in )
+	print('-> opening MCIP files ...')
+
+	grid_dot_file_name='GRIDDOT2D_'+mcip_date_tag
+	grid_cross_file_name='GRIDCRO2D_'+mcip_date_tag
+
+	grid_dot_file=mcip_dir + grid_dot_file_name
+	grid_cross_file=mcip_dir + grid_cross_file_name
+
+	print(f'-> GRID_DOT file is= {grid_dot_file}')
+	print(f'-> GRID_CRO file is= {grid_cross_file}')
+
+	grid_dot_open= Dataset(grid_dot_file , 'r')
+	grid_cross_open=Dataset( grid_cross_file , 'r')
 
 	### get some info
 	print('-> MCIP file info:')
-	print('-> MCIP file dimensions: %s' %str( mcip_open.variables['LATD'].dimensions ) )
-	print('-> shape of each dimension: %s' %( str(mcip_open.variables['LATD'].shape ) ))
 
-	### extract lat and lon parameteres
-	lat_mesh = np.array( mcip_open.variables['LATD'][ 0 , 0 , : , : ] ) # select only rosws and cols for the 1st timestep and layer = [ tstep=0 , lay=0]
-	lon_mesh = np.array( mcip_open.variables['LOND'][ 0 , 0 , : , : ] )
+	print('-----------------------------------------')
+	print(f'-> info for file {grid_dot_file_name} is=')
+	print('-> dimension is= %s' %( str(grid_dot_open.variables['LOND'].dimensions ))) # f-string does not work for this syntax
+	print('-> shape is= %s' %str(grid_dot_open.variables['LOND'].shape )) # and this
+	print('-----------------------------------------')
+	print(f'-> info for file {grid_cross_file_name} is=')
+	print('-> dimension is= %s' %( str(grid_cross_open.variables['LON'].dimensions ))) # f-string does not work for this syntax
+	print('-> shape is= %s' %str(grid_cross_open.variables['LON'].shape )) # and this
+	print('-----------------------------------------')
+
+	### extract lat and lon arrays from DOT file
+	lon_dot_arr=np.array( grid_dot_open.variables['LOND'][0,0,:,:] ) # select only rosws and cols for the 1st timestep and layer = [ tstep=0 , lay=0]
+	lat_dot_arr=np.array( grid_dot_open.variables['LATD'][0,0,:,:] )
+
+	### extract lat and lon arrays from CROSS file
+	lon_cross_arr=np.array( grid_cross_open.variables['LON'][0,0,:,:] )
+	lat_cross_arr=np.array( grid_cross_open.variables['LAT'][0,0,:,:] )
 
 	# get the min of each array as the origin of array
-	array_origin_lat = lat_mesh.min()
-	array_origin_lon = lon_mesh.min()
+	array_origin_lat = lat_dot_arr.min()
+	array_origin_lon = lon_dot_arr.min()
 
-	print('-> closing MCIP file...')
-	mcip_open.close()
+	print('-> closing MCIP files ...')
+	grid_dot_open.close()
+	grid_cross_open.close()
 	print(" ")
 
 	# open MCIP file to get lon-lat of domain
@@ -507,8 +529,20 @@ def main() :
 	#====================================================================================================
 	# change 3D to 2D array to make monthly_mean_2d_mesh: used for spatial plots
 
+
+
+	# region dictionary
+	regions_dict={
+	'south_tahoe':[ll_lon , ll_lat , scaling_factor];
+	'north_tahoe':[ll_lon , ll_lat , scaling_factor];
+	'lake_tahoe_basin':[ll_lon , ll_lat , scaling_factor]
+	}
+
+
+
+
 	# intermed file is directed to be used in spatial plotting; and the original tensor is used for time-series plotting
-	monthly_tseries_tensor_from_scen_intermed = monthly_tseries_tensor_from_scen
+	monthly_tseries_tensor_from_scen_intermed= monthly_tseries_tensor_from_scen
 
 	# for o3 and N and so2, change ppm to ppb for plotting
 	if any([cmaq_pol=='O3',cmaq_pol=='NH3',cmaq_pol=='HNO3',cmaq_pol=='NO2',cmaq_pol=='SO2']) :
@@ -548,8 +582,22 @@ def main() :
 
 		print( f'-> shape = {monthly_mean_2d_mesh.shape } and dimension = {monthly_mean_2d_mesh.ndim }')
 
-		( mean_mesh_min , mean_mesh_mean , mean_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting )
+
+
+		regions_list=[*regions_dict.keys]
+		print(f'-> region list is= {regions_list}')
+
+		for region in regions_list :
+
+			ll_lon=regions_dict[region][0]
+			ll_lat=regions_dict[region][1]
+			scaling_factor=regions_dict[region][2]
+
+			### work on singlw plots from here
+
+		( mean_mesh_min , mean_mesh_mean , mean_mesh_max , row_of_max_cell , col_of_max_cell ) = function_stats_of_desired_region( monthly_mean_2d_mesh , timeseries_plotting )
 		
+
 		print('-----------------------------')
 		print( f'-> stats: minAverageMesh= { round( mean_mesh_min , 6 ) } ')
 		print( f'-> stats: meanAverageMesh= { round( mean_mesh_mean , 6 ) } ')
@@ -560,6 +608,7 @@ def main() :
 
 		#print( f'-> applying the mapp function...')
 
+		### to here
 
 	elif ( plot_method == 'diff_plot' ) :
 
@@ -600,15 +649,27 @@ def main() :
 
 		print( f'-> shape = {monthly_mean_2d_mesh.shape } and dimension = {monthly_mean_2d_mesh.ndim }')
 
-		( diff_mesh_min , diff_mesh_mean , diff_mesh_max , row_of_max_cell , col_of_max_cell ) = function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting )
+		regions_list=[*regions_dict.keys]
+		print(f'-> region list is= {regions_list}')
 
-		print('-----------------------------')
-		print( f'-> stats: minDiffMesh= { diff_mesh_min } ')
-		print( f'-> stats: meanDiffMesh= { diff_mesh_mean } ')
-		print( f'-> stats: maxDiffMesh= { diff_mesh_max } ')
-		print( f'-> row no. of max value= { row_of_max_cell } ')
-		print( f'-> col no. of max value= { col_of_max_cell } ')
-		print('-----------------------------')
+		for region in regions_list :
+
+			ll_lon=regions_dict[region][0]
+			ll_lat=regions_dict[region][1]
+			scaling_factor=regions_dict[region][2]
+
+			(diff_mesh_min_region , diff_mesh_mean_region , diff_mesh_median_region , diff_mesh_std_region , diff_mesh_max_region , row_of_max_cell , col_of_max_cell)= function_stats_of_desired_region(monthly_mean_2d_mesh , timeseries_plotting , lon_cross_arr , lat_cross_arr , ll_lon , ll_lat , scaling_factor)
+
+			print('-----------------------------')
+			print( f'-> stats: regionNameDiffMesh= {region} ')
+			print( f'-> stats: minDiffMesh= { diff_mesh_min_region } ')
+			print( f'-> stats: meanDiffMesh= { diff_mesh_mean_region } ')
+			print( f'-> stats: medianDiffMesh= { diff_mesh_median_region } ')
+			print( f'-> stats: stdDiffMesh= { diff_mesh_std_region } ')
+			print( f'-> stats: maxDiffMesh= { diff_mesh_max_region } ')
+			print( f'-> row no. of max value= { row_of_max_cell } ')
+			print( f'-> col no. of max value= { col_of_max_cell } ')
+			print('-----------------------------')
 
 	else:
 		print('-> ERROR: check processing method for 3Dto2D ...')
@@ -683,7 +744,7 @@ def main() :
 		### create Basemap model instance from its class, it is a map that color mesh sits on it.
 		theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
 
-		x_mesh, y_mesh = theMap(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map
+		x_mesh, y_mesh = theMap(lon_mesh , lat_mesh) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map; or just use latlon=True inpcolormesh function and use lat-lon values
 
 		#basemap_instance.fillcontinents(lake_color='aqua')
 
@@ -832,31 +893,52 @@ def mapping_function( abs_conc , lower_bound_mapping_conc , upper_bound_mapping_
 	return mapped_conc
 
 #====================================================================================================
-# function to calculate min-max of a 2D array
+# function to calculate statistics of a 2D array region
 
-def function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting ) :
+def function_stats_of_desired_region( monthly_mean_2d_mesh , timeseries_plotting , lon_cross_arr , lat_cross_arr , region_ll_lon , region_ll_lat , mesh_domain_range ) :
 
-	print( '-> getting the min/mean/max of mesh ...')
+	print( '-> getting the statistics of a region/mesh ...')
 
-	list_from_mesh = []
+	list_from_region = []
 
 	( mesh_row , mesh_col ) = monthly_mean_2d_mesh.shape
 
-	print( f'-> row of mesh = {mesh_row} and col of mesh = {mesh_col} ')
+	print( f'-> input mesh has total number of rows= {mesh_row} and total number of col= {mesh_col} ')
 
-	for row in range( mesh_row ) :
-		for col in range( mesh_col ) :
 
-			#print( f'-> loop for row = {row} and col = {col}')
+	lon_diff_arr=lon_cross_arr-region_ll_lon
+	lat_diff_arr=lat_cross_arr-region_ll_lat
 
-			cell_val = monthly_mean_2d_mesh[ row , col ]
-			list_from_mesh.append( cell_val )
+	#print(f'-> type of {lon_diff_arr} is= {type(lon_diff_arr)} ')
 
-	print( f'-> size of list_from_mesh = { len(list_from_mesh) } ')
+	total_diff_arr=np.abs( lon_diff_arr ) + np.abs( lat_diff_arr )
 
-	min_of_mesh = np.min( list_from_mesh )
-	mean_of_mesh = np.mean( list_from_mesh )
-	max_of_mesh = np.max( list_from_mesh )
+	tuple_of_row_col=np.argwhere( total_diff_arr==np.min(total_diff_arr) )[0]
+
+	print(f'-> row/col of our cell is= {tuple_of_row_col} ')
+	marker_row=tuple_of_row_col[0]
+	marker_col=tuple_of_row_col[1]
+
+	print(f'-> cell row is= {marker_row}')
+	print(f'-> cell row is= {marker_col}')
+	print(f'-> now plot the mesh from the starting cell= {marker_row , marker_col} ')
+
+	for cell_row in range( marker_row , marker_row+mesh_domain_range , 1 ) :
+		for cell_col in range( marker_col , marker_col+mesh_domain_range , 1) :
+
+			print( f'-> loop for row = {row} and col = {col}')
+
+			cell_val = monthly_mean_2d_mesh[ cell_row , cell_col ]
+			list_from_region.append( cell_val )
+
+
+	print( f'-> size of list_from_region = { len(list_from_region) } ')
+
+	min_of_region= np.min( list_from_region )
+	mean_of_region= np.mean( list_from_region )
+	median_of_region= np.median( list_from_region )
+	std_of_region= np.std( list_from_region )
+	max_of_region= np.max( list_from_region )
 
 	# loop again to find the row-col of max cell
 	if ( timeseries_plotting == 'yes' ) :
@@ -872,7 +954,7 @@ def function_min_mean_max_of_mesh( monthly_mean_2d_mesh , timeseries_plotting ) 
 					col_of_max = col
 					break
 
-	return min_of_mesh , mean_of_mesh , max_of_mesh , row_of_max , col_of_max
+	return min_of_region , mean_of_region , median_of_region , std_of_region , max_of_region , row_of_max , col_of_max
 
 
 #====================================================================================================
