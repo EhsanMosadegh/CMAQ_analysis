@@ -66,7 +66,7 @@ def main() :
 	### time-series plot
 	timeseries_plotting= environ.get('TIMESERIES_PLOTTING') 	# yes or not
 
-	platform= 'Mac'  # 'Mac' or 'cluster'
+	platform= 'cluster'  # 'Mac' or 'cluster'
 	storage= '10T' # 'personal' OR '10T'
 	dpi_scale=300
 	
