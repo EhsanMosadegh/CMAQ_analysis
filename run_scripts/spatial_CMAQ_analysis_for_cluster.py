@@ -568,9 +568,9 @@ def main() :
 
 	### region dictionary
 	regions_dict={
-	'south_tahoe':[-119.9772 , 38.9399 , 8],
-	'north_tahoe':[-120.05 , 39.2245 , 8],
-	'lake_tahoe_basin':[-120.25 , 38.87 , 47]
+	'SouthTahoe':[-119.9772 , 38.9399 , 8],
+	'NorthTahoe':[-120.05 , 39.2245 , 8],
+	'LakeTahoeBasin':[-120.25 , 38.87 , 47]
 	}
 
 	# intermed file is directed to be used in spatial plotting; and the original tensor is used for time-series plotting
@@ -627,13 +627,13 @@ def main() :
 			
 			print('-----------------------------------------------------------')
 			print( f'-> stats: regionNameSingleMesh= {region} ')
-			print( f'-> stats: minSingleMesh= { round(min_of_single_region,6) }')
-			print( f'-> stats: meanSingleMesh= { round(mean_of_single_region,6) }')
-			print( f'-> stats: medianSingleMesh= { round(median_of_single_region,6) }')
-			print( f'-> stats: stdSingleMesh= { round(std_of_single_region,6) }')
-			print( f'-> stats: maxSingleMesh= { round(max_of_single_region,6) }')
-			print( f'-> row no. of max value= { round(row_of_max_cell,6) }')
-			print( f'-> col no. of max value= { round(col_of_max_cell,6) }')
+			print( f'-> stats: minSingleMesh{region}= { round(min_of_single_region,6) }')
+			print( f'-> stats: meanSingleMesh{region}= { round(mean_of_single_region,6) }')
+			print( f'-> stats: medianSingleMesh{region}= { round(median_of_single_region,6) }')
+			print( f'-> stats: stdSingleMesh{region}= { round(std_of_single_region,6) }')
+			print( f'-> stats: maxSingleMesh{region}= { round(max_of_single_region,6) }')
+			print( f'-> row no. of max value{region}= { round(row_of_max_cell,6) }')
+			print( f'-> col no. of max value{region}= { round(col_of_max_cell,6) }')
 			print('-----------------------------------------------------------')
 
 		#print( f'-> applying the mapp function...')
@@ -692,13 +692,13 @@ def main() :
 
 			print('-----------------------------------------------------------')
 			print( f'-> stats: regionNameDiffMesh= {region} ')
-			print( f'-> stats: minDiffMesh= { round(min_of_diff_region,6) }')
-			print( f'-> stats: meanDiffMesh= { round(mean_of_diff_region,6) }')
-			print( f'-> stats: medianDiffMesh= { round(median_of_diff_region,6) }')
-			print( f'-> stats: stdDiffMesh= { round(std_of_diff_region,6) }')
-			print( f'-> stats: maxDiffMesh= { round(max_of_diff_region,6) }')
-			print( f'-> row no. of max value= { round(row_of_max_cell,6) }')
-			print( f'-> col no. of max value= { round(col_of_max_cell,6) }')
+			print( f'-> stats: minDiffMesh{region}= { round(min_of_diff_region,6) }')
+			print( f'-> stats: meanDiffMesh{region}= { round(mean_of_diff_region,6) }')
+			print( f'-> stats: medianDiffMesh{region}= { round(median_of_diff_region,6) }')
+			print( f'-> stats: stdDiffMesh{region}= { round(std_of_diff_region,6) }')
+			print( f'-> stats: maxDiffMesh{region}= { round(max_of_diff_region,6) }')
+			print( f'-> row no. of max value{region}= { round(row_of_max_cell,6) }')
+			print( f'-> col no. of max value{region}= { round(col_of_max_cell,6) }')
 			print('-----------------------------------------------------------')
 
 	else:
