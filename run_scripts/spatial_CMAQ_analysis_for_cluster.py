@@ -172,7 +172,7 @@ def main() :
 
 	elif ( platform == 'cluster' ) :
 
-		home_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/CMAQ_analysis/'
+		home_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/'
 		mcip_dir = home_dir+'../mcip_files/'
 		fig_dir = home_dir+'../cmaq_figs/'
 		cmaq_output_dir = home_dir+'../cmaq_output/'
@@ -271,6 +271,7 @@ def main() :
 	# 	pass
 
 	## create a day list for a month to create file-date-tag, use an argument-unpacking operator * to unpack the list
+	days_to_run_in_month= int(days_to_run_in_month) # to change type from str as an env.var. to int
 	day_list = [*range( 1 , days_to_run_in_month+1 , 1)] # don't forget the [] around range function to create the list
 
 	# # to run for specific day
