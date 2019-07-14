@@ -2,23 +2,27 @@
 #------------------------------------------------------------------------
 # run-time setting
 # NOTE: this script writes its output to <logs/> directory
-# to run: bash "script_name" > POL_logs/log.POL.minOrMax.txt
+# to run: 
+# first, set the first 3 variables in both this and python scripts
+# then, bash "script_name" > POL_logs/log.POL.minOrMax.txt
 # to check the end result either open the log file and check the end of the log file for abs min/max values, 
 # or do-> grep 'chk' on_the_logfile_of_bash_script
 # I defined 'chk' as a keyword to check importent parameters and end value
 #------------------------------------------------------------------------
 
-pollutant='SO2'
+pollutant='CO'
 stats_property='max'
+region='LakeTahoeBasin'  # 'LakeTahoeBasin' or 'NorthTahoe' or 'SouthTahoe'
 
-stats_pattern=$stats_property'DiffMesh'
+stats_pattern=$stats_property'DiffMesh'$region
 log_file_pattern=log.${pollutant}.scen*
 
 #---------------------------------
 
-#home_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis'
+#home_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis/'
 home_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/'
-log_dir=${home_dir}'logs/min_max_logs/'
+log_dir_name='new_region_logs/'
+log_dir_full_path=${home_dir}'logs/'${log_dir_name}
 statistics_dir=${home_dir}'statistics_of_logs/'
 
 #---------------------------------
@@ -26,14 +30,16 @@ statistics_dir=${home_dir}'statistics_of_logs/'
 echo '-------------------------------'
 echo '-> chk: pollutant is=' ${pollutant}
 echo '-> chk: statistical property is=' ${stats_property}
-echo '-> stats patter is=' ${stats_pattern}
+echo '-> chk: stats patter is=' ${stats_pattern}
+echo '-> chk: region is=' ${region}
 echo '-------------------------------'
 echo '  '
 
 #---------------------------------
 
-output_file_name=$stats_pattern'_list_total_for_'$pollutant.txt
-
+output_file_name=$stats_pattern'_list_total_for_'$pollutant'_in_'${region}.txt
+echo '-> output log file name is =' ${output_file_name}
+echo ' ' 
 #---------------------------------
 
 current_dir=$(pwd)
@@ -41,10 +47,10 @@ echo '-> we are currently at='
 echo $current_dir
 
 echo '-> log directory=' 
-echo $log_dir
+echo $log_dir_name
 
 echo '-> we change dir to <logs/>(work) dir...'
-cd $log_dir
+cd $log_dir_full_path
 
 work_dir=$(pwd)
 echo '-> now we are at=' 
@@ -85,7 +91,7 @@ do
 done < log_list_for_${pollutant}_${stats_property}.txt
 
 echo ' '
-echo '-> size of the' $stats_pattern 'output list is=' 
+echo '-> size of the' $stats_pattern 'output log file with no. of captured patterns is=' 
 cat $output_file_name | py -l 'print(len(l))'
 echo '------------------------------------------------'
 echo '-> now we do the arithmetic operations in python since shell \
@@ -93,6 +99,7 @@ echo '-> now we do the arithmetic operations in python since shell \
 
 echo ' '
 echo '-> we are currently at=' $(pwd)
+echo '-> deploying python script ...'
 python ${statistics_dir}/get_min_max.py
 echo '------------------------------------------------'
 
