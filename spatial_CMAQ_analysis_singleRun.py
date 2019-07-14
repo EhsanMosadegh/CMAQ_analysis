@@ -36,27 +36,26 @@ def main() :
 	start = time.time()
 
 	### run time settings
-	cmaq_file_month= '07'																			#  07, 08, 	09,  10,  11
-	sim_month= 'Jul'  																				# Jul, Aug, Sep, Oct, Nov
+	cmaq_file_month= '11'																			#  07, 08, 	09,  10,  11
+	sim_month= 'Nov'  																				# Jul, Aug, Sep, Oct, Nov
 	cmaq_file_year= '2016'
 	mcip_date_tag= '161001'
 
 	scenario= '1' 																						# 1-5, baseline
 	days_to_run_in_month= 1 
-	cmaq_pol= 'CO'												# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
-	processing_pollutant= 'single_pollutant' # 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
-	pol_unit= 'ppmV' 												#	'ppmV' or 'ug/m^3'
+	cmaq_pol= 'PM2.5'												# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
+	processing_pollutant= 'pm2.5' # 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
+	pol_unit= 'ug/m^3' 												#	'ppmV' or 'ug/m^3'
 	include_pmdiag_file= 'yes' 					 											# 'yes' OR 'no'
 
 	### spatial plot
 	spatial_plotting= 'yes'		 	# yes or no
-	plot_method= 'diff_plot'								# 'single_plot' or 'diff_plot'
+	plot_method= 'single_plot'								# 'single_plot' or 'diff_plot'
 	colorbar_method= 'min_to_max'						# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
 	minus_abs_max_diffPlot= ''
 	abs_max_diffPlot= ''
 	# my_vmin_for_singlePlot= -0.4
 	# my_vmax_for_singlePlot= 0.4
-
 	produce_raster= 'no' 						# 'yes' OR 'no'
 
 	### set mapping parameters for spatial plotting
