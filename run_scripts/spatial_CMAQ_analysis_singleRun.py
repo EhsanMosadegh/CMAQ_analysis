@@ -172,7 +172,7 @@ def main() :
 
 	elif ( platform == 'cluster' ) :
 
-		home_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_data/CMAQ_analysis/'
+		home_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/'
 		mcip_dir = home_dir+'mcip_files/'
 		fig_dir = home_dir+'cmaq_figs/'
 		cmaq_output_dir = home_dir+'cmaq_output/'
