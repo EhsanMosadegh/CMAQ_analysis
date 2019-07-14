@@ -71,7 +71,11 @@ def main() :
 	storage= '10T' # 'personal' OR '10T'
 	dpi_scale=300
 	
-	### Basemap plot setting
+	# run time setting
+	#====================================================================================================
+	
+	#====================================================================================================
+	# Basemap plot setting
 	
 	### center of domain
 	xcent =-120.806 # degrees
@@ -115,6 +119,12 @@ def main() :
 	pixelHeight = NCOLS
 	newRasterfn = 'co_test_raster.tif'
 
+	# Basemap plot setting
+	#====================================================================================================
+
+	#====================================================================================================
+	# print the setting
+
 	print( f'-> scenario= {scenario}')
 	print( f'-> CMAQ month= {cmaq_file_month}')
 	print( f'-> number of days to run= {days_to_run_in_month}')
@@ -138,7 +148,7 @@ def main() :
 	print( f'-> produce raster= {produce_raster}')
 	print(" ")
 
-	# run time setting
+	# print the setting
 	#====================================================================================================
 
 	#====================================================================================================
