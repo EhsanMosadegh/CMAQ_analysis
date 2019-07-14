@@ -567,9 +567,9 @@ def main() :
 
 	### region dictionary
 	regions_dict={
-	'SouthTahoe':[-119.9772 , 38.9399 , 8],
+	'SouthTahoe':[-120.05 , 38.88 , 8],
 	'NorthTahoe':[-120.05 , 39.2245 , 8],
-	'LakeTahoeBasin':[-120.25 , 38.87 , 47]
+	'LakeTahoeBasin':[-120.30 , 38.87 , 50]
 	}
 
 	# intermed file is directed to be used in spatial plotting; and the original tensor is used for time-series plotting
