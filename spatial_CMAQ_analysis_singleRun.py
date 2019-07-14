@@ -50,12 +50,12 @@ def main() :
 
 	### spatial plot
 	spatial_plotting= 'yes'		 	# yes or no
-	plot_method= 'single_plot'								# 'single_plot' or 'diff_plot'
+	plot_method= 'diff_plot'								# 'single_plot' or 'diff_plot'
 	colorbar_method= 'min_to_max'						# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
 	minus_abs_max_diffPlot= ''
 	abs_max_diffPlot= ''
-	vmin_mine_singlePlot= -0.4
-	vmax_mine_singlePlot= 0.4
+	# my_vmin_for_singlePlot= -0.4
+	# my_vmax_for_singlePlot= 0.4
 
 	produce_raster= 'no' 						# 'yes' OR 'no'
 
@@ -125,9 +125,10 @@ def main() :
 	if ( spatial_plotting == 'yes'):
 		print( f'-> processing method for spatial plot= {plot_method}')
 		if (plot_method=='single_plot'):
-			print( f'-> for single plot: vmin= {vmin_mine_singlePlot} and vmax= {vmax_mine_singlePlot} ')
+			#print( f'-> for single plot: vmin= {my_vmin_for_singlePlot} and vmax= {my_vmax_for_singlePlot} ')
+			print('-> NOTE: for single plot we plot for min/max value of the region')
 		if (plot_method=='diff_plot'):
-			print( f'-> colorbar method for spatial diff plot= {colorbar_method}')
+			print( f'-> NOTE: colorbar method for spatial diff plot= {colorbar_method}')
 			if ( colorbar_method == 'minus_abs_max_to_max' ):
 				print( f'-> for diff plot: minus absolute Max. values= {minus_abs_max_diffPlot}')
 				print( f'-> for diff plot: plus absolute Max. values= {abs_max_diffPlot}')				
@@ -585,7 +586,7 @@ def main() :
 
 		print('-> changing monthly 3D mesh of time-series to 2D for single plotting ...')
 
-		monthly_mean_2d_mesh_and_mapped = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed )
+		monthly_mean_2d_mesh_and_mapped = function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor_from_scen_intermed , mapping )
 
 		if ( mapping == 'yes' ) :
 			print('-> mapping abs concentrations to mapped domain ...')
@@ -799,8 +800,9 @@ def main() :
 			if ( mapping == 'yes' ) :
 				plt.clim( lower_bound_mapping_conc , upper_bound_mapping_conc )
 
-			#plt.clim( vmin=mean_mesh_min ,  vmax=mean_mesh_max )
-			plt.clim( vmin=vmin_mine_singlePlot , vmax=vmax_mine_singlePlot )
+			### you can choose either of these options
+			plt.clim( vmin=min_of_single_region ,  vmax=max_of_single_region )
+			#plt.clim( vmin=my_vmin_for_singlePlot , vmax=my_vmax_for_singlePlot )
 
 
 		if ( plot_method == 'diff_plot' ) :
@@ -824,7 +826,7 @@ def main() :
 				plt.clim( minus_abs_max_diffPlot ,  abs_max_diffPlot )
 				print( f'-> plot the image for vmin= {minus_abs_max_diffPlot} and vmax= {abs_max_diffPlot}')
 		print(" ")
-			# plt.clim( vmin_mine_singlePlot , vmax_mine )
+			# plt.clim( my_vmin_for_singlePlot , vmax_mine )
 			# print( f'-> plot the image for vmin={vmin_mine} and vmax={vmax_mine}')
 
 		# set the map features
