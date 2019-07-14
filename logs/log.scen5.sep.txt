@@ -1,0 +1,223 @@
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+ job s5sep =====> submitted
+Sun Jul 14 01:55:48 EDT 2019
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:777: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:845: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawstates()
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:846: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawcounties(linewidth=0.5 , color='k' )
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+ job s5sep =====> submitted
+Sun Jul 14 02:20:03 EDT 2019
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+ job s5sep =====> submitted
+Sun Jul 14 02:21:33 EDT 2019
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:777: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:845: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawstates()
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:846: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawcounties(linewidth=0.5 , color='k' )
+ job s5sep =====> ended
+Sun Jul 14 02:43:39 EDT 2019
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:777: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+ck to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+ job s5sep =====> submitted
+Sun Jul 14 02:45:33 EDT 2019
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:845: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawstates()
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:846: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawcounties(linewidth=0.5 , color='k' )
+ job s5sep =====> ended
+Sun Jul 14 02:46:02 EDT 2019
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+ job s5sep =====> submitted
+Sun Jul 14 03:08:48 EDT 2019
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:777: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:845: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawstates()
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:846: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawcounties(linewidth=0.5 , color='k' )
+ job s5sep =====> ended
+Sun Jul 14 03:09:51 EDT 2019
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+basename: missing operand
+Try 'basename --help' for more information.
+Your Python environment has been changed to the 'virenvConda' conda environment. Here's the active version of Python:
+/scratch/ehsanm/virtualEnv//virenvConda/bin/python
+Python 3.7.3
+To switch back to your default Python environment, type 'source deactivate.csh'
+Currently Loaded Modulefiles:
+  1) intel/2015
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize unlimited
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  4096 
+memorylocked unlimited
+maxproc      256780 
+maxlocks     unlimited
+maxsignal    256780 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+ job s5sep =====> submitted
+Sun Jul 14 03:11:33 EDT 2019
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:777: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:845: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawstates()
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:846: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawcounties(linewidth=0.5 , color='k' )
+ job s5sep =====> ended
+Sun Jul 14 03:32:07 EDT 2019
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:777: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:845: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawstates()
+../run_scripts/spatial_CMAQ_analysis_for_cluster.py:846: MatplotlibDeprecationWarning: 
+The dedent function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use inspect.cleandoc instead.
+  theMap.drawcounties(linewidth=0.5 , color='k' )
+ job s5sep =====> ended
+Sun Jul 14 03:33:58 EDT 2019

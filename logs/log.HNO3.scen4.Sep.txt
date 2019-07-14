@@ -1,0 +1,672 @@
+-> scenario= 4
+-> CMAQ month= 09
+-> number of days to run= 30
+-> CMAQ year= 2016
+-> processing pollutant= HNO3
+-> pollutat unit= ppmV
+-> spatial plotting= yes
+-> processing method for spatial plot= diff_plot
+-> NOTE: colorbar method for spatial diff plot= min_to_max
+-> time-series plotting= yes
+-> platform is= cluster
+-> mapping spatial data= no
+-> produce raster= no
+ 
+-> CMAQ input directory is:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/
+ 
+-> MCIP input directory is:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../mcip_files/
+ 
+-> opening MCIP files ...
+-> GRID_DOT file is= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../mcip_files/GRIDDOT2D_161001
+-> GRID_CRO file is= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../mcip_files/GRIDCRO2D_161001
+-> MCIP file info:
+-----------------------------------------------------------
+-> info for file GRIDDOT2D_161001 is=
+-> dimension is= ('TSTEP', 'LAY', 'ROW', 'COL')
+-> shape is= (1, 1, 266, 251)
+-----------------------------------------------------------
+-> info for file GRIDCRO2D_161001 is=
+-> dimension is= ('TSTEP', 'LAY', 'ROW', 'COL')
+-> shape is= (1, 1, 265, 250)
+-----------------------------------------------------------
+-> closing MCIP files ...
+ 
+-> month of analysis is= 09
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 1
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160901.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160901.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 0 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 0 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 2
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160902.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160902.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 1 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 1 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 3
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160903.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160903.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 2 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 2 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 4
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160904.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160904.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 3 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 3 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 5
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160905.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160905.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 4 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 4 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 6
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160906.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160906.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 5 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 5 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 7
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160907.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160907.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 6 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 6 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 8
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160908.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160908.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 7 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 7 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 9
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160909.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160909.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 8 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 8 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 10
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160910.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160910.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 9 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 9 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 11
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160911.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160911.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 10 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 10 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 12
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160912.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160912.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 11 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 11 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 13
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160913.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160913.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 12 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 12 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 14
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160914.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160914.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 13 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 13 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 15
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160915.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160915.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 14 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 14 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 16
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160916.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160916.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 15 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 15 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 17
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160917.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160917.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 16 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 16 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 18
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160918.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160918.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 17 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 17 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 19
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160919.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160919.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 18 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 18 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 20
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160920.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160920.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 19 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 19 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 21
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160921.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160921.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 20 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 20 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 22
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160922.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160922.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 21 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 21 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 23
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160923.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160923.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 22 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 22 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 24
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160924.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160924.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 23 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 23 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 25
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160925.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160925.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 24 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 24 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 26
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160926.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160926.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 25 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 25 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 27
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160927.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160927.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 26 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 26 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 28
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160928.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160928.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 27 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 27 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 29
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160929.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160929.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 28 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 28 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+-> processing for day= 30
+ 
+-> setting path for HNO3 and diff_plot...
+-> opening/reading CMAQ files for HNO3:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_4/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20160930.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160930.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 29 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 29 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-> changing ppm to ppb for scenario pol=HNO3 ...
+-> changing ppm to ppb for baseline pol=HNO3 ...
+---------------------------------------------------------------
+-> check 3D data mesh info:
+-> LANDIS scenario, monthly mean tensor: dimensions= 3 and shape of tensor= (720, 265, 250) 
+-> baseline, monthly mean tensor: dimensions= 3 and shape of tensor= (720, 265, 250) 
+---------------------------------------------------------------
+-> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario (4) mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D "baseline" scenario mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now subtract 2 meshes to get the diff mesh for spatial plotting 
+ 
+-> monthly mesh scenario= [[0.42746276 0.39442537 0.36039143 ... 0.05070199 0.05085802 0.04955134]
+ [0.44855867 0.40952896 0.39276875 ... 0.05022927 0.04991946 0.05017939]
+ [0.43968385 0.42161588 0.40784055 ... 0.05152255 0.05100244 0.05071135]
+ ...
+ [0.28358586 0.19448534 0.14942081 ... 0.0750148  0.07377588 0.07132479]
+ [0.24844235 0.16216488 0.13369505 ... 0.07166608 0.06928423 0.06839067]
+ [0.19100915 0.134272   0.12318672 ... 0.06678363 0.06595964 0.06442044]] 
+ 
+-> monthly mesh baseline= [[0.42747306 0.39445194 0.36042232 ... 0.05069559 0.05085186 0.04954609]
+ [0.44856987 0.40955426 0.39281162 ... 0.05022132 0.04991199 0.05017285]
+ [0.4396945  0.42164301 0.40788615 ... 0.05151312 0.0509935  0.05070358]
+ ...
+ [0.28480349 0.19585367 0.15094007 ... 0.07500468 0.07376762 0.0713158 ]
+ [0.24960457 0.16347676 0.13514814 ... 0.07165909 0.06927878 0.06838389]
+ [0.19213105 0.13552797 0.12456807 ... 0.06678635 0.06596087 0.06441849]] 
+ 
+-> monthly mean diff-mesh= [[-1.03027307e-05 -2.65614997e-05 -3.08890675e-05 ...  6.39986158e-06
+   6.15543488e-06  5.24808759e-06]
+ [-1.12013671e-05 -2.52954376e-05 -4.28680930e-05 ...  7.95148228e-06
+   7.47623340e-06  6.53699822e-06]
+ [-1.06506428e-05 -2.71323036e-05 -4.56050202e-05 ...  9.42969917e-06
+   8.94380416e-06  7.77084652e-06]
+ ...
+ [-1.21762398e-03 -1.36832490e-03 -1.51926721e-03 ...  1.01223072e-05
+   8.25792389e-06  8.99035513e-06]
+ [-1.16221540e-03 -1.31187257e-03 -1.45309281e-03 ...  6.99666948e-06
+   5.44756757e-06  6.78642714e-06]
+ [-1.12189934e-03 -1.25596949e-03 -1.38135077e-03 ... -2.72183974e-06
+  -1.22984905e-06  1.95427169e-06]]
+ 
+-> diff matrix statistics:
+-> shape= (265, 250) and dimension= 2
+-> region list is = ['SouthTahoe', 'NorthTahoe', 'LakeTahoeBasin']
+-> getting the statistics of a region/mesh ...
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [148 189] 
+-> cell row is= 148
+-> cell row is= 189
+-> now plot the mesh from the starting cell= (148, 189) 
+-> size of list_from_region= 64 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= SouthTahoe 
+-> stats: minDiffMeshSouthTahoe= -0.003288
+-> stats: meanDiffMeshSouthTahoe= 0.000297
+-> stats: medianDiffMeshSouthTahoe= 0.000432
+-> stats: stdDiffMeshSouthTahoe= 0.000583
+-> stats: maxDiffMeshSouthTahoe= 0.000539
+-> row no. of max valueSouthTahoe= 148
+-> col no. of max valueSouthTahoe= 193
+-----------------------------------------------------------
+-> getting the statistics of a region/mesh ...
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [179 182] 
+-> cell row is= 179
+-> cell row is= 182
+-> now plot the mesh from the starting cell= (179, 182) 
+-> size of list_from_region= 64 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= NorthTahoe 
+-> stats: minDiffMeshNorthTahoe= 0.000127
+-> stats: meanDiffMeshNorthTahoe= 0.000161
+-> stats: medianDiffMeshNorthTahoe= 0.000162
+-> stats: stdDiffMeshNorthTahoe= 2.1e-05
+-> stats: maxDiffMeshNorthTahoe= 0.000202
+-> row no. of max valueNorthTahoe= 182
+-> col no. of max valueNorthTahoe= 189
+-----------------------------------------------------------
+-> getting the statistics of a region/mesh ...
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [140 165] 
+-> cell row is= 140
+-> cell row is= 165
+-> now plot the mesh from the starting cell= (140, 165) 
+-> size of list_from_region= 2209 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= LakeTahoeBasin 
+-> stats: minDiffMeshLakeTahoeBasin= -0.004853
+-> stats: meanDiffMeshLakeTahoeBasin= 0.000269
+-> stats: medianDiffMeshLakeTahoeBasin= 0.000255
+-> stats: stdDiffMeshLakeTahoeBasin= 0.000238
+-> stats: maxDiffMeshLakeTahoeBasin= 0.000634
+-> row no. of max valueLakeTahoeBasin= 145
+-> col no. of max valueLakeTahoeBasin= 184
+-----------------------------------------------------------
+-> time-series plotting is YES, so we plot time-series...
+-> size of x_ axis list= 720
+-> size of y_ axis list= 720
+-> time-series plot saved at:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_figs/HNO3_timeseries_scen_4_2016-09_summed_30_days.png
+ 
+-> spatial plotting ...
+ 
+-> making the colormesh ...
+-> shape of x_mesh= (266, 251)
+-> shape of y_mesh= (266, 251)
+-> shape of monthly_mean_diff_mesh= (265, 250)
+ 
+-> plot method= diff_plot
+-> colorbar method= min_to_max
+-> plot the image for vmin= -0.004852931257599058 and vmax= 0.0006339536955440178
+ 
+ 
+-> output figure is stored at:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_figs/HNO3_monthlyMean_scen_4_diff_from_baseline_month_09_summed_30_days_colorbarMethod_min_to_max_dpi_300.png
+------------------------------------
+-> run time of main function= 24.78 min
+*** MAIN COMPLETED SUCCESSFULLY! ***
+------------------------------------

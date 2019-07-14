@@ -1,0 +1,462 @@
+-> set environmental variables first
+------------------------------------------------------
+-> processing pollutant= single_pollutant
+-> pollutant unit= ppmV
+-> spatial plotting= yes
+-> plotting mehtod= diff_plot
+-> colorbar method= min_to_max
+-> produce raster= no
+-> time-series plotting= yes
+-> minus-abs max values for diff plot=
+-> abs max values for diff plot=
+------------------------------------------------------
+-> job name= S1Jul
+Your job 2473 ("S1jul") has been submitted
+-> job script= job_scen1_jul.csh --> CO
+-> job name= S1Aug
+Your job 2474 ("S1aug") has been submitted
+-> job script= job_scen1_aug.csh --> CO
+-> job name= S1Sep
+Your job 2475 ("s1sep") has been submitted
+-> job script= job_scen1_sep.csh --> CO
+-> job name= S1Oct
+Your job 2476 ("s1oct") has been submitted
+-> job script= job_scen1_oct.csh --> CO
+-> job name= S1Nov
+Your job 2477 ("s1nov") has been submitted
+-> job script= job_scen1_nov.csh --> CO
+-> job name= S2Jul
+Your job 2478 ("S2jul") has been submitted
+-> job script= job_scen2_jul.csh --> CO
+-> job name= S2Aug
+Your job 2479 ("S2aug") has been submitted
+-> job script= job_scen2_aug.csh --> CO
+-> job name= S2Sep
+Your job 2480 ("s2sep") has been submitted
+-> job script= job_scen2_sep.csh --> CO
+-> job name= S2Oct
+Your job 2481 ("s2oct") has been submitted
+-> job script= job_scen2_oct.csh --> CO
+-> job name= S2Nov
+Your job 2482 ("s2nov") has been submitted
+-> job script= job_scen2_nov.csh --> CO
+-> job name= S3Jul
+Your job 2483 ("s3jul") has been submitted
+-> job script= job_scen3_jul.csh --> CO
+-> job name= S3Aug
+Your job 2484 ("s3aug") has been submitted
+-> job script= job_scen3_aug.csh --> CO
+-> job name= S3Sep
+Your job 2485 ("s3sep") has been submitted
+-> job script= job_scen3_sep.csh --> CO
+-> job name= S3Oct
+Your job 2486 ("s3oct") has been submitted
+-> job script= job_scen3_oct.csh --> CO
+-> job name= S3Nov
+Your job 2487 ("s3nov") has been submitted
+-> job script= job_scen3_nov.csh --> CO
+-> job name= S4Jul
+Your job 2488 ("s4jul") has been submitted
+-> job script= job_scen4_jul.csh --> CO
+-> job name= S4Aug
+Your job 2489 ("s4aug") has been submitted
+-> job script= job_scen4_aug.csh --> CO
+-> job name= S4Sep
+Your job 2490 ("s4sep") has been submitted
+-> job script= job_scen4_sep.csh --> CO
+-> job name= S4Oct
+Your job 2491 ("s4oct") has been submitted
+-> job script= job_scen4_oct.csh --> CO
+-> job name= S4Nov
+Your job 2492 ("s4nov") has been submitted
+-> job script= job_scen4_nov.csh --> CO
+-> job name= S5Jul
+Your job 2493 ("s5jul") has been submitted
+-> job script= job_scen5_jul.csh --> CO
+-> job name= S5Aug
+Your job 2494 ("s5aug") has been submitted
+-> job script= job_scen5_aug.csh --> CO
+-> job name= S5Sep
+Your job 2495 ("s5sep") has been submitted
+-> job script= job_scen5_sep.csh --> CO
+-> job name= S5Oct
+Your job 2496 ("s5oct") has been submitted
+-> job script= job_scen5_oct.csh --> CO
+-> job name= S5Nov
+Your job 2497 ("s5nov") has been submitted
+-> job script= job_scen5_nov.csh --> CO
+-> job name= S1Jul
+Your job 2498 ("S1jul") has been submitted
+-> job script= job_scen1_jul.csh --> O3
+-> job name= S1Aug
+Your job 2499 ("S1aug") has been submitted
+-> job script= job_scen1_aug.csh --> O3
+-> job name= S1Sep
+Your job 2500 ("s1sep") has been submitted
+-> job script= job_scen1_sep.csh --> O3
+-> job name= S1Oct
+Your job 2501 ("s1oct") has been submitted
+-> job script= job_scen1_oct.csh --> O3
+-> job name= S1Nov
+Your job 2502 ("s1nov") has been submitted
+-> job script= job_scen1_nov.csh --> O3
+-> job name= S2Jul
+Your job 2503 ("S2jul") has been submitted
+-> job script= job_scen2_jul.csh --> O3
+-> job name= S2Aug
+Your job 2504 ("S2aug") has been submitted
+-> job script= job_scen2_aug.csh --> O3
+-> job name= S2Sep
+Your job 2505 ("s2sep") has been submitted
+-> job script= job_scen2_sep.csh --> O3
+-> job name= S2Oct
+Your job 2506 ("s2oct") has been submitted
+-> job script= job_scen2_oct.csh --> O3
+-> job name= S2Nov
+Your job 2507 ("s2nov") has been submitted
+-> job script= job_scen2_nov.csh --> O3
+-> job name= S3Jul
+Your job 2508 ("s3jul") has been submitted
+-> job script= job_scen3_jul.csh --> O3
+-> job name= S3Aug
+Your job 2509 ("s3aug") has been submitted
+-> job script= job_scen3_aug.csh --> O3
+-> job name= S3Sep
+Your job 2510 ("s3sep") has been submitted
+-> job script= job_scen3_sep.csh --> O3
+-> job name= S3Oct
+Your job 2511 ("s3oct") has been submitted
+-> job script= job_scen3_oct.csh --> O3
+-> job name= S3Nov
+Your job 2512 ("s3nov") has been submitted
+-> job script= job_scen3_nov.csh --> O3
+-> job name= S4Jul
+Your job 2513 ("s4jul") has been submitted
+-> job script= job_scen4_jul.csh --> O3
+-> job name= S4Aug
+Your job 2514 ("s4aug") has been submitted
+-> job script= job_scen4_aug.csh --> O3
+-> job name= S4Sep
+Your job 2515 ("s4sep") has been submitted
+-> job script= job_scen4_sep.csh --> O3
+-> job name= S4Oct
+Your job 2516 ("s4oct") has been submitted
+-> job script= job_scen4_oct.csh --> O3
+-> job name= S4Nov
+Your job 2517 ("s4nov") has been submitted
+-> job script= job_scen4_nov.csh --> O3
+-> job name= S5Jul
+Your job 2518 ("s5jul") has been submitted
+-> job script= job_scen5_jul.csh --> O3
+-> job name= S5Aug
+Your job 2519 ("s5aug") has been submitted
+-> job script= job_scen5_aug.csh --> O3
+-> job name= S5Sep
+Your job 2520 ("s5sep") has been submitted
+-> job script= job_scen5_sep.csh --> O3
+-> job name= S5Oct
+Your job 2521 ("s5oct") has been submitted
+-> job script= job_scen5_oct.csh --> O3
+-> job name= S5Nov
+Your job 2522 ("s5nov") has been submitted
+-> job script= job_scen5_nov.csh --> O3
+-> job name= S1Jul
+Your job 2523 ("S1jul") has been submitted
+-> job script= job_scen1_jul.csh --> NH3
+-> job name= S1Aug
+Your job 2524 ("S1aug") has been submitted
+-> job script= job_scen1_aug.csh --> NH3
+-> job name= S1Sep
+Your job 2525 ("s1sep") has been submitted
+-> job script= job_scen1_sep.csh --> NH3
+-> job name= S1Oct
+Your job 2526 ("s1oct") has been submitted
+-> job script= job_scen1_oct.csh --> NH3
+-> job name= S1Nov
+Your job 2527 ("s1nov") has been submitted
+-> job script= job_scen1_nov.csh --> NH3
+-> job name= S2Jul
+Your job 2528 ("S2jul") has been submitted
+-> job script= job_scen2_jul.csh --> NH3
+-> job name= S2Aug
+Your job 2529 ("S2aug") has been submitted
+-> job script= job_scen2_aug.csh --> NH3
+-> job name= S2Sep
+Your job 2530 ("s2sep") has been submitted
+-> job script= job_scen2_sep.csh --> NH3
+-> job name= S2Oct
+Your job 2531 ("s2oct") has been submitted
+-> job script= job_scen2_oct.csh --> NH3
+-> job name= S2Nov
+Your job 2532 ("s2nov") has been submitted
+-> job script= job_scen2_nov.csh --> NH3
+-> job name= S3Jul
+Your job 2533 ("s3jul") has been submitted
+-> job script= job_scen3_jul.csh --> NH3
+-> job name= S3Aug
+Your job 2534 ("s3aug") has been submitted
+-> job script= job_scen3_aug.csh --> NH3
+-> job name= S3Sep
+Your job 2535 ("s3sep") has been submitted
+-> job script= job_scen3_sep.csh --> NH3
+-> job name= S3Oct
+Your job 2536 ("s3oct") has been submitted
+-> job script= job_scen3_oct.csh --> NH3
+-> job name= S3Nov
+Your job 2537 ("s3nov") has been submitted
+-> job script= job_scen3_nov.csh --> NH3
+-> job name= S4Jul
+Your job 2538 ("s4jul") has been submitted
+-> job script= job_scen4_jul.csh --> NH3
+-> job name= S4Aug
+Your job 2539 ("s4aug") has been submitted
+-> job script= job_scen4_aug.csh --> NH3
+-> job name= S4Sep
+Your job 2540 ("s4sep") has been submitted
+-> job script= job_scen4_sep.csh --> NH3
+-> job name= S4Oct
+Your job 2541 ("s4oct") has been submitted
+-> job script= job_scen4_oct.csh --> NH3
+-> job name= S4Nov
+Your job 2542 ("s4nov") has been submitted
+-> job script= job_scen4_nov.csh --> NH3
+-> job name= S5Jul
+Your job 2543 ("s5jul") has been submitted
+-> job script= job_scen5_jul.csh --> NH3
+-> job name= S5Aug
+Your job 2544 ("s5aug") has been submitted
+-> job script= job_scen5_aug.csh --> NH3
+-> job name= S5Sep
+Your job 2545 ("s5sep") has been submitted
+-> job script= job_scen5_sep.csh --> NH3
+-> job name= S5Oct
+Your job 2546 ("s5oct") has been submitted
+-> job script= job_scen5_oct.csh --> NH3
+-> job name= S5Nov
+Your job 2547 ("s5nov") has been submitted
+-> job script= job_scen5_nov.csh --> NH3
+-> job name= S1Jul
+Your job 2548 ("S1jul") has been submitted
+-> job script= job_scen1_jul.csh --> HNO3
+-> job name= S1Aug
+Your job 2549 ("S1aug") has been submitted
+-> job script= job_scen1_aug.csh --> HNO3
+-> job name= S1Sep
+Your job 2550 ("s1sep") has been submitted
+-> job script= job_scen1_sep.csh --> HNO3
+-> job name= S1Oct
+Your job 2551 ("s1oct") has been submitted
+-> job script= job_scen1_oct.csh --> HNO3
+-> job name= S1Nov
+Your job 2552 ("s1nov") has been submitted
+-> job script= job_scen1_nov.csh --> HNO3
+-> job name= S2Jul
+Your job 2553 ("S2jul") has been submitted
+-> job script= job_scen2_jul.csh --> HNO3
+-> job name= S2Aug
+Your job 2554 ("S2aug") has been submitted
+-> job script= job_scen2_aug.csh --> HNO3
+-> job name= S2Sep
+Your job 2555 ("s2sep") has been submitted
+-> job script= job_scen2_sep.csh --> HNO3
+-> job name= S2Oct
+Your job 2556 ("s2oct") has been submitted
+-> job script= job_scen2_oct.csh --> HNO3
+-> job name= S2Nov
+Your job 2557 ("s2nov") has been submitted
+-> job script= job_scen2_nov.csh --> HNO3
+-> job name= S3Jul
+Your job 2558 ("s3jul") has been submitted
+-> job script= job_scen3_jul.csh --> HNO3
+-> job name= S3Aug
+Your job 2559 ("s3aug") has been submitted
+-> job script= job_scen3_aug.csh --> HNO3
+-> job name= S3Sep
+Your job 2560 ("s3sep") has been submitted
+-> job script= job_scen3_sep.csh --> HNO3
+-> job name= S3Oct
+Your job 2561 ("s3oct") has been submitted
+-> job script= job_scen3_oct.csh --> HNO3
+-> job name= S3Nov
+Your job 2562 ("s3nov") has been submitted
+-> job script= job_scen3_nov.csh --> HNO3
+-> job name= S4Jul
+Your job 2563 ("s4jul") has been submitted
+-> job script= job_scen4_jul.csh --> HNO3
+-> job name= S4Aug
+Your job 2564 ("s4aug") has been submitted
+-> job script= job_scen4_aug.csh --> HNO3
+-> job name= S4Sep
+Your job 2565 ("s4sep") has been submitted
+-> job script= job_scen4_sep.csh --> HNO3
+-> job name= S4Oct
+Your job 2566 ("s4oct") has been submitted
+-> job script= job_scen4_oct.csh --> HNO3
+-> job name= S4Nov
+Your job 2567 ("s4nov") has been submitted
+-> job script= job_scen4_nov.csh --> HNO3
+-> job name= S5Jul
+Your job 2568 ("s5jul") has been submitted
+-> job script= job_scen5_jul.csh --> HNO3
+-> job name= S5Aug
+Your job 2569 ("s5aug") has been submitted
+-> job script= job_scen5_aug.csh --> HNO3
+-> job name= S5Sep
+Your job 2570 ("s5sep") has been submitted
+-> job script= job_scen5_sep.csh --> HNO3
+-> job name= S5Oct
+Your job 2571 ("s5oct") has been submitted
+-> job script= job_scen5_oct.csh --> HNO3
+-> job name= S5Nov
+Your job 2572 ("s5nov") has been submitted
+-> job script= job_scen5_nov.csh --> HNO3
+-> job name= S1Jul
+Your job 2573 ("S1jul") has been submitted
+-> job script= job_scen1_jul.csh --> NO2
+-> job name= S1Aug
+Your job 2574 ("S1aug") has been submitted
+-> job script= job_scen1_aug.csh --> NO2
+-> job name= S1Sep
+Your job 2575 ("s1sep") has been submitted
+-> job script= job_scen1_sep.csh --> NO2
+-> job name= S1Oct
+Your job 2576 ("s1oct") has been submitted
+-> job script= job_scen1_oct.csh --> NO2
+-> job name= S1Nov
+Your job 2577 ("s1nov") has been submitted
+-> job script= job_scen1_nov.csh --> NO2
+-> job name= S2Jul
+Your job 2578 ("S2jul") has been submitted
+-> job script= job_scen2_jul.csh --> NO2
+-> job name= S2Aug
+Your job 2579 ("S2aug") has been submitted
+-> job script= job_scen2_aug.csh --> NO2
+-> job name= S2Sep
+Your job 2580 ("s2sep") has been submitted
+-> job script= job_scen2_sep.csh --> NO2
+-> job name= S2Oct
+Your job 2581 ("s2oct") has been submitted
+-> job script= job_scen2_oct.csh --> NO2
+-> job name= S2Nov
+Your job 2582 ("s2nov") has been submitted
+-> job script= job_scen2_nov.csh --> NO2
+-> job name= S3Jul
+Your job 2583 ("s3jul") has been submitted
+-> job script= job_scen3_jul.csh --> NO2
+-> job name= S3Aug
+Your job 2584 ("s3aug") has been submitted
+-> job script= job_scen3_aug.csh --> NO2
+-> job name= S3Sep
+Your job 2585 ("s3sep") has been submitted
+-> job script= job_scen3_sep.csh --> NO2
+-> job name= S3Oct
+Your job 2586 ("s3oct") has been submitted
+-> job script= job_scen3_oct.csh --> NO2
+-> job name= S3Nov
+Your job 2587 ("s3nov") has been submitted
+-> job script= job_scen3_nov.csh --> NO2
+-> job name= S4Jul
+Your job 2588 ("s4jul") has been submitted
+-> job script= job_scen4_jul.csh --> NO2
+-> job name= S4Aug
+Your job 2589 ("s4aug") has been submitted
+-> job script= job_scen4_aug.csh --> NO2
+-> job name= S4Sep
+Your job 2590 ("s4sep") has been submitted
+-> job script= job_scen4_sep.csh --> NO2
+-> job name= S4Oct
+Your job 2591 ("s4oct") has been submitted
+-> job script= job_scen4_oct.csh --> NO2
+-> job name= S4Nov
+Your job 2592 ("s4nov") has been submitted
+-> job script= job_scen4_nov.csh --> NO2
+-> job name= S5Jul
+Your job 2593 ("s5jul") has been submitted
+-> job script= job_scen5_jul.csh --> NO2
+-> job name= S5Aug
+Your job 2594 ("s5aug") has been submitted
+-> job script= job_scen5_aug.csh --> NO2
+-> job name= S5Sep
+Your job 2595 ("s5sep") has been submitted
+-> job script= job_scen5_sep.csh --> NO2
+-> job name= S5Oct
+Your job 2596 ("s5oct") has been submitted
+-> job script= job_scen5_oct.csh --> NO2
+-> job name= S5Nov
+Your job 2597 ("s5nov") has been submitted
+-> job script= job_scen5_nov.csh --> NO2
+-> job name= S1Jul
+Your job 2598 ("S1jul") has been submitted
+-> job script= job_scen1_jul.csh --> SO2
+-> job name= S1Aug
+Your job 2599 ("S1aug") has been submitted
+-> job script= job_scen1_aug.csh --> SO2
+-> job name= S1Sep
+Your job 2600 ("s1sep") has been submitted
+-> job script= job_scen1_sep.csh --> SO2
+-> job name= S1Oct
+Your job 2601 ("s1oct") has been submitted
+-> job script= job_scen1_oct.csh --> SO2
+-> job name= S1Nov
+Your job 2602 ("s1nov") has been submitted
+-> job script= job_scen1_nov.csh --> SO2
+-> job name= S2Jul
+Your job 2603 ("S2jul") has been submitted
+-> job script= job_scen2_jul.csh --> SO2
+-> job name= S2Aug
+Your job 2604 ("S2aug") has been submitted
+-> job script= job_scen2_aug.csh --> SO2
+-> job name= S2Sep
+Your job 2605 ("s2sep") has been submitted
+-> job script= job_scen2_sep.csh --> SO2
+-> job name= S2Oct
+Your job 2606 ("s2oct") has been submitted
+-> job script= job_scen2_oct.csh --> SO2
+-> job name= S2Nov
+Your job 2607 ("s2nov") has been submitted
+-> job script= job_scen2_nov.csh --> SO2
+-> job name= S3Jul
+Your job 2608 ("s3jul") has been submitted
+-> job script= job_scen3_jul.csh --> SO2
+-> job name= S3Aug
+Your job 2609 ("s3aug") has been submitted
+-> job script= job_scen3_aug.csh --> SO2
+-> job name= S3Sep
+Your job 2610 ("s3sep") has been submitted
+-> job script= job_scen3_sep.csh --> SO2
+-> job name= S3Oct
+Your job 2611 ("s3oct") has been submitted
+-> job script= job_scen3_oct.csh --> SO2
+-> job name= S3Nov
+Your job 2612 ("s3nov") has been submitted
+-> job script= job_scen3_nov.csh --> SO2
+-> job name= S4Jul
+Your job 2613 ("s4jul") has been submitted
+-> job script= job_scen4_jul.csh --> SO2
+-> job name= S4Aug
+Your job 2614 ("s4aug") has been submitted
+-> job script= job_scen4_aug.csh --> SO2
+-> job name= S4Sep
+Your job 2615 ("s4sep") has been submitted
+-> job script= job_scen4_sep.csh --> SO2
+-> job name= S4Oct
+Your job 2616 ("s4oct") has been submitted
+-> job script= job_scen4_oct.csh --> SO2
+-> job name= S4Nov
+Your job 2617 ("s4nov") has been submitted
+-> job script= job_scen4_nov.csh --> SO2
+-> job name= S5Jul
+Your job 2618 ("s5jul") has been submitted
+-> job script= job_scen5_jul.csh --> SO2
+-> job name= S5Aug
+Your job 2619 ("s5aug") has been submitted
+-> job script= job_scen5_aug.csh --> SO2
+-> job name= S5Sep
+Your job 2620 ("s5sep") has been submitted
+-> job script= job_scen5_sep.csh --> SO2
+-> job name= S5Oct
+Your job 2621 ("s5oct") has been submitted
+-> job script= job_scen5_oct.csh --> SO2
+-> job name= S5Nov
+Your job 2622 ("s5nov") has been submitted
+-> job script= job_scen5_nov.csh --> SO2
