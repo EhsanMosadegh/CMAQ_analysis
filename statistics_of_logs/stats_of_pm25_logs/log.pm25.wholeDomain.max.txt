@@ -1,0 +1,225 @@
+-------------------------------
+-> chk: pollutant is= PM2.5
+-> chk: statistical property is= max
+-> chk: stats patter is= maxDiffMesh
+-------------------------------
+  
+-> output log file name is = maxDiffMesh_list_total_for_PM2.5.txt
+ 
+-> we are currently at=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/statistics_of_logs
+-> log directory=
+whole_modeling_domain/min_max_logs/pm2_5
+-> we change dir to <logs/>(work) dir...
+-> now we are at=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/whole_modeling_domain/min_max_logs/pm2_5
+-> we list of files at current dir=
+total 1005
+drwxr-xr-x 2 ehsanm grid    29 Jul 15 12:06 .
+drwxr-xr-x 5 ehsanm grid     5 Jul 15 11:47 ..
+-rw-r--r-- 1 ehsanm grid   600 Jul 15 12:06 log_list_for_PM2.5_max.txt
+-rw-r--r-- 1 ehsanm grid 36001 Jul  6 00:51 log.PM2.5.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid 36005 Jul  6 00:30 log.PM2.5.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid 33778 Jul 11 20:40 log.PM2.5.scen1.Nov.txt
+-rw-r--r-- 1 ehsanm grid 35961 Jul  6 01:03 log.PM2.5.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid 34864 Jul  6 00:01 log.PM2.5.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid 36005 Jul  6 00:54 log.PM2.5.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid 35991 Jul  6 00:30 log.PM2.5.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid 33919 Jul 11 20:40 log.PM2.5.scen2.Nov.txt
+-rw-r--r-- 1 ehsanm grid 35965 Jul  6 00:55 log.PM2.5.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid 34858 Jul  6 00:01 log.PM2.5.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid 36182 Jul  9 06:27 log.PM2.5.scen3.Aug.txt
+-rw-r--r-- 1 ehsanm grid 36179 Jul  9 06:25 log.PM2.5.scen3.Jul.txt
+-rw-r--r-- 1 ehsanm grid 33923 Jul 11 20:40 log.PM2.5.scen3.Nov.txt
+-rw-r--r-- 1 ehsanm grid 36140 Jul  9 06:07 log.PM2.5.scen3.Oct.txt
+-rw-r--r-- 1 ehsanm grid 35046 Jul  9 05:37 log.PM2.5.scen3.Sep.txt
+-rw-r--r-- 1 ehsanm grid 36190 Jul  9 06:27 log.PM2.5.scen4.Aug.txt
+-rw-r--r-- 1 ehsanm grid 36178 Jul  9 06:24 log.PM2.5.scen4.Jul.txt
+-rw-r--r-- 1 ehsanm grid 33779 Jul 11 20:45 log.PM2.5.scen4.Nov.txt
+-rw-r--r-- 1 ehsanm grid 36148 Jul  9 06:11 log.PM2.5.scen4.Oct.txt
+-rw-r--r-- 1 ehsanm grid 35046 Jul 11 21:41 log.PM2.5.scen4.Sep.txt
+-rw-r--r-- 1 ehsanm grid 36180 Jul  9 06:27 log.PM2.5.scen5.Aug.txt
+-rw-r--r-- 1 ehsanm grid 36178 Jul  9 06:23 log.PM2.5.scen5.Jul.txt
+-rw-r--r-- 1 ehsanm grid 33781 Jul 11 20:40 log.PM2.5.scen5.Nov.txt
+-rw-r--r-- 1 ehsanm grid 36141 Jul  9 06:59 log.PM2.5.scen5.Oct.txt
+-rw-r--r-- 1 ehsanm grid 35040 Jul  9 05:47 log.PM2.5.scen5.Sep.txt
+-rw-r--r-- 1 ehsanm grid   473 Jul 15 12:06 maxDiffMesh_list_total_for_PM2.5.txt
+-> NOTE: old output files will be removed first:
+maxDiffMesh_list_total_for_PM2.5.txt
+log_list_for_PM2.5_max.txt
+-> now we get the list of *log* files in the log directory and write to file
+-> number of lines in log list=
+25 log_list_for_PM2.5_max.txt
+-> loop and read in log_list... 
+ 
+-> opening log file= log.PM2.5.scen1.aug.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.018774360498433618
+ 
+-> opening log file= log.PM2.5.scen1.jul.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.028166441747578208
+ 
+-> opening log file= log.PM2.5.scen1.Nov.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.05417412420970269
+ 
+-> opening log file= log.PM2.5.scen1.oct.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 9.966984760953627
+ 
+-> opening log file= log.PM2.5.scen1.sep.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.08777144269810777
+ 
+-> opening log file= log.PM2.5.scen2.aug.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.42288430531819676
+ 
+-> opening log file= log.PM2.5.scen2.jul.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 90.55465741551691
+ 
+-> opening log file= log.PM2.5.scen2.Nov.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.3504673961400129
+ 
+-> opening log file= log.PM2.5.scen2.oct.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 129.47733299920952
+ 
+-> opening log file= log.PM2.5.scen2.sep.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 26.3498684209668
+ 
+-> opening log file= log.PM2.5.scen3.Aug.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 102.11030894950513
+ 
+-> opening log file= log.PM2.5.scen3.Jul.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 63.857437970977955
+ 
+-> opening log file= log.PM2.5.scen3.Nov.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.6097315480563277
+ 
+-> opening log file= log.PM2.5.scen3.Oct.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 164.9118562560198
+ 
+-> opening log file= log.PM2.5.scen3.Sep.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 6.634875014134579
+ 
+-> opening log file= log.PM2.5.scen4.Aug.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.33860667129998556
+ 
+-> opening log file= log.PM2.5.scen4.Jul.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 6.046201476847292
+ 
+-> opening log file= log.PM2.5.scen4.Nov.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.10031482039940087
+ 
+-> opening log file= log.PM2.5.scen4.Oct.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 15.405155941748383
+ 
+-> opening log file= log.PM2.5.scen4.Sep.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 1.949928047425217
+ 
+-> opening log file= log.PM2.5.scen5.Aug.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 4.6319994893606
+ 
+-> opening log file= log.PM2.5.scen5.Jul.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 281.08344465349955
+ 
+-> opening log file= log.PM2.5.scen5.Nov.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 0.054158551382950115
+ 
+-> opening log file= log.PM2.5.scen5.Oct.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 584.0297849884893
+ 
+-> opening log file= log.PM2.5.scen5.Sep.txt
+-> capturing stats_pattern= maxDiffMesh
+-> extracting pattern= maxDiffMesh= 109.0365755068759
+ 
+-> size of the maxDiffMesh output log file with no. of captured patterns is=
+25
+------------------------------------------------
+-> now we do the arithmetic operations in python since shell \
+	does _not_ understand arithmetic operations specially with scientific notation!!!
+ 
+-> we are currently at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/whole_modeling_domain/min_max_logs/pm2_5
+-> deploying python script ...
+------------------------------------------------
+-> now we are inside python...
+-> we are at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/whole_modeling_domain/min_max_logs/pm2_5
+------------------------------------------------
+-> chk: pollutant is= PM2.5
+-> chk: statisticsl property is= max
+-> chk: region is= whole_domain 
+------------------------------------------------
+-> looking inside log file= maxDiffMesh_list_total_for_PM2.5.txt
+ 
+-> line to append is= 0.018774360498433618
+
+-> line to append is= 0.028166441747578208
+
+-> line to append is= 0.05417412420970269
+
+-> line to append is= 9.966984760953627
+
+-> line to append is= 0.08777144269810777
+
+-> line to append is= 0.42288430531819676
+
+-> line to append is= 90.55465741551691
+
+-> line to append is= 0.3504673961400129
+
+-> line to append is= 129.47733299920952
+
+-> line to append is= 26.3498684209668
+
+-> line to append is= 102.11030894950513
+
+-> line to append is= 63.857437970977955
+
+-> line to append is= 0.6097315480563277
+
+-> line to append is= 164.9118562560198
+
+-> line to append is= 6.634875014134579
+
+-> line to append is= 0.33860667129998556
+
+-> line to append is= 6.046201476847292
+
+-> line to append is= 0.10031482039940087
+
+-> line to append is= 15.405155941748383
+
+-> line to append is= 1.949928047425217
+
+-> line to append is= 4.6319994893606
+
+-> line to append is= 281.08344465349955
+
+-> line to append is= 0.054158551382950115
+
+-> line to append is= 584.0297849884893
+
+-> line to append is= 109.0365755068759
+
+----------------------------------------
+-> chk: abs max for (PM2.5) in region (whole_domain) is= 584.0297849884893
+------------------------------------------------

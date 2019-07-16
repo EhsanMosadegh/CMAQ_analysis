@@ -10,18 +10,20 @@
 # I defined 'chk' as a keyword to check importent parameters and end value
 #------------------------------------------------------------------------
 
-pollutant='CO'
-stats_property='max'
-region='LakeTahoeBasin'  # 'LakeTahoeBasin' or 'NorthTahoe' or 'SouthTahoe'
+pollutant='PM2.5'
+stats_property='min'
+#region='LakeTahoeBasin'  # 'LakeTahoeBasin' or 'NorthTahoe' or 'SouthTahoe'
 
-stats_pattern=$stats_property'DiffMesh'$region
+stats_pattern=$stats_property'DiffMesh'
+#stats_pattern=$stats_property'DiffMesh'$region
+
 log_file_pattern=log.${pollutant}.scen*
 
 #---------------------------------
 
 #home_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis/'
 home_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/'
-log_dir_name='new_region_logs/'
+log_dir_name='whole_modeling_domain/min_max_logs/pm2_5'
 log_dir_full_path=${home_dir}'logs/'${log_dir_name}
 statistics_dir=${home_dir}'statistics_of_logs/'
 
@@ -31,13 +33,14 @@ echo '-------------------------------'
 echo '-> chk: pollutant is=' ${pollutant}
 echo '-> chk: statistical property is=' ${stats_property}
 echo '-> chk: stats patter is=' ${stats_pattern}
-echo '-> chk: region is=' ${region}
+#echo '-> chk: region is=' ${region}
 echo '-------------------------------'
 echo '  '
 
 #---------------------------------
 
-output_file_name=$stats_pattern'_list_total_for_'$pollutant'_in_'${region}.txt
+output_file_name=$stats_pattern'_list_total_for_'$pollutant'.txt'
+#output_file_name=$stats_pattern'_list_total_for_'$pollutant'_in_'${region}.txt
 echo '-> output log file name is =' ${output_file_name}
 echo ' ' 
 #---------------------------------

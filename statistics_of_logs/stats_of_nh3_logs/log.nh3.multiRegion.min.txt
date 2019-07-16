@@ -1,0 +1,384 @@
+-------------------------------
+-> chk: pollutant is= NH3
+-> chk: statistical property is= min
+-> chk: stats patter is= minDiffMeshLakeTahoeBasin
+-> chk: region is= LakeTahoeBasin
+-------------------------------
+  
+-> output log file name is = minDiffMeshLakeTahoeBasin_list_total_for_NH3_in_LakeTahoeBasin.txt
+ 
+-> we are currently at=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/statistics_of_logs
+-> log directory=
+multi_regions_logs/
+-> we change dir to <logs/>(work) dir...
+-> now we are at=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/multi_regions_logs
+-> we list of files at current dir=
+total 7165
+drwxr-xr-x 2 ehsanm grid   187 Jul 14 16:23 .
+drwxr-xr-x 4 ehsanm grid     4 Jul 14 16:11 ..
+-rw-r--r-- 1 ehsanm grid 39074 Jul 14 14:20 log.CO.scen1.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39048 Jul 14 14:20 log.CO.scen1.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36786 Jul 14 14:18 log.CO.scen1.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39078 Jul 14 14:21 log.CO.scen1.Oct.txt
+-rw-r--r-- 1 ehsanm grid 37883 Jul 14 14:19 log.CO.scen1.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39069 Jul 14 14:20 log.CO.scen2.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39074 Jul 14 14:20 log.CO.scen2.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36782 Jul 14 14:18 log.CO.scen2.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39075 Jul 14 14:20 log.CO.scen2.Oct.txt
+-rw-r--r-- 1 ehsanm grid 37889 Jul 14 14:19 log.CO.scen2.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39074 Jul 14 14:20 log.CO.scen3.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39078 Jul 14 14:20 log.CO.scen3.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36782 Jul 14 14:18 log.CO.scen3.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39076 Jul 14 14:20 log.CO.scen3.Oct.txt
+-rw-r--r-- 1 ehsanm grid 37891 Jul 14 14:19 log.CO.scen3.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39062 Jul 14 14:20 log.CO.scen4.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39040 Jul 14 14:20 log.CO.scen4.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36785 Jul 14 14:18 log.CO.scen4.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39076 Jul 14 14:20 log.CO.scen4.Oct.txt
+-rw-r--r-- 1 ehsanm grid 37895 Jul 14 14:19 log.CO.scen4.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39072 Jul 14 14:20 log.CO.scen5.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39041 Jul 14 14:20 log.CO.scen5.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36780 Jul 14 14:18 log.CO.scen5.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39039 Jul 14 14:20 log.CO.scen5.Oct.txt
+-rw-r--r-- 1 ehsanm grid 37891 Jul 14 14:19 log.CO.scen5.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39319 Jul 14 14:46 log.HNO3.scen1.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39264 Jul 14 14:46 log.HNO3.scen1.Jul.txt
+-rw-r--r-- 1 ehsanm grid 37006 Jul 14 14:45 log.HNO3.scen1.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39308 Jul 14 14:47 log.HNO3.scen1.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38147 Jul 14 14:44 log.HNO3.scen1.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39294 Jul 14 15:08 log.HNO3.scen2.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39316 Jul 14 15:08 log.HNO3.scen2.Jul.txt
+-rw-r--r-- 1 ehsanm grid 37008 Jul 14 15:07 log.HNO3.scen2.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39276 Jul 14 15:09 log.HNO3.scen2.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38158 Jul 14 15:07 log.HNO3.scen2.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39305 Jul 14 15:09 log.HNO3.scen3.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39321 Jul 14 15:08 log.HNO3.scen3.Jul.txt
+-rw-r--r-- 1 ehsanm grid 37009 Jul 14 15:07 log.HNO3.scen3.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39275 Jul 14 15:09 log.HNO3.scen3.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38150 Jul 14 15:08 log.HNO3.scen3.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39280 Jul 14 15:09 log.HNO3.scen4.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39312 Jul 14 15:09 log.HNO3.scen4.Jul.txt
+-rw-r--r-- 1 ehsanm grid 37005 Jul 14 15:08 log.HNO3.scen4.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39300 Jul 14 15:09 log.HNO3.scen4.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38156 Jul 14 15:08 log.HNO3.scen4.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39305 Jul 14 15:10 log.HNO3.scen5.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39317 Jul 14 15:09 log.HNO3.scen5.Jul.txt
+-rw-r--r-- 1 ehsanm grid 37008 Jul 14 15:08 log.HNO3.scen5.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39321 Jul 14 15:10 log.HNO3.scen5.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38158 Jul 14 15:09 log.HNO3.scen5.Sep.txt
+-rw-r--r-- 1 ehsanm grid   525 Jul 14 16:13 log_list_for_CO_max.txt
+-rw-r--r-- 1 ehsanm grid   525 Jul 14 16:15 log_list_for_CO_min.txt
+-rw-r--r-- 1 ehsanm grid   550 Jul 14 16:23 log_list_for_NH3_max.txt
+-rw-r--r-- 1 ehsanm grid   550 Jul 14 16:19 log_list_for_SO2_max.txt
+-rw-r--r-- 1 ehsanm grid   550 Jul 14 16:18 log_list_for_SO2_min.txt
+-rw-r--r-- 1 ehsanm grid 39554 Jul 14 14:45 log.NH3.scen1.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39529 Jul 14 14:45 log.NH3.scen1.Jul.txt
+-rw-r--r-- 1 ehsanm grid 37228 Jul 14 14:43 log.NH3.scen1.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39548 Jul 14 14:45 log.NH3.scen1.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38394 Jul 14 14:44 log.NH3.scen1.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39545 Jul 14 14:45 log.NH3.scen2.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39551 Jul 14 14:45 log.NH3.scen2.Jul.txt
+-rw-r--r-- 1 ehsanm grid 37239 Jul 14 14:43 log.NH3.scen2.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39545 Jul 14 14:45 log.NH3.scen2.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38399 Jul 14 14:44 log.NH3.scen2.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39551 Jul 14 14:45 log.NH3.scen3.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39551 Jul 14 14:45 log.NH3.scen3.Jul.txt
+-rw-r--r-- 1 ehsanm grid 37244 Jul 14 14:44 log.NH3.scen3.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39548 Jul 14 14:45 log.NH3.scen3.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38394 Jul 14 14:44 log.NH3.scen3.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39536 Jul 14 14:45 log.NH3.scen4.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39548 Jul 14 14:45 log.NH3.scen4.Jul.txt
+-rw-r--r-- 1 ehsanm grid 37248 Jul 14 14:44 log.NH3.scen4.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39549 Jul 14 14:45 log.NH3.scen4.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38398 Jul 14 14:44 log.NH3.scen4.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39550 Jul 14 14:46 log.NH3.scen5.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39550 Jul 14 14:45 log.NH3.scen5.Jul.txt
+-rw-r--r-- 1 ehsanm grid 37230 Jul 14 14:44 log.NH3.scen5.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39548 Jul 14 14:46 log.NH3.scen5.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38401 Jul 14 14:44 log.NH3.scen5.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39236 Jul 14 15:10 log.NO2.scen1.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39207 Jul 14 15:10 log.NO2.scen1.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36960 Jul 14 15:09 log.NO2.scen1.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39231 Jul 14 15:10 log.NO2.scen1.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38087 Jul 14 15:10 log.NO2.scen1.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39182 Jul 14 15:10 log.NO2.scen2.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39236 Jul 14 15:10 log.NO2.scen2.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36957 Jul 14 15:09 log.NO2.scen2.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39231 Jul 14 15:10 log.NO2.scen2.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38084 Jul 14 15:10 log.NO2.scen2.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39230 Jul 14 15:11 log.NO2.scen3.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39239 Jul 14 15:11 log.NO2.scen3.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36954 Jul 14 15:09 log.NO2.scen3.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39230 Jul 14 15:11 log.NO2.scen3.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38087 Jul 14 15:10 log.NO2.scen3.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39218 Jul 14 15:12 log.NO2.scen4.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39237 Jul 14 15:10 log.NO2.scen4.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36959 Jul 14 15:10 log.NO2.scen4.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39235 Jul 14 15:12 log.NO2.scen4.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38088 Jul 14 15:10 log.NO2.scen4.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39236 Jul 14 15:31 log.NO2.scen5.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39235 Jul 14 15:30 log.NO2.scen5.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36958 Jul 14 15:30 log.NO2.scen5.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39237 Jul 14 15:31 log.NO2.scen5.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38050 Jul 14 15:30 log.NO2.scen5.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39276 Jul 14 14:20 log.O3.scen1.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39249 Jul 14 14:20 log.O3.scen1.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36778 Jul 14 14:18 log.O3.scen1.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39271 Jul 14 14:20 log.O3.scen1.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38132 Jul 14 14:19 log.O3.scen1.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39273 Jul 14 14:20 log.O3.scen2.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39272 Jul 14 14:20 log.O3.scen2.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36776 Jul 14 14:18 log.O3.scen2.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39276 Jul 14 14:20 log.O3.scen2.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38129 Jul 14 14:19 log.O3.scen2.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39272 Jul 14 14:20 log.O3.scen3.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39275 Jul 14 14:20 log.O3.scen3.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36781 Jul 14 14:19 log.O3.scen3.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39270 Jul 14 14:20 log.O3.scen3.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38128 Jul 14 14:19 log.O3.scen3.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39267 Jul 14 14:43 log.O3.scen4.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39275 Jul 14 14:43 log.O3.scen4.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36780 Jul 14 14:42 log.O3.scen4.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39277 Jul 14 14:43 log.O3.scen4.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38131 Jul 14 14:43 log.O3.scen4.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39277 Jul 14 14:44 log.O3.scen5.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39274 Jul 14 14:43 log.O3.scen5.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36780 Jul 14 14:42 log.O3.scen5.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39275 Jul 14 14:44 log.O3.scen5.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38128 Jul 14 14:43 log.O3.scen5.Sep.txt
+-rw-r--r-- 1 ehsanm grid  9738 Jul 14 15:32 log.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid  9347 Jul 14 15:32 log.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid  9771 Jul 14 15:31 log.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid  9344 Jul 14 15:31 log.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid  9377 Jul 14 15:32 log.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid  9314 Jul 14 15:32 log.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid  9436 Jul 14 15:32 log.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid  9654 Jul 14 15:32 log.scen2.nov.txt
+-rw-r--r-- 1 ehsanm grid  8966 Jul 14 15:32 log.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid  9436 Jul 14 15:31 log.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid  9692 Jul 14 15:33 log.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid  9725 Jul 14 15:32 log.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid 10216 Jul 14 15:32 log.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid  9263 Jul 14 15:32 log.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid  9301 Jul 14 15:32 log.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid 10404 Jul 14 15:33 log.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid 10404 Jul 14 15:34 log.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid 10404 Jul 14 15:32 log.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid 10404 Jul 14 15:33 log.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid 10056 Jul 14 15:32 log.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid 10404 Jul 14 15:33 log.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid 10404 Jul 14 15:32 log.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid 10404 Jul 14 15:33 log.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid 10404 Jul 14 15:33 log.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid 10404 Jul 14 15:33 log.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid 39198 Jul 14 15:32 log.SO2.scen1.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39208 Jul 14 15:32 log.SO2.scen1.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36957 Jul 14 15:31 log.SO2.scen1.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39235 Jul 14 15:31 log.SO2.scen1.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38051 Jul 14 15:32 log.SO2.scen1.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39188 Jul 14 15:32 log.SO2.scen2.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39200 Jul 14 15:32 log.SO2.scen2.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36956 Jul 14 15:32 log.SO2.scen2.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39239 Jul 14 15:32 log.SO2.scen2.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38050 Jul 14 15:31 log.SO2.scen2.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39233 Jul 14 15:33 log.SO2.scen3.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39236 Jul 14 15:32 log.SO2.scen3.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36956 Jul 14 15:32 log.SO2.scen3.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39238 Jul 14 15:32 log.SO2.scen3.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38049 Jul 14 15:32 log.SO2.scen3.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39217 Jul 14 15:33 log.SO2.scen4.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39195 Jul 14 15:34 log.SO2.scen4.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36957 Jul 14 15:32 log.SO2.scen4.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39239 Jul 14 15:33 log.SO2.scen4.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38052 Jul 14 15:32 log.SO2.scen4.Sep.txt
+-rw-r--r-- 1 ehsanm grid 39232 Jul 14 15:33 log.SO2.scen5.Aug.txt
+-rw-r--r-- 1 ehsanm grid 39201 Jul 14 15:32 log.SO2.scen5.Jul.txt
+-rw-r--r-- 1 ehsanm grid 36959 Jul 14 15:33 log.SO2.scen5.Nov.txt
+-rw-r--r-- 1 ehsanm grid 39199 Jul 14 15:33 log.SO2.scen5.Oct.txt
+-rw-r--r-- 1 ehsanm grid 38050 Jul 14 15:33 log.SO2.scen5.Sep.txt
+-rw-r--r-- 1 ehsanm grid   221 Jul 14 16:13 maxDiffMeshLakeTahoeBasin_list_total_for_CO_in_LakeTahoeBasin.txt
+-rw-r--r-- 1 ehsanm grid   223 Jul 14 16:23 maxDiffMeshLakeTahoeBasin_list_total_for_NH3_in_LakeTahoeBasin.txt
+-rw-r--r-- 1 ehsanm grid   226 Jul 14 16:19 maxDiffMeshLakeTahoeBasin_list_total_for_SO2_in_LakeTahoeBasin.txt
+-rw-r--r-- 1 ehsanm grid   197 Jul 14 16:15 minDiffMeshLakeTahoeBasin_list_total_for_CO_in_LakeTahoeBasin.txt
+-rw-r--r-- 1 ehsanm grid   209 Jul 14 16:18 minDiffMeshLakeTahoeBasin_list_total_for_SO2_in_LakeTahoeBasin.txt
+-> NOTE: old output files will be removed first:
+minDiffMeshLakeTahoeBasin_list_total_for_NH3_in_LakeTahoeBasin.txt
+log_list_for_NH3_min.txt
+-> now we get the list of *log* files in the log directory and write to file
+-> number of lines in log list=
+25 log_list_for_NH3_min.txt
+-> loop and read in log_list... 
+ 
+-> opening log file= log.NH3.scen1.Aug.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -0.007555
+ 
+-> opening log file= log.NH3.scen1.Jul.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -8e-05
+ 
+-> opening log file= log.NH3.scen1.Nov.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= 1e-06
+ 
+-> opening log file= log.NH3.scen1.Oct.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= 0.000493
+ 
+-> opening log file= log.NH3.scen1.Sep.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -0.009764
+ 
+-> opening log file= log.NH3.scen2.Aug.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -2.1e-05
+ 
+-> opening log file= log.NH3.scen2.Jul.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -0.00033
+ 
+-> opening log file= log.NH3.scen2.Nov.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -2e-06
+ 
+-> opening log file= log.NH3.scen2.Oct.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= 3.5e-05
+ 
+-> opening log file= log.NH3.scen2.Sep.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -0.000108
+ 
+-> opening log file= log.NH3.scen3.Aug.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -1.1e-05
+ 
+-> opening log file= log.NH3.scen3.Jul.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -0.000475
+ 
+-> opening log file= log.NH3.scen3.Nov.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= 2e-06
+ 
+-> opening log file= log.NH3.scen3.Oct.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= 0.000287
+ 
+-> opening log file= log.NH3.scen3.Sep.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -0.002597
+ 
+-> opening log file= log.NH3.scen4.Aug.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -2.6e-05
+ 
+-> opening log file= log.NH3.scen4.Jul.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -0.000635
+ 
+-> opening log file= log.NH3.scen4.Nov.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -1.1e-05
+ 
+-> opening log file= log.NH3.scen4.Oct.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= 0.000864
+ 
+-> opening log file= log.NH3.scen4.Sep.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -0.000827
+ 
+-> opening log file= log.NH3.scen5.Aug.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -9e-06
+ 
+-> opening log file= log.NH3.scen5.Jul.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -0.000666
+ 
+-> opening log file= log.NH3.scen5.Nov.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= 1e-06
+ 
+-> opening log file= log.NH3.scen5.Oct.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= 0.036921
+ 
+-> opening log file= log.NH3.scen5.Sep.txt
+-> capturing stats_pattern= minDiffMeshLakeTahoeBasin
+-> extracting pattern= minDiffMeshLakeTahoeBasin= -4.4e-05
+ 
+-> size of the minDiffMeshLakeTahoeBasin output log file with no. of captured patterns is=
+25
+------------------------------------------------
+-> now we do the arithmetic operations in python since shell \
+	does _not_ understand arithmetic operations specially with scientific notation!!!
+ 
+-> we are currently at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/multi_regions_logs
+-> deploying python script ...
+------------------------------------------------
+-> now we are inside python...
+-> we are at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/multi_regions_logs
+------------------------------------------------
+-> chk: pollutant is= NH3
+-> chk: statisticsl property is= min
+-> chk: region is= LakeTahoeBasin 
+------------------------------------------------
+-> looking inside log file= minDiffMeshLakeTahoeBasin_list_total_for_NH3_in_LakeTahoeBasin.txt
+ 
+-> line to append is= -0.007555
+
+-> line to append is= -8e-05
+
+-> line to append is= 1e-06
+
+-> line to append is= 0.000493
+
+-> line to append is= -0.009764
+
+-> line to append is= -2.1e-05
+
+-> line to append is= -0.00033
+
+-> line to append is= -2e-06
+
+-> line to append is= 3.5e-05
+
+-> line to append is= -0.000108
+
+-> line to append is= -1.1e-05
+
+-> line to append is= -0.000475
+
+-> line to append is= 2e-06
+
+-> line to append is= 0.000287
+
+-> line to append is= -0.002597
+
+-> line to append is= -2.6e-05
+
+-> line to append is= -0.000635
+
+-> line to append is= -1.1e-05
+
+-> line to append is= 0.000864
+
+-> line to append is= -0.000827
+
+-> line to append is= -9e-06
+
+-> line to append is= -0.000666
+
+-> line to append is= 1e-06
+
+-> line to append is= 0.036921
+
+-> line to append is= -4.4e-05
+
+----------------------------------------
+-> chk: abs min for (NH3) in region (LakeTahoeBasin) is= -0.009764
+------------------------------------------------

@@ -8,9 +8,9 @@ import numpy as np
 import os
 #--------------------------------------------------------
 
-pollutant='CO'
-stats_property='max'
-region='LakeTahoeBasin' # 'LakeTahoeBasin' or 'NorthTahoe' or 'SouthTahoe'
+pollutant='PM2.5'
+stats_property='min'
+region='whole_domain' # 'LakeTahoeBasin' or 'NorthTahoe' or 'SouthTahoe'
 
 #--------------------------------------------------------
 
@@ -24,7 +24,8 @@ print( f'-> chk: region is= {region} ')
 print('------------------------------------------------')
 #--------------------------------------------------------
 
-file_name=stats_property+'DiffMesh'+region+'_list_total_for_'+pollutant+'_in_'+region+'.txt'
+file_name=stats_property+'DiffMesh'+'_list_total_for_'+pollutant+'.txt'
+#file_name=stats_property+'DiffMesh'+region+'_list_total_for_'+pollutant+'_in_'+region+'.txt'
 
 #home_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis'
 #home_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis'
