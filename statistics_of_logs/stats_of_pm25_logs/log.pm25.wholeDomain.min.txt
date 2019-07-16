@@ -1,0 +1,225 @@
+-------------------------------
+-> chk: pollutant is= PM2.5
+-> chk: statistical property is= min
+-> chk: stats patter is= minDiffMesh
+-------------------------------
+  
+-> output log file name is = minDiffMesh_list_total_for_PM2.5.txt
+ 
+-> we are currently at=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/statistics_of_logs
+-> log directory=
+whole_modeling_domain/min_max_logs/pm2_5
+-> we change dir to <logs/>(work) dir...
+-> now we are at=
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/whole_modeling_domain/min_max_logs/pm2_5
+-> we list of files at current dir=
+total 1005
+drwxr-xr-x 2 ehsanm grid    29 Jul 15 12:07 .
+drwxr-xr-x 5 ehsanm grid     5 Jul 15 11:47 ..
+-rw-r--r-- 1 ehsanm grid   600 Jul 15 12:07 log_list_for_PM2.5_max.txt
+-rw-r--r-- 1 ehsanm grid 36001 Jul  6 00:51 log.PM2.5.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid 36005 Jul  6 00:30 log.PM2.5.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid 33778 Jul 11 20:40 log.PM2.5.scen1.Nov.txt
+-rw-r--r-- 1 ehsanm grid 35961 Jul  6 01:03 log.PM2.5.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid 34864 Jul  6 00:01 log.PM2.5.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid 36005 Jul  6 00:54 log.PM2.5.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid 35991 Jul  6 00:30 log.PM2.5.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid 33919 Jul 11 20:40 log.PM2.5.scen2.Nov.txt
+-rw-r--r-- 1 ehsanm grid 35965 Jul  6 00:55 log.PM2.5.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid 34858 Jul  6 00:01 log.PM2.5.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid 36182 Jul  9 06:27 log.PM2.5.scen3.Aug.txt
+-rw-r--r-- 1 ehsanm grid 36179 Jul  9 06:25 log.PM2.5.scen3.Jul.txt
+-rw-r--r-- 1 ehsanm grid 33923 Jul 11 20:40 log.PM2.5.scen3.Nov.txt
+-rw-r--r-- 1 ehsanm grid 36140 Jul  9 06:07 log.PM2.5.scen3.Oct.txt
+-rw-r--r-- 1 ehsanm grid 35046 Jul  9 05:37 log.PM2.5.scen3.Sep.txt
+-rw-r--r-- 1 ehsanm grid 36190 Jul  9 06:27 log.PM2.5.scen4.Aug.txt
+-rw-r--r-- 1 ehsanm grid 36178 Jul  9 06:24 log.PM2.5.scen4.Jul.txt
+-rw-r--r-- 1 ehsanm grid 33779 Jul 11 20:45 log.PM2.5.scen4.Nov.txt
+-rw-r--r-- 1 ehsanm grid 36148 Jul  9 06:11 log.PM2.5.scen4.Oct.txt
+-rw-r--r-- 1 ehsanm grid 35046 Jul 11 21:41 log.PM2.5.scen4.Sep.txt
+-rw-r--r-- 1 ehsanm grid 36180 Jul  9 06:27 log.PM2.5.scen5.Aug.txt
+-rw-r--r-- 1 ehsanm grid 36178 Jul  9 06:23 log.PM2.5.scen5.Jul.txt
+-rw-r--r-- 1 ehsanm grid 33781 Jul 11 20:40 log.PM2.5.scen5.Nov.txt
+-rw-r--r-- 1 ehsanm grid 36141 Jul  9 06:59 log.PM2.5.scen5.Oct.txt
+-rw-r--r-- 1 ehsanm grid 35040 Jul  9 05:47 log.PM2.5.scen5.Sep.txt
+-rw-r--r-- 1 ehsanm grid   473 Jul 15 12:07 maxDiffMesh_list_total_for_PM2.5.txt
+-> NOTE: old output files will be removed first:
+minDiffMesh_list_total_for_PM2.5.txt
+log_list_for_PM2.5_min.txt
+-> now we get the list of *log* files in the log directory and write to file
+-> number of lines in log list=
+25 log_list_for_PM2.5_min.txt
+-> loop and read in log_list... 
+ 
+-> opening log file= log.PM2.5.scen1.aug.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.24405592231340378
+ 
+-> opening log file= log.PM2.5.scen1.jul.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.000267942746480454
+ 
+-> opening log file= log.PM2.5.scen1.Nov.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.03965139998144451
+ 
+-> opening log file= log.PM2.5.scen1.oct.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.0012030444929114203
+ 
+-> opening log file= log.PM2.5.scen1.sep.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.12483871943420866
+ 
+-> opening log file= log.PM2.5.scen2.aug.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -3.2266301493333316e-05
+ 
+-> opening log file= log.PM2.5.scen2.jul.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.1787092759404132
+ 
+-> opening log file= log.PM2.5.scen2.Nov.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.0396556881679242
+ 
+-> opening log file= log.PM2.5.scen2.oct.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -1.5203550618014816e-05
+ 
+-> opening log file= log.PM2.5.scen2.sep.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.10849204171035032
+ 
+-> opening log file= log.PM2.5.scen3.Aug.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -6.548499548308939e-05
+ 
+-> opening log file= log.PM2.5.scen3.Jul.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.20218870780801268
+ 
+-> opening log file= log.PM2.5.scen3.Nov.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.038851258465377736
+ 
+-> opening log file= log.PM2.5.scen3.Oct.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -8.29978655758623e-06
+ 
+-> opening log file= log.PM2.5.scen3.Sep.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.11975832250383167
+ 
+-> opening log file= log.PM2.5.scen4.Aug.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.0002536980375165143
+ 
+-> opening log file= log.PM2.5.scen4.Jul.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.2314338019137745
+ 
+-> opening log file= log.PM2.5.scen4.Nov.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.039643630990223055
+ 
+-> opening log file= log.PM2.5.scen4.Oct.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -2.0189551255711535e-05
+ 
+-> opening log file= log.PM2.5.scen4.Sep.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.10784622331460314
+ 
+-> opening log file= log.PM2.5.scen5.Aug.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.0003302271968568249
+ 
+-> opening log file= log.PM2.5.scen5.Jul.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.03642769926978762
+ 
+-> opening log file= log.PM2.5.scen5.Nov.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.03964801699501175
+ 
+-> opening log file= log.PM2.5.scen5.Oct.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= 3.5185967739437274e-07
+ 
+-> opening log file= log.PM2.5.scen5.Sep.txt
+-> capturing stats_pattern= minDiffMesh
+-> extracting pattern= minDiffMesh= -0.07642858707242528
+ 
+-> size of the minDiffMesh output log file with no. of captured patterns is=
+25
+------------------------------------------------
+-> now we do the arithmetic operations in python since shell \
+	does _not_ understand arithmetic operations specially with scientific notation!!!
+ 
+-> we are currently at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/whole_modeling_domain/min_max_logs/pm2_5
+-> deploying python script ...
+------------------------------------------------
+-> now we are inside python...
+-> we are at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/whole_modeling_domain/min_max_logs/pm2_5
+------------------------------------------------
+-> chk: pollutant is= PM2.5
+-> chk: statisticsl property is= min
+-> chk: region is= whole_domain 
+------------------------------------------------
+-> looking inside log file= minDiffMesh_list_total_for_PM2.5.txt
+ 
+-> line to append is= -0.24405592231340378
+
+-> line to append is= -0.000267942746480454
+
+-> line to append is= -0.03965139998144451
+
+-> line to append is= -0.0012030444929114203
+
+-> line to append is= -0.12483871943420866
+
+-> line to append is= -3.2266301493333316e-05
+
+-> line to append is= -0.1787092759404132
+
+-> line to append is= -0.0396556881679242
+
+-> line to append is= -1.5203550618014816e-05
+
+-> line to append is= -0.10849204171035032
+
+-> line to append is= -6.548499548308939e-05
+
+-> line to append is= -0.20218870780801268
+
+-> line to append is= -0.038851258465377736
+
+-> line to append is= -8.29978655758623e-06
+
+-> line to append is= -0.11975832250383167
+
+-> line to append is= -0.0002536980375165143
+
+-> line to append is= -0.2314338019137745
+
+-> line to append is= -0.039643630990223055
+
+-> line to append is= -2.0189551255711535e-05
+
+-> line to append is= -0.10784622331460314
+
+-> line to append is= -0.0003302271968568249
+
+-> line to append is= -0.03642769926978762
+
+-> line to append is= -0.03964801699501175
+
+-> line to append is= 3.5185967739437274e-07
+
+-> line to append is= -0.07642858707242528
+
+----------------------------------------
+-> chk: abs min for (PM2.5) in region (whole_domain) is= -0.24405592231340378
+------------------------------------------------
