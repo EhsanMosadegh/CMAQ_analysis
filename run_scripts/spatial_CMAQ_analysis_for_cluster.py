@@ -570,7 +570,7 @@ def main() :
 	regions_dict={
 	'SouthTahoe':[-120.05 , 38.88 , 8],
 	'NorthTahoe':[-120.05 , 39.2245 , 8],
-	'LakeTahoeBasin':[-120.30 , 38.87 , 50]
+	'LakeTahoeBasin':[-120.30 , 38.87 , 50] # always be the last one to get the min/max of the largest region out of the stats function
 	}
 
 	# intermed file is directed to be used in spatial plotting; and the original tensor is used for time-series plotting
