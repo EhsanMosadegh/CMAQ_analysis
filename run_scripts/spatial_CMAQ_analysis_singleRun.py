@@ -43,14 +43,14 @@ def main() :
 
 	scenario= '1' 																						# 1-5, baseline
 	days_to_run_in_month= 1 
-	cmaq_pol= 'CO'												# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
-	processing_pollutant= 'single_pollutant' # 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
-	pol_unit= 'ppmV' 												#	'ppmV' or 'ug/m^3'
+	cmaq_pol= 'PM2.5'												# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
+	processing_pollutant= 'pm2.5' # 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
+	pol_unit= 'ug/m^3' 												#	'ppmV' or 'ug/m^3'
 	include_pmdiag_file= 'yes' 					 											# 'yes' OR 'no'
 
 	### spatial plot
 	spatial_plotting= 'yes'		 	# yes or no
-	plot_method= 'single_plot'								# 'single_plot' or 'diff_plot'
+	plot_method= 'diff_plot'								# 'single_plot' or 'diff_plot'
 	colorbar_method= 'min_to_max'						# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
 	minus_abs_max_diffPlot= ''
 	abs_max_diffPlot= ''
@@ -407,7 +407,7 @@ def main() :
 		#====================================================================================================
 		# process netcdf files for each cell with a specific function
 
-		# single plot
+		#========== single plot
 
 		if ( plot_method == 'single_plot' ) :
 
@@ -432,7 +432,7 @@ def main() :
 
 					elif ( processing_pollutant == 'pm2.5') :
 
-						print( f'-> inside loop: extracting cell for pm2.5 at row= {row} and col={col} ... ' )
+						#print( f'-> inside singlePlot loop: extracting cell time-series for pm2.5 at row= {row} and col={col} ... ' )
 
 						cell_24hr_tseries_for_pm25 = function_pm25_daily_cell_tseries( include_pmdiag_file , aconc_open_scen , pmdiag_open_scen , lay , row , col )
 
@@ -462,7 +462,7 @@ def main() :
 			### now we concatenate daily timeseries tensor to monthly tensor
 			monthly_tseries_tensor_from_scen = np.concatenate( ( monthly_tseries_tensor_from_scen ,  daily_tensor_scen ) , axis=0 )
 
-		# diff plot
+		#========== diff plot
 
 		elif ( plot_method == 'diff_plot' ) :
 
@@ -488,16 +488,17 @@ def main() :
 
 					elif ( processing_pollutant == 'pm2.5' ) :
 
-						print(" ")
-						print('-----------------------------------------------------------')
+						#print( f'-> inside diffPlot loop for day= {day_of_the_month}: extracting cell time-series for PM2.5 at row= {row} and col= {col} ... ' )
+						#print(" ")
+						#print('-----------------------------------------------------------')
 						# we calculate cell means
-						print( f'-> inside loop: extracting cell for PM2.5 - diff - Landis - at row= {row} and col= {col} ... ' )
+						#print( f'-> inside diffPlot loop for day= {day_of_the_month}: extracting cell time-series for PM2.5 - diff - Landis - at row= {row} and col= {col} ... ' )
 						cell_24hr_timeSeries_array_scen = function_pm25_daily_cell_tseries( include_pmdiag_file , aconc_open_scen , pmdiag_open_scen , lay , row , col )
-						print(" ")
-						print( f'-> inside loop: extracting cell for PM2.5 - diff - baseline - at row= {row} and col= {col} ... ' )
+						#print(" ")
+						#print( f'-> inside diffPlot loop day= {day_of_the_month}: extracting cell time-series for PM2.5 - diff - baseline - at row= {row} and col= {col} ... ' )
 						cell_24hr_timeSeries_array_base = function_pm25_daily_cell_tseries( include_pmdiag_file , aconc_open_base , pmdiag_open_base , lay , row , col )
-						print('-----------------------------------------------------------')
-						print(" ")
+						#print('-----------------------------------------------------------')
+						#print(" ")
 
 					else:
 						pass
@@ -569,7 +570,7 @@ def main() :
 	regions_dict={
 	'SouthTahoe':[-120.05 , 38.88 , 8],
 	'NorthTahoe':[-120.05 , 39.2245 , 8],
-	'LakeTahoeBasin':[-120.30 , 38.87 , 50]
+	'LakeTahoeBasin':[-120.30 , 38.87 , 50] # always be the last one to get the min/max of the largest region out of the stats function
 	}
 
 	# intermed file is directed to be used in spatial plotting; and the original tensor is used for time-series plotting
@@ -1148,11 +1149,11 @@ def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row 
 
 def function_pm25_daily_cell_tseries ( include_pmdiag_file , aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
 	" returns daily timeseries for pm2.5 for each cell"
-	print(" ")
+	#print(" ")
 	# loop inside 24 time-steps and extract pm concentrations
 	# extract PM2.5 species from input files
-	print('-> inside pm2.5 daily function: extracting several species from CMAQ files for pm2.5 ...')
-	print( f'-> processing row= {row} and col= {col}' )
+	#print('-> inside pm2.5 daily function: extracting several species from CMAQ files for pm2.5 ...')
+	#print( f'-> processing row= {row} and col= {col}' )
 
 	# species from aconc [1]
 	AH3OPI = aconc_open.variables['AH3OPI'][:,lay,row,col]
@@ -1376,7 +1377,7 @@ def function_pm25_daily_cell_tseries ( include_pmdiag_file , aconc_open , pmdiag
 
 	if ( include_pmdiag_file == 'yes' ) :
 
-		print( '-> PMDIAG file is included in PM2.5 calculations ...' )
+		#print( '-> PMDIAG file is included in PM2.5 calculations ...' )
 
 		### species from pmdiag [3]
 		PM25AT = pmdiag_open.variables['PM25AT'][:,lay,row,col]
@@ -1459,8 +1460,8 @@ def function_pm25_daily_cell_tseries ( include_pmdiag_file , aconc_open , pmdiag
 
 	else:
 
-		print( '-> PMDIAG file is _NOT_ included in PM2.5 calculations ...' )
-		print( f'-> PM2.5 concentrations will be over-estimated!')
+		#print( '-> PMDIAG file is _NOT_ included in PM2.5 calculations ...' )
+		#print( f'-> PM2.5 concentrations will be over-estimated!')
 
 		 # species calculated inside SpecDef file [0]
 		 # perform arithmetic operations on arrays
