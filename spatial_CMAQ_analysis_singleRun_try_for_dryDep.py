@@ -133,6 +133,8 @@ def main() :
 	print( f'-> number of days to run= {days_to_run_in_month}')
 	print( f'-> processing pollutant= {cmaq_pol}')
 	print( f'-> CCTM process= {cctm_process}')
+	if ( cctm_process == 'dep' ):
+		print( f'-> deposition type is= {dep_type}')
 	print( f'-> pollutat unit= {pol_unit}')
 	print( f'-> CMAQ year= {cmaq_file_year}')
 	print( f'-> platform is= {platform}')
@@ -443,7 +445,13 @@ def main() :
 			daily_tseries_tensor_atm_scen = np.empty ( shape= ( 24 , domain_rows , domain_cols ))  # when assignin gby index, z-dim should be 1.
 			daily_tseries_tensor_dep_scen = np.empty ( shape= ( 24 , domain_rows , domain_cols ))  # when assignin gby index, z-dim should be 1.
 
-			print(f'-> shape of daily tseries array={daily_tseries_tensor_atm_scen.shape }')
+			print(f'-> shape of initial daily tseries tensor - atm scen - before filling = {daily_tseries_tensor_atm_scen.shape }')
+			print(f'-> shape of initial daily tseries tensor - dep scen - before filling = {daily_tseries_tensor_dep_scen.shape }')
+			# print(f'-> chk: initial empty daily tseries tensor- atm scen =')
+			# print(daily_tseries_tensor_atm_scen[:1,:1])
+			# print(f'-> chk: initial empty daily tseries tensor- dep scen =')
+			# print(daily_tseries_tensor_dep_scen[:10])
+
 			print(f'-> traversing each cell to extract species for {plot_method} ...')
 			### traverse each cell in the C-storing style for each day: row and then col
 			for row in range( 0 , domain_rows , 1 ) :
@@ -458,6 +466,7 @@ def main() :
 							daily_tseries_tensor_atm_scen [:,row,col]  = cell_24hr_tseries_for_singlePol
 
 						elif ( cctm_process == 'dep') :
+
 							#print(f'-> we are going to use time-series function for dep ... ')
 							cell_24hr_tseries_for_singlePol_dep = function_cell_24hr_timeSeries_singlePOL( dep_open_scen , cmaq_pol , lay , row , col )
 							daily_tseries_tensor_dep_scen [:,row,col]  = cell_24hr_tseries_for_singlePol_dep
@@ -493,14 +502,21 @@ def main() :
 				# print( f'-> raster file = { output_raster }')
 				# print( " " )
 
-			print( f'-> note: shape of daily tensor= {daily_tseries_tensor_atm_scen.shape}')
-			print( f'-> note: shape of monthly tseries tensor= {monthly_tseries_tensor_atm_scen.shape}')
 
 			### after all days are extracted, now we concatenate the daily timeseries tensor to monthly timeseries tensor
 			if ( cctm_process == 'atm') :
+
+				print( f'-> note: shape of initial daily tseries tensor - atm scen - after filling is = {daily_tseries_tensor_atm_scen.shape}')
+				print( f'-> note: shape of monthly tseries tensor before filling is = {monthly_tseries_tensor_atm_scen.shape}')
 				monthly_tseries_tensor_atm_scen = np.concatenate( ( monthly_tseries_tensor_atm_scen ,  daily_tseries_tensor_atm_scen ) , axis=0 )
 
 			if( cctm_process == 'dep') :
+
+				print( f'-> note: shape of initial daily tseries tensor - dep scen - after filling is = {daily_tseries_tensor_dep_scen.shape}')
+				# print( f'-> daily tseries tensor after filling is = ')
+				# print( daily_tseries_tensor_dep_scen )
+				print( f'-> note: shape of monthly tseries tensor before filling is = {monthly_tseries_tensor_dep_scen.shape}')
+
 				monthly_tseries_tensor_dep_scen = np.concatenate( ( monthly_tseries_tensor_dep_scen ,  daily_tseries_tensor_dep_scen ) , axis=0 )
 
 		# diff plot
@@ -921,6 +937,9 @@ def main() :
 		print(" ")
 		# define the image first
 		colorImage = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh , cmap=color_mapping_function , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 )
+
+		lon_of_text , lat_of_text = theMap( xcent_zoom , ycent_zoom )
+		plt.text( lon_of_text-45000 , lat_of_text+45000 , 'scen %s %s' %(scenario , sim_month) )
 
 		#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
 
