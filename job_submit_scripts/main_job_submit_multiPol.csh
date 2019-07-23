@@ -2,6 +2,8 @@
 
 echo '-> set environmental variables first'
 
+setenv CCTM_PROCESS 'dep'  						# 'atm' or 'dep'
+setenv DEP_TYPE 'DRYDEP'
 setenv PROCESSING_POLLUTANT 'pm2.5'  			# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
 setenv POL_UNIT 'ug/m^3' 				# 'ppmV' or 'ug/m^3'
 setenv SPATIAL_PLOTTING_KEY 'yes'			# yes or no

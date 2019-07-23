@@ -35,31 +35,32 @@ def main() :
 	### get the starting time
 	start = time.time()
 
-	cctm_process = environ.get('CCTM_PROCESS')  #'dep' 				# 'atm' or 'dep' 
-	dep_type= environ.get('DEP_TYPE') #'DRYDEP'
+	cctm_process = 'dep' 				# 'atm' or 'dep' 
+	dep_type= 'DRYDEP'
 
 	### run time settings
-	cmaq_file_month= environ.get('CMAQ_MONTH_NUMBER')																			#  07, 08, 	09,  10,  11
-	sim_month= environ.get('CMAQ_MONTH_STRING')   																				# Jul, Aug, Sep, Oct, Nov
+	cmaq_file_month= '07'																			#  07, 08, 	09,  10,  11
+	sim_month= 'Jul'  																				# Jul, Aug, Sep, Oct, Nov
 	cmaq_file_year= '2016'
 	mcip_date_tag= '161001'
 
-	scenario= environ.get('LANDIS_SCENARIO') 	 																						# 1-5, baseline
-	days_to_run_in_month= environ.get('DAYS_IN_MONTH_TO_RUN') 
-	cmaq_pol= environ.get('CMAQ_POL')														# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
-	processing_pollutant= environ.get('PROCESSING_POLLUTANT') # 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
-	pol_unit= environ.get('POL_UNIT') 												#	'ppmV' or 'ug/m^3'
-	include_pmdiag_file= 'yes' 					 											# 'yes' OR 'no'
+	scenario= '2' 																						# 1-5, baseline
+	days_to_run_in_month= 31 
+
+	processing_pollutant= 'single_pollutant' 			# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
+	cmaq_pol= 'NH3'																# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
+	pol_unit= 'kg/hectare' 												#	'ppmV' will change to ppb inside; or 'ug/m^3' for pm2.5; or 'kg/hectare' for dep mode
+	include_pmdiag_file= 'yes' 					 					# 'yes' OR 'no'
 
 	### spatial plot
-	spatial_plotting= environ.get('SPATIAL_PLOTTING_KEY')		 	# yes or no
-	plot_method= environ.get('PLOT_METHOD')										# 'single_plot' or 'diff_plot'
-	colorbar_method= environ.get('COLOR_METHOD')							# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
-	minus_abs_max_diffPlot= environ.get('MINUS_ABS_MAX_DIFF')
-	abs_max_diffPlot= environ.get('ABS_MAX_DIFF')
+	spatial_plotting= 'yes'		 								# yes or no
+	plot_method= 'diff_plot'								# 'single_plot' or 'diff_plot'
+	colorbar_method= 'min_to_max'							# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
+	minus_abs_max_diffPlot= ''
+	abs_max_diffPlot= ''
 	# my_vmin_for_singlePlot= -0.4
 	# my_vmax_for_singlePlot= 0.4
-	produce_raster= environ.get('PRODUCE_RASTER')							# 'yes' OR 'no'
+	produce_raster= 'no' 						# 'yes' OR 'no'
 
 	### set mapping parameters for spatial plotting
 	mapping= 'no' # 'yes' OR 'no'
@@ -67,9 +68,9 @@ def main() :
 	upper_bound_mapping_conc= 0.120
 
 	### time-series plot
-	timeseries_plotting= environ.get('TIMESERIES_PLOTTING') 	# yes or not
+	timeseries_plotting= 'no' 	# yes or not
 
-	platform= 'cluster'  # 'Mac' or 'cluster'
+	platform= 'Mac'  # 'Mac' or 'cluster'
 	storage= '10T' # 'personal' OR '10T'
 	dpi_scale=300
 
