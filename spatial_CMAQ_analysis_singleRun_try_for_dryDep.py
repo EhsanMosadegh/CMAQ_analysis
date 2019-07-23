@@ -39,13 +39,13 @@ def main() :
 	dep_type= 'DRYDEP'
 
 	### run time settings
-	cmaq_file_month= '09'																			#  07, 08, 	09,  10,  11
-	sim_month= 'Sep'  																				# Jul, Aug, Sep, Oct, Nov
+	cmaq_file_month= '11'																			#  07, 08, 	09,  10,  11
+	sim_month= 'Nov'  																				# Jul, Aug, Sep, Oct, Nov
 	cmaq_file_year= '2016'
 	mcip_date_tag= '161001'
 
-	scenario= '5' 																						# 1-5, baseline
-	days_to_run_in_month= 10 
+	scenario= '4' 																						# 1-5, baseline
+	days_to_run_in_month= 1 
 
 	processing_pollutant= 'single_pollutant' 			# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
 	cmaq_pol= 'NH3'																# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
@@ -147,7 +147,7 @@ def main() :
 			#print( f'-> for single plot: vmin= {my_vmin_for_singlePlot} and vmax= {my_vmax_for_singlePlot} ')
 			print('-> NOTE: for single plot we plot for min/max value of the region')
 		if (plot_method=='diff_plot'):
-			print( f'-> NOTE: colorbar method for spatial diff plot= {colorbar_method}')
+			print( f'-> NOTE: colorBar method for spatial diff plot= {colorbar_method}')
 			if ( colorbar_method == 'minus_abs_max_to_max' ):
 				print( f'-> for diff plot: minus absolute Max. values= {minus_abs_max_diffPlot}')
 				print( f'-> for diff plot: plus absolute Max. values= {abs_max_diffPlot}')				
@@ -174,9 +174,10 @@ def main() :
 		if ( storage == 'personal') :
 
 			home_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
-			mcip_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/'   # '/' at the end
-			fig_dir = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/cmaq_figs/'  # '/' at the end
-			raster_dir = '/Volumes/Ehsanm_DRI/cmaq_usfs/raster_dir/'
+			mcip_dir = home_dir+'mcip_files/'   # '/' at the end
+			fig_dir = home_dir+'cmaq_figs/'  # '/' at the end
+			cmaq_output_dir = home_dir+'cmaq_output/'
+			raster_dir = home_dir+'raster_dir/'
 
 	elif ( platform == 'cluster' ) :
 
@@ -675,11 +676,14 @@ def main() :
 
 	# NOTE: we only need one scen and ase tensor, we direct different scen files to one intermediate file and work on that
 
-	### region dictionary
+	### region dictionary, starting point == origin == ll point of the bounding box, and then ul, ur, lr, ll
 	regions_dict={
-	'SouthTahoe':[-120.05 , 38.88 , 8],
-	'NorthTahoe':[-120.05 , 39.2245 , 8],
-	'LakeTahoeBasin':[-120.30 , 38.87 , 50] }
+
+	'SouthTahoe':[-120.05 , 38.88 , 8 , 8 ],
+	'NorthTahoe':[-120.05 , 39.2245 , 8 , 8 ],
+	'LakeTahoeBasin':[-120.30 , 38.87 , 50 , 38 ],
+	'Ndep':[-120.15 , 38.93 , 37 , 20 ]  # row, col = range_in_raw and col 
+	}
 
 
 	# intermed file is directed to be used in spatial plotting; and the original tensor is used for time-series plotting
@@ -760,22 +764,11 @@ def main() :
 
 			ll_lon = regions_dict[region][0]
 			ll_lat = regions_dict[region][1]
-			scaling_factor = regions_dict[region][2]
+			range_in_raw = regions_dict[region][2]
+			range_in_col = regions_dict[region][3]
 
-			# (min_of_single_region , mean_of_single_region , median_of_single_region , std_of_single_region , max_of_single_region , row_of_max_cell , col_of_max_cell)= function_stats_of_desired_region(monthly_mean_2d_mesh , timeseries_plotting , lon_cross_array , lat_cross_array , ll_lon , ll_lat , scaling_factor)
 			
-			tuple_of_stats = function_stats_of_desired_region(monthly_mean_2d_mesh , timeseries_plotting , lon_cross_array , lat_cross_array , ll_lon , ll_lat , scaling_factor)
-
-			# print('-----------------------------------------------------------')
-			# print( f'-> stats: regionNameSingleMesh= {region} ')
-			# print( f'-> stats: minSingleMesh{region}= { round(min_of_single_region,6) }')
-			# print( f'-> stats: meanSingleMesh{region}= { round(mean_of_single_region,6) }')
-			# print( f'-> stats: medianSingleMesh{region}= { round(median_of_single_region,6) }')
-			# print( f'-> stats: stdSingleMesh{region}= { round(std_of_single_region,6) }')
-			# print( f'-> stats: maxSingleMesh{region}= { round(max_of_single_region,6) }')
-			# print( f'-> row no. of max value{region}= { round(row_of_max_cell,6) }')
-			# print( f'-> col no. of max value{region}= { round(col_of_max_cell,6) }')
-			# print('-----------------------------------------------------------')
+			tuple_of_stats = function_stats_of_desired_region(monthly_mean_2d_mesh , timeseries_plotting , lon_cross_array , lat_cross_array , ll_lon , ll_lat , range_in_raw , range_in_col , region )
 
 			print('-----------------------------------------------------------')
 			print( f'-> stats: regionNameSingleMesh= {region} ')
@@ -854,11 +847,11 @@ def main() :
 
 			ll_lon = regions_dict[region][0]
 			ll_lat = regions_dict[region][1]
-			scaling_factor = regions_dict[region][2]
+			range_in_raw = regions_dict[region][2]
+			range_in_col = regions_dict[region][3]
 
-			# (min_of_diff_region , mean_of_diff_region , median_of_diff_region , std_of_diff_region , max_of_diff_region , row_of_max_cell , col_of_max_cell) = function_stats_of_desired_region(monthly_mean_2d_mesh , timeseries_plotting , lon_cross_array , lat_cross_array , ll_lon , ll_lat , scaling_factor)
 
-			tuple_of_stats = function_stats_of_desired_region(monthly_mean_2d_mesh , timeseries_plotting , lon_cross_array , lat_cross_array , ll_lon , ll_lat , scaling_factor)
+			tuple_of_stats = function_stats_of_desired_region(monthly_mean_2d_mesh , timeseries_plotting , lon_cross_array , lat_cross_array , ll_lon , ll_lat , range_in_raw , range_in_col , region )
 
 			print('-----------------------------------------------------------')
 			print( f'-> stats: regionNameDiffMesh= {region} ')
@@ -1134,9 +1127,10 @@ def mapping_function( abs_conc , lower_bound_mapping_conc , upper_bound_mapping_
 #====================================================================================================
 # function to calculate statistics of a 2D array region
 
-def function_stats_of_desired_region( monthly_mean_2d_mesh , timeseries_plotting , lon_cross_array , lat_cross_array , ll_lon_of_region , ll_lat_of_region , domain_range_scaling_factor ) :
+def function_stats_of_desired_region( monthly_mean_2d_mesh , timeseries_plotting , lon_cross_array , lat_cross_array , ll_lon_of_region , ll_lat_of_region , range_in_row , range_in_col , region_name ) :
 
-	print( '-> getting the statistics of a region/mesh ...')
+	print(" ")
+	print( f'-> getting the statistics of a region/mesh ==> {region_name} ')
 
 	list_from_region = []
 
@@ -1144,7 +1138,7 @@ def function_stats_of_desired_region( monthly_mean_2d_mesh , timeseries_plotting
 
 	print( f'-> input mesh has total number of rows= {mesh_row} and total number of col= {mesh_col} ')
 
-
+	### NOITE: totasl diff array is computed from CROSS points (= center of the cells)
 	lon_diff_arr = lon_cross_array - ll_lon_of_region
 	lat_diff_arr = lat_cross_array - ll_lat_of_region
 
@@ -1153,22 +1147,24 @@ def function_stats_of_desired_region( monthly_mean_2d_mesh , timeseries_plotting
 	### create the abs total array of abs min distances
 	total_diff_arr = np.abs( lon_diff_arr ) + np.abs( lat_diff_arr )
 	### find the row/col with min distance
-	tuple_of_row_col = np.argwhere( total_diff_arr == np.min(total_diff_arr) )[0]
+	tuple_of_row_col_of_cell = np.argwhere( total_diff_arr == np.min(total_diff_arr) )[0]
 
-	print(f'-> row/col of lower-left cell is= {tuple_of_row_col} ')
-	marker_row = tuple_of_row_col[0]
-	marker_col = tuple_of_row_col[1]
+	print(f'-> row/col of lower-left cell is= {tuple_of_row_col_of_cell} ')
+	row_of_cell_with_point = tuple_of_row_col_of_cell[0]
+	col_of_cell_with_marker = tuple_of_row_col_of_cell[1]
 
-	print(f'-> cell row is= {marker_row}')
-	print(f'-> cell row is= {marker_col}')
-	print(f'-> now plot the mesh from the starting cell= {marker_row , marker_col} ')
+	# print(f'-> row of the cell contaning the point is= {row_of_cell_with_point}')
+	# print(f'-> column of the cell contaning the point is= {col_of_cell_with_marker}')
+	print(f'-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = {row_of_cell_with_point , col_of_cell_with_marker} ')
+	print(f'-> range in row is= {range_in_row} ')
+	print(f'-> range in col is= {range_in_col} ')
 
-	for cell_row in range( marker_row , marker_row+domain_range_scaling_factor , 1 ) :
-		for cell_col in range( marker_col , marker_col+domain_range_scaling_factor , 1 ) :
+	for cell_row in range( row_of_cell_with_point , row_of_cell_with_point + range_in_row , 1 ) :
+		for cell_col in range( col_of_cell_with_marker , col_of_cell_with_marker + range_in_col , 1 ) :
 
 			#print( f'-> loop for row= {cell_row} and col= {cell_col}')
 
-			### extract the desired region from lower-left point
+			### extract the desired region from lower-left (ll) point + number of cells to add
 			cell_val = monthly_mean_2d_mesh[ cell_row , cell_col ]
 			list_from_region.append( cell_val )
 
