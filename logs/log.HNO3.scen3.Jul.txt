@@ -411,3 +411,241 @@
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 26
+ 
+-> setting path for HNO3 dep and diff_plot...
+-> opening/reading CMAQ files for HNO3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_3/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160726.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160726.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 27
+ 
+-> setting path for HNO3 dep and diff_plot...
+-> opening/reading CMAQ files for HNO3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_3/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160727.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160727.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 28
+ 
+-> setting path for HNO3 dep and diff_plot...
+-> opening/reading CMAQ files for HNO3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_3/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160728.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160728.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 29
+ 
+-> setting path for HNO3 dep and diff_plot...
+-> opening/reading CMAQ files for HNO3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_3/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160729.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160729.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 30
+ 
+-> setting path for HNO3 dep and diff_plot...
+-> opening/reading CMAQ files for HNO3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_3/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160730.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160730.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 31
+ 
+-> setting path for HNO3 dep and diff_plot...
+-> opening/reading CMAQ files for HNO3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_3/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen3_mpi_standard_20160731.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160731.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-> for HNO3 in dep for diff_plot the unit will be updated from "kg/hectare" to "kg/hectare" 
+---------------------------------------------------------------
+-> check 3D data mesh info:
+-> LANDIS scenario, monthly mean tensor: dimensions= 3 and shape of tensor= (744, 265, 250) 
+-> baseline, monthly mean tensor: dimensions= 3 and shape of tensor= (744, 265, 250) 
+---------------------------------------------------------------
+-> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario (3) mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D "baseline" scenario mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now subtract 2 meshes to get the diff mesh for spatial plotting 
+ 
+-> quick look at final product of 3D-to-2D for - diff - plotting: monthly mean 2D mesh=
+-> monthly mesh scenario= 
+[[2.07096523e-03 3.29262408e-04 1.70391585e-03 ... 7.31824295e-05
+  3.81532743e-05 7.53819333e-05]
+ [3.58660907e-04 1.89029466e-03 9.33298138e-04 ... 7.66352140e-05
+  7.47802792e-05 4.46104965e-05]
+ [1.98575630e-03 9.42829751e-04 9.23910260e-04 ... 5.02209756e-05
+  4.99253902e-05 4.48203298e-05]
+ ...
+ [2.96481626e-04 2.95342615e-04 2.89039720e-04 ... 4.67876023e-05
+  4.73847724e-05 4.92278278e-05]
+ [3.72615631e-04 2.83174036e-04 2.55231997e-04 ... 4.39285288e-05
+  1.05811430e-04 4.68803101e-05]
+ [3.00784207e-04 2.67029382e-04 2.52243953e-04 ... 3.84649706e-05
+  3.79616201e-05 4.07115695e-05]]
+ 
+-> monthly mesh baseline= 
+[[2.07106348e-03 3.29295641e-04 1.70421634e-03 ... 7.34491944e-05
+  3.82420426e-05 7.55089786e-05]
+ [3.58677563e-04 1.89048683e-03 9.33454652e-04 ... 7.68983048e-05
+  7.49829369e-05 4.46748904e-05]
+ [1.98585010e-03 9.42929991e-04 9.24073723e-04 ... 5.03845669e-05
+  5.00749370e-05 4.49059595e-05]
+ ...
+ [2.96536411e-04 2.95372434e-04 2.89055313e-04 ... 4.71439305e-05
+  4.77928570e-05 4.95935937e-05]
+ [3.72664479e-04 2.83184559e-04 2.55238377e-04 ... 4.42884722e-05
+  1.06490080e-04 4.71269776e-05]
+ [3.00788799e-04 2.67033166e-04 2.52248176e-04 ... 3.85849563e-05
+  3.80693521e-05 4.07820658e-05]]
+ 
+-> monthly mean diff-mesh= 
+[[-9.82544534e-08 -3.32325746e-08 -3.00489803e-07 ... -2.66764878e-07
+  -8.87683375e-08 -1.27045280e-07]
+ [-1.66555080e-08 -1.92170578e-07 -1.56513506e-07 ... -2.63090863e-07
+  -2.02657694e-07 -6.43938706e-08]
+ [-9.37928831e-08 -1.00239998e-07 -1.63463199e-07 ... -1.63591369e-07
+  -1.49546850e-07 -8.56297082e-08]
+ ...
+ [-5.47847171e-08 -2.98188999e-08 -1.55928081e-08 ... -3.56328172e-07
+  -4.08084606e-07 -3.65765847e-07]
+ [-4.88487269e-08 -1.05233286e-08 -6.38065421e-09 ... -3.59943392e-07
+  -6.78649251e-07 -2.46667526e-07]
+ [-4.59134135e-09 -3.78357314e-09 -4.22237866e-09 ... -1.19985708e-07
+  -1.07732039e-07 -7.04962963e-08]]
+ 
+-> diff matrix statistics:
+-> shape= (265, 250) and dimension= 2
+-> region list is = ['SouthTahoe', 'NorthTahoe', 'LakeTahoeBasin', 'Ndep']
+ 
+-> getting the statistics of a region/mesh == SouthTahoe 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [141 182] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (141, 182) 
+-> range in row is= 8 
+-> range in col is= 8 
+-> size of list_from_region= 64 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			SouthTahoe 
+-> stats: minDiffMeshSouthTahoe= 		-1.1277263019921944e-05
+-> stats: meanDiffMeshSouthTahoe= 		-6.21763231830993e-06
+-> stats: medianDiffMeshSouthTahoe= 	-6.798517495717934e-06
+-> stats: stdDiffMeshSouthTahoe= 		2.6131145641586543e-06
+-> stats: maxDiffMeshSouthTahoe= 		-1.4585552271816193e-06
+-----------------------------------------------------------
+ 
+-> getting the statistics of a region/mesh == NorthTahoe 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [178 182] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (178, 182) 
+-> range in row is= 8 
+-> range in col is= 8 
+-> size of list_from_region= 64 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			NorthTahoe 
+-> stats: minDiffMeshNorthTahoe= 		-8.653858928492879e-06
+-> stats: meanDiffMeshNorthTahoe= 		-4.0507861531539325e-06
+-> stats: medianDiffMeshNorthTahoe= 	-2.4308965694795727e-06
+-> stats: stdDiffMeshNorthTahoe= 		2.340572602642226e-06
+-> stats: maxDiffMeshNorthTahoe= 		-1.9569632578994627e-06
+-----------------------------------------------------------
+ 
+-> getting the statistics of a region/mesh == LakeTahoeBasin 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [140 161] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (140, 161) 
+-> range in row is= 50 
+-> range in col is= 38 
+-> size of list_from_region= 1900 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			LakeTahoeBasin 
+-> stats: minDiffMeshLakeTahoeBasin= 		-1.2242392687060693e-05
+-> stats: meanDiffMeshLakeTahoeBasin= 		-4.57860761739209e-06
+-> stats: medianDiffMeshLakeTahoeBasin= 	-4.424618222375809e-06
+-> stats: stdDiffMeshLakeTahoeBasin= 		2.1909267254782377e-06
+-> stats: maxDiffMeshLakeTahoeBasin= 		-1.338496152432825e-06
+-----------------------------------------------------------
+ 
+-> getting the statistics of a region/mesh == Ndep 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [147 174] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (147, 174) 
+-> range in row is= 37 
+-> range in col is= 20 
+-> size of list_from_region= 740 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			Ndep 
+-> stats: minDiffMeshNdep= 		-1.2242392687060693e-05
+-> stats: meanDiffMeshNdep= 		-3.6813611936551675e-06
+-> stats: medianDiffMeshNdep= 	-2.2473679553215504e-06
+-> stats: stdDiffMeshNdep= 		2.5708430355313954e-06
+-> stats: maxDiffMeshNdep= 		-1.406630455678799e-06
+-----------------------------------------------------------
+-> spatial plotting for CCTM process= dep...
+ 
+-> making the colormesh ...
+-> shape of x_mesh= (266, 251)
+-> shape of y_mesh= (266, 251)
+-> shape of monthly_mean_diff_mesh= (265, 250)
+ 
+-> plot method= diff_plot
+-> colorbar method= min_to_max
+-> plot the image for vmin= -1.2242392687060693e-05 and vmax= -1.338496152432825e-06
+ 
+ 
+-> output figure is stored at:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_figs/DRYDEP_HNO3_monthlyMean_scen_3_diff_from_baseline_month_07_summed_31_days_colorbarMethod_min_to_max_dpi_300.png
+------------------------------------
+-> run time of main function= 23.36 min
+*** MAIN COMPLETED SUCCESSFULLY! ***
+------------------------------------
