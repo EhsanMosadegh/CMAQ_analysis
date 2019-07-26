@@ -1,0 +1,89 @@
+-> set environmental variables first
+------------------------------------------------------
+-> cctm process= dep
+-> depossition type= DRYDEP
+-> processing pollutant= single_pollutant
+-> pollutant unit= kg/hectare
+-> spatial plotting= yes
+-> plotting mehtod= diff_plot
+-> colorbar method= minus_abs_max_to_max
+-> produce raster= no
+-> time-series plotting= no
+-> minus-abs max values for diff plot= -1.5601184840036777e-08
+-> abs max values for diff plot= 1.5601184840036777e-08
+------------------------------------------------------
+-> job name= S1Jul
+Your job 3276 ("S1jul") has been submitted
+-> job script= job_scen1_jul.csh --> NO3
+-> job name= S1Aug
+Your job 3277 ("S1aug") has been submitted
+-> job script= job_scen1_aug.csh --> NO3
+-> job name= S1Sep
+Your job 3278 ("s1sep") has been submitted
+-> job script= job_scen1_sep.csh --> NO3
+-> job name= S1Oct
+Your job 3279 ("s1oct") has been submitted
+-> job script= job_scen1_oct.csh --> NO3
+-> job name= S1Nov
+Your job 3280 ("s1nov") has been submitted
+-> job script= job_scen1_nov.csh --> NO3
+-> job name= S2Jul
+Your job 3281 ("S2jul") has been submitted
+-> job script= job_scen2_jul.csh --> NO3
+-> job name= S2Aug
+Your job 3282 ("S2aug") has been submitted
+-> job script= job_scen2_aug.csh --> NO3
+-> job name= S2Sep
+Your job 3283 ("s2sep") has been submitted
+-> job script= job_scen2_sep.csh --> NO3
+-> job name= S2Oct
+Your job 3284 ("s2oct") has been submitted
+-> job script= job_scen2_oct.csh --> NO3
+-> job name= S2Nov
+Your job 3285 ("s2nov") has been submitted
+-> job script= job_scen2_nov.csh --> NO3
+-> job name= S3Jul
+Your job 3286 ("s3jul") has been submitted
+-> job script= job_scen3_jul.csh --> NO3
+-> job name= S3Aug
+Your job 3287 ("s3aug") has been submitted
+-> job script= job_scen3_aug.csh --> NO3
+-> job name= S3Sep
+Your job 3288 ("s3sep") has been submitted
+-> job script= job_scen3_sep.csh --> NO3
+-> job name= S3Oct
+Your job 3289 ("s3oct") has been submitted
+-> job script= job_scen3_oct.csh --> NO3
+-> job name= S3Nov
+Your job 3290 ("s3nov") has been submitted
+-> job script= job_scen3_nov.csh --> NO3
+-> job name= S4Jul
+Your job 3291 ("s4jul") has been submitted
+-> job script= job_scen4_jul.csh --> NO3
+-> job name= S4Aug
+Your job 3292 ("s4aug") has been submitted
+-> job script= job_scen4_aug.csh --> NO3
+-> job name= S4Sep
+Your job 3293 ("s4sep") has been submitted
+-> job script= job_scen4_sep.csh --> NO3
+-> job name= S4Oct
+Your job 3294 ("s4oct") has been submitted
+-> job script= job_scen4_oct.csh --> NO3
+-> job name= S4Nov
+Your job 3295 ("s4nov") has been submitted
+-> job script= job_scen4_nov.csh --> NO3
+-> job name= S5Jul
+Your job 3296 ("s5jul") has been submitted
+-> job script= job_scen5_jul.csh --> NO3
+-> job name= S5Aug
+Your job 3297 ("s5aug") has been submitted
+-> job script= job_scen5_aug.csh --> NO3
+-> job name= S5Sep
+Your job 3298 ("s5sep") has been submitted
+-> job script= job_scen5_sep.csh --> NO3
+-> job name= S5Oct
+Your job 3299 ("s5oct") has been submitted
+-> job script= job_scen5_oct.csh --> NO3
+-> job name= S5Nov
+Your job 3300 ("s5nov") has been submitted
+-> job script= job_scen5_nov.csh --> NO3

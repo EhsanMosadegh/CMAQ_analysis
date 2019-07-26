@@ -1,0 +1,254 @@
+-------------------------------
+-> chk: pollutant is= NH3
+-> chk: statistical property is= max
+-> chk: stats patter is= maxDiffMeshNdep
+-> chk: region is= Ndep
+-------------------------------
+  
+-> output log file name is = maxDiffMeshNdep_list_total_for_NH3_in_Ndep.txt
+ 
+-> home dir= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/
+-> log dir= drydep/
+-> log dir full path= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/drydep/
+-> we are currently at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/statistics_of_logs
+-> log directory= drydep/
+-> we change dir to <logs/>(work) dir...
+-> now we are at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/drydep
+-> list of files at current (hopefully be logs/) dir=
+total 1024
+drwxr-xr-x 2 ehsanm grid    54 Jul 24 11:42 .
+drwxr-xr-x 5 ehsanm grid     5 Jul 23 19:55 ..
+-rw-r--r-- 1 ehsanm grid   550 Jul 24 11:42 log_list_for_NH3_min.txt
+-rw-r--r-- 1 ehsanm grid 32399 Jul 23 17:02 log.NH3.scen1.Aug.txt
+-rw-r--r-- 1 ehsanm grid 32386 Jul 23 17:02 log.NH3.scen1.Jul.txt
+-rw-r--r-- 1 ehsanm grid 30613 Jul 23 17:02 log.NH3.scen1.Nov.txt
+-rw-r--r-- 1 ehsanm grid 32382 Jul 23 17:03 log.NH3.scen1.Oct.txt
+-rw-r--r-- 1 ehsanm grid 31496 Jul 23 17:02 log.NH3.scen1.Sep.txt
+-rw-r--r-- 1 ehsanm grid 32387 Jul 23 17:03 log.NH3.scen2.Aug.txt
+-rw-r--r-- 1 ehsanm grid 32387 Jul 23 17:02 log.NH3.scen2.Jul.txt
+-rw-r--r-- 1 ehsanm grid 30602 Jul 23 17:02 log.NH3.scen2.Nov.txt
+-rw-r--r-- 1 ehsanm grid 32382 Jul 23 17:03 log.NH3.scen2.Oct.txt
+-rw-r--r-- 1 ehsanm grid 31494 Jul 23 17:02 log.NH3.scen2.Sep.txt
+-rw-r--r-- 1 ehsanm grid 32391 Jul 23 17:05 log.NH3.scen3.Aug.txt
+-rw-r--r-- 1 ehsanm grid 32383 Jul 23 17:05 log.NH3.scen3.Jul.txt
+-rw-r--r-- 1 ehsanm grid 30601 Jul 23 17:04 log.NH3.scen3.Nov.txt
+-rw-r--r-- 1 ehsanm grid 32383 Jul 23 17:05 log.NH3.scen3.Oct.txt
+-rw-r--r-- 1 ehsanm grid 31497 Jul 23 17:05 log.NH3.scen3.Sep.txt
+-rw-r--r-- 1 ehsanm grid 32392 Jul 23 17:05 log.NH3.scen4.Aug.txt
+-rw-r--r-- 1 ehsanm grid 32386 Jul 23 17:05 log.NH3.scen4.Jul.txt
+-rw-r--r-- 1 ehsanm grid 30592 Jul 23 17:03 log.NH3.scen4.Nov.txt
+-rw-r--r-- 1 ehsanm grid 32381 Jul 23 17:05 log.NH3.scen4.Oct.txt
+-rw-r--r-- 1 ehsanm grid 31485 Jul 23 19:53 log.NH3.scen4.Sep.txt
+-rw-r--r-- 1 ehsanm grid 32387 Jul 23 17:24 log.NH3.scen5.Aug.txt
+-rw-r--r-- 1 ehsanm grid 32386 Jul 23 17:05 log.NH3.scen5.Jul.txt
+-rw-r--r-- 1 ehsanm grid 30613 Jul 23 17:23 log.NH3.scen5.Nov.txt
+-rw-r--r-- 1 ehsanm grid 32383 Jul 23 17:24 log.NH3.scen5.Oct.txt
+-rw-r--r-- 1 ehsanm grid 31496 Jul 23 17:23 log.NH3.scen5.Sep.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:02 log.scen1.aug.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:02 log.scen1.jul.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:02 log.scen1.nov.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:03 log.scen1.oct.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:02 log.scen1.sep.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:03 log.scen2.aug.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:02 log.scen2.jul.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:02 log.scen2.nov.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:03 log.scen2.oct.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:02 log.scen2.sep.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:05 log.scen3.aug.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:05 log.scen3.jul.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:04 log.scen3.nov.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:05 log.scen3.oct.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:05 log.scen3.sep.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:05 log.scen4.aug.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:05 log.scen4.jul.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:03 log.scen4.nov.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:05 log.scen4.oct.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 19:53 log.scen4.sep.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:24 log.scen5.aug.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:05 log.scen5.jul.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:23 log.scen5.nov.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:24 log.scen5.oct.txt
+-rw-r--r-- 1 ehsanm grid  1736 Jul 23 17:23 log.scen5.sep.txt
+-rw-r--r-- 1 ehsanm grid   618 Jul 24 11:42 minDiffMeshNdep_list_total_for_NH3_in_Ndep.txt
+-> NOTE: following old output files will be removed first:
+maxDiffMeshNdep_list_total_for_NH3_in_Ndep.txt
+log_list_for_NH3_max.txt
+ 
+-> now we get the list of *log* files in the log directory and write to file
+ 
+-> number of lines in log list=
+25 log_list_for_NH3_max.txt
+ 
+-> loop and read in log_list... 
+ 
+-> opening log file= log.NH3.scen1.Aug.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 4.492403276932662e-08
+ 
+-> opening log file= log.NH3.scen1.Jul.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 1.4287012643219876e-07
+ 
+-> opening log file= log.NH3.scen1.Nov.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 2.2453380277411097e-08
+ 
+-> opening log file= log.NH3.scen1.Oct.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 4.1227982984658444e-05
+ 
+-> opening log file= log.NH3.scen1.Sep.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 4.3097976884972266e-08
+ 
+-> opening log file= log.NH3.scen2.Aug.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 8.089057744642261e-07
+ 
+-> opening log file= log.NH3.scen2.Jul.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 0.00031466624524877177
+ 
+-> opening log file= log.NH3.scen2.Nov.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 2.370929394203251e-06
+ 
+-> opening log file= log.NH3.scen2.Oct.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 0.0003320299545359493
+ 
+-> opening log file= log.NH3.scen2.Sep.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 0.00010885477955535625
+ 
+-> opening log file= log.NH3.scen3.Aug.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 8.724158113709012e-05
+ 
+-> opening log file= log.NH3.scen3.Jul.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 0.00019445856881701197
+ 
+-> opening log file= log.NH3.scen3.Nov.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 5.714040793017525e-06
+ 
+-> opening log file= log.NH3.scen3.Oct.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 0.0006487890319722202
+ 
+-> opening log file= log.NH3.scen3.Sep.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 1.850735679130855e-05
+ 
+-> opening log file= log.NH3.scen4.Aug.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 6.402504648916304e-08
+ 
+-> opening log file= log.NH3.scen4.Jul.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 1.772354873092794e-05
+ 
+-> opening log file= log.NH3.scen4.Nov.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 1.54440874515669e-07
+ 
+-> opening log file= log.NH3.scen4.Oct.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 4.906966892733557e-05
+ 
+-> opening log file= log.NH3.scen4.Sep.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 8.69065478058445e-06
+ 
+-> opening log file= log.NH3.scen5.Aug.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 1.4461623513235647e-05
+ 
+-> opening log file= log.NH3.scen5.Jul.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 0.00058567409280225
+ 
+-> opening log file= log.NH3.scen5.Nov.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 1.0225326761560644e-08
+ 
+-> opening log file= log.NH3.scen5.Oct.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 0.0006093524021037511
+ 
+-> opening log file= log.NH3.scen5.Sep.txt
+-> capturing stats_pattern= maxDiffMeshNdep
+-> extracting pattern= maxDiffMeshNdep= 0.0004924460845826173
+ 
+-> size of the maxDiffMeshNdep output log file with no. of captured patterns is=
+25
+------------------------------------------------
+-> now we do the arithmetic operations in python since shell \
+	does _not_ understand arithmetic operations specially with scientific notation!!!
+ 
+-> we are currently at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/drydep
+-> deploying python script ...
+------------------------------------------------
+-> now we are inside python...
+-> we are at= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/logs/drydep
+------------------------------------------------
+-> chk: pollutant is= NH3
+-> chk: statisticsl property is= max
+-> chk: region is= Ndep 
+------------------------------------------------
+-> looking inside log file= maxDiffMeshNdep_list_total_for_NH3_in_Ndep.txt
+ 
+-> line to append is= 		4.492403276932662e-08
+
+-> line to append is= 		1.4287012643219876e-07
+
+-> line to append is= 		2.2453380277411097e-08
+
+-> line to append is= 		4.1227982984658444e-05
+
+-> line to append is= 		4.3097976884972266e-08
+
+-> line to append is= 		8.089057744642261e-07
+
+-> line to append is= 		0.00031466624524877177
+
+-> line to append is= 		2.370929394203251e-06
+
+-> line to append is= 		0.0003320299545359493
+
+-> line to append is= 		0.00010885477955535625
+
+-> line to append is= 		8.724158113709012e-05
+
+-> line to append is= 		0.00019445856881701197
+
+-> line to append is= 		5.714040793017525e-06
+
+-> line to append is= 		0.0006487890319722202
+
+-> line to append is= 		1.850735679130855e-05
+
+-> line to append is= 		6.402504648916304e-08
+
+-> line to append is= 		1.772354873092794e-05
+
+-> line to append is= 		1.54440874515669e-07
+
+-> line to append is= 		4.906966892733557e-05
+
+-> line to append is= 		8.69065478058445e-06
+
+-> line to append is= 		1.4461623513235647e-05
+
+-> line to append is= 		0.00058567409280225
+
+-> line to append is= 		1.0225326761560644e-08
+
+-> line to append is= 		0.0006093524021037511
+
+-> line to append is= 		0.0004924460845826173
+
+----------------------------------------
+-> chk: abs max for (NH3) in region (Ndep) is= 0.0006487890319722202
+------------------------------------------------

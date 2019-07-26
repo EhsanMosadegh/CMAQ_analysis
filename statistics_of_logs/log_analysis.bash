@@ -2,29 +2,32 @@
 #------------------------------------------------------------------------
 # run-time setting
 # NOTE: this script writes its output to <logs/> directory
+
 # to run: 
-# first, set the first 3 variables in both this and python scripts
-# then, bash "script_name" > POL_logs/log.POL.minOrMax.txt
+# set the first 3 variables in both this script and python scripts
+# check the directory paths 
+# bash "script_name" > log_file_name.txt (POL_logs/log.POL.minOrMax.txt)
+
 # to check the end result either open the log file and check the end of the log file for abs min/max values, 
 # or do-> grep 'chk' on_the_logfile_of_bash_script
 # I defined 'chk' as a keyword to check importent parameters and end value
 #------------------------------------------------------------------------
 
-pollutant='PM2.5'
-stats_property='min'
-#region='LakeTahoeBasin'  # 'LakeTahoeBasin' or 'NorthTahoe' or 'SouthTahoe'
+pollutant='NO'
+stats_property='max'
+region='Ndep'  # 'LakeTahoeBasin' or 'NorthTahoe' or 'SouthTahoe' or 'Ndep'
 
-stats_pattern=$stats_property'DiffMesh'
-#stats_pattern=$stats_property'DiffMesh'$region
+#stats_pattern=$stats_property'DiffMesh'
+stats_pattern=$stats_property'DiffMesh'$region
 
 log_file_pattern=log.${pollutant}.scen*
 
 #---------------------------------
 
 #home_dir='/Users/ehsan/Documents/Python_projects/CMAQ_analysis/'
-home_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/'
-log_dir_name='whole_modeling_domain/min_max_logs/pm2_5'
-log_dir_full_path=${home_dir}'logs/'${log_dir_name}
+home_dir='/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/' # do not add logs/ at the end 
+log_dir_name='drydep/'
+log_dir_full_path=${home_dir}'logs/'${log_dir_name}  # logs/ dir is added here
 statistics_dir=${home_dir}'statistics_of_logs/'
 
 #---------------------------------
@@ -33,52 +36,51 @@ echo '-------------------------------'
 echo '-> chk: pollutant is=' ${pollutant}
 echo '-> chk: statistical property is=' ${stats_property}
 echo '-> chk: stats patter is=' ${stats_pattern}
-#echo '-> chk: region is=' ${region}
+echo '-> chk: region is=' ${region}
 echo '-------------------------------'
 echo '  '
 
 #---------------------------------
 
-output_file_name=$stats_pattern'_list_total_for_'$pollutant'.txt'
-#output_file_name=$stats_pattern'_list_total_for_'$pollutant'_in_'${region}.txt
+#output_file_name=$stats_pattern'_list_total_for_'$pollutant'.txt'
+output_file_name=$stats_pattern'_list_total_for_'$pollutant'_in_'${region}.txt
 echo '-> output log file name is =' ${output_file_name}
 echo ' ' 
 #---------------------------------
+echo '-> home dir=' ${home_dir}
+echo '-> log dir=' ${log_dir_name}
+echo '-> log dir full path=' ${log_dir_full_path}
 
 current_dir=$(pwd)
-echo '-> we are currently at='
-echo $current_dir
+echo '-> we are currently at=' $current_dir
 
-echo '-> log directory=' 
-echo $log_dir_name
+echo '-> log directory=' $log_dir_name
 
-echo '-> we change dir to <logs/>(work) dir...'
+echo '-> we change dir to <logs/>(work) dir...' 
 cd $log_dir_full_path
 
-work_dir=$(pwd)
-echo '-> now we are at=' 
-echo $work_dir
+log_dir=$(pwd)
+echo '-> now we are at=' $log_dir
 
-echo '-> we list of files at current dir='
+echo '-> list of files at current (hopefully be logs/) dir='
 ls -la .
 
 # check and remove the file is it exist before
-echo '-> NOTE: old output files will be removed first:' 
+echo '-> NOTE: following old output files will be removed first:' 
 echo $output_file_name 
 echo $'log_list_for_'${pollutant}_${stats_property}.txt
 
 rm ./$output_file_name
 rm ./log_list_for_${pollutant}_${stats_property}.txt
 
-#echo '-> log files in work directory='
+echo ' '
 
-#log_files=$(grep -irnH 'vmin' .)
 echo '-> now we get the list of *log* files in the log directory and write to file'
 ls $log_file_pattern > log_list_for_${pollutant}_${stats_property}.txt
-
+echo ' '
 echo '-> number of lines in log list=' 
 wc -l log_list_for_${pollutant}_${stats_property}.txt 
-
+echo ' '
 echo '-> loop and read in log_list... '
 while read log_list_line
 do 

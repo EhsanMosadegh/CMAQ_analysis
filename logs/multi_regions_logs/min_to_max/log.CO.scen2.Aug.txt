@@ -1,0 +1,687 @@
+-> scenario= 2
+-> CMAQ month= 08
+-> number of days to run= 31
+-> CMAQ year= 2016
+-> processing pollutant= CO
+-> pollutat unit= ppmV
+-> spatial plotting= yes
+-> processing method for spatial plot= diff_plot
+-> NOTE: colorbar method for spatial diff plot= min_to_max
+-> time-series plotting= yes
+-> platform is= cluster
+-> mapping spatial data= no
+-> produce raster= no
+ 
+-> CMAQ input directory is:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/
+ 
+-> MCIP input directory is:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../mcip_files/
+ 
+-> opening MCIP files ...
+-> GRID_DOT file is= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../mcip_files/GRIDDOT2D_161001
+-> GRID_CRO file is= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../mcip_files/GRIDCRO2D_161001
+-> MCIP file info:
+-----------------------------------------------------------
+-> info for file GRIDDOT2D_161001 is=
+-> dimension is= ('TSTEP', 'LAY', 'ROW', 'COL')
+-> shape is= (1, 1, 266, 251)
+-----------------------------------------------------------
+-> info for file GRIDCRO2D_161001 is=
+-> dimension is= ('TSTEP', 'LAY', 'ROW', 'COL')
+-> shape is= (1, 1, 265, 250)
+-----------------------------------------------------------
+-> closing MCIP files ...
+ 
+-> month of analysis is= 08
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 1
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160801.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160801.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 0 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 0 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 2
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160802.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160802.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 1 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 1 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 3
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160803.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160803.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 2 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 2 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 4
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160804.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160804.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 3 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 3 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 5
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160805.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160805.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 4 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 4 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 6
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160806.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160806.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 5 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 5 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 7
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160807.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160807.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 6 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 6 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 8
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160808.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160808.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 7 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 7 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 9
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160809.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160809.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 8 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 8 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 10
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160810.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160810.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 9 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 9 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 11
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160811.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160811.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 10 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 10 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 12
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160812.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160812.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 11 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 11 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 13
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160813.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160813.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 12 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 12 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 14
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160814.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160814.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 13 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 13 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 15
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160815.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160815.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 14 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 14 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 16
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160816.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160816.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 15 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 15 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 17
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160817.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160817.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 16 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 16 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 18
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160818.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160818.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 17 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 17 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 19
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160819.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160819.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 18 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 18 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 20
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160820.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160820.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 19 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 19 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 21
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160821.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160821.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 20 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 20 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 22
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160822.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160822.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 21 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 21 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 23
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160823.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160823.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 22 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 22 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 24
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160824.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160824.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 23 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 23 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 25
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160825.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160825.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 24 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 24 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 26
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160826.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160826.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 25 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 25 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 27
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160827.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160827.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 26 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 26 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 28
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160828.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160828.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 27 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 27 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 29
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160829.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160829.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 28 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 28 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 30
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160830.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160830.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 29 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 29 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+ 
+-> processing for day= 31
+ 
+-> setting path for CO and diff_plot...
+-> opening/reading CMAQ files for CO:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_2/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen2_mpi_standard_20160831.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160831.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 30 , row= 264 , col= 249
+-> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 30 , row= 264 , col= 249
+-> closing ACONC scen and baseline files ...
+---------------------------------------------------------------
+-> check 3D data mesh info:
+-> LANDIS scenario, monthly mean tensor: dimensions= 3 and shape of tensor= (744, 265, 250) 
+-> baseline, monthly mean tensor: dimensions= 3 and shape of tensor= (744, 265, 250) 
+---------------------------------------------------------------
+-> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario (2) mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D "baseline" scenario mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now subtract 2 meshes to get the diff mesh for spatial plotting 
+ 
+-> monthly mesh scenario= [[0.07985343 0.07960772 0.07935385 ... 0.07125495 0.07169422 0.07321158]
+ [0.0798952  0.07964826 0.07950362 ... 0.07166304 0.07231171 0.07426598]
+ [0.07981238 0.07968945 0.07955274 ... 0.07208284 0.07298417 0.07511712]
+ ...
+ [0.07963774 0.07952711 0.0794944  ... 0.07908598 0.07910493 0.07915815]
+ [0.07967489 0.07957773 0.07952847 ... 0.07925492 0.07929535 0.07929909]
+ [0.07969482 0.07961884 0.0795808  ... 0.07951607 0.07953966 0.07955367]] 
+ 
+-> monthly mesh baseline= [[0.07985343 0.07960772 0.07935385 ... 0.07125484 0.07169411 0.07321148]
+ [0.0798952  0.07964826 0.07950362 ... 0.07166292 0.0723116  0.07426586]
+ [0.07981239 0.07968945 0.07955274 ... 0.07208272 0.07298405 0.075117  ]
+ ...
+ [0.07963766 0.07952703 0.07949431 ... 0.07908499 0.07910397 0.07915724]
+ [0.07967481 0.07957765 0.07952838 ... 0.07925404 0.07929454 0.07929834]
+ [0.07969474 0.07961876 0.07958071 ... 0.07951555 0.07953923 0.07955328]] 
+ 
+-> monthly mean diff-mesh= [[ 8.01137628e-11  2.20312865e-10  1.00142256e-11 ...  1.08714386e-07
+   1.07432565e-07  1.01143634e-07]
+ [ 2.40341316e-10  5.20739507e-10  1.50213314e-10 ...  1.13561269e-07
+   1.14282293e-07  1.13290885e-07]
+ [-1.20170651e-10 -1.00142256e-11  1.30184877e-10 ...  1.20571224e-07
+   1.21452475e-07  1.20731451e-07]
+ ...
+ [ 7.76202288e-08  8.46101552e-08  8.91365832e-08 ...  9.91227646e-07
+   9.62426746e-07  9.13707559e-07]
+ [ 7.75501292e-08  8.31781215e-08  8.79448909e-08 ...  8.77746491e-07
+   8.07146231e-07  7.54691741e-07]
+ [ 7.61381240e-08  8.26573821e-08  8.56816769e-08 ...  5.21200158e-07
+   4.29299650e-07  3.89413007e-07]]
+ 
+-> diff matrix statistics:
+-> shape= (265, 250) and dimension= 2
+-> region list is = ['SouthTahoe', 'NorthTahoe', 'LakeTahoeBasin']
+-> getting the statistics of a region/mesh ...
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [141 182] 
+-> cell row is= 141
+-> cell row is= 182
+-> now plot the mesh from the starting cell= (141, 182) 
+-> size of list_from_region= 64 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= SouthTahoe 
+-> stats: minDiffMeshSouthTahoe= 2.6e-05
+-> stats: meanDiffMeshSouthTahoe= 4.7e-05
+-> stats: medianDiffMeshSouthTahoe= 4.5e-05
+-> stats: stdDiffMeshSouthTahoe= 1.3e-05
+-> stats: maxDiffMeshSouthTahoe= 7.4e-05
+-> row no. of max valueSouthTahoe= 141
+-> col no. of max valueSouthTahoe= 189
+-----------------------------------------------------------
+-> getting the statistics of a region/mesh ...
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [179 182] 
+-> cell row is= 179
+-> cell row is= 182
+-> now plot the mesh from the starting cell= (179, 182) 
+-> size of list_from_region= 64 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= NorthTahoe 
+-> stats: minDiffMeshNorthTahoe= 0.000124
+-> stats: meanDiffMeshNorthTahoe= 0.000283
+-> stats: medianDiffMeshNorthTahoe= 0.000281
+-> stats: stdDiffMeshNorthTahoe= 8.7e-05
+-> stats: maxDiffMeshNorthTahoe= 0.000521
+-> row no. of max valueNorthTahoe= 180
+-> col no. of max valueNorthTahoe= 182
+-----------------------------------------------------------
+-> getting the statistics of a region/mesh ...
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [140 161] 
+-> cell row is= 140
+-> cell row is= 161
+-> now plot the mesh from the starting cell= (140, 161) 
+-> size of list_from_region= 2500 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= LakeTahoeBasin 
+-> stats: minDiffMeshLakeTahoeBasin= 4e-06
+-> stats: meanDiffMeshLakeTahoeBasin= 0.000136
+-> stats: medianDiffMeshLakeTahoeBasin= 9.7e-05
+-> stats: stdDiffMeshLakeTahoeBasin= 0.000164
+-> stats: maxDiffMeshLakeTahoeBasin= 0.002839
+-> row no. of max valueLakeTahoeBasin= 166
+-> col no. of max valueLakeTahoeBasin= 170
+-----------------------------------------------------------
+-> time-series plotting is YES, so we plot time-series...
+-> size of x_ axis list= 744
+-> size of y_ axis list= 744
+-> time-series plot saved at:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_figs/CO_timeseries_scen_2_2016-08_summed_31_days.png
+ 
+-> spatial plotting ...
+ 
+-> making the colormesh ...
+-> shape of x_mesh= (266, 251)
+-> shape of y_mesh= (266, 251)
+-> shape of monthly_mean_diff_mesh= (265, 250)
+ 
+-> plot method= diff_plot
+-> colorbar method= min_to_max
+-> plot the image for vmin= 4.46086489065689e-06 and vmax= 0.0028385957702994347
+ 
+ 
+-> output figure is stored at:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_figs/CO_monthlyMean_scen_2_diff_from_baseline_month_08_summed_31_days_colorbarMethod_min_to_max_dpi_300.png
+------------------------------------
+-> run time of main function= 26.14 min
+*** MAIN COMPLETED SUCCESSFULLY! ***
+------------------------------------

@@ -1,0 +1,621 @@
+-> scenario= 4
+-> CMAQ month= 11
+-> number of days to run= 29
+-> processing pollutant= NO
+-> CCTM process= dep
+-> deposition type is= DRYDEP
+-> pollutat unit= kg/hectare
+-> CMAQ year= 2016
+-> platform is= cluster
+-> timeSeries plotting= no
+-> produce raster= no
+-> spatial plotting= yes
+-> processing method for spatial plot= diff_plot
+-> NOTE: colorBar method for spatial diff plot= min_to_max
+-> mapping spatial data= no
+ 
+-> CMAQ input directory is:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/
+ 
+-> MCIP input directory is:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/mcip_files/
+ 
+-> opening MCIP files ...
+-> GRID_DOT file is= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/mcip_files/GRIDDOT2D_161001
+-> GRID_CRO file is= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/mcip_files/GRIDCRO2D_161001
+-> MCIP file info:
+-----------------------------------------------------------
+-> info for file GRIDDOT2D_161001 is=
+-> dimension is= ('TSTEP', 'LAY', 'ROW', 'COL')
+-> shape is= (1, 1, 266, 251)
+-----------------------------------------------------------
+-> info for file GRIDCRO2D_161001 is=
+-> dimension is= ('TSTEP', 'LAY', 'ROW', 'COL')
+-> shape is= (1, 1, 265, 250)
+-----------------------------------------------------------
+-> closing MCIP files ...
+ 
+-> month of analysis is= 11
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 1
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161101.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161101.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 2
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161102.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161102.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 3
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161103.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161103.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 4
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161104.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161104.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 5
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161105.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161105.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 6
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161106.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161106.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 7
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161107.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161107.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 8
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161108.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161108.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 9
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161109.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161109.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 10
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161110.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161110.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 11
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161111.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161111.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 12
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161112.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161112.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 13
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161113.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161113.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 14
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161114.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161114.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 15
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161115.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161115.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 16
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161116.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161116.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 17
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161117.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161117.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 18
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161118.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161118.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 19
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161119.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161119.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 20
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161120.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161120.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 21
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161121.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161121.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 22
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161122.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161122.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 23
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161123.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161123.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 24
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161124.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161124.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 25
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161125.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161125.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 26
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161126.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161126.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 27
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161127.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161127.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 28
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161128.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161128.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-----------------------------------------------------------
+ 
+-> no. of days to process are:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+-> processing for day= 29
+ 
+-> setting path for NO dep and diff_plot...
+-> opening/reading CMAQ files for NO dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_4/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen4_mpi_standard_20161129.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20161129.nc
+ 
+-> processing for diff plot ...
+-> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-> for NO in dep for diff_plot the unit will be updated from "kg/hectare" to "kg/hectare" 
+---------------------------------------------------------------
+-> check 3D data mesh info:
+-> LANDIS scenario, monthly mean tensor: dimensions= 3 and shape of tensor= (696, 265, 250) 
+-> baseline, monthly mean tensor: dimensions= 3 and shape of tensor= (696, 265, 250) 
+---------------------------------------------------------------
+-> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario (4) mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D "baseline" scenario mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now subtract 2 meshes to get the diff mesh for spatial plotting 
+ 
+-> quick look at final product of 3D-to-2D for - diff - plotting: monthly mean 2D mesh=
+-> monthly mesh scenario= 
+[[3.46980555e-07 2.12323300e-09 4.43706389e-07 ... 7.63840820e-08
+  4.57016899e-08 6.00926145e-08]
+ [3.16211428e-09 5.26226147e-07 2.94372993e-07 ... 6.40165154e-08
+  4.91436012e-08 4.06244332e-08]
+ [5.38743681e-07 3.34229096e-07 3.33899383e-07 ... 3.42250897e-08
+  3.00657618e-08 3.12205978e-08]
+ ...
+ [2.41939679e-07 2.20959235e-07 2.29566482e-07 ... 1.10835733e-07
+  9.42996789e-08 7.32382503e-08]
+ [2.39909791e-07 2.14577197e-07 2.23031059e-07 ... 1.40039601e-07
+  8.83080980e-08 9.37596751e-08]
+ [2.60058411e-07 2.47610206e-07 2.61741559e-07 ... 2.28426846e-07
+  2.14755857e-07 1.79856295e-07]]
+ 
+-> monthly mesh baseline= 
+[[3.47025225e-07 2.12352840e-09 4.43778251e-07 ... 7.67114448e-08
+  4.58500829e-08 6.02950901e-08]
+ [3.16242851e-09 5.26295661e-07 2.94415106e-07 ... 6.43814665e-08
+  4.93610223e-08 4.08061783e-08]
+ [5.38798747e-07 3.34270457e-07 3.33937871e-07 ... 3.44420342e-08
+  3.02749218e-08 3.14322678e-08]
+ ...
+ [2.42066692e-07 2.21092604e-07 2.29724996e-07 ... 1.10892533e-07
+  9.43553183e-08 7.32845252e-08]
+ [2.40019662e-07 2.14683689e-07 2.23151171e-07 ... 1.40096944e-07
+  8.83087738e-08 9.38078937e-08]
+ [2.60145998e-07 2.47695587e-07 2.61842311e-07 ... 2.28482822e-07
+  2.14812242e-07 1.79909913e-07]]
+ 
+-> monthly mean diff-mesh= 
+[[-4.46696384e-11 -2.95396988e-13 -7.18619417e-11 ... -3.27362750e-10
+  -1.48392947e-10 -2.02475544e-10]
+ [-3.14234550e-13 -6.95142488e-11 -4.21127348e-11 ... -3.64951015e-10
+  -2.17421066e-10 -1.81745116e-10]
+ [-5.50661155e-11 -4.13613409e-11 -3.84881016e-11 ... -2.16944473e-10
+  -2.09160045e-10 -2.11669930e-10]
+ ...
+ [-1.27013664e-10 -1.33369827e-10 -1.58513583e-10 ... -5.68001208e-11
+  -5.56394276e-11 -4.62749727e-11]
+ [-1.09870319e-10 -1.06492653e-10 -1.20112120e-10 ... -5.73424628e-11
+  -6.75764875e-13 -4.82185377e-11]
+ [-8.75861151e-11 -8.53812102e-11 -1.00752513e-10 ... -5.59752710e-11
+  -5.63846690e-11 -5.36181313e-11]]
+ 
+-> diff matrix statistics:
+-> shape= (265, 250) and dimension= 2
+-> region list is = ['SouthTahoe', 'NorthTahoe', 'LakeTahoeBasin', 'Ndep']
+ 
+-> getting the statistics of a region/mesh == SouthTahoe 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [141 182] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (141, 182) 
+-> range in row is= 8 
+-> range in col is= 8 
+-> size of list_from_region= 64 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			SouthTahoe 
+-> stats: minDiffMeshSouthTahoe= 		-9.685394864793796e-10
+-> stats: meanDiffMeshSouthTahoe= 		-2.4876080084046816e-10
+-> stats: medianDiffMeshSouthTahoe= 	-2.4846391299269524e-10
+-> stats: stdDiffMeshSouthTahoe= 		2.1100511819687957e-10
+-> stats: maxDiffMeshSouthTahoe= 		3.046276861031181e-10
+-----------------------------------------------------------
+ 
+-> getting the statistics of a region/mesh == NorthTahoe 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [178 182] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (178, 182) 
+-> range in row is= 8 
+-> range in col is= 8 
+-> size of list_from_region= 64 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			NorthTahoe 
+-> stats: minDiffMeshNorthTahoe= 		-4.927124181992283e-10
+-> stats: meanDiffMeshNorthTahoe= 		-1.3089857263663773e-10
+-> stats: medianDiffMeshNorthTahoe= 	-1.2467500754929424e-12
+-> stats: stdDiffMeshNorthTahoe= 		1.7294128063622324e-10
+-> stats: maxDiffMeshNorthTahoe= 		-6.254125295751062e-13
+-----------------------------------------------------------
+ 
+-> getting the statistics of a region/mesh == LakeTahoeBasin 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [140 161] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (140, 161) 
+-> range in row is= 50 
+-> range in col is= 38 
+-> size of list_from_region= 1900 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			LakeTahoeBasin 
+-> stats: minDiffMeshLakeTahoeBasin= 		-9.685394864793796e-10
+-> stats: meanDiffMeshLakeTahoeBasin= 		-2.3511115038340843e-10
+-> stats: medianDiffMeshLakeTahoeBasin= 	-2.4520632530401523e-10
+-> stats: stdDiffMeshLakeTahoeBasin= 		1.8369255536616183e-10
+-> stats: maxDiffMeshLakeTahoeBasin= 		1.422605552057537e-09
+-----------------------------------------------------------
+ 
+-> getting the statistics of a region/mesh == Ndep 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [147 174] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (147, 174) 
+-> range in row is= 37 
+-> range in col is= 20 
+-> size of list_from_region= 740 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			Ndep 
+-> stats: minDiffMeshNdep= 		-5.626543627564366e-10
+-> stats: meanDiffMeshNdep= 		-9.225357020876698e-11
+-> stats: medianDiffMeshNdep= 	-1.165564181870307e-12
+-> stats: stdDiffMeshNdep= 		1.580168823842625e-10
+-> stats: maxDiffMeshNdep= 		-6.23861602045359e-13
+-----------------------------------------------------------
+-> spatial plotting for CCTM process= dep...
+ 
+-> making the colormesh ...
+-> shape of x_mesh= (266, 251)
+-> shape of y_mesh= (266, 251)
+-> shape of monthly_mean_diff_mesh= (265, 250)
+ 
+-> plot method= diff_plot
+-> colorbar method= min_to_max
+-> plot the image for vmin= -9.685394864793796e-10 and vmax= 1.422605552057537e-09
+ 
+ 
+-> output figure is stored at:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_figs/DRYDEP_NO_monthlyMean_scen_4_diff_from_baseline_month_11_summed_29_days_colorbarMethod_min_to_max_dpi_300.png
+------------------------------------
+-> run time of main function= 24.46 min
+*** MAIN COMPLETED SUCCESSFULLY! ***
+------------------------------------
