@@ -32,7 +32,7 @@ echo '-> abs max values for diff plot=' ${ABS_MAX_DIFF}
 echo '------------------------------------------------------'
 
 #foreach species ('NH3')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# atm
-foreach species ( 'HNO3' )       # ( 'HONO' 'N2O5'  'NO3' 'NO'  'NO2' 'HNO3' 'NH3' )  # dep      
+foreach species ( 'HNO3' 'NH3' )       # ( 'HONO' 'N2O5'  'NO3' 'NO'  'NO2' 'HNO3' 'NH3' )  # dep      
  
 
 	setenv CMAQ_POL ${species}                                    # for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'

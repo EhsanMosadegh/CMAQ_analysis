@@ -501,3 +501,151 @@
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
+-> closing DEP scen & baseline files ...
+-> for NH3 in dep for diff_plot the unit will be updated from "kg/hectare" to "kg/hectare" 
+---------------------------------------------------------------
+-> check 3D data mesh info:
+-> LANDIS scenario, monthly mean tensor: dimensions= 3 and shape of tensor= (744, 265, 250) 
+-> baseline, monthly mean tensor: dimensions= 3 and shape of tensor= (744, 265, 250) 
+---------------------------------------------------------------
+-> first, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D LANDIS scenario (5) mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now, changing monthly tensor of time-series to 2D mesh for diff-plotting for 3D "baseline" scenario mesh ...
+ 
+-> shape of monthly 2D array, output of function_3Dto2D = (265, 250)
+ 
+-> now subtract 2 meshes to get the diff mesh for spatial plotting 
+ 
+-> quick look at final product of 3D-to-2D for - diff - plotting: monthly mean 2D mesh=
+-> monthly mesh scenario= 
+[[5.37386060e-06 6.10319341e-06 3.77677701e-04 ... 1.28808320e-08
+  6.90959242e-09 7.75817770e-09]
+ [4.74194447e-06 1.77919704e-05 2.45916575e-06 ... 1.34318822e-08
+  9.19818281e-09 5.98848305e-09]
+ [1.10417305e-05 2.13352389e-06 2.10513211e-06 ... 1.00106853e-08
+  9.30395889e-09 8.24139748e-09]
+ ...
+ [3.98284497e-05 4.78668391e-05 3.57013506e-05 ... 3.35565383e-09
+  2.83205817e-09 2.55732661e-09]
+ [3.80070738e-05 4.67015009e-05 4.15447724e-05 ... 2.67340744e-09
+  3.41357626e-09 2.40089824e-09]
+ [4.03659351e-05 4.10626347e-05 4.06510041e-05 ... 1.98778537e-09
+  1.76290125e-09 1.80962162e-09]]
+ 
+-> monthly mesh baseline= 
+[[5.37386062e-06 6.10319385e-06 3.77677703e-04 ... 1.28807998e-08
+  6.90963334e-09 7.75819071e-09]
+ [4.74194455e-06 1.77919700e-05 2.45916592e-06 ... 1.34318103e-08
+  9.19818143e-09 5.98848835e-09]
+ [1.10417299e-05 2.13352362e-06 2.10513223e-06 ... 1.00106012e-08
+  9.30392868e-09 8.24139731e-09]
+ ...
+ [3.98284413e-05 4.78668342e-05 3.57013482e-05 ... 3.35293850e-09
+  2.82879463e-09 2.55497071e-09]
+ [3.80070791e-05 4.67014974e-05 4.15447698e-05 ... 2.67177576e-09
+  3.41177760e-09 2.39852299e-09]
+ [4.03659335e-05 4.10626304e-05 4.06510010e-05 ... 1.98791145e-09
+  1.76311261e-09 1.80970513e-09]]
+ 
+-> monthly mean diff-mesh= 
+[[-2.07814646e-14 -4.42370155e-13 -1.59406060e-12 ...  3.21531929e-14
+  -4.09298864e-14 -1.30114706e-14]
+ [-8.40426895e-14  4.22047105e-13 -1.74121171e-13 ...  7.18604910e-14
+   1.38050413e-15 -5.30691082e-15]
+ [ 5.72101506e-13  2.71763496e-13 -1.16208118e-13 ...  8.41688577e-14
+   3.02110860e-14  1.67372837e-16]
+ ...
+ [ 8.41475635e-12  4.83564682e-12  2.37142922e-12 ...  2.71532743e-12
+   3.26353485e-12  2.35590027e-12]
+ [-5.23815996e-12  3.46287873e-12  2.67607680e-12 ...  1.63168565e-12
+   1.79866336e-12  2.37525081e-12]
+ [ 1.53129062e-12  4.26716666e-12  3.07618088e-12 ... -1.26081106e-13
+  -2.11366645e-13 -8.35081146e-14]]
+ 
+-> diff matrix statistics:
+-> shape= (265, 250) and dimension= 2
+-> region list is = ['SouthTahoe', 'NorthTahoe', 'LakeTahoeBasin', 'Ndep']
+ 
+-> getting the statistics of a region/mesh == SouthTahoe 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [141 182] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (141, 182) 
+-> range in row is= 8 
+-> range in col is= 8 
+-> size of list_from_region= 64 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			SouthTahoe 
+-> stats: minDiffMeshSouthTahoe= 		2.9031320973045337e-08
+-> stats: meanDiffMeshSouthTahoe= 		1.8466901431144845e-07
+-> stats: medianDiffMeshSouthTahoe= 	1.2234995254986755e-07
+-> stats: stdDiffMeshSouthTahoe= 		2.008135243058596e-07
+-> stats: maxDiffMeshSouthTahoe= 		1.3299504377813778e-06
+-----------------------------------------------------------
+ 
+-> getting the statistics of a region/mesh == NorthTahoe 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [178 182] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (178, 182) 
+-> range in row is= 8 
+-> range in col is= 8 
+-> size of list_from_region= 64 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			NorthTahoe 
+-> stats: minDiffMeshNorthTahoe= 		2.7792397100464883e-08
+-> stats: meanDiffMeshNorthTahoe= 		4.6248051335429234e-07
+-> stats: medianDiffMeshNorthTahoe= 	3.2085086941622944e-07
+-> stats: stdDiffMeshNorthTahoe= 		4.76800051317381e-07
+-> stats: maxDiffMeshNorthTahoe= 		3.0569178333040227e-06
+-----------------------------------------------------------
+ 
+-> getting the statistics of a region/mesh == LakeTahoeBasin 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [140 161] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (140, 161) 
+-> range in row is= 50 
+-> range in col is= 38 
+-> size of list_from_region= 1900 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			LakeTahoeBasin 
+-> stats: minDiffMeshLakeTahoeBasin= 		-2.6745023098652283e-10
+-> stats: meanDiffMeshLakeTahoeBasin= 		1.87778395630851e-07
+-> stats: medianDiffMeshLakeTahoeBasin= 	2.688731214724042e-08
+-> stats: stdDiffMeshLakeTahoeBasin= 		6.150711385604803e-07
+-> stats: maxDiffMeshLakeTahoeBasin= 		1.4461623513235647e-05
+-----------------------------------------------------------
+ 
+-> getting the statistics of a region/mesh == Ndep 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [147 174] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (147, 174) 
+-> range in row is= 37 
+-> range in col is= 20 
+-> size of list_from_region= 740 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			Ndep 
+-> stats: minDiffMeshNdep= 		6.59067374674606e-11
+-> stats: meanDiffMeshNdep= 		2.5059179381695503e-07
+-> stats: medianDiffMeshNdep= 	6.578813916105848e-08
+-> stats: stdDiffMeshNdep= 		7.93227722628592e-07
+-> stats: maxDiffMeshNdep= 		1.4461623513235647e-05
+-----------------------------------------------------------
+-> spatial plotting for CCTM process= dep...
+ 
+-> making the colormesh ...
+-> shape of x_mesh= (266, 251)
+-> shape of y_mesh= (266, 251)
+-> shape of monthly_mean_diff_mesh= (265, 250)
+ 
+-> plot method= diff_plot
+-> colorbar method= min_to_max
+-> plot the image for vmin= -2.6745023098652283e-10 and vmax= 1.4461623513235647e-05
+ 
+ 
+-> output figure is stored at:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_figs/DRYDEP_NH3_monthlyMean_scen_5_diff_from_baseline_month_08_summed_31_days_colorbarMethod_min_to_max_dpi_300.png
+------------------------------------
+-> run time of main function= 22.04 min
+*** MAIN COMPLETED SUCCESSFULLY! ***
+------------------------------------

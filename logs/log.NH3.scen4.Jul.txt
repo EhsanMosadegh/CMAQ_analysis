@@ -632,3 +632,20 @@
 -> stats: maxDiffMeshNdep= 		1.772354873092794e-05
 -----------------------------------------------------------
 -> spatial plotting for CCTM process= dep...
+ 
+-> making the colormesh ...
+-> shape of x_mesh= (266, 251)
+-> shape of y_mesh= (266, 251)
+-> shape of monthly_mean_diff_mesh= (265, 250)
+ 
+-> plot method= diff_plot
+-> colorbar method= min_to_max
+-> plot the image for vmin= -1.8039332590543357e-08 and vmax= 1.772354873092794e-05
+ 
+ 
+-> output figure is stored at:
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_figs/DRYDEP_NH3_monthlyMean_scen_4_diff_from_baseline_month_07_summed_31_days_colorbarMethod_min_to_max_dpi_300.png
+------------------------------------
+-> run time of main function= 21.32 min
+*** MAIN COMPLETED SUCCESSFULLY! ***
+------------------------------------
