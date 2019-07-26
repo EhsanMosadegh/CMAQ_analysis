@@ -1,27 +1,29 @@
 -> scenario= 1
 -> CMAQ month= 07
 -> number of days to run= 31
--> CMAQ year= 2016
 -> processing pollutant= NH3
--> pollutat unit= ppmV
+-> CCTM process= dep
+-> deposition type is= DRYDEP
+-> pollutat unit= kg/hectare
+-> CMAQ year= 2016
+-> platform is= cluster
+-> timeSeries plotting= no
+-> produce raster= no
 -> spatial plotting= yes
 -> processing method for spatial plot= diff_plot
--> NOTE: colorbar method for spatial diff plot= min_to_max
--> time-series plotting= yes
--> platform is= cluster
+-> NOTE: colorBar method for spatial diff plot= min_to_max
 -> mapping spatial data= no
--> produce raster= no
  
 -> CMAQ input directory is:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/
  
 -> MCIP input directory is:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../mcip_files/
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/mcip_files/
  
 -> opening MCIP files ...
--> GRID_DOT file is= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../mcip_files/GRIDDOT2D_161001
--> GRID_CRO file is= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../mcip_files/GRIDCRO2D_161001
+-> GRID_DOT file is= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/mcip_files/GRIDDOT2D_161001
+-> GRID_CRO file is= /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/mcip_files/GRIDCRO2D_161001
 -> MCIP file info:
 -----------------------------------------------------------
 -> info for file GRIDDOT2D_161001 is=
@@ -42,16 +44,14 @@
  
 -> processing for day= 1
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160701.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160701.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160701.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160701.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 0 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 0 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -59,16 +59,14 @@
  
 -> processing for day= 2
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160702.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160702.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160702.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160702.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 1 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 1 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -76,16 +74,14 @@
  
 -> processing for day= 3
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160703.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160703.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160703.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160703.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 2 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 2 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -93,16 +89,14 @@
  
 -> processing for day= 4
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160704.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160704.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160704.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160704.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 3 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 3 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -110,16 +104,14 @@
  
 -> processing for day= 5
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160705.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160705.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160705.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160705.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 4 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 4 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -127,16 +119,14 @@
  
 -> processing for day= 6
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160706.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160706.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160706.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160706.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 5 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 5 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -144,16 +134,14 @@
  
 -> processing for day= 7
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160707.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160707.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160707.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160707.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 6 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 6 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -161,16 +149,14 @@
  
 -> processing for day= 8
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160708.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160708.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160708.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160708.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 7 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 7 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -178,16 +164,14 @@
  
 -> processing for day= 9
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160709.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160709.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160709.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160709.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 8 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 8 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -195,16 +179,14 @@
  
 -> processing for day= 10
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160710.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160710.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160710.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160710.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 9 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 9 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -212,16 +194,14 @@
  
 -> processing for day= 11
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160711.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160711.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160711.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160711.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 10 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 10 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -229,16 +209,14 @@
  
 -> processing for day= 12
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160712.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160712.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160712.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160712.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 11 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 11 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -246,16 +224,14 @@
  
 -> processing for day= 13
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160713.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160713.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160713.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160713.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 12 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 12 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -263,16 +239,14 @@
  
 -> processing for day= 14
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160714.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160714.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160714.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160714.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 13 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 13 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -280,16 +254,14 @@
  
 -> processing for day= 15
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160715.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160715.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160715.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160715.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 14 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 14 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -297,16 +269,14 @@
  
 -> processing for day= 16
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160716.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160716.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160716.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160716.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 15 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 15 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -314,16 +284,14 @@
  
 -> processing for day= 17
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160717.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160717.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160717.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160717.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 16 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 16 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -331,16 +299,14 @@
  
 -> processing for day= 18
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160718.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160718.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160718.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160718.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 17 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 17 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -348,16 +314,14 @@
  
 -> processing for day= 19
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160719.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160719.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160719.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160719.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 18 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 18 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -365,16 +329,14 @@
  
 -> processing for day= 20
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160720.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160720.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160720.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160720.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 19 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 19 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -382,16 +344,14 @@
  
 -> processing for day= 21
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160721.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160721.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160721.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160721.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 20 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 20 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -399,16 +359,14 @@
  
 -> processing for day= 22
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160722.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160722.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160722.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160722.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 21 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 21 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -416,16 +374,14 @@
  
 -> processing for day= 23
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160723.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160723.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160723.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160723.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 22 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 22 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -433,16 +389,14 @@
  
 -> processing for day= 24
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160724.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160724.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160724.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160724.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 23 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 23 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -450,16 +404,14 @@
  
 -> processing for day= 25
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160725.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160725.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160725.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160725.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 24 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 24 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -467,16 +419,14 @@
  
 -> processing for day= 26
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160726.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160726.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160726.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160726.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 25 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 25 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -484,16 +434,14 @@
  
 -> processing for day= 27
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160727.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160727.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160727.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160727.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 26 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 26 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -501,16 +449,14 @@
  
 -> processing for day= 28
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160728.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160728.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160728.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160728.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 27 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 27 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -518,16 +464,14 @@
  
 -> processing for day= 29
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160729.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160729.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160729.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160729.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 28 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 28 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -535,16 +479,14 @@
  
 -> processing for day= 30
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160730.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160730.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160730.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160730.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 29 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 29 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
+-> closing DEP scen & baseline files ...
 -----------------------------------------------------------
  
 -> no. of days to process are:
@@ -552,18 +494,15 @@
  
 -> processing for day= 31
  
--> setting path for NH3 and diff_plot...
--> opening/reading CMAQ files for NH3:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_1/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160731.nc
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_output/scen_baseline/CCTM_ACONC_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160731.nc
+-> setting path for NH3 dep and diff_plot...
+-> opening/reading CMAQ files for NH3 dep 
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_1/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonptPtfire_scen1_mpi_standard_20160731.nc
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_output/scen_baseline/CCTM_DRYDEP_v52_CA_WRF_1km_griddedAgBioNonpt_baseline_AgBioNonpt_mpi_standard_20160731.nc
  
 -> processing for diff plot ...
 -> traversing each cell to extract species ...
--> add/pin each cell 24-hr t-series to monthly_tseries_tensor_from_scen at sheet(=day-1)= 30 , row= 264 , col= 249
--> add/pin each cell 24hr t-series to monthly_tseries_tensor_from_base at sheet(=day-1)= 30 , row= 264 , col= 249
--> closing ACONC scen and baseline files ...
--> changing ppm to ppb for scenario pol=NH3 ...
--> changing ppm to ppb for baseline pol=NH3 ...
+-> closing DEP scen & baseline files ...
+-> for NH3 in dep for diff_plot the unit will be updated from "kg/hectare" to "kg/hectare" 
 ---------------------------------------------------------------
 -> check 3D data mesh info:
 -> LANDIS scenario, monthly mean tensor: dimensions= 3 and shape of tensor= (744, 265, 250) 
@@ -579,109 +518,120 @@
  
 -> now subtract 2 meshes to get the diff mesh for spatial plotting 
  
--> monthly mesh scenario= [[9.90079843e-03 1.81217037e-02 6.93541096e-01 ... 4.25248833e-05
-  4.18747488e-05 4.19418918e-05]
- [9.84270993e-03 1.66882353e-02 2.47819806e-02 ... 4.15282488e-05
-  4.09842935e-05 4.11567687e-05]
- [9.96110981e-03 1.57472736e-02 1.77988001e-02 ... 4.34912264e-05
-  4.17927942e-05 4.09408671e-05]
+-> quick look at final product of 3D-to-2D for - diff - plotting: monthly mean 2D mesh=
+-> monthly mesh scenario= 
+[[4.61021552e-06 5.99241297e-06 5.89261764e-04 ... 1.27488886e-08
+  6.92661620e-09 9.69177855e-09]
+ [4.54187127e-06 1.61928126e-05 2.42998893e-06 ... 1.17387547e-08
+  7.95223496e-09 7.31869519e-09]
+ [1.03091820e-05 2.03392504e-06 2.07668029e-06 ... 7.93368115e-09
+  7.25366359e-09 8.59959014e-09]
  ...
- [7.61200123e-01 7.57706114e-01 6.56225249e-01 ... 1.34771555e-03
-  1.05865426e-03 7.78624178e-04]
- [6.22226328e-01 6.51096358e-01 6.25523785e-01 ... 8.42830640e-04
-  6.30066253e-04 5.54123324e-04]
- [5.53920903e-01 5.86355431e-01 5.87309413e-01 ... 3.48891252e-04
-  2.72384201e-04 2.93556554e-04]] 
+ [5.38657051e-05 6.41861703e-05 5.03488143e-05 ... 5.52752480e-08
+  4.45642693e-08 3.37706058e-08]
+ [5.34368072e-05 6.58689982e-05 5.94588915e-05 ... 3.53987768e-08
+  3.19580183e-08 2.35588220e-08]
+ [5.70665916e-05 5.83630193e-05 5.89367028e-05 ... 1.43133366e-08
+  1.12682472e-08 1.20472632e-08]]
  
--> monthly mesh baseline= [[9.90080171e-03 1.81217005e-02 6.93541096e-01 ... 4.25248774e-05
-  4.18747952e-05 4.19418954e-05]
- [9.84270930e-03 1.66882329e-02 2.47819812e-02 ... 4.15282465e-05
-  4.09844055e-05 4.11567737e-05]
- [9.96110569e-03 1.57472684e-02 1.77987988e-02 ... 4.34906042e-05
-  4.17920016e-05 4.09408632e-05]
+-> monthly mesh baseline= 
+[[4.61021589e-06 5.99241248e-06 5.89261766e-04 ... 1.27488864e-08
+  6.92661795e-09 9.69177850e-09]
+ [4.54187112e-06 1.61928113e-05 2.42998900e-06 ... 1.17387569e-08
+  7.95223825e-09 7.31869601e-09]
+ [1.03091803e-05 2.03392482e-06 2.07668025e-06 ... 7.93367615e-09
+  7.25365716e-09 8.59959170e-09]
  ...
- [7.61200109e-01 7.57706125e-01 6.56225262e-01 ... 1.34773004e-03
-  1.05867393e-03 7.78645414e-04]
- [6.22226319e-01 6.51096365e-01 6.25523796e-01 ... 8.42845326e-04
-  6.30078946e-04 5.54144556e-04]
- [5.53920885e-01 5.86355436e-01 5.87309451e-01 ... 3.48908881e-04
-  2.72396902e-04 2.93572835e-04]] 
+ [5.38657030e-05 6.41861693e-05 5.03488143e-05 ... 5.52759495e-08
+  4.45650614e-08 3.37713732e-08]
+ [5.34368054e-05 6.58689973e-05 5.94588922e-05 ... 3.53995292e-08
+  3.19587652e-08 2.35597526e-08]
+ [5.70665893e-05 5.83630191e-05 5.89367044e-05 ... 1.43139997e-08
+  1.12688603e-08 1.20480434e-08]]
  
--> monthly mean diff-mesh= [[-3.28194341e-09  3.18659316e-09  1.79698478e-10 ...  5.97379076e-12
-  -4.63565864e-11 -3.58793043e-12]
- [ 6.33223462e-10  2.45312970e-09 -6.17942975e-10 ...  2.34755011e-12
-  -1.12051572e-10 -4.96018997e-12]
- [ 4.11748055e-09  5.20820185e-09  1.29028449e-09 ...  6.22239417e-10
-   7.92613996e-10  3.92659322e-12]
+-> monthly mean diff-mesh= 
+[[-3.75365211e-13  4.97074306e-13 -2.50844506e-12 ...  2.20093507e-15
+  -1.75363756e-15  5.38696924e-17]
+ [ 1.56472207e-13  1.36332522e-12 -6.87622003e-14 ... -2.20164389e-15
+  -3.29354972e-15 -8.17259939e-16]
+ [ 1.72272232e-12  2.25540017e-13  4.01112833e-14 ...  5.00542335e-15
+   6.42953806e-15 -1.56486980e-15]
  ...
- [ 1.36795320e-08 -1.11036538e-08 -1.29850698e-08 ... -1.44898537e-08
-  -1.96705333e-08 -2.12359829e-08]
- [ 9.27386434e-09 -7.61599961e-09 -1.07833467e-08 ... -1.46867348e-08
-  -1.26928158e-08 -2.12325892e-08]
- [ 1.82206410e-08 -5.73029202e-09 -3.84166808e-08 ... -1.76292828e-08
-  -1.27000252e-08 -1.62812519e-08]]
+ [ 2.06008687e-12  9.48827632e-13 -3.34093579e-14 ... -7.01468726e-13
+  -7.92060733e-13 -7.67361145e-13]
+ [ 1.77286740e-12  8.61864941e-13 -7.39150677e-13 ... -7.52402290e-13
+  -7.46960687e-13 -9.30635134e-13]
+ [ 2.30536498e-12  1.87701702e-13 -1.58348006e-12 ... -6.63065153e-13
+  -6.13116730e-13 -7.80272595e-13]]
  
 -> diff matrix statistics:
 -> shape= (265, 250) and dimension= 2
--> region list is = ['SouthTahoe', 'NorthTahoe', 'LakeTahoeBasin']
--> getting the statistics of a region/mesh ...
--> input mesh has total number of rows= 265 and total number of col= 250 
--> row/col of lower-left cell is= [148 189] 
--> cell row is= 148
--> cell row is= 189
--> now plot the mesh from the starting cell= (148, 189) 
--> size of list_from_region= 64 
------------------------------------------------------------
--> stats: regionNameDiffMesh= SouthTahoe 
--> stats: minDiffMeshSouthTahoe= -1.5e-05
--> stats: meanDiffMeshSouthTahoe= 8e-06
--> stats: medianDiffMeshSouthTahoe= 5e-06
--> stats: stdDiffMeshSouthTahoe= 1.1e-05
--> stats: maxDiffMeshSouthTahoe= 4.2e-05
--> row no. of max valueSouthTahoe= 149
--> col no. of max valueSouthTahoe= 192
------------------------------------------------------------
--> getting the statistics of a region/mesh ...
--> input mesh has total number of rows= 265 and total number of col= 250 
--> row/col of lower-left cell is= [179 182] 
--> cell row is= 179
--> cell row is= 182
--> now plot the mesh from the starting cell= (179, 182) 
--> size of list_from_region= 64 
------------------------------------------------------------
--> stats: regionNameDiffMesh= NorthTahoe 
--> stats: minDiffMeshNorthTahoe= -8e-05
--> stats: meanDiffMeshNorthTahoe= 4.9e-05
--> stats: medianDiffMeshNorthTahoe= 3e-05
--> stats: stdDiffMeshNorthTahoe= 8e-05
--> stats: maxDiffMeshNorthTahoe= 0.000254
--> row no. of max valueNorthTahoe= 182
--> col no. of max valueNorthTahoe= 182
------------------------------------------------------------
--> getting the statistics of a region/mesh ...
--> input mesh has total number of rows= 265 and total number of col= 250 
--> row/col of lower-left cell is= [140 165] 
--> cell row is= 140
--> cell row is= 165
--> now plot the mesh from the starting cell= (140, 165) 
--> size of list_from_region= 2209 
------------------------------------------------------------
--> stats: regionNameDiffMesh= LakeTahoeBasin 
--> stats: minDiffMeshLakeTahoeBasin= -8e-05
--> stats: meanDiffMeshLakeTahoeBasin= 2.1e-05
--> stats: medianDiffMeshLakeTahoeBasin= 6e-06
--> stats: stdDiffMeshLakeTahoeBasin= 5.5e-05
--> stats: maxDiffMeshLakeTahoeBasin= 0.001561
--> row no. of max valueLakeTahoeBasin= 183
--> col no. of max valueLakeTahoeBasin= 180
------------------------------------------------------------
--> time-series plotting is YES, so we plot time-series...
--> size of x_ axis list= 744
--> size of y_ axis list= 744
--> time-series plot saved at:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_figs/NH3_timeseries_scen_1_2016-07_summed_31_days.png
+-> region list is = ['SouthTahoe', 'NorthTahoe', 'LakeTahoeBasin', 'Ndep']
  
--> spatial plotting ...
+-> getting the statistics of a region/mesh == SouthTahoe 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [141 182] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (141, 182) 
+-> range in row is= 8 
+-> range in col is= 8 
+-> size of list_from_region= 64 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			SouthTahoe 
+-> stats: minDiffMeshSouthTahoe= 		-9.662289561269429e-10
+-> stats: meanDiffMeshSouthTahoe= 		8.7170191557308e-10
+-> stats: medianDiffMeshSouthTahoe= 	4.5282851432499216e-10
+-> stats: stdDiffMeshSouthTahoe= 		2.293424315170952e-09
+-> stats: maxDiffMeshSouthTahoe= 		1.8079646676575984e-08
+-----------------------------------------------------------
+ 
+-> getting the statistics of a region/mesh == NorthTahoe 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [178 182] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (178, 182) 
+-> range in row is= 8 
+-> range in col is= 8 
+-> size of list_from_region= 64 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			NorthTahoe 
+-> stats: minDiffMeshNorthTahoe= 		-6.968526295145311e-09
+-> stats: meanDiffMeshNorthTahoe= 		6.483452310194802e-09
+-> stats: medianDiffMeshNorthTahoe= 	7.148074233537051e-09
+-> stats: stdDiffMeshNorthTahoe= 		8.109008387955545e-09
+-> stats: maxDiffMeshNorthTahoe= 		2.1397298938454337e-08
+-----------------------------------------------------------
+ 
+-> getting the statistics of a region/mesh == LakeTahoeBasin 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [140 161] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (140, 161) 
+-> range in row is= 50 
+-> range in col is= 38 
+-> size of list_from_region= 1900 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			LakeTahoeBasin 
+-> stats: minDiffMeshLakeTahoeBasin= 		-6.968526295145311e-09
+-> stats: meanDiffMeshLakeTahoeBasin= 		9.172010109413662e-10
+-> stats: medianDiffMeshLakeTahoeBasin= 	1.614768623697792e-10
+-> stats: stdDiffMeshLakeTahoeBasin= 		4.721483200372197e-09
+-> stats: maxDiffMeshLakeTahoeBasin= 		1.4287012643219876e-07
+-----------------------------------------------------------
+ 
+-> getting the statistics of a region/mesh == Ndep 
+-> input mesh has total number of rows= 265 and total number of col= 250 
+-> row/col of lower-left cell is= [147 174] 
+-> now plot the mesh from the origin == starting cell that includes the point == (row,col) = (147, 174) 
+-> range in row is= 37 
+-> range in col is= 20 
+-> size of list_from_region= 740 
+-----------------------------------------------------------
+-> stats: regionNameDiffMesh= 			Ndep 
+-> stats: minDiffMeshNdep= 		-6.757557711896008e-09
+-> stats: meanDiffMeshNdep= 		1.8774483044268666e-09
+-> stats: medianDiffMeshNdep= 	2.2811581132663142e-10
+-> stats: stdDiffMeshNdep= 		7.317985746712263e-09
+-> stats: maxDiffMeshNdep= 		1.4287012643219876e-07
+-----------------------------------------------------------
+-> spatial plotting for CCTM process= dep...
  
 -> making the colormesh ...
 -> shape of x_mesh= (266, 251)
@@ -690,12 +640,12 @@
  
 -> plot method= diff_plot
 -> colorbar method= min_to_max
--> plot the image for vmin= -7.986621524409127e-05 and vmax= 0.001560717546950599
+-> plot the image for vmin= -6.968526295145311e-09 and vmax= 1.4287012643219876e-07
  
  
 -> output figure is stored at:
-/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/../cmaq_figs/NH3_monthlyMean_scen_1_diff_from_baseline_month_07_summed_31_days_colorbarMethod_min_to_max_dpi_300.png
+/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_figs/DRYDEP_NH3_monthlyMean_scen_1_diff_from_baseline_month_07_summed_31_days_colorbarMethod_min_to_max_dpi_300.png
 ------------------------------------
--> run time of main function= 24.98 min
+-> run time of main function= 25.25 min
 *** MAIN COMPLETED SUCCESSFULLY! ***
 ------------------------------------

@@ -616,6 +616,6 @@
 -> output figure is stored at:
 /storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/cmaq_figs/DRYDEP_HNO3_monthlyMean_scen_5_diff_from_baseline_month_11_summed_29_days_colorbarMethod_min_to_max_dpi_300.png
 ------------------------------------
--> run time of main function= 22.95 min
+-> run time of main function= 24.07 min
 *** MAIN COMPLETED SUCCESSFULLY! ***
 ------------------------------------
