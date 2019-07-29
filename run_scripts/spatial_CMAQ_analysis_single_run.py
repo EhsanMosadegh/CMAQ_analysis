@@ -35,25 +35,26 @@ def main() :
 	### get the starting time
 	start = time.time()
 
-	cctm_process = 'dep' 				# 'atm' or 'dep' 
-	dep_type= 'DRYDEP'
+	cctm_process = 'atm' 				# 'atm' or 'dep' 
+	dep_type= 'DRYDEP'  # no option needed
 
 	### run time settings
-	cmaq_file_month= '07'																			#  07, 08, 	09,  10,  11
-	sim_month= 'Jul'  																				# Jul, Aug, Sep, Oct, Nov
+	cmaq_file_month= '10'																			#  07, 08, 	09,  10,  11
+	sim_month= 'Oct'  																				# Jul, Aug, Sep, Oct, Nov
 	cmaq_file_year= '2016'
 	mcip_date_tag= '161001'
 
-	scenario= '2' 																						# 1-5, baseline
-	days_to_run_in_month= 31 
+	scenario= '1' 																						# 1-5, baseline
+	days_to_run_in_month= 31
 
 	processing_pollutant= 'single_pollutant' 			# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
-	cmaq_pol= 'NH3'																# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
-	pol_unit= 'kg/hectare' 												#	'ppmV' will change to ppb inside; or 'ug/m^3' for pm2.5; or 'kg/hectare' for dep mode
+	cmaq_pol= 'CO'																# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
+	pol_unit= 'ppmV' 												#	'ppmV' will change to ppb inside; or 'ug/m^3' for pm2.5; or 'kg/hectare' for dep mode
 	include_pmdiag_file= 'yes' 					 					# 'yes' OR 'no'
 
 	### spatial plot
 	spatial_plotting= 'yes'		 								# yes or no
+	daily_plots= 'yes'
 	plot_method= 'diff_plot'								# 'single_plot' or 'diff_plot'
 	colorbar_method= 'min_to_max'							# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
 	minus_abs_max_diffPlot= ''
@@ -140,7 +141,8 @@ def main() :
 	print( f'-> platform is= {platform}')
 	print( f'-> timeSeries plotting= {timeseries_plotting}')
 	print( f'-> produce raster= {produce_raster}')
-	print( f'-> spatial plotting= {spatial_plotting}')
+	print( f'-> monthly spatial plotting= {spatial_plotting}')
+	print( f'-> daily spatial plotting= {daily_plots}')
 	if ( spatial_plotting == 'yes'):
 		print( f'-> processing method for spatial plot= {plot_method}')
 		if (plot_method=='single_plot'):
@@ -501,7 +503,7 @@ def main() :
 				print( f'-> producing raster file ...')
 				print( f'-> note: blah blah')
 				### array to raster and write out a raster 
-				daily_2d_array_scen_and_mapped = function_3Dto2D( domain_rows , domain_cols , daily_tseries_tensor_atm_scen )
+				daily_2d_array_scen_and_mapped = function_3Dto2D( domain_rows , domain_cols , daily_tseries_tensor_atm_scen , mapping )
 				daily_2d_array_scen = daily_2d_array_scen_and_mapped[0]
 				array2raster( raster_dir , cmaq_pol , file_date_tag , daily_2d_array_scen , array_origin_lon , array_origin_lat )
 				# print( f'-> raster file = { output_raster }')
@@ -595,6 +597,20 @@ def main() :
 					else:
 						pass
 
+			### for single daily plots
+			if ( daily_plots == 'yes' ) :
+
+				print( " " )
+				print( f'-> producing daily spatial plots for {cmaq_pol} ...')
+				daily_2d_array_scen_and_mapped = function_3Dto2D( domain_rows , domain_cols , daily_tseries_tensor_atm_scen , mapping )
+				daily_2d_array_scen = daily_2d_array_scen_and_mapped[0]
+
+				daily_2d_array_baseline_and_mapped = function_3Dto2D( domain_rows , domain_cols , daily_tseries_tensor_atm_base , mapping )
+				daily_2d_array_base = daily_2d_array_baseline_and_mapped[0]
+
+				daily_diff_2D_array = daily_2d_array_scen - daily_2d_array_base
+
+				spatial_plotting_daily( cctm_process , ycent_zoom , xcent_zoom , NROWS_zoom , NCOLS_zoom , lon_dot_array , lat_dot_array , plot_method , daily_diff_2D_array , cmaq_pol , dep_type , sim_month , cmaq_file_year , scenario , dpi_scale , pol_unit , cmaq_file_month , days_to_run_in_month , fig_dir , day_of_the_month )
 
 
 			### after all days are extracted, now we concatenate the daily timeseries tensor to monthly timeseries tensor
@@ -972,8 +988,10 @@ def main() :
 		print( f'-> shape of y_mesh= {y_mesh.shape }')
 		print( f'-> shape of monthly_mean_diff_mesh= {monthly_mean_2d_mesh.shape }')
 		print(" ")
+
 		# define the image first
 		colorImage = theMap.pcolormesh( x_mesh , y_mesh , monthly_mean_2d_mesh , cmap=color_mapping_function , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 )
+
 
 		lon_of_text , lat_of_text = theMap( xcent_zoom , ycent_zoom )
 		plt.text( lon_of_text-45000 , lat_of_text+45000 , 'scen %s %s' %(scenario , sim_month) )
@@ -1107,9 +1125,11 @@ def main() :
 #====================================================================================================
 
 
-#====================================================================================================
-# other functions
-#====================================================================================================
+#####################################################################################################
+
+# 																				FUNCTION SECTION
+
+#####################################################################################################
 
 
 #====================================================================================================
@@ -1203,7 +1223,7 @@ def function_stats_of_desired_region( monthly_mean_2d_mesh , timeseries_plotting
 #====================================================================================================
 # function to change 3D to 2D array
 
-def function_3Dto2D ( domain_rows , domain_cols , monthly_tseries_tensor , mapping ) :
+def function_3Dto2D( domain_rows , domain_cols , monthly_tseries_tensor , mapping ) :
 	" returns monthly mean of each cell, changes 3D mesh of daily mean conc to a 2D mesh of monthly mean conc"
 
 	### define a 2d array
@@ -1323,9 +1343,9 @@ def array2raster( raster_dir , cmaq_pol , file_date_tag , output_array , array_o
 #====================================================================================================
 
 #====================================================================================================
-# function to
+# function to ...
 
-def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
+def function_cell_24hr_timeSeries_singlePOL( aconc_open , cmaq_pol , lay , row , col ):  # the order of argumenrs is important when input.
 	" returns 24-hr time series of singlePOL"
 
 	cell_24hr_series_list = []
@@ -1342,12 +1362,181 @@ def function_cell_24hr_timeSeries_singlePOL ( aconc_open , cmaq_pol , lay , row 
 	# function returns mean of the pollutant for each cell
 	return cell_24hr_series_array
 
+# function to ...
+#====================================================================================================
+
+#====================================================================================================
+# function: Spatial plotting with Basemap
+
+# use Basemap library and make spatial plots
+def spatial_plotting_daily( cctm_process , ycent_zoom , xcent_zoom , NROWS_zoom , NCOLS_zoom , lon_dot_array , lat_dot_array , plot_method , input_2D_array , cmaq_pol , dep_type , sim_month , cmaq_file_year , scenario , dpi_scale , pol_unit , cmaq_file_month , days_to_run_in_month , fig_dir , day_of_the_month ) :
+
+	print(f'-> daily spatial plotting for CCTM process= {cctm_process}...')
+	print(" ")
+	### plot dots from grid coordinates of the dots
+	#plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
+
+	# ### create a Basemap class/model instance for a specific projection
+	# # basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
+	# theMap = Basemap(projection='lcc' ,
+	# 													 llcrnrx=llx , llcrnry=lly , urcrnrx=urcornerx , urcrnry=urcornery ,
+	# 													 lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS ,
+	# 													 resolution='f' , area_thresh=0.5)
+
+
+	### create Basemap model instance from its class, it is a map that color mesh sits on it.
+	theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
+
+	x_mesh, y_mesh = theMap(lon_dot_array , lat_dot_array) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map; or just use latlon=True inpcolormesh function and use lat-lon values
+
+	#basemap_instance.fillcontinents(lake_color='aqua')
+
+	#my_levels = [ 0.02 , 0.05 ]
+	#my_colors = ( 'g' , 'b' , 'r' )
+
+	# set the color map
+	if ( plot_method == 'single_plot' ) :
+
+		color_mapping_function = 'Reds'
+
+	if ( plot_method == 'diff_plot' ) :
+
+		color_mapping_function = 'RdBu_r'
+
+	### create a color mesh image from basemap model instance, the color mesh is constant, cos it is plotted from lon/lat values
+	print(" ")
+	print( '-> making the colormesh ...')
+	print( f'-> shape of x_mesh= {x_mesh.shape }')
+	print( f'-> shape of y_mesh= {y_mesh.shape }')
+	print( f'-> shape of monthly_mean_diff_mesh= {input_2D_array.shape }')
+	print(" ")
+
+	# define the color image first, on top of basemap
+	colorImage = theMap.pcolormesh( x_mesh , y_mesh , input_2D_array , cmap=color_mapping_function , shading='flat' )# , vmin=-5e-5 , vmax=5e-5 )
+
+
+	# need to delete the basemap object????
+	
+
+	lon_of_text , lat_of_text = theMap( xcent_zoom , ycent_zoom )
+	plt.text( lon_of_text-45000 , lat_of_text+45000 , 'scen %s %s day %s' %(scenario , sim_month , day_of_the_month) )
+
+	#im2 = basemap_instance.pcolormesh(lon_mesh , lat_mesh , data_mesh , cmap=plt.cm.jet , shading='flat')
+
+	# then, set the color limit
+	# if ( plot_method == 'single_plot' ) :
+	# 	print( f'-> plot method= {plot_method}')
+
+	# 	### you can choose either of these options
+	# 	plt.clim( vmin=min_of_single_region ,  vmax=max_of_single_region )
+	# 	#plt.clim( vmin=my_vmin_for_singlePlot , vmax=my_vmax_for_singlePlot )
+
+
+	# if ( plot_method == 'diff_plot' ) :
+	# 	print( f'-> plot method= {plot_method}')
+		
+	# 	if ( colorbar_method == 'zero_to_max' ) :
+			
+	# 		print(f'-> colorbar method= {colorbar_method}')
+	# 		plt.clim( 0.0 ,  max_of_diff_region )
+	# 		print( f'-> plot the image for vmin= {0.0} and vmax= {max_of_diff_region}')
+
+	# 	if ( colorbar_method == 'min_to_max' ) :
+
+	# 		print(f'-> colorbar method= {colorbar_method}')
+	# 		plt.clim( min_of_diff_region ,  max_of_diff_region )
+	# 		print( f'-> plot the image for vmin= {min_of_diff_region} and vmax= {max_of_diff_region}')
+
+	# 	if ( colorbar_method == 'minus_abs_max_to_max' ) :
+
+	# 		print(f'-> colorbar method= {colorbar_method}')
+	# 		plt.clim( minus_abs_max_diffPlot ,  abs_max_diffPlot )
+	# 		print( f'-> plot the image for vmin= {minus_abs_max_diffPlot} and vmax= {abs_max_diffPlot}')
+	
+		# plt.clim( my_vmin_for_singlePlot , vmax_mine )
+		# print( f'-> plot the image for vmin={vmin_mine} and vmax={vmax_mine}')
+
+	# set the map features
+	theMap.drawmapboundary(color='k' ) #, fill_color='aqua')
+	theMap.drawcoastlines(color = '0.15')
+	theMap.drawstates()
+	theMap.drawcounties(linewidth=0.5 , color='k' )
+
+	#theMap.bluemarble()
+
+	### create colorbar/legend in a seperate obj to play with it later
+	colorbar = theMap.colorbar( colorImage , 'bottom' , size='4%' )
+
+	colorbar_label = f' {cmaq_pol} concentration [{pol_unit}] ' 
+	colorbar.set_label( label=colorbar_label , size=6 )
+
+	colorbar.ax.tick_params( labelsize= 5 ) # provide access to the usual axis methods including tick formatting
+	#cs = basemap_instance.contourf(lon_mesh , lat_mesh , data_mesh)
+	#colorbar = basemap_instance.colorbar(cs, location='bottom')
+	#plt.subplot( figsize=(10,10) )
+
+	if ( plot_method == 'single_plot' ) :
+		if ( cctm_process == 'atm' ) :
+			plt.title(f' {cctm_process} {cmaq_pol} daily mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=6 )
+
+		if ( cctm_process == 'dep' ) :
+			plt.title(f' {cmaq_pol} {dep_type} daily mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=6 )
+
+	elif ( plot_method == 'diff_plot' ) :
+		if ( cctm_process == 'atm' ) :
+			plt.title(f' {cctm_process} {cmaq_pol} daily mean concentration for {sim_month}, scenario{scenario}_minus_baseline' , fontsize=6 )
+
+		if ( cctm_process == 'dep' ) :
+			plt.title(f' {cmaq_pol} {dep_type} daily mean concentration for {sim_month}, scenario{scenario}_minus_baseline' , fontsize=6 )
+
+
+	print(" ")
+
+		### plot name
+	if ( plot_method == 'single_plot' ) :
+		if( cctm_process == 'atm' ) :
+
+			fig_name = cctm_process+'_conc_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_singlePlot_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'_dpi_'+str(dpi_scale)+'.png'
+		
+		if ( cctm_process == 'dep') :
+
+			fig_name = dep_type+'_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_singlePlot_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'_dpi_'+str(dpi_scale)+'.png'
+
+	elif ( plot_method == 'diff_plot' ) :
+		if( cctm_process == 'atm' ) :
+
+			fig_name = cctm_process+'_conc_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_diff_from_baseline_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days_day'+str(day_of_the_month)+'_dpi_'+str(dpi_scale)+'.png'
+
+		if ( cctm_process == 'dep' ) :
+
+			fig_name = dep_type+'_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_diff_from_baseline_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days_dpi_'+str(dpi_scale)+'.png'
+	else:
+		pass
+
+	### full path of the plot
+	out_fig = fig_dir + fig_name
+	print('-> output figure is stored at:')
+	print(out_fig)
+	### export the figure
+	plt.savefig( out_fig , dpi=dpi_scale , format='png')
+	### opens a window to show the results - after savefig
+	#plt.show()
+
+	### close the plot
+	plt.clf()  # clears the entire current figure with all its axes
+	plt.cla()  # clear currently active axes in the current figure
+	plt.close()  # closes a window, which will be the current window
+
+	print( f'-> closing the plt.plot')
+			# need to delete the basemap object????
+
+# Spatial plotting with Basemap
 #====================================================================================================
 
 #====================================================================================================
 # function to
 
-def function_pm25_daily_cell_tseries ( include_pmdiag_file , aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
+def function_pm25_daily_cell_tseries( include_pmdiag_file , aconc_open , pmdiag_open , lay , row , col ) : # arg are the variables that are defined insdie this function
 	" returns daily timeseries for pm2.5 for each cell"
 	print(" ")
 	# loop inside 24 time-steps and extract pm concentrations
