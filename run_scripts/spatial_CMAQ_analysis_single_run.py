@@ -932,7 +932,7 @@ def main() :
 			y_cmaq_base = monthly_tseries_tensor_baseline_intermediate [ : , station_row , station_col ]  # NOTE: intermed array is already changed to ppb
 
 		else:
-			print(f'-> time series plotting only runs in "diff_plot" mode from baseline scenario file change plot_setting to diff_plot and run again')
+			print(f'-> time series plotting only runs in "diff_plot" mode from baseline scenario file, so change plot_setting to diff_plot and run again')
 			print('Exitting ...')
 			raise SystemExit
 
