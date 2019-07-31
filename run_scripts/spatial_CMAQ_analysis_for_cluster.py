@@ -57,8 +57,8 @@ def main() :
 	plot_method= environ.get('PLOT_METHOD')										# 'single_plot' or 'diff_plot'
 
 	### spatial plot
-	spatial_plotting= environ.get('SPATIAL_PLOTTING_KEY')		 	# yes or no
-	.daily_plots= environ.get('DAILY_PLOTTING')												# yes or no ; it is not dependent on spatial plotting
+	spatial_plotting= environ.get('SPATIAL_PLOTTING')		 	# yes or no
+	daily_plots= environ.get('DAILY_PLOTTING')												# yes or no ; it is not dependent on spatial plotting
 	colorbar_method= environ.get('COLOR_METHOD')							# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
 	minus_abs_max_diffPlot= environ.get('MINUS_ABS_MAX_DIFF')
 	abs_max_diffPlot= environ.get('ABS_MAX_DIFF')
@@ -67,17 +67,17 @@ def main() :
 	produce_raster= environ.get('PRODUCE_RASTER')							# 'yes' OR 'no'
 
 	### time-series plot
-	.timeseries_plotting= environ.get(TIMNESERIES_PLOTTING)			#'yes' 	# yes or not
+	timeseries_plotting= environ.get('TIMESERIES_PLOTTING')			#'yes' 	# yes or not
 	obs_station_name = 'TahoeCity'
 	station_lon = -120.14883
 	station_lat = 39.16602
 
-	platform= 'Mac'  # 'Mac' or 'cluster'
+	platform= 'cluster'  # 'Mac' or 'cluster'
 	storage= '10T' # 'personal' OR '10T'
-	dpi_scale=300
+	dpi_scale= 300
 
 	### set mapping parameters for spatial plotting
-	# mapping= 'no' # 'yes' OR 'no'
+	mapping= 'no' # 'yes' OR 'no'
 	# lower_bound_mapping_conc= 0.0
 	# upper_bound_mapping_conc= 0.120
 

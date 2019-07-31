@@ -74,10 +74,10 @@ def main() :
 
 	platform= 'Mac'  # 'Mac' or 'cluster'
 	storage= '10T' # 'personal' OR '10T'
-	dpi_scale=300
+	dpi_scale= 300
 
 	### set mapping parameters for spatial plotting
-	# mapping= 'no' # 'yes' OR 'no'
+	mapping= 'no' # 'yes' OR 'no'
 	# lower_bound_mapping_conc= 0.0
 	# upper_bound_mapping_conc= 0.120
 
