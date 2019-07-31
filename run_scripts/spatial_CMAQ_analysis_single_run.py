@@ -49,14 +49,16 @@ def main() :
 	days_to_run_in_month= 1
 
 	processing_pollutant= 'single_pollutant' 			# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
-	cmaq_pol= 'CO'																# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
+	cmaq_pol= 'O3'																# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
 	pol_unit= 'ppmV' 												#	'ppmV' will change to ppb inside; or 'ug/m^3' for pm2.5; or 'kg/hectare' for dep mode
 	include_pmdiag_file= 'yes' 					 					# 'yes' OR 'no'
 
+	### set the plot method
+	plot_method= 'diff_plot'									# 'single_plot' or 'diff_plot'
+
 	### spatial plot
-	spatial_plotting= 'yes'		 								# yes or no
-	daily_plots= 'yes'
-	plot_method= 'diff_plot'								# 'single_plot' or 'diff_plot'
+	spatial_plotting= 'no'		 								# yes or no
+	daily_plots= 'no'													# yes or no ; it is not dependent on spatial plotting
 	colorbar_method= 'min_to_max'							# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
 	minus_abs_max_diffPlot= ''
 	abs_max_diffPlot= ''
@@ -70,10 +72,10 @@ def main() :
 	upper_bound_mapping_conc= 0.120
 
 	### time-series plot
-	timeseries_plotting= 'no' 	# yes or not
+	timeseries_plotting= 'yes' 	# yes or not
 	obs_station_name = 'TahoeCity'
-	station_lon = 
-	station_lat = 
+	station_lon = -120.14883
+	station_lat = 39.16602
 
 	platform= 'Mac'  # 'Mac' or 'cluster'
 	storage= '10T' # 'personal' OR '10T'
@@ -144,6 +146,7 @@ def main() :
 	print( f'-> CMAQ year= {cmaq_file_year}')
 	print( f'-> platform is= {platform}')
 	print( f'-> timeSeries plotting= {timeseries_plotting}')
+	print( f'-> plot method is= {plot_method}')
 	print( f'-> produce raster= {produce_raster}')
 	print( f'-> monthly spatial plotting= {spatial_plotting}')
 	print( f'-> daily spatial plotting= {daily_plots}')
@@ -707,7 +710,7 @@ def main() :
 	'NorthTahoe':			[-120.05 , 39.217 , 8 , 8 	],
 	'LakeTahoeBasin':	[-120.30 , 38.87 , 50 , 38 	],
 	'Ndep':						[-120.152 , 38.93 , 37 , 20 ],  # row, col = range_in_raw and col 
-	'stationLocation':    [station_lon , station_lat , 1 , 1 ]
+	'stationLoc':     [station_lon , station_lat , 1 , 1 ]
 	}
 
 	#=========================================================
@@ -803,19 +806,13 @@ def main() :
 			print( f'-> stats: medianSingleMesh{region}= 	{ tuple_of_stats[2]	}')
 			print( f'-> stats: stdSingleMesh{region}= 		{ tuple_of_stats[3]	}')
 			print( f'-> stats: maxSingleMesh{region}= 		{ tuple_of_stats[4]	}')
-			if ( region == 'stationLocation' ) :
+
+			if ( region == 'stationLoc' ) :
 
 				station_row = tuple_of_stats[5]
 				station_col = tuple_of_stats[6]
 				print(f'-> row no. of cell with station = { tuple_of_stats[5] } ')
 				print(f'-> col no. of cell with station = { tuple_of_stats[6] } ')
-
-
-
-
-
-
-
 
 			print('-----------------------------------------------------------')
 
@@ -897,6 +894,12 @@ def main() :
 			print( f'-> stats: stdDiffMesh{region}= 		{ tuple_of_stats[3]	}')
 			print( f'-> stats: maxDiffMesh{region}= 		{ tuple_of_stats[4]	}')
 
+			if ( region == 'stationLoc' ) :
+
+				station_row = tuple_of_stats[5]
+				station_col = tuple_of_stats[6]
+				print(f'-> row no. of cell with station = { tuple_of_stats[5] } ')
+				print(f'-> col no. of cell with station = { tuple_of_stats[6] } ')
 
 			print('-----------------------------------------------------------')
 
@@ -951,8 +954,6 @@ def main() :
 
 		plt.plot( x_bar , y_cmaq_base , label='CMAQ baseline' , color='red')
 		plt.plot( x_bar , y_obs , label='Obs.' , color='black' )
-
-
 
 		#plt.show()
 		xticks_position = [ i*24 for i in range(0 , days_to_run_in_month+1 , 1) ]
