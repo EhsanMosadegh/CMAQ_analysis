@@ -47,7 +47,8 @@ def main() :
 
 	scenario= environ.get('LANDIS_SCENARIO') 	 																						# 1-5, baseline
 	days_to_run_in_month= environ.get('DAYS_IN_MONTH_TO_RUN')
-	
+	days_to_run_in_month= int(days_to_run_in_month) # to change the type of envVar from str to int
+
 	processing_pollutant= environ.get('PROCESSING_POLLUTANT') # 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
 	cmaq_pol= environ.get('CMAQ_POL')														# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
 	pol_unit= environ.get('POL_UNIT') 												#	'ppmV' or 'ug/m^3'

@@ -47,6 +47,7 @@ def main() :
 
 	scenario= '1' 																						# 1-5, baseline
 	days_to_run_in_month= 5
+	#days_to_run_in_month= int(days_to_run_in_month) # to change the type of envVar from str to int
 
 	processing_pollutant= 'single_pollutant' 			# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
 	cmaq_pol= 'O3'																# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
