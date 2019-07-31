@@ -46,7 +46,7 @@ def main() :
 	mcip_date_tag= '161001'
 
 	scenario= '1' 																						# 1-5, baseline
-	days_to_run_in_month= 1
+	days_to_run_in_month= 5
 
 	processing_pollutant= 'single_pollutant' 			# 'pm2.5' OR 'single_pollutant'== nh3,o3,no2,no,co
 	cmaq_pol= 'O3'																# for plot title 'CO','PM2.5','NH3','O3','HNO3','NO2','SO2'
@@ -141,12 +141,12 @@ def main() :
 	print( f'-> processing pollutant= {cmaq_pol}')
 	print( f'-> CCTM process= {cctm_process}')
 	if ( cctm_process == 'dep' ):
-		print( f'-> deposition type is= {dep_type}')
+		print( f'-> deposition type= {dep_type}')
 	print( f'-> pollutat unit= {pol_unit}')
 	print( f'-> CMAQ year= {cmaq_file_year}')
-	print( f'-> platform is= {platform}')
+	print( f'-> platform= {platform}')
 	print( f'-> timeSeries plotting= {timeseries_plotting}')
-	print( f'-> plot method is= {plot_method}')
+	print( f'-> plot method= {plot_method}')
 	print( f'-> produce raster= {produce_raster}')
 	print( f'-> monthly spatial plotting= {spatial_plotting}')
 	print( f'-> daily spatial plotting= {daily_plots}')
@@ -930,9 +930,8 @@ def main() :
 			y_cmaq_base = monthly_tseries_tensor_baseline_intermediate [ : , station_row , station_col ]  # NOTE: intermed array is already changed to ppb
 
 		else:
-			print(f'-> time series plotting only runs in diff_plot mode from baseline scenario file\
-				change plot_setting to diff_plot and. run again...\
-				Exitting ...')
+			print(f'-> time series plotting only runs in "diff_plot" mode from baseline scenario file change plot_setting to diff_plot and run again')
+			print('Exitting ...')
 			raise SystemExit
 
 
@@ -942,7 +941,8 @@ def main() :
 
 		input_df = pd.read_csv( obs_input , sep=',' , header=0 )
 
-		y_obs = input_df['value'][0:number_of_days*24]
+		y_obs = input_df['value'][0:days_to_run_in_month*24]
+		y_obs = y_obs*1000 	# to convert from ppm to ppb
 
 		x_bar = [ *range(1, ((days_to_run_in_month*24)+1) , 1) ]  # x bar is no. of hours in aconc files
 
@@ -962,8 +962,8 @@ def main() :
 		plt.yticks(fontsize=6)
 
 		plt.xlabel(f' days in {sim_month}')
-		plt.ylabel( f' {cmaq_pol} concentration')
-		plt.title( f'time-series of {cmaq_pol} at station {obs_station_name} for scenario {scenario} and {sim_month} , 2016')
+		plt.ylabel( f' {cmaq_pol} concentration [{pol_unit}]')
+		plt.title( f' {cmaq_pol} at station "{obs_station_name}" for scenario {scenario}- {sim_month} , 2016')
 		plt.grid(True)
 		plt.legend()
 
