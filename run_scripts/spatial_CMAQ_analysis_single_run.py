@@ -66,11 +66,6 @@ def main() :
 	# my_vmax_for_singlePlot= 0.4
 	produce_raster= 'no' 						# 'yes' OR 'no'
 
-	### set mapping parameters for spatial plotting
-	mapping= 'no' # 'yes' OR 'no'
-	lower_bound_mapping_conc= 0.0
-	upper_bound_mapping_conc= 0.120
-
 	### time-series plot
 	timeseries_plotting= 'yes' 	# yes or not
 	obs_station_name = 'TahoeCity'
@@ -80,6 +75,12 @@ def main() :
 	platform= 'Mac'  # 'Mac' or 'cluster'
 	storage= '10T' # 'personal' OR '10T'
 	dpi_scale=300
+
+	### set mapping parameters for spatial plotting
+	# mapping= 'no' # 'yes' OR 'no'
+	# lower_bound_mapping_conc= 0.0
+	# upper_bound_mapping_conc= 0.120
+
 
 	# run time setting
 	#====================================================================================================
