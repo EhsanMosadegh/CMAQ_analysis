@@ -11,6 +11,7 @@ setenv PLOT_METHOD 	'diff_plot'			# 'single_plot' or 'diff_plot'
 setenv COLOR_METHOD 'min_to_max'		# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
 setenv PRODUCE_RASTER 'no'				# 'yes' OR 'no'
 setenv TIMESERIES_PLOTTING 'no' 			# yes or not
+setenv DAILY_PLOTTING 'no'					# yes or no
 
 # if ==  minus_abs_max_to_max
 setenv MINUS_ABS_MAX_DIFF '-8.306249300485834e-07'
