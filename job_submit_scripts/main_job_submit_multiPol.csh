@@ -10,8 +10,8 @@ setenv SPATIAL_PLOTTING 'no'			# yes or no
 setenv PLOT_METHOD 	'diff_plot'			# 'single_plot' or 'diff_plot'
 setenv COLOR_METHOD 'min_to_max'		# 'zero_to_max' , 'min_to_max' , 'minus_abs_max_to_max'
 setenv PRODUCE_RASTER 'no'				# 'yes' OR 'no'
-setenv TIMESERIES_PLOTTING 'yes' 			# yes or not
-setenv DAILY_PLOTTING 'no'					# yes or no
+setenv TIMESERIES_PLOTTING 'no' 			# yes or not
+setenv DAILY_PLOTTING 'yes'					# yes or no
 
 #if ( SPATIAL_PLOTTING == 'yes' ) & () then 
 setenv MINUS_ABS_MAX_DIFF '-8.306249300485834e-07'
@@ -28,11 +28,12 @@ echo '-> plotting mehtod=' ${PLOT_METHOD}
 echo '-> colorbar method=' ${COLOR_METHOD}
 echo '-> produce raster=' ${PRODUCE_RASTER}
 echo '-> time-series plotting=' ${TIMESERIES_PLOTTING}
+echo '-> daily plotting=' ${DAILY_PLOTTING}
 echo '-> minus-abs max values for diff plot=' ${MINUS_ABS_MAX_DIFF}
 echo '-> abs max values for diff plot=' ${ABS_MAX_DIFF}
 echo '------------------------------------------------------'
 
-foreach species ('O3')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# atm
+foreach species ('CO')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# atm
 #foreach species ( 'HNO3' 'NH3' )       # ( 'HONO' 'N2O5'  'NO3' 'NO'  'NO2' 'HNO3' 'NH3' )  		# dep      
  
 
@@ -48,7 +49,7 @@ foreach species ('O3')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# 
 
 					setenv CMAQ_MONTH_STRING 'Jul'
 					setenv CMAQ_MONTH_NUMBER '07'
-					setenv DAYS_IN_MONTH_TO_RUN '31'  #31
+					setenv DAYS_IN_MONTH_TO_RUN '1'  #31
 
 					setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
@@ -56,7 +57,7 @@ foreach species ('O3')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# 
 
 					setenv CMAQ_MONTH_STRING 'Aug'
 					setenv CMAQ_MONTH_NUMBER '08'
-					setenv DAYS_IN_MONTH_TO_RUN '31' # 31
+					setenv DAYS_IN_MONTH_TO_RUN '1' # 31
 
 					setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
@@ -64,7 +65,7 @@ foreach species ('O3')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# 
 
 					setenv CMAQ_MONTH_STRING 'Sep'
 					setenv CMAQ_MONTH_NUMBER '09'
-					setenv DAYS_IN_MONTH_TO_RUN '30' #30
+					setenv DAYS_IN_MONTH_TO_RUN '1' #30
 
                                         setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
@@ -72,7 +73,7 @@ foreach species ('O3')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# 
 
 					setenv CMAQ_MONTH_STRING 'Oct'
 					setenv CMAQ_MONTH_NUMBER '10'
-					setenv DAYS_IN_MONTH_TO_RUN '31'	#'31'
+					setenv DAYS_IN_MONTH_TO_RUN '1'	#'31'
 
                                         setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
@@ -80,7 +81,7 @@ foreach species ('O3')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# 
 
 					setenv CMAQ_MONTH_STRING 'Nov'
 					setenv CMAQ_MONTH_NUMBER '11'
-					setenv DAYS_IN_MONTH_TO_RUN '29' #'29'
+					setenv DAYS_IN_MONTH_TO_RUN '1' #'29'
 
                                         setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 

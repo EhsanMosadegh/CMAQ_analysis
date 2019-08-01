@@ -193,7 +193,7 @@ def main() :
 
 	elif ( platform == 'cluster' ) :
 
-		home_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/'
+		home_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/'
 		mcip_dir = home_dir+'mcip_files/'
 		fig_dir = home_dir+'cmaq_figs/'
 		cmaq_output_dir = home_dir+'cmaq_output/'
@@ -623,7 +623,7 @@ def main() :
 
 				daily_diff_2D_array = daily_2d_array_scen - daily_2d_array_base
 
-				spatial_plotting_daily( cctm_process , ycent_zoom , xcent_zoom , NROWS_zoom , NCOLS_zoom , lon_dot_array , lat_dot_array , plot_method , daily_diff_2D_array , cmaq_pol , dep_type , sim_month , cmaq_file_year , scenario , dpi_scale , pol_unit , cmaq_file_month , days_to_run_in_month , fig_dir , day_of_the_month )
+				spatial_plotting_daily( cctm_process , ycent_zoom , xcent_zoom , NROWS_zoom , NCOLS_zoom , lon_dot_array , lat_dot_array , plot_method , daily_diff_2D_array , cmaq_pol , dep_type , sim_month , cmaq_file_year , scenario , dpi_scale , pol_unit , cmaq_file_month , days_to_run_in_month , fig_dir , day_of_the_month , day_count )
 
 
 			### after all days are extracted, now we concatenate the daily timeseries tensor to monthly timeseries tensor
@@ -1401,7 +1401,7 @@ def function_cell_24hr_timeSeries_singlePOL( aconc_open , cmaq_pol , lay , row ,
 # function: Spatial plotting with Basemap
 
 # use Basemap library and make spatial plots
-def spatial_plotting_daily( cctm_process , ycent_zoom , xcent_zoom , NROWS_zoom , NCOLS_zoom , lon_dot_array , lat_dot_array , plot_method , input_2D_array , cmaq_pol , dep_type , sim_month , cmaq_file_year , scenario , dpi_scale , pol_unit , cmaq_file_month , days_to_run_in_month , fig_dir , day_of_the_month ) :
+def spatial_plotting_daily( cctm_process , ycent_zoom , xcent_zoom , NROWS_zoom , NCOLS_zoom , lon_dot_array , lat_dot_array , plot_method , input_2D_array , cmaq_pol , dep_type , sim_month , cmaq_file_year , scenario , dpi_scale , pol_unit , cmaq_file_month , days_to_run_in_month , fig_dir , day_of_the_month , day_count ) :
 
 	print(f'-> daily spatial plotting for CCTM process= {cctm_process}...')
 	print(" ")
