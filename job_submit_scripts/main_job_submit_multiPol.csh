@@ -23,9 +23,9 @@ if ( $CCTM_PROCESS == 'dep' ) then
 endif
 echo '-> processing pollutant=' ${PROCESSING_POLLUTANT}
 echo '-> pollutant unit=' ${POL_UNIT}
-echo '-> spatial plotting=' ${SPATIAL_PLOTTING}
-echo '-> plotting mehtod=' ${PLOT_METHOD}
 echo '-> colorbar method=' ${COLOR_METHOD}
+echo '-> plotting mehtod=' ${PLOT_METHOD}
+echo '-> spatial plotting=' ${SPATIAL_PLOTTING}
 echo '-> produce raster=' ${PRODUCE_RASTER}
 echo '-> time-series plotting=' ${TIMESERIES_PLOTTING}
 echo '-> daily plotting=' ${DAILY_PLOTTING}
@@ -49,7 +49,7 @@ foreach species ('CO')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# 
 
 					setenv CMAQ_MONTH_STRING 'Jul'
 					setenv CMAQ_MONTH_NUMBER '07'
-					setenv DAYS_IN_MONTH_TO_RUN '1'  #31
+					setenv DAYS_IN_MONTH_TO_RUN '31'  #31
 
 					setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
@@ -57,7 +57,7 @@ foreach species ('CO')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# 
 
 					setenv CMAQ_MONTH_STRING 'Aug'
 					setenv CMAQ_MONTH_NUMBER '08'
-					setenv DAYS_IN_MONTH_TO_RUN '1' # 31
+					setenv DAYS_IN_MONTH_TO_RUN '31' # 31
 
 					setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
@@ -65,7 +65,7 @@ foreach species ('CO')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# 
 
 					setenv CMAQ_MONTH_STRING 'Sep'
 					setenv CMAQ_MONTH_NUMBER '09'
-					setenv DAYS_IN_MONTH_TO_RUN '1' #30
+					setenv DAYS_IN_MONTH_TO_RUN '30' #30
 
                                         setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
@@ -73,7 +73,7 @@ foreach species ('CO')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# 
 
 					setenv CMAQ_MONTH_STRING 'Oct'
 					setenv CMAQ_MONTH_NUMBER '10'
-					setenv DAYS_IN_MONTH_TO_RUN '1'	#'31'
+					setenv DAYS_IN_MONTH_TO_RUN '31'	#'31'
 
                                         setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
@@ -81,7 +81,7 @@ foreach species ('CO')		#	( 'CO' 'O3' 'NH3' 'HNO3' 'NO2' 'SO2' ) # 'PM2.5' ) 	# 
 
 					setenv CMAQ_MONTH_STRING 'Nov'
 					setenv CMAQ_MONTH_NUMBER '11'
-					setenv DAYS_IN_MONTH_TO_RUN '1' #'29'
+					setenv DAYS_IN_MONTH_TO_RUN '29' #'29'
 
                                         setenv JOB_NAME 'S'${scen_no}${CMAQ_MONTH_STRING}
 
