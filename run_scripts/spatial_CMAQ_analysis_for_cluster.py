@@ -993,7 +993,7 @@ def main() :
 		### plot dots from grid coordinates of the dots
 		#plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
 
-		# ### create a Basemap class/model instance for a specific projection
+		# ### create a Basemap object/model instance for a specific projection
 		# # basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
 		# theMap = Basemap(projection='lcc' ,
 		# 													 llcrnrx=llx , llcrnry=lly , urcrnrx=urcornerx , urcrnry=urcornery ,
@@ -1001,7 +1001,7 @@ def main() :
 		# 													 resolution='f' , area_thresh=0.5)
 
 
-		### create Basemap model instance from its class, it is a map that color mesh sits on it.
+		### create Basemap model instance (object) from its class, it is a map that color mesh sits on it.
 		theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
 
 		x_mesh, y_mesh = theMap(lon_dot_array , lat_dot_array) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map; or just use latlon=True inpcolormesh function and use lat-lon values
