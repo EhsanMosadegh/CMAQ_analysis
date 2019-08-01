@@ -193,7 +193,7 @@ def main() :
 
 	elif ( platform == 'cluster' ) :
 
-		home_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/'	#CMAQ_analysis/'
+		home_dir = '/storage/ehsanm/USFS_CA_WRF_1km_project/data_analysis/CMAQ_analysis/'
 		mcip_dir = home_dir+'mcip_files/'
 		fig_dir = home_dir+'cmaq_figs/'
 		cmaq_output_dir = home_dir+'cmaq_output/'
@@ -993,7 +993,7 @@ def main() :
 		### plot dots from grid coordinates of the dots
 		#plt.plot( lon_mesh , lat_mesh , marker='.' , color='b' , linestyle= 'none' )
 
-		# ### create a Basemap object/model instance for a specific projection
+		# ### create a Basemap class/model instance for a specific projection
 		# # basemap_instance = Basemap(projection='lcc' , lat_0=ycent , lon_0=xcent , height=NROWS , width=NCOLS , resolution='i') # , area_thresh=0.1) # latlon=True for when x and y are not in map proj. coordinates
 		# theMap = Basemap(projection='lcc' ,
 		# 													 llcrnrx=llx , llcrnry=lly , urcrnrx=urcornerx , urcrnry=urcornery ,
@@ -1001,7 +1001,7 @@ def main() :
 		# 													 resolution='f' , area_thresh=0.5)
 
 
-		### create Basemap model instance (object) from its class, it is a map that color mesh sits on it.
+		### create Basemap model instance from its class, it is a map that color mesh sits on it.
 		theMap = Basemap(projection='lcc' , lat_0=ycent_zoom , lon_0=xcent_zoom , height=NROWS_zoom , width=NCOLS_zoom , resolution='f' , area_thresh=0.5)
 
 		x_mesh, y_mesh = theMap(lon_dot_array , lat_dot_array) # order: x , y; Basemap model transforms lon/lat from degree to meter for LCC projection map; or just use latlon=True inpcolormesh function and use lat-lon values
@@ -1507,6 +1507,7 @@ def spatial_plotting_daily( cctm_process , ycent_zoom , xcent_zoom , NROWS_zoom 
 	#colorbar = basemap_instance.colorbar(cs, location='bottom')
 	#plt.subplot( figsize=(10,10) )
 
+	### plot title
 	if ( plot_method == 'single_plot' ) :
 		if ( cctm_process == 'atm' ) :
 			plt.title(f' {cctm_process} {cmaq_pol} daily mean concentrations for {sim_month}, {cmaq_file_year} - LANDIS scenario {scenario}' , fontsize=6 )
@@ -1524,24 +1525,24 @@ def spatial_plotting_daily( cctm_process , ycent_zoom , xcent_zoom , NROWS_zoom 
 
 	print(" ")
 
-		### plot name
+	### plot name
 	if ( plot_method == 'single_plot' ) :
 		if( cctm_process == 'atm' ) :
 
-			fig_name = cctm_process+'_conc_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_singlePlot_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'_dpi_'+str(dpi_scale)+'.png'
+			fig_name = str(day_count)+'_'+cctm_process+'_conc_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_singlePlot_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'_dpi_'+str(dpi_scale)+'.png'
 		
 		if ( cctm_process == 'dep') :
 
-			fig_name = dep_type+'_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_singlePlot_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'_dpi_'+str(dpi_scale)+'.png'
+			fig_name = str(day_count)+'_'+dep_type+'_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_singlePlot_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'_dpi_'+str(dpi_scale)+'.png'
 
 	elif ( plot_method == 'diff_plot' ) :
 		if( cctm_process == 'atm' ) :
 
-			fig_name = cctm_process+'_conc_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_diff_from_baseline_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days_day'+str(day_of_the_month)+'_dpi_'+str(dpi_scale)+'.png'
+			fig_name = str(day_count)+'_'+cctm_process+'_conc_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_diff_from_baseline_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days_day'+str(day_of_the_month)+'_dpi_'+str(dpi_scale)+'.png'
 
 		if ( cctm_process == 'dep' ) :
 
-			fig_name = dep_type+'_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_diff_from_baseline_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days_dpi_'+str(dpi_scale)+'.png'
+			fig_name = str(day_count)+'_'+dep_type+'_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_diff_from_baseline_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days_dpi_'+str(dpi_scale)+'.png'
 	else:
 		pass
 
