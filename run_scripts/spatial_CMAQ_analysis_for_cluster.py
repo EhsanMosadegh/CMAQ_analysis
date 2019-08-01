@@ -809,12 +809,13 @@ def main() :
 			print( f'-> stats: stdSingleMesh{region}= 		{ tuple_of_stats[3]	}')
 			print( f'-> stats: maxSingleMesh{region}= 		{ tuple_of_stats[4]	}')
 
-			if ( region == 'stationLoc' ) :
+			if (timeseries_plotting == 'yes'):
+				if ( region == 'stationLoc' ) :
 
-				station_row = tuple_of_stats[5]
-				station_col = tuple_of_stats[6]
-				print(f'-> row no. of cell with station = { tuple_of_stats[5] } ')
-				print(f'-> col no. of cell with station = { tuple_of_stats[6] } ')
+					station_row = tuple_of_stats[5]
+					station_col = tuple_of_stats[6]
+					print(f'-> row no. of cell with station = { tuple_of_stats[5] } ')
+					print(f'-> col no. of cell with station = { tuple_of_stats[6] } ')
 
 			print('-----------------------------------------------------------')
 
@@ -896,12 +897,13 @@ def main() :
 			print( f'-> stats: stdDiffMesh{region}= 		{ tuple_of_stats[3]	}')
 			print( f'-> stats: maxDiffMesh{region}= 		{ tuple_of_stats[4]	}')
 
-			if ( region == 'stationLoc' ) :
+			if (timeseries_plotting == 'yes'):
+				if ( region == 'stationLoc' ) :
 
-				station_row = tuple_of_stats[5]
-				station_col = tuple_of_stats[6]
-				print(f'-> row no. of cell with station = { tuple_of_stats[5] } ')
-				print(f'-> col no. of cell with station = { tuple_of_stats[6] } ')
+					station_row = tuple_of_stats[5]
+					station_col = tuple_of_stats[6]
+					print(f'-> row no. of cell with station = { tuple_of_stats[5] } ')
+					print(f'-> col no. of cell with station = { tuple_of_stats[6] } ')				
 
 			print('-----------------------------------------------------------')
 
@@ -1529,20 +1531,20 @@ def spatial_plotting_daily( cctm_process , ycent_zoom , xcent_zoom , NROWS_zoom 
 	if ( plot_method == 'single_plot' ) :
 		if( cctm_process == 'atm' ) :
 
-			fig_name = day_count+'_'+cctm_process+'_conc_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_singlePlot_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'_dpi_'+str(dpi_scale)+'.png'
+			fig_name = str(day_count)+'_'+cctm_process+'_conc_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_singlePlot_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'_dpi_'+str(dpi_scale)+'.png'
 		
 		if ( cctm_process == 'dep') :
 
-			fig_name = day_count+'_'+dep_type+'_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_singlePlot_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'_dpi_'+str(dpi_scale)+'.png'
+			fig_name = str(day_count)+'_'+dep_type+'_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_singlePlot_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days'+'_dpi_'+str(dpi_scale)+'.png'
 
 	elif ( plot_method == 'diff_plot' ) :
 		if( cctm_process == 'atm' ) :
 
-			fig_name = day_count+'_'+cctm_process+'_conc_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_diff_from_baseline_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days_day'+str(day_of_the_month)+'_dpi_'+str(dpi_scale)+'.png'
+			fig_name = str(day_count)+'_'+cctm_process+'_conc_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_diff_from_baseline_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days_day'+str(day_of_the_month)+'_dpi_'+str(dpi_scale)+'.png'
 
 		if ( cctm_process == 'dep' ) :
 
-			fig_name = day_count+'_'+dep_type+'_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_diff_from_baseline_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days_dpi_'+str(dpi_scale)+'.png'
+			fig_name = str(day_count)+'_'+dep_type+'_'+cmaq_pol+'_dailyPlot_scen_'+scenario+'_diff_from_baseline_month_'+cmaq_file_month+'_summed_'+str(days_to_run_in_month)+'_days_dpi_'+str(dpi_scale)+'.png'
 	else:
 		pass
 

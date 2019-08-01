@@ -809,12 +809,13 @@ def main() :
 			print( f'-> stats: stdSingleMesh{region}= 		{ tuple_of_stats[3]	}')
 			print( f'-> stats: maxSingleMesh{region}= 		{ tuple_of_stats[4]	}')
 
-			if ( region == 'stationLoc' ) :
+			if (timeseries_plotting == 'yes'):
+				if ( region == 'stationLoc' ) :
 
-				station_row = tuple_of_stats[5]
-				station_col = tuple_of_stats[6]
-				print(f'-> row no. of cell with station = { tuple_of_stats[5] } ')
-				print(f'-> col no. of cell with station = { tuple_of_stats[6] } ')
+					station_row = tuple_of_stats[5]
+					station_col = tuple_of_stats[6]
+					print(f'-> row no. of cell with station = { tuple_of_stats[5] } ')
+					print(f'-> col no. of cell with station = { tuple_of_stats[6] } ')
 
 			print('-----------------------------------------------------------')
 
@@ -896,12 +897,13 @@ def main() :
 			print( f'-> stats: stdDiffMesh{region}= 		{ tuple_of_stats[3]	}')
 			print( f'-> stats: maxDiffMesh{region}= 		{ tuple_of_stats[4]	}')
 
-			if ( region == 'stationLoc' ) :
+			if (timeseries_plotting == 'yes'):
+				if ( region == 'stationLoc' ) :
 
-				station_row = tuple_of_stats[5]
-				station_col = tuple_of_stats[6]
-				print(f'-> row no. of cell with station = { tuple_of_stats[5] } ')
-				print(f'-> col no. of cell with station = { tuple_of_stats[6] } ')
+					station_row = tuple_of_stats[5]
+					station_col = tuple_of_stats[6]
+					print(f'-> row no. of cell with station = { tuple_of_stats[5] } ')
+					print(f'-> col no. of cell with station = { tuple_of_stats[6] } ')				
 
 			print('-----------------------------------------------------------')
 
