@@ -10,12 +10,17 @@ def get_the_day(list_elem):
 	return list_elem[0:2]
 
 #==========================================================
-scenario='1'
-month='oct'
+scenario='5'
+month='nov'
 pollutant='co'
 
-#image_folder = '/Users/ehsan/Documents/Python_projects/USFS_fire/github/movie_maker/CO_daily_plots_for_animation/'
-image_folder = '/storage/ehsanm/~/daily_plots/'+'scen_'+scenario+'/'+month
+image_folder = '/Users/ehsan/Documents/Python_projects/CMAQ_analysis/animations/daily_plots/scen_'+scenario+'/'+month+'/'
+#image_folder = '/storage/ehsanm/~/daily_plots/'+'scen_'+scenario+'/'+month
+
+print(f'-> scenario is= {scenario}')
+print(f'-> month is= {month}')
+print(f'-> pollutant is= {pollutant}')
+print(f'-> image folder is: {image_folder}')
 
 video_name = 'cmaq_'+pollutant+'_daily_plots_scen_'+scenario+'_'+month+'.avi' # only avi
 
