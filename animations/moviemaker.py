@@ -15,7 +15,7 @@ month='oct'
 pollutant='co'
 
 #image_folder = '/Users/ehsan/Documents/Python_projects/USFS_fire/github/movie_maker/CO_daily_plots_for_animation/'
-image_folder = '/Users/ehsan/Documents/Python_projects/USFS_fire/github/movie_maker/CO_daily_plots_for_animation/'
+image_folder = '/storage/ehsanm/~/daily_plots/'+'scen_'+scenario+'/'+month
 
 video_name = 'cmaq_'+pollutant+'_daily_plots_scen_'+scenario+'_'+month+'.avi' # only avi
 
